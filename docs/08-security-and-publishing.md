@@ -173,3 +173,17 @@ address family/path. “Network unreachable” is not evidence of a firewall dro
 When the physical LAN cannot route IPv6, isolated network namespaces can verify
 the device kernel's IPv6 filtering; report that separately from a physical LAN
 probe, and leave the untested path explicit.
+
+## Useful diagnostics without an accidental data export
+
+Build support exports from a small whitelist of health states, versions, ages and
+counts. Exclude raw logs, names, node/device identities, keys, share URLs, coordinates,
+message text and personal paths. Test the export with synthetic sensitive sentinel
+values and verify they cannot appear. A generic recursive redactor applied to a
+raw runtime dump is harder to reason about than selecting known safe fields.
+
+Conversation history and named hardware profiles introduce new sensitive files.
+Use private owned directories/files, bound history and record counts, define
+retention and deletion behavior, and offer an explicit RAM-only choice. Describe
+logical deletion honestly: flash, WAL and backups may retain old bytes, and private
+permissions are not at-rest encryption. Never put runtime state into CI artifacts.

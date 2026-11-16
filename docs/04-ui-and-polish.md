@@ -118,3 +118,24 @@ or teardown. Match the response to both request and target. Use stable record ID
 across list rebuilds, never pointers into a vector that can reallocate. Tie LVGL
 observers to an object's lifetime or explicitly remove them. Regression-test list
 reordering while details or an action menu is open.
+
+## First run and uncertain live data
+
+A complete first run needs a safe default, a reviewable configuration, dependency
+failure messages, and a separate deliberate step to enable hardware transmission.
+Never overwrite an existing profile to make the wizard succeed. Show receive-only
+separately from disconnected and transmitting states. Surface the actual stop
+reason in diagnostics instead of hiding every failure behind a generic Error.
+
+Treat GPS data as a measurement with a timestamp. Validate finite coordinates,
+bounds, clock plausibility and freshness at the owner, even if the UI displays a
+marker. Coalesce telemetry updates and refresh age labels; a cached location must
+not look like a new fix. Debounce draft persistence to avoid a disk transaction on
+every keystroke, flush on navigation, and keep rejected sends editable. Quiet hours
+need explicit local-time semantics and a window that works across midnight.
+
+Test the actual camera stack. A CSI sensor's `/dev/video0` may be a raw sensor/ISP
+node, not a webcam stream. On the stock image, use a fixed libcamera/rpicam capture
+command with bounded dimensions/time and decode in memory; do not save private
+camera frames merely to test a scanner. Missing decoder libraries and camera-busy
+failures should produce actionable UI errors, not a misleading "no QR found."

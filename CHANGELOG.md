@@ -28,3 +28,12 @@
   channel types; public use needs explicit routing and separate location consent.
 - Added consent identity/readback, pre-start location-default handling, unnamed
   imports and shared frequency-slot lessons.
+
+### Application follow-up lessons
+
+- Added stable configuration identity and archived-context routing, durable history
+  without replay, acknowledgment-source checks and recoverable multi-file changes.
+- Added receive-only first-run setup, GPS age, debounced drafts and quiet-hour semantics.
+- Added native arm64 CI package artifacts and a capability-owned health monitor
+  instead of repeated elevated subprocess checks with unsafe timeout cleanup.
+- Added whitelist diagnostics and sensitivity/deletion rules for new durable state.

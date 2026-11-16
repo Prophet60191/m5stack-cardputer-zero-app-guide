@@ -144,3 +144,23 @@ node or record ID. Indexing a refreshed vector is unsafe across callbacks. Captu
 stable IDs, resolve them again before acting, and cancel acceptance when a user
 dismisses the pending overlay. This applies especially to secret-bearing results
 such as share codes: a hardcoded group name can disclose another group's key.
+
+## Preserve identity and durable intent safely
+
+A slot or vector index is a location, not an identity. When configuration can
+replace its contents, bind conversations, drafts, selections, retries and commands
+to a stable identity and validate it at the owner before acting. For secret-bearing
+configurations, use a keyed local digest rather than exposing the secret or a
+brute-forceable plain hash. Moving the same logical record can preserve identity;
+changing its key/name should archive old context instead of silently rerouting it.
+
+Keep bounded durable history authoritative in the supervisor. Commit ACK/failure,
+retention and deletion changes before publishing snapshots. Persist drafts without
+turning them into a replay queue. An interrupted send should become Failed after
+restart, with an honest uncertainty reason. Distinguish acceptance by an API, a mesh
+acknowledgment, a recipient acknowledgment and a read receipt; never infer a later
+stage from an earlier one. Confirm the acknowledgment source before naming a recipient.
+
+For related preference files, record and sync a complete validated transaction,
+then roll it forward idempotently after interruption. Applying a saved hardware
+profile must not restore transmission or privacy consent as a side effect.

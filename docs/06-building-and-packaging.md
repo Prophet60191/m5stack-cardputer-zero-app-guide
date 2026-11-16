@@ -190,3 +190,22 @@ seccomp restrictions can imply NoNewPrivileges. Both can break an otherwise vali
 scoped sudo helper. Inspect the live process's UID map/NoNewPrivs and execute the
 real privileged check. Use a consistent privilege design; keep root-owned files
 protected by DAC when a fixed sudo check requires host credentials.
+
+## Automate the matching package build
+
+Use a native arm64 CI runner and a container matching the device's Debian release.
+Fetch qualified dependency commits explicitly, build and install the real package,
+then validate its dependency metadata, executable paths, service files, permissions,
+policy helpers and offline regressions. Disable networking and isolate the network
+namespace during firewall tests so a test cannot change the host's rules.
+Upload a checksummed candidate and corresponding source commit. A successful
+artifact job is still separate from RF, camera, GPS and physical cold-boot proof.
+
+Do not use repeated sudo subprocesses as a long-running health-check transport.
+A timeout can make an unprivileged parent attempt to kill a now-elevated child,
+causing EPERM and leaving cleanup outside its control. A separate fixed-purpose
+capability service can own the privileged probe and publish an atomic verdict.
+Validate the record's owner, type, writable modes, boot identity and freshness;
+fail closed when it is absent/stale/false. Test the real service identity and
+actual rule changes, not just the JSON parser. Remove stale comments and privilege
+exceptions when the normal user process no longer needs escalation.

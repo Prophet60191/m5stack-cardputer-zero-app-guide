@@ -121,3 +121,18 @@ frequency slot. Importing a channel key does not establish matching RF tuning.
 Expose those settings and avoid silently applying URL tuning or replacing an
 existing channel just because the names match. A DM must not choose an arbitrary
 private channel or fall back to the public primary when its selection disappears.
+
+## Check kernel ownership, not only device-file permissions
+
+Read/write access to `/dev/gpiochip0` does not mean the needed lines are free.
+A different Cap's SPI overlay can claim a line through a kernel driver, with no
+userspace GPIO file descriptor to find. Query line ownership before power-on and
+surface the specific conflict. On this image, the NFC SPI-CS2 overlay reserves
+GPIO22, which LoRa needs for BUSY, and the upstream NFC app leaves the runtime
+overlay until reboot. Do not silently unbind another driver's pin or remove a
+shared SPI overlay; those actions can affect the display and other apps.
+
+Normalize vendor sysfs values by their physical meaning. This image can report
+255 for an enabled binary GPIO LED despite max_brightness=1. Validate the complete
+recovery record before writing any switch and persist canonical logical0/1, so
+valid vendor values cannot strand all later starts behind a failed recovery.
