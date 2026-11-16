@@ -53,3 +53,5 @@
 - Added explicit keyboard start/busy/result states for camera operations, repeated
   key suppression, correlated replies, cache reset and honest Escape/disconnect
   behavior for operations that may already have changed state.
+- Added selection-border clipping and stable border/padding inset lessons, with
+  light/dark rendering checks for tightly fitted LVGL containers.

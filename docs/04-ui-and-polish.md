@@ -169,6 +169,12 @@ long names and preserve the routing identity and privacy label before truncating
 the less critical text. Check actual pixel bounds with the real fonts, including
 long peer names, message selection, composing, scrolling and returning to the list.
 
+Render selection lines in both themes. An LVGL outline sits outside an object's
+bounds and can be clipped by a tightly fitted parent. Use an inside border or
+reserve clearance through the parent chain so the entire line stays visible.
+When adding a border, account for its width in the content inset; keep the sum of
+border and padding stable so selection does not move the text or resize the row.
+
 Give settings stable action keys independent of display order. Group related
 options with nonselectable headings; navigation should visit actual settings
 only. Tests should find the selected label rather than blindly pressing Down a
