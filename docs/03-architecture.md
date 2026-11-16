@@ -161,6 +161,10 @@ restart, with an honest uncertainty reason. Distinguish acceptance by an API, a 
 acknowledgment, a recipient acknowledgment and a read receipt; never infer a later
 stage from an earlier one. Confirm the acknowledgment source before naming a recipient.
 
+If opting out of disk history retains an active RAM session, define what opting
+back in saves. Persist its existing drafts without requiring another keystroke;
+test an immediate restart after the preference change and notify every client.
+
 For related preference files, record and sync a complete validated transaction,
 then roll it forward idempotently after interruption. Applying a saved hardware
 profile must not restore transmission or privacy consent as a side effect.

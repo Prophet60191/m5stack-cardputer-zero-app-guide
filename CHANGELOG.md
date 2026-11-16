@@ -41,3 +41,5 @@
   capacity/readback, real pubsub contracts and remote-RF receive accounting.
 - Added draft-only conversation reachability, receiver versus location consent,
   measured camera deadlines and runner-owned CI artifact staging.
+- Added persistence re-enable semantics and an immediate-restart regression for
+  existing RAM drafts, with preference changes propagated to all clients.
