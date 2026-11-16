@@ -106,7 +106,7 @@ How the device's own hardware apps behave — the patterns to reuse:
   **restore them to how you found them** (including pins shared with the display bus). Leaving state
   clean is part of not breaking the next app.
 - **Power rails and routing** are controlled via `/sys/class/leds/…` (e.g. an `ext_5v_out`
-  brightness of 255 = on, 0 = off) plus the relevant GPIO.
+  read the documented range; some switches use 1/0, not 255/0) plus the relevant GPIO.
 - **GPIO** via `libgpiod` on `/dev/gpiochip0`; **SPI** via `/dev/spidevX.Y` (the kernel handles
   chip-select); **serial** via `/dev/ttyS0` (check the serial-console getty is disabled first);
   **I²C** via `/dev/i2c-N`. All usable unprivileged thanks to group membership.

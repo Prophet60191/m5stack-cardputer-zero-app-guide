@@ -1,5 +1,9 @@
 # 6. Building and packaging
 
+The C++/LVGL recipes below apply to the official CMake Template. Other stacks
+can use the same package/launcher/Store contract with their own build system.
+Python dependency plans are a separate path. A backend or service is optional.
+
 From source to an installed `.deb`. Start a native app from the official
 **[CardputerZero/Template](https://github.com/CardputerZero/Template)** (MIT, LVGL 9.5, CMake, C++);
 it gives you the MVVM scaffold, the simulator, and the cross-build/packaging presets.
@@ -259,7 +263,7 @@ separates Store admission from hardware/security evidence.
 
 ---
 
-Next: if your app drives the LoRa Cap — [radio bring-up](07-radio-bring-up.md). Otherwise skip to
+Next: if your app drives the LoRa Cap — [optional project sections](projects/README.md). Otherwise skip to
 [security and publishing](08-security-and-publishing.md).
 
 ## Validate the installed result

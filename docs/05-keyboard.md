@@ -4,6 +4,13 @@ Input is keyboard-only, and the 46-key keyboard has some sharp edges that *will*
 time if you don't know them up front. This chapter is the layout, the modifiers, and — most
 importantly — the keycode reality your app has to handle to accept real text.
 
+The raw-evdev decoder below is the C++/LVGL Template path. The shared cp0 SDK
+already supplies a richer decoded keyboard-event contract; use one matching
+backend and avoid translating its decoded characters a second time. Other
+languages should implement/adapt the same behavior and independent fixture checks
+at their own input seam. They need not embed a C++ library just to follow this guide.
+See the [component comparison](components.md) and [prepared Template contribution](../contributions/template-keyboard/README.md).
+
 ## The layout
 
 46 keys, **no dedicated arrow keys**. Movement and symbols come from three modifiers:

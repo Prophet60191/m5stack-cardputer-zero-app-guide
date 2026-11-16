@@ -1,7 +1,7 @@
 # 4. UI and polish
 
-What makes a CardputerZero app feel finished instead of thrown together. None of this is hard; it's
-mostly consistency and a handful of patterns applied everywhere.
+Make every screen predictable, readable and usable from the keyboard. Apply the
+patterns relevant to the chosen UI stack and app behavior.
 
 ## The constraints shape everything
 
@@ -10,13 +10,14 @@ mostly consistency and a handful of patterns applied everywhere.
 - **Keyboard only.** No touch, no mouse. Navigation is keys. See [the keyboard](05-keyboard.md).
 - **Tight, swapping RAM.** Keep assets small; don't hold big buffers.
 - **LVGL 9.5** is the toolkit, drawing to the framebuffer. **Design in the desktop simulator first**
-  (see [building and packaging](06-building-and-packaging.md)) — it renders the real UI at 320×170,
-  so what looks right on your laptop looks right on the device.
+  (see [building and packaging](06-building-and-packaging.md)). Check fonts and bounds
+  at 320×170, then qualify device input, performance and hardware separately.
 
 ## Use the MVVM + reactive structure
 
-The official template's structure *is* most of the polish, because it keeps screens consistent and
-state predictable (the shape is in [the architecture chapter](03-architecture.md)):
+For apps built from the official LVGL Template, use its MVVM structure to keep
+screens consistent and state predictable. Other stacks should follow their own
+state/view conventions (see [architecture choices](03-architecture.md)):
 
 - State lives in a model/viewmodel as **reactive subjects**; the view **binds** to them with the
   `reactive::bind_*` helpers instead of being poked imperatively.
@@ -46,10 +47,10 @@ per page.
 ## Never block the UI thread
 
 Long work — talking to a radio, a network call, shelling out to a tool — must **not** run on the
-LVGL thread. A frozen screen reads as broken. Do the work on a reader thread or (better) in the
-**supervisor process** ([architecture](03-architecture.md)), and marshal results back to the UI
-thread (LVGL's `lv_async_call`, or your supervisor-event poll). This is also *why* the supervisor
-split exists.
+LVGL thread. A frozen screen reads as broken. Do the work on a bounded worker or in a
+**resource-owning service when needed** ([architecture](03-architecture.md)), and marshal results back to the UI
+thread using the toolkit's supported dispatch mechanism. Select the thread/process
+boundary for this application's actual needs.
 
 ## Show what's happening
 
@@ -71,8 +72,8 @@ separately; validate any optional quiet flag as a boolean.
 - Offer a **light/dark toggle** and make sure both are legible. At 320×170, contrast and font size
   matter more than cleverness. Test both themes in the simulator.
 - Use **semantic color, not decorative** — screens ask for *meanings* (`warning`, `good-signal`,
-  "the row you're on") and the theme maps them to pixels. A colored border is "one more color with no
-  meaning"; keep borders neutral and reserve color for meaning.
+  "the row you're on") and the theme maps them to pixels. Use a border
+  consistently to indicate selection, and keep its meaning and contrast clear.
 
 ## Build screenshots into the app
 
@@ -84,8 +85,17 @@ read directly from `/dev/fb0` for the same effect.)
 ## Errors and empty states
 
 - Show failures **on screen, in plain words**, not just in the log. A hardware app that can't reach
-  its device should say so and what to check ("antenna attached? Cap seated?").
-- Give empty states a line of guidance ("No nodes yet — waiting for the mesh"), not a blank panel.
+  its device should say so and what to check ("camera busy; close the other camera app").
+- Give empty states a line of guidance ("No notes yet — press Enter to create one"), not a blank panel.
+
+## Accessibility and discoverability
+
+Label important actions in plain words and provide a keyboard route to every
+control, including scrolling information dialogs and dismissing overlays. Keep
+focus visible. Pair color with text/shape so color alone does not identify a
+failure, selection or privacy state. Check contrast in both themes and offer
+readable text sizes within the actual glyph inventory. Do not hide the only hint
+behind a long name or rely on a mouse/touch action on the device.
 
 ## Glyph discipline
 
@@ -93,7 +103,9 @@ Decide the font/glyph inventory per screen and make sure every character you ren
 in the font — a missing glyph renders as a tofu box and screams "unfinished." If you add icons
 (e.g. from a symbol font), confirm the sizes you use are compiled in.
 
-## The anti-slop checklist
+<a id="the-anti-slop-checklist"></a>
+
+## UI checklist
 
 Before you call it done:
 
@@ -107,113 +119,60 @@ Before you call it done:
 - [ ] No missing-glyph boxes anywhere.
 - [ ] No placeholder/`TODO` text anywhere in the UI or metadata.
 
----
-
-Next: the keyboard — and the one part of input that will bite you if you don't handle it —
-[the keyboard](05-keyboard.md).
 
 ## Privacy state and asynchronous overlays
 
-Render device settings as confirmed values, Pending, or Unknown. Do not optimistically
-flip a privacy boolean before the supervisor/device confirms it; an offline “Off”
-can mislead someone carrying a radio. Use request IDs and a deadline, and expire
-pending state if the response never arrives. Configuration cache writes are not
-readback. Make the target explicit when enabling behavior on one channel/group.
+For asynchronous settings, show confirmed, Pending and Unknown states. Expire
+pending actions after a deadline. Read back actual state when the underlying API
+requires it; editing a cache is not confirmation. Use stable record/request IDs
+and stop accepting a dismissed view's late results. A timeout can leave an outcome
+unknown; it does not prove the backend rolled a write back.
 
-An overlay awaiting a result must stop accepting that result after Esc, navigation
-or teardown. Match the response to both request and target. Use stable record IDs
-across list rebuilds, never pointers into a vector that can reallocate. Tie LVGL
-observers to an object's lifetime or explicitly remove them. Regression-test list
-reordering while details or an action menu is open.
-
-Apply deadlines to every waiting view, including generic service operations.
-Timeout or disconnect means the result may be unknown; do not claim a write was
-rolled back. Clear request acceptance on dismissal, echo valid IDs on validation
-errors, and ignore repeated Return while busy. Keep request correlation fields
-separate from the object being changed (for example, request `id` and target
-`message_id`).
+Remove observers and timers with their owning views. Never hold an LVGL pointer
+or a pointer into a reallocating vector across a worker callback or rebuild.
+Keep global Help/Esc ownership explicit so input cannot reach a hidden editor.
+Test navigation away, list reordering, repeated Return and disconnect while busy.
 
 ## First run and uncertain live data
 
-A complete first run needs a safe default, a reviewable configuration, dependency
-failure messages, and a separate deliberate step to enable hardware transmission.
-Never overwrite an existing profile to make the wizard succeed. Show receive-only
-separately from disconnected and transmitting states. Surface the actual stop
-reason in diagnostics instead of hiding every failure behind a generic Error.
+Provide safe defaults, explain actual prerequisites, preserve existing data and
+make consequential actions deliberate. Ask only for settings relevant to the app.
+A local calculator may need no wizard. A hardware transmitter requires additional
+consent described in its project section. Show actionable failure reasons.
 
-Treat GPS data as a measurement with a timestamp. Validate finite coordinates,
-bounds, clock plausibility and freshness at the owner, even if the UI displays a
-marker. Coalesce telemetry updates and refresh age labels; a cached location must
-not look like a new fix. Debounce draft persistence to avoid a disk transaction on
-every keystroke, flush on navigation, and keep rejected sends editable. Quiet hours
-need explicit local-time semantics and a window that works across midnight.
+Measurements need valid values, a meaningful timestamp and a freshness policy.
+Show stale data as last known; unknown is different from zero. Coalesce updates
+and refresh age labels. Device GPS and camera details belong in
+[GPS/maps](projects/gps-and-maps.md) and [camera/QR](projects/camera-and-qr.md).
 
-Keep a conversation registry independent of messages. Draft-only, pinned and
-cleared conversations must remain reachable after rebuilding the list; deleting
-the conversation must remove that saved state too. Bind a DM draft to both peer
-and selected channel, so a channel change cannot move unsent text to another mesh.
+## Persistence and redraws
 
-Distinguish enabling the GPS receiver from consenting to location broadcasts.
-A timestamp without valid coordinates is not a fix. Show stale/unknown locations
-as last known, and test an actual clear-sky fix separately from parser validation.
+Debounce text saves by a pause in typing, flush at defined navigation/close
+boundaries and keep rejected edits recoverable. Do not serialize local saves
+behind unrelated slow hardware jobs. Quiet hours need local-time and midnight
+semantics only if the app actually offers notifications.
 
-Test the actual camera stack. A CSI sensor's `/dev/video0` may be a raw sensor/ISP
-node, not a webcam stream. On the stock image, use a fixed libcamera/rpicam capture
-command with bounded dimensions/time and decode in memory; do not save private
-camera frames merely to test a scanner. Missing decoder libraries and camera-busy
-failures should produce actionable UI errors, not a misleading "no QR found."
-Measure capture startup on the device before choosing the deadline; include
-startup, exposure and decoding within a bounded total budget.
-
-Give a camera operation a ready state with an explicit keyboard action such as
-`Return: scan`. Publish a visible busy state before dispatching asynchronous work,
-ignore repeated Return while busy, and show success or an actionable retry after
-the matching result. Correlate replies by request ID; dismissed or superseded
-results and unsolicited state updates must not replace a newer view. Clear cached
-results when starting a new request. On disconnect, explain that the result is
-unknown if the operation could already have changed state. If Escape only leaves
-the view, say so; do not imply that it cancels hardware work or rolls back an
-import. Keep simulator limitations in development docs instead of user prompts.
-
-When scanning can lead to configuration changes, separate capture, preview and
-commit. Keep the decoded secret on the backend, return a nonsecret preview, and
-require a Cancel-first confirmation. Bind its short-lived token to the requesting
-connection and the exact configuration shown. Changing configuration, Escape or
-teardown must invalidate the preview, including work still queued on the server.
-Give one bounded camera job a cancellation event and own its helper/child process
-group. Keep capture off the serialized radio worker; commit radio writes there
-only after confirmation. Announce committed results if their view has been left.
-
-Measure queue pressure with the actual debounce semantics. A 650 ms typing-pause
-debounce is different from a periodic write every 650 ms. Local draft/history
-commits should not wait behind camera/admin work: serialize local state with its
-own lock while preserving explicit persistence-barrier ordering. Test that local
-writes and radio status still progress while the slow operation is blocked.
-
-Compare effective state before rebuilding LVGL object trees. A draft echo can be
-identical to the local value; merge pending local edits first and still process
-request completion even when no redraw is needed. Genuine pin, deletion and
-history-preference changes must continue to notify observers. When a list is
-rebuilt, preserve its highlighted identity through reordering and define a stable
-tie order. Prepare typed rows with one indexed pass before rendering; search the
-history once instead of once per conversation.
+Compare effective state before rebuilding object trees, while still handling
+request completion and genuine changes. Preserve selection by stable identity
+through reordering and define a consistent tie order. Prepare/index list data once
+instead of repeating searches for every visible row. Measure realistic workloads;
+a synthetic improvement is not a measured battery-life benefit.
 
 ## Keep context and keyboard help readable
 
-On a 320x170 screen, keep the active channel/target in a fixed conversation
-header and reserve the footer for short keyboard hints or compose input. Bound
-long names and preserve the routing identity and privacy label before truncating
-the less critical text. Check actual pixel bounds with the real fonts, including
-long peer names, message selection, composing, scrolling and returning to the list.
+Keep the current task/record in a bounded header and reserve the footer for short
+keyboard hints or text entry. Truncate descriptive detail before information
+needed to understand the action's target. Check real font/pixel bounds with long
+names, selection, typing, scrolling and return navigation.
 
-Render selection lines in both themes. An LVGL outline sits outside an object's
-bounds and can be clipped by a tightly fitted parent. Use an inside border or
-reserve clearance through the parent chain so the entire line stays visible.
-When adding a border, account for its width in the content inset; keep the sum of
-border and padding stable so selection does not move the text or resize the row.
+An LVGL outline can be clipped outside a tightly fitted parent. Use an inside
+border or sufficient parent clearance. Keep border plus padding insets stable so
+selection does not move text or resize the row. Verify both light and dark themes.
 
-Give settings stable action keys independent of display order. Group related
-options with nonselectable headings; navigation should visit actual settings
-only. Tests should find the selected label rather than blindly pressing Down a
-historic number of times, especially before transmission or privacy actions.
-Long information overlays need keyboard scrolling as well as an Escape path.
+Group settings with nonselectable headings and give actions stable keys independent
+of display order. Navigate through selectable actions; give long overlays scrolling
+and an Escape path. Tests should find a setting by identity/label instead of a
+historic number of Down presses, especially for privacy or destructive operations.
+
+Detailed examples remain in [Mesh UI lessons](case-studies/mesh.md#ui-and-asynchronous-operations).
+Next: [the keyboard](05-keyboard.md).

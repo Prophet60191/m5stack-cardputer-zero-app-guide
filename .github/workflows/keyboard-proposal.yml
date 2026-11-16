@@ -1,0 +1,59 @@
+name: Prepared Template keyboard contribution
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  keyboard:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - runner: ubuntu-24.04
+            mode: desktop
+          - runner: ubuntu-24.04-arm
+            mode: native-arm64
+    runs-on: ${{ matrix.runner }}
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          repository: CardputerZero/Template
+          ref: 477fa6d217b683e3084c361a757f03dc8ca9f753
+          path: build/official-template
+          persist-credentials: false
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          repository: lvgl/lvgl
+          ref: 85aa60d18b3d5e5588d7b247abf90198f07c8a63
+          path: build/lvgl
+          persist-credentials: false
+      - name: Desktop build dependencies
+        if: matrix.mode == 'desktop'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ninja-build libpng-dev libjpeg-dev libfmt-dev libsdl2-dev libfreetype-dev zlib1g-dev python3-venv
+          python3 -m venv build/keyboard-toolchain
+          build/keyboard-toolchain/bin/pip install cmake==3.31.6
+          echo "$GITHUB_WORKSPACE/build/keyboard-toolchain/bin" >> "$GITHUB_PATH"
+      - name: Verify desktop proposal with sanitizers
+        if: matrix.mode == 'desktop'
+        run: |
+          python3 contributions/template-keyboard/verify.py \
+            --template-dir build/official-template --lvgl-dir build/lvgl \
+            --build-dir build/keyboard-check --mode desktop --sanitize
+      - name: Build matching Debian arm64 environment
+        if: matrix.mode == 'native-arm64'
+        run: docker build -t cz-template-keyboard -f contributions/template-keyboard/Dockerfile .
+      - name: Verify arm64 proposal without network or devices
+        if: matrix.mode == 'native-arm64'
+        run: |
+          docker run --rm --network none --read-only --cap-drop ALL \
+            --security-opt no-new-privileges --user "$(id -u):$(id -g)" \
+            --tmpfs /tmp:rw,nosuid,nodev,size=256m \
+            -v "$GITHUB_WORKSPACE:/workspace:rw" -w /workspace cz-template-keyboard \
+            python3 contributions/template-keyboard/verify.py \
+              --template-dir build/official-template --lvgl-dir build/lvgl \
+              --build-dir build/keyboard-check --mode native-arm64 --sanitize

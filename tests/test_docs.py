@@ -12,7 +12,8 @@ ROOT = Path(__file__).resolve().parents[1]
 class DocumentationTests(unittest.TestCase):
     def test_local_markdown_links_and_anchors(self):
         for doc in [ROOT / "README.md", ROOT / "CHANGELOG.md", ROOT / "AGENTS.md",
-                    *sorted((ROOT / "docs").glob("*.md")), ROOT / "tools/README.md"]:
+                    *sorted((ROOT / "docs").rglob("*.md")),
+                    *sorted((ROOT / "contributions").rglob("*.md")), ROOT / "tools/README.md"]:
             text = doc.read_text(encoding="utf-8")
             for raw in re.findall(r"\]\(([^)]+)\)", text):
                 if re.match(r"[a-zA-Z][a-zA-Z0-9+.-]*:", raw):
@@ -22,8 +23,9 @@ class DocumentationTests(unittest.TestCase):
                 with self.subTest(doc=doc.name, target=raw):
                     self.assertTrue(path.exists(), f"Missing local link: {raw}")
                     if anchor and path.suffix == ".md":
-                        headings = re.findall(r"^#{1,6}\s+(.+?)\s*$", path.read_text(), re.M)
-                        slugs = set()
+                        destination = path.read_text()
+                        headings = re.findall(r"^#{1,6}\s+(.+?)\s*$", destination, re.M)
+                        slugs = set(re.findall(r'<a\s+id="([^"]+)"', destination))
                         for h in headings:
                             h = re.sub(r"[^\w\- ]", "", h.lower()).replace(" ", "-")
                             slugs.add(h)

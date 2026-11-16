@@ -1,90 +1,96 @@
 <h1 align="center">Building Apps for the M5Stack Cardputer Zero</h1>
 
-<p align="center">
-  A practical, opinionated guide to writing <b>good</b> native apps for the
-  M5Stack CardputerZero — the card-sized Raspberry&nbsp;Pi&nbsp;CM0 Linux handheld.
-</p>
+A community guide for building many kinds of applications on the **CardputerZero
+Linux handheld**: utilities, notes, games, networking tools, media and peripheral
+apps. Start with official foundations, choose only the facilities your app needs,
+and preserve useful lessons from real projects.
 
-<p align="center">
-  <img src="https://img.shields.io/badge/device-M5Stack%20CardputerZero-red?style=flat-square" alt="device">
-  <img src="https://img.shields.io/badge/UI-LVGL%209.5-064F8C?style=flat-square" alt="lvgl">
-  <img src="https://img.shields.io/badge/package-Debian%20.deb-A81D33?style=flat-square" alt="deb">
-  <img src="https://img.shields.io/badge/docs-CC--BY--4.0-green?style=flat-square" alt="license">
-</p>
+<a id="why-this-exists"></a>
+<a id="who-its-for"></a>
+<a id="how-to-use-it"></a>
 
----
+## Scope and starting point
 
-## Why this exists
+This guide targets the CardputerZero's Debian arm64/APPLaunch environment. The
+original ESP32 Cardputer and Cardputer ADV need different firmware, input and
+packaging instructions. Hardware/image variants can differ; document your tested
+profile and probe capabilities instead of assuming every device has a camera or Cap.
 
-The CardputerZero is new, and its app-development story is spread across a template repo, a
-publishing tool, and whatever you can reverse-engineer from the built-in apps. This guide pulls that
-together into one path — from "what even *is* an app on this device" to a polished, trustworthy
-release — written while actually shipping one.
+No radio, Python backend, local socket or background service is required by the
+guide. C++/LVGL with the official Template is the main native UI recipe. Other
+languages/toolkits can follow the same launcher, keyboard, privacy and package
+contracts with their own rendering/build implementations.
 
-It is deliberately **opinionated**. It doesn't just list options; it tells you the approach that
-holds up on *this* hardware (a fixed 320×170 screen, a 46-key keyboard, ~350&nbsp;MB of RAM that
-swaps at idle, no touch) and why. Where a decision cost real debugging to get right, that's called
-out so you don't pay for it twice.
+<a id="contents"></a>
 
-## The worked example
+## Common foundation
 
-The worked example is a real app whose code and regression checks accompany the guide:
-**[M5Stack Cardputer Zero Mesh App](https://github.com/Prophet60191/m5stack-cardputer-zero-mesh-app)**
-— a Meshtastic client for this device, built exactly this way (native LVGL UI + a separate
-radio supervisor), with fixes and regression evidence from an independent security review. Its security
-documentation distinguishes simulator/container checks from device qualification. When a chapter says "see the
-worked example," that's the repo to read.
+| Read | Covers |
+|---|---|
+| [1. Platform](docs/01-platform.md) | Device constraints, Debian, launcher and Store |
+| [2. App anatomy](docs/02-app-anatomy.md) | Package layout, launcher entry, privileges and resource ownership |
+| [3. Architecture choices](docs/03-architecture.md) | A single process, workers or a separate resource-owning service |
+| [4. UI and polish](docs/04-ui-and-polish.md) | Navigation, accessibility, overlays, settings, progress and performance |
+| [5. Keyboard](docs/05-keyboard.md) | Official map, text/navigation context, modifiers and event-path tests |
+| [6. Building and packaging](docs/06-building-and-packaging.md) | Native/Python paths, dependencies, arm64 builds and installed checks |
+| [8. Security, licensing and publishing](docs/08-security-and-publishing.md) | Threat boundaries, private data, attribution and release evidence |
 
-## Who it's for
+Read 1, 2 and 3 first. Then choose the UI/build path and
+[project sections](docs/projects/README.md) that apply. Chapter numbers and paths
+are retained for existing links; [7. LoRa bring-up](docs/07-radio-bring-up.md) is optional.
 
-Makers and developers who can read C++ and/or Python and want their CardputerZero app to feel
-*native* — like it belongs next to the built-in apps — rather than thrown together. You do **not**
-need prior LVGL or Debian-packaging experience; both are covered.
+## Optional project sections
 
-## Contents
+The [project selector](docs/projects/README.md) covers local utilities, persistent
+text/messaging, GPS/maps, camera/QR, NFC/other hardware, networked apps and audio/media.
+Each section distinguishes transferable patterns, actual examples and qualification
+still required for a new app. A radio antenna rule does not become a calculator
+requirement; a camera example does not certify every image's camera stack.
 
-1. **[The platform](docs/01-platform.md)** — the OS, the APPLaunch launcher, the Store, and the
-   constraints that shape every decision.
-2. **[How an app lives on the device](docs/02-app-anatomy.md)** — an app is a `.deb`; the launcher
-   contract; the least-privilege model; how apps reach the hardware.
-3. **[An architecture that works](docs/03-architecture.md)** — native LVGL UI + a separate
-   supervisor over a local intent socket. The single most important pattern in this guide.
-4. **[UI and polish](docs/04-ui-and-polish.md)** — LVGL 9.5 on 320×170, MVVM + reactive binding,
-   navigation, theming, and the anti-slop checklist.
-5. **[The keyboard](docs/05-keyboard.md)** — the 46-key layout, the Shift / Fn / Sym modifiers, and
-   the official complete symbol map, reusable decoder and raw-event tests for reliable text input.
-6. **[Building and packaging](docs/06-building-and-packaging.md)** — the desktop simulator, the
-   device cross-build, the `.deb` (C++ *and* Python recipes), `app-builder.json`, and `czdev`.
-7. **[Radio bring-up](docs/07-radio-bring-up.md)** — if your app drives the LoRa Cap: the robust
-   SX1262 power/init/teardown sequence, done from userspace with no root.
-8. **[Security, licensing and publishing](docs/08-security-and-publishing.md)** — least privilege,
-   no secrets, honest disclosure, the MIT/GPL split, integrity, attribution, and a pre-publish
-   checklist.
+## Official foundations and focused contributions
 
-New to the device? Read 1 → 2 → 3 in order, then dip into the rest as you build.
+Use the [component comparison](docs/components.md) to see what the official
+Template, launcher/shared SDK and AppBuilder already provide, where our Mesh code
+is specific to that app, and which gaps are worth addressing upstream.
 
-Ready to distribute? Use the **[Store readiness checklist](docs/store-readiness.md)**
-and **[offline preflight tool](tools/README.md)** to check the listing and actual
-installer without logging in, uploading or submitting. The tool reports Store
-blockers separately from hardware/security evidence still needing review.
+The first [prepared keyboard contribution](contributions/template-keyboard/README.md)
+adds the official symbol map, full text input, an optional editor example and
+raw-event/editor tests to a pinned official Template. It is a reviewable proposal,
+not an accepted upstream release or a new general framework.
 
-## How to use it
+<a id="the-worked-example"></a>
 
-Keep the [worked-example repo](https://github.com/Prophet60191/m5stack-cardputer-zero-mesh-app) open
-alongside these chapters. The guide explains the *why* and the shape; the repo shows the *exact*
-code. Together they should get you from zero to a published, native-feeling app.
+## Worked examples and preserved learning
 
-## Contributing
+Mesh contributed many lessons, but it is one application. The
+[Mesh case study](docs/case-studies/mesh.md) retains detailed state, privacy,
+conversation, camera and licensing examples with pinned implementation/evidence.
+The [lesson index](docs/lesson-index.md) explains where those lessons now live.
+The earlier guide remains available through its linked Git revision.
 
-Corrections and additions are welcome — open an issue or a PR. This device is young and the
-collective knowledge is still forming; if you learned something the hard way, it belongs here.
+Keep [source-level tests](docs/components.md#evidence-and-limits), container checks,
+actual-device qualification and Store admission separate. No test count guarantees
+security, hardware compatibility or approval for a different application.
+
+<a id="contributing"></a>
+
+## Release and contribution checks
+
+Use the [Store readiness checklist](docs/store-readiness.md) and
+[offline preflight tool](tools/README.md) to inspect a listing and its actual installer
+without authentication, upload or submission. Official policy/catalog revisions are
+pinned and reviewed; a passing local report is not a Store acceptance.
+
+Corrections, focused examples and tested improvements are welcome. Prefer reusing
+or contributing to official components. Consider a separate library only after
+repeated gaps, two unrelated consumers and a maintenance/compatibility plan justify it.
 
 ## License
 
-This guide is licensed **[CC BY 4.0](LICENSE)** — use it, adapt it, build on it, with attribution.
-Code snippets within it are provided as examples you may use freely. The runnable
-preflight tool and its tests are MIT-licensed; see [tools/LICENSE](tools/LICENSE).
+The guide is [CC BY 4.0](LICENSE), with attribution. The runnable preflight tool
+and tests are [MIT](tools/LICENSE). The prepared contribution has its own
+[MIT license and notices](contributions/template-keyboard/LICENSE); preserve
+upstream attribution and each component's actual terms when reusing code.
 
-> **Meshtastic®** is a registered trademark of Meshtastic LLC. **M5Stack** and **Cardputer** are
-> trademarks of their respective owners. This is an independent community guide, not affiliated with
-> or endorsed by either.
+Meshtastic is a trademark of Meshtastic LLC; M5Stack and Cardputer are trademarks
+of their owners. This is an independent community guide, not an official SDK.

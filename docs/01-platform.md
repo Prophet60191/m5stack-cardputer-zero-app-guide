@@ -18,6 +18,15 @@ Three facts dominate app design:
 - **RAM is tight** (~350&nbsp;MB usable) and the stock image swaps even at idle, because a full
   desktop stack runs hidden behind the launcher. Keep your resident set and your buffers small.
 
+## Supported profiles
+
+This chapter describes the original CardputerZero Linux profile used by the
+worked example. State the actual board/image, RAM and available peripherals for
+your app; Lite/other revisions may omit sensors or use different resources.
+Measure memory/startup on that supported profile rather than treating one image's
+idle memory use as a permanent property of every device. ESP32 Cardputer/ADV
+firmware and packaging are outside this guide's Linux target.
+
 ## The operating system
 
 It runs **Debian (Trixie) on arm64** — in practice a Raspberry Pi OS base, built with M5Stack's fork

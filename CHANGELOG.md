@@ -116,3 +116,33 @@ candidate produces the documented blockers, not a false ready/pass result.
 - Record the actual-device transient ExecStopPost specifier difference and the
   explicit UID-based runtime-path correction; probe stop/crash/restart recovery
   rather than assuming static-unit command behavior carries over.
+
+## 2026-11-16 — General app guide and focused Template contribution
+
+- Reorganize the reading path into a common CardputerZero Linux foundation,
+  architecture choices, optional project sections and worked examples. A local
+  utility no longer inherits mandatory Python, supervisor, socket or radio machinery.
+- Add utilities, persistence/messaging, GPS/maps, camera/QR, hardware/NFC,
+  networking and audio/media recipes, with explicit acceptance and evidence limits.
+  Keep LoRa chapter 7 optional. Improve accessibility and scope conditional checks.
+- Preserve all 30 moved Mesh lesson blocks in a pinned case study, with a lesson
+  index, earlier revision link and existing chapter paths/entry-point aliases.
+  Keep actual application/device evidence distinct from new recipes.
+- Record a pinned official/Mesh component comparison. Reuse official foundations;
+  defer an independent framework until recurring gaps, unrelated consumers and a
+  maintenance plan justify one. Official keyboard assignments were already correct.
+- Prepare an MIT-licensed keyboard integration patch against the exact official
+  Template: portable decoder, per-device state, pre-editor shortcut routing,
+  optional counter-page textarea, bounded polling and independent raw-event tests.
+  Carry original fixture/provenance and licenses; no GPL radio code is extracted.
+- Add a checksum/revision/clean-source verifier and separate desktop/arm64 CI.
+  The verifier explicitly compiles/runs source; the non-executing Store preflight
+  and its reviewed policy pins remain unchanged. No upstream PR/Store submission
+  is created and no Mesh app/device configuration is changed.
+
+Validation: 18 guide/preflight/proposal-guard tests pass in the isolated ordinary-user
+Debian container; all recursive Markdown links/anchors pass. Clean-checkout patch
+verification passes locally on macOS arm64 and Debian 13 arm64 with ASAN/UBSAN,
+including the actual Linux reader into the example textarea, plus separate normal
+Template builds with the example disabled. Physical keys and the complete device/UI
+matrix remain explicit qualification work; GitHub CI checks the exact pushed source.

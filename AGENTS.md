@@ -5,6 +5,15 @@ not a device application. Read the
 README and CHANGELOG before editing. Keep claims tied to implementation and
 verification evidence; distinguish simulator, container and device checks.
 
+The common foundation covers many kinds of CardputerZero Linux apps. Put
+peripheral/transport-specific requirements in docs/projects and detailed Mesh
+examples in docs/case-studies. Preserve lessons and existing chapter links;
+do not make Python, a supervisor, LoRa or a particular toolkit mandatory for all apps.
+Check docs/components.md before extracting another framework. Focused proposals
+live under contributions with pinned sources, licenses, examples and tests. Their
+explicit build verifier is separate from the non-executing Store preflight.
+Prepare/review contributions here; submitting an upstream PR requires instruction.
+
 Preserve the documentation license and attribution. Use wholly synthetic
 examples without personal paths, device identities, passwords or private keys.
 Cross-app lessons belong in the relevant chapter; specific test results belong
