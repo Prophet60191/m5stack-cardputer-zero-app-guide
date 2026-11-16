@@ -104,3 +104,17 @@ Before you call it done:
 
 Next: the keyboard — and the one part of input that will bite you if you don't handle it —
 [the keyboard](05-keyboard.md).
+
+## Privacy state and asynchronous overlays
+
+Render device settings as confirmed values, Pending, or Unknown. Do not optimistically
+flip a privacy boolean before the supervisor/device confirms it; an offline “Off”
+can mislead someone carrying a radio. Use request IDs and a deadline, and expire
+pending state if the response never arrives. Configuration cache writes are not
+readback. Make the target explicit when enabling behavior on one channel/group.
+
+An overlay awaiting a result must stop accepting that result after Esc, navigation
+or teardown. Match the response to both request and target. Use stable record IDs
+across list rebuilds, never pointers into a vector that can reallocate. Tie LVGL
+observers to an object's lifetime or explicitly remove them. Regression-test list
+reordering while details or an action menu is open.

@@ -54,9 +54,11 @@ GPIO line and the spidev handle the instant it exits or crashes — no stuck pin
 5. **Serve / run.** This is where your actual radio work happens — e.g. running `meshtasticd` against
    the now-powered Cap, which handles the SX1262 and the Meshtastic protocol via its YAML. The **Cap
    power + the 0x43 band path are yours to do first**, because the radio daemon does not drive them.
-6. **Teardown, guaranteed.** In a `try/finally`: stop the radio, then **restore `ext_usb_gpio_fun`
+6. **Teardown on normal exit.** In a `try/finally`: stop the radio, then **restore `ext_usb_gpio_fun`
    and `ext_5v_out` to their saved values in reverse order** (5 V rail back off, so the Cap doesn't
-   drain the battery). This must run even on a failed start or a crash.
+   drain the battery). This must run on a failed start. A finally block cannot run after SIGKILL;
+   use a separate guardian and service cleanup for abrupt termination. Restore
+   exact prior values; do not assume a saved rail value was zero.
 
 ## Gotchas (each one cost real debugging)
 
@@ -74,8 +76,8 @@ GPIO line and the spidev handle the instant it exits or crashes — no stuck pin
 ## If you bundle a GPL radio daemon
 
 `meshtasticd` and the `meshtastic` Python client library are **GPL-3.0**. If your supervisor imports
-the library in-process, that process is a derivative work and must be GPL-compatible (your C++ UI, a
-separate process talking over a socket, is not). The clean split: **don't bundle the GPL daemon or
+the library in-process, that integration must comply with its GPL terms. This example licenses the
+supervisor GPL-3.0-or-later and the separate C++ UI MIT. The example chooses: **do not bundle the GPL daemon or
 library in your repo** — depend on them and have the user install them — and license the one process
 that *links* the GPL library as GPL-3.0 while your UI stays whatever you choose. See
 [security and publishing](08-security-and-publishing.md).
@@ -84,8 +86,38 @@ that *links* the GPL library as GPL-3.0 while your UI stays whatever you choose.
 
 - Use a band you're **licensed** to transmit on (e.g. 902–928 MHz in the US).
 - **Antenna before power** (above).
-- Use **your own private channel**, not the public default, for your own traffic.
+- Support public channels deliberately and label them clearly. Use a secret random
+  key for traffic that needs a private group; public default keys provide no group privacy.
 
 ---
 
 Next: shipping it safely — [security and publishing](08-security-and-publishing.md).
+
+## Radio configuration is part of the safety boundary
+
+The daemon can transmit from persisted settings during startup, before a client
+has connected and inspected them. Prepare a reviewed profile with the correct
+region before powering it, and document that boot window. Validate the effective
+per-channel location precision and MQTT module state, not just the broadcast
+interval. Do not enable position on every enabled channel: a public primary may
+have been deliberately disabled for location. Require an explicit channel target
+and verify real readback. A DM or trace must not silently use a public primary.
+
+Validate persisted configuration before powering the device/daemon, not only
+after connecting. Firmware can emit identity or telemetry on its primary channel
+without a UI send intent. Distinguish an operator's private-only configuration
+from a product-wide restriction. A general client can support public and private
+channels while requiring explicit routing and separate location consent. Disable
+unapproved public location defaults before firmware can broadcast; persist only
+confirmed consent, bound to channel identity and precision. Preserve frequency/modulation when converting an existing
+secondary private channel into a private-only profile, and verify the peer link.
+Check the firmware's accepted preference schema and required fields too: an
+empty or stale protobuf may parse successfully but trigger factory defaults at
+boot. An absent transmission flag must not be mistaken for verified receive-only
+configuration. Fail closed for schemas your integration has not qualified.
+
+Public and private chat channels share one radio's region, modem preset and
+frequency slot. Importing a channel key does not establish matching RF tuning.
+Expose those settings and avoid silently applying URL tuning or replacing an
+existing channel just because the names match. A DM must not choose an arbitrary
+private channel or fall back to the public primary when its selection disappears.

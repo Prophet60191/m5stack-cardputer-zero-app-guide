@@ -152,3 +152,41 @@ but matching these checks is what makes any release trustworthy.
 
 Next: if your app drives the LoRa Cap — [radio bring-up](07-radio-bring-up.md). Otherwise skip to
 [security and publishing](08-security-and-publishing.md).
+
+## Validate the installed result
+
+A manifest is not the package. Give the CMake project version, runtime About text,
+Debian control metadata and store manifest one consistent release version; test
+that they agree. Keep inherited internal build-target names separate from public
+package/display names. Install the real icon at the exact launcher path, plus
+all required supervisor files, licenses, user units and scoped policy helpers.
+Generate native library dependencies from the built ELF with `dpkg-shlibdeps`
+in a matching distro/architecture environment; hardcoding libfmt/libjpeg package
+names can produce a package that builds but cannot install.
+
+Respect the actual minimum CMake version (the template currently needs 3.31),
+choose a writable package output directory, and inspect both `dpkg-deb --info`
+and `dpkg-deb --contents`. Check maintainer scripts, modes, sudoers with `visudo
+-cf`, and units with `systemd-analyze verify`. Test a clean install and cold boot
+on the target image. Ensure firewall/setup dependencies exist before any daemon
+opens a network listener. A service file with no enable/install path does not
+provide reboot persistence. Package installation should not silently start RF.
+
+Keep personal checkout paths out of release binaries as well as source files:
+use compiler prefix maps and avoid embedding source asset paths in device builds.
+State which checks used mocks, containers, simulator, or real hardware; a prior
+review or successful build is not proof that the installed/rebooted app is safe.
+
+Use an app-specific settings directory, binary, launcher entry and asset namespace.
+Two apps retaining `template-app` settings paths can accidentally share preferences.
+Migrate deliberately, and require explicit re-enabling of hardware auto-start. For
+INI saves, use a unique private temporary file per writer, sync before atomic
+rename, and sync the directory. Escape or reject line breaks in single-line values;
+test concurrent writers and malformed/overflowing numeric preferences.
+
+Test the actual user service, not just `systemd-analyze verify`. In a user unit,
+filesystem sandboxing can imply a user namespace that maps host root to nobody;
+seccomp restrictions can imply NoNewPrivileges. Both can break an otherwise valid
+scoped sudo helper. Inspect the live process's UID map/NoNewPrivs and execute the
+real privileged check. Use a consistent privilege design; keep root-owned files
+protected by DAC when a fixed sudo check requires host credentials.

@@ -55,9 +55,16 @@ This one decision buys you an unusual amount:
   fully usable on your laptop. You iterate in seconds, and only flash to the device to confirm.
 - **Least privilege falls out naturally.** The privileged/hardware code is a small, separate,
   auditable process. The UI needs no special rights.
-- **Crash safety is free.** Run the hardware work in a process whose lifetime matches the connection.
-  When it exits or crashes, the **kernel** frees the GPIO lines, the SPI handle, the socket — no
-  stuck pins, no lingering locks. Don't invent a lockfile; let the kernel be the lock.
+- **Process ownership can be explicit.** Kernel exit releases file descriptors and
+  GPIO requests, but does not restore sysfs power/mux values or kill detached
+  descendants. A `finally` block cannot handle SIGKILL. Use a guardian that detects
+  parent death through a pipe, stops/reaps the daemon, then restores hardware;
+  add service control-group cleanup for simultaneous kills. Test that sequence
+  with real subprocesses and fake hardware before trusting it on the device.
+- **Exclusive ownership is deliberate.** Hold an advisory `flock` for the whole
+  supervisor lifetime, before replacing its socket or recovering hardware. The
+  kernel releases the lock on exit; the file may remain. A stale PID file or a
+  broad `pgrep -f` kill is not an ownership mechanism.
 - **It stays testable.** The supervisor can expose a mock, and the UI can't accidentally reach past
   the boundary.
 
@@ -121,3 +128,19 @@ with a mock behind it, is what makes off-device development and tests possible l
 ---
 
 Next: making the UI itself feel finished — [UI and polish](04-ui-and-polish.md).
+
+## Make the boundary authoritative
+
+The UI may show a local message echo, but the supervisor must retain its actual
+status. Store ACK/NAK results before broadcasting; a reconnect snapshot must not
+turn Delivered back into Sending. Retries need a stable message ID plus a new
+attempt token so an old ACK cannot complete the new attempt. Apply retention to
+existing history immediately, broadcast removals, and bound total history even
+when a user chooses “All.” Reapply persisted client preferences on reconnect and
+define which client wins if multiple clients choose different policies.
+
+Every asynchronous result needs identity: a request ID plus the target channel,
+node or record ID. Indexing a refreshed vector is unsafe across callbacks. Capture
+stable IDs, resolve them again before acting, and cancel acceptance when a user
+dismisses the pending overlay. This applies especially to secret-bearing results
+such as share codes: a hardcoded group name can disclose another group's key.

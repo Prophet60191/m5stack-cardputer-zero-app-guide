@@ -28,10 +28,11 @@ out so you don't pay for it twice.
 
 ## The worked example
 
-Every pattern here is implemented end-to-end in a real, published app:
+The worked example is a real app whose code and regression checks accompany the guide:
 **[M5Stack Cardputer Zero Mesh App](https://github.com/Prophet60191/m5stack-cardputer-zero-mesh-app)**
-— the first Meshtastic client for this device, built exactly this way (native LVGL UI + a separate
-radio supervisor), and hardened through an independent security review. When a chapter says "see the
+— a Meshtastic client for this device, built exactly this way (native LVGL UI + a separate
+radio supervisor), with fixes and regression evidence from an independent security review. Its security
+documentation distinguishes simulator/container checks from device qualification. When a chapter says "see the
 worked example," that's the repo to read.
 
 ## Who it's for
