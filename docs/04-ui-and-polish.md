@@ -151,6 +151,16 @@ failures should produce actionable UI errors, not a misleading "no QR found."
 Measure capture startup on the device before choosing the deadline; include
 startup, exposure and decoding within a bounded total budget.
 
+Give a camera operation a ready state with an explicit keyboard action such as
+`Return: scan`. Publish a visible busy state before dispatching asynchronous work,
+ignore repeated Return while busy, and show success or an actionable retry after
+the matching result. Correlate replies by request ID; dismissed or superseded
+results and unsolicited state updates must not replace a newer view. Clear cached
+results when starting a new request. On disconnect, explain that the result is
+unknown if the operation could already have changed state. If Escape only leaves
+the view, say so; do not imply that it cancels hardware work or rolls back an
+import. Keep simulator limitations in development docs instead of user prompts.
+
 ## Keep context and keyboard help readable
 
 On a 320x170 screen, keep the active channel/target in a fixed conversation

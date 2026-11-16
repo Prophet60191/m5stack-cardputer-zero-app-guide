@@ -50,3 +50,6 @@
   grouped settings and display-order-independent action keys.
 - Added uninstall cleanup for generated services/shared file-capability grants,
   private data backups and preservation of other apps' dependencies/configuration.
+- Added explicit keyboard start/busy/result states for camera operations, repeated
+  key suppression, correlated replies, cache reset and honest Escape/disconnect
+  behavior for operations that may already have changed state.
