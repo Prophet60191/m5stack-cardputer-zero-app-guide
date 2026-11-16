@@ -119,6 +119,13 @@ across list rebuilds, never pointers into a vector that can reallocate. Tie LVGL
 observers to an object's lifetime or explicitly remove them. Regression-test list
 reordering while details or an action menu is open.
 
+Apply deadlines to every waiting view, including generic service operations.
+Timeout or disconnect means the result may be unknown; do not claim a write was
+rolled back. Clear request acceptance on dismissal, echo valid IDs on validation
+errors, and ignore repeated Return while busy. Keep request correlation fields
+separate from the object being changed (for example, request `id` and target
+`message_id`).
+
 ## First run and uncertain live data
 
 A complete first run needs a safe default, a reviewable configuration, dependency
@@ -160,6 +167,21 @@ results when starting a new request. On disconnect, explain that the result is
 unknown if the operation could already have changed state. If Escape only leaves
 the view, say so; do not imply that it cancels hardware work or rolls back an
 import. Keep simulator limitations in development docs instead of user prompts.
+
+When scanning can lead to configuration changes, separate capture, preview and
+commit. Keep the decoded secret on the backend, return a nonsecret preview, and
+require a Cancel-first confirmation. Bind its short-lived token to the requesting
+connection and the exact configuration shown. Changing configuration, Escape or
+teardown must invalidate the preview, including work still queued on the server.
+Give one bounded camera job a cancellation event and own its helper/child process
+group. Keep capture off the serialized radio worker; commit radio writes there
+only after confirmation. Announce committed results if their view has been left.
+
+Measure queue pressure with the actual debounce semantics. A 650 ms typing-pause
+debounce is different from a periodic write every 650 ms. Local draft/history
+commits should not wait behind camera/admin work: serialize local state with its
+own lock while preserving explicit persistence-barrier ordering. Test that local
+writes and radio status still progress while the slow operation is blocked.
 
 ## Keep context and keyboard help readable
 

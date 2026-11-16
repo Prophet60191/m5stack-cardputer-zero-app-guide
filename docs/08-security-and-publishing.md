@@ -188,6 +188,16 @@ retention and deletion behavior, and offer an explicit RAM-only choice. Describe
 logical deletion honestly: flash, WAL and backups may retain old bytes, and private
 permissions are not at-rest encryption. Never put runtime state into CI artifacts.
 
+History opt-out must cover metadata as well as message/draft text: conversation
+identifiers and pins can reveal contacts. Suppress new metadata writes, migrate
+older opted-out stores, and test raw rows after restarting. Retaining that state
+in the active RAM session is a separate, explicit policy.
+
+When a privilege design changes, remove obsolete sudo grants from the package
+and verify their absence after a real upgrade. A documented manual diagnostic
+command is still a privilege grant; replace it with an unprivileged health read
+when a trusted capability-only monitor already supplies the needed evidence.
+
 Uninstallation needs an audit of changes made outside the package manifest:
 generated services, setuid helpers, file capabilities, runtime data and installer
 caches. A capability applied through a virtualenv symlink can land on the shared

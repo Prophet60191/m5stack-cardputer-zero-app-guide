@@ -175,3 +175,10 @@ parameters can make another subscription fail during startup. Register the same
 parent/child listeners as production and deliver representative events. Count
 remote RF reception from received packets, rather than local admin replies or
 cached node-update notifications.
+
+Audit greeting builders as part of the live control path. Send one bounded
+history snapshot, avoid redundant client requests, and perform slow dependency
+probes outside lifecycle locks. Cache informational version queries while forcing
+a fresh compatibility check before hardware starts. Fresh security verdicts need
+their own age policy. Capture shared interface references and guard every library
+dereference when constructing status, even if most callers already hold a lock.

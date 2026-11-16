@@ -55,3 +55,7 @@
   behavior for operations that may already have changed state.
 - Added selection-border clipping and stable border/padding inset lessons, with
   light/dark rendering checks for tightly fitted LVGL containers.
+- Added cancellable capture versus confirmed import, connection/state-bound
+  preview tokens, generic request deadlines and queue-independent local storage.
+- Added metadata-complete history opt-out, obsolete-grant removal, canonical
+  version metadata and greeting dependency/snapshot checks.

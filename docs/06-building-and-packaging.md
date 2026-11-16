@@ -200,6 +200,11 @@ policy helpers and offline regressions. Disable networking and isolate the netwo
 namespace during firewall tests so a test cannot change the host's rules.
 Upload a checksummed candidate and corresponding source commit. A successful
 artifact job is still separate from RF, camera, GPS and physical cold-boot proof.
+
+Use one authoritative version field and read it from each runtime/build path.
+For a split UI/backend app, install that metadata alongside the backend as well
+as deriving CMake's project/package version from it. Avoid independent fallback
+literals that silently drift when one component is bumped.
 Container outputs may be owned by root. Copy them into a runner-owned staging
 directory before writing checksums/source metadata and uploading the artifact.
 Download the finished artifact and verify both its checksum and source commit.
