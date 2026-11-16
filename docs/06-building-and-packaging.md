@@ -213,6 +213,10 @@ Test actual service properties, child cleanup, failed start and repeated launche
 on the supported systemd version. Archive acceptance alone cannot inspect this
 runtime configuration. Mesh's controller is an example; arbitrary intent fields
 must never select a unit, command, executable or service property.
+Do not assume static-unit specifiers expand inside transient command properties:
+the device probe found `%t` remained literal in ExecStopPost. Mesh constructs
+the Debian runtime path from the kernel UID instead. Verify the actual cleanup
+argument and outcome, not merely that the property was accepted.
 
 These are automated admission checks, not an execution sandbox or a complete
 review of shell logic, `.desktop` behavior, dependencies, symlinks or hardware.

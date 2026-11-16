@@ -107,3 +107,6 @@ candidate produces the documented blockers, not a false ready/pass result.
   Refreshed the pinned catalog snapshot and added the transient user-service
   alternative, including fixed arguments, lifecycle serialization, cgroup/stop
   recovery and actual-device property checks. No Store submission is automated.
+- Record the actual-device transient ExecStopPost specifier difference and the
+  explicit UID-based runtime-path correction; probe stop/crash/restart recovery
+  rather than assuming static-unit command behavior carries over.
