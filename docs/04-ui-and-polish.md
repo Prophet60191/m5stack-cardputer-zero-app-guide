@@ -183,6 +183,14 @@ commits should not wait behind camera/admin work: serialize local state with its
 own lock while preserving explicit persistence-barrier ordering. Test that local
 writes and radio status still progress while the slow operation is blocked.
 
+Compare effective state before rebuilding LVGL object trees. A draft echo can be
+identical to the local value; merge pending local edits first and still process
+request completion even when no redraw is needed. Genuine pin, deletion and
+history-preference changes must continue to notify observers. When a list is
+rebuilt, preserve its highlighted identity through reordering and define a stable
+tie order. Prepare typed rows with one indexed pass before rendering; search the
+history once instead of once per conversation.
+
 ## Keep context and keyboard help readable
 
 On a 320x170 screen, keep the active channel/target in a fixed conversation

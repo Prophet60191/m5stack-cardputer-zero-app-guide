@@ -198,6 +198,11 @@ and verify their absence after a real upgrade. A documented manual diagnostic
 command is still a privilege grant; replace it with an unprivileged health read
 when a trusted capability-only monitor already supplies the needed evidence.
 
+Keep strict validation ahead of idempotence checks. In Python, `True == 1`, so an
+unchanged-state shortcut can accidentally accept an invalid flag. Once validated,
+skip duplicate persistence/broadcasts while retaining durability for real changes,
+history opt-out semantics, row quotas and explicit synchronization barriers.
+
 Uninstallation needs an audit of changes made outside the package manifest:
 generated services, setuid helpers, file capabilities, runtime data and installer
 caches. A capability applied through a virtualenv symlink can land on the shared

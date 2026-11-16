@@ -215,6 +215,13 @@ reported version and socket peer PID against the service's MainPID. Starting an
 already active unit leaves its old code running. Verify actual privilege state
 and preserved user settings as well as the files.
 
+Measure optimization on a fixed synthetic workload before and after the change.
+Include typical and maximum supported history sizes; separate data preparation
+from LVGL rendering, disk writes and RF latency. Use warmups and report medians
+without fragile timing thresholds in tests. A headless benchmark can run on the
+actual device without opening its radio/camera/display, and should stay outside
+the installed app. Reduced work does not establish hours of battery life.
+
 Do not use repeated sudo subprocesses as a long-running health-check transport.
 A timeout can make an unprivileged parent attempt to kill a now-elevated child,
 causing EPERM and leaving cleanup outside its control. A separate fixed-purpose

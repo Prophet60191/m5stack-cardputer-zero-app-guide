@@ -61,3 +61,6 @@
   version metadata and greeting dependency/snapshot checks.
 - Added post-upgrade service restart, live version/socket peer PID checks and
   the distinction between installed-file hashes and running code.
+- Added measured synthetic maintenance workloads, unchanged-state redraw/write
+  suppression, typed conversation preparation, stable selection and strict
+  validation before Python equality shortcuts.
