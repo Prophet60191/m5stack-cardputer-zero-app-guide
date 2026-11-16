@@ -58,6 +58,13 @@ split exists.
 - **A small persistent status bar** (radio/connection state, battery, an unread badge) lends a
   finished feel for very little code — read from `/sys`, refresh every few seconds.
 
+Keep routine startup and reconnect preference synchronization quiet. Apply the saved
+setting and return a correlated acknowledgment without a success toast; confirm
+deliberate user changes when useful. Do not skip synchronization or suppress all
+notices to hide one distracting message. Failures must remain visible. Test first
+connection, reconnect, explicit changes, actual enforcement and error replies
+separately; validate any optional quiet flag as a boolean.
+
 ## Theme: support light and dark
 
 - Keep colors in **one constants file** — never hardcode a color per widget.

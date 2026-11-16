@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-11-16 — Quiet preference synchronization
+
+- Keep startup/reconnect preference synchronization silent without skipping its
+  effect; retain useful confirmation for deliberate user changes and visible
+  failures. Use correlated acknowledgments and cover enforcement and reconnects.
+
 ## 2026-11-15
 
 - Corrected the claim that process exit restores hardware automatically.
