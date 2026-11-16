@@ -164,3 +164,10 @@ stage from an earlier one. Confirm the acknowledgment source before naming a rec
 For related preference files, record and sync a complete validated transaction,
 then roll it forward idempotently after interruption. Applying a saved hardware
 profile must not restore transmission or privacy consent as a side effect.
+
+Exercise the real event library when testing callback registration. A child topic
+can inherit required arguments from its parent; changing one listener's optional
+parameters can make another subscription fail during startup. Register the same
+parent/child listeners as production and deliver representative events. Count
+remote RF reception from received packets, rather than local admin replies or
+cached node-update notifications.

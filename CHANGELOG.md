@@ -37,3 +37,7 @@
 - Added native arm64 CI package artifacts and a capability-owned health monitor
   instead of repeated elevated subprocess checks with unsafe timeout cleanup.
 - Added whitelist diagnostics and sensitivity/deletion rules for new durable state.
+- Added actual empty-profile startup, explicit protobuf defaults, semantic channel
+  capacity/readback, real pubsub contracts and remote-RF receive accounting.
+- Added draft-only conversation reachability, receiver versus location consent,
+  measured camera deadlines and runner-owned CI artifact staging.

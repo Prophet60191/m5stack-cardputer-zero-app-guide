@@ -134,8 +134,19 @@ not look like a new fix. Debounce draft persistence to avoid a disk transaction 
 every keystroke, flush on navigation, and keep rejected sends editable. Quiet hours
 need explicit local-time semantics and a window that works across midnight.
 
+Keep a conversation registry independent of messages. Draft-only, pinned and
+cleared conversations must remain reachable after rebuilding the list; deleting
+the conversation must remove that saved state too. Bind a DM draft to both peer
+and selected channel, so a channel change cannot move unsent text to another mesh.
+
+Distinguish enabling the GPS receiver from consenting to location broadcasts.
+A timestamp without valid coordinates is not a fix. Show stale/unknown locations
+as last known, and test an actual clear-sky fix separately from parser validation.
+
 Test the actual camera stack. A CSI sensor's `/dev/video0` may be a raw sensor/ISP
 node, not a webcam stream. On the stock image, use a fixed libcamera/rpicam capture
 command with bounded dimensions/time and decode in memory; do not save private
 camera frames merely to test a scanner. Missing decoder libraries and camera-busy
 failures should produce actionable UI errors, not a misleading "no QR found."
+Measure capture startup on the device before choosing the deadline; include
+startup, exposure and decoding within a bounded total budget.

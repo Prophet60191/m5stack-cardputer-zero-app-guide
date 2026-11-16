@@ -200,6 +200,9 @@ policy helpers and offline regressions. Disable networking and isolate the netwo
 namespace during firewall tests so a test cannot change the host's rules.
 Upload a checksummed candidate and corresponding source commit. A successful
 artifact job is still separate from RF, camera, GPS and physical cold-boot proof.
+Container outputs may be owned by root. Copy them into a runner-owned staging
+directory before writing checksums/source metadata and uploading the artifact.
+Download the finished artifact and verify both its checksum and source commit.
 
 Do not use repeated sudo subprocesses as a long-running health-check transport.
 A timeout can make an unprivileged parent attempt to kill a now-elevated child,

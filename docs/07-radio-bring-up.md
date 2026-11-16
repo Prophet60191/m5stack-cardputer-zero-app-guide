@@ -116,6 +116,20 @@ empty or stale protobuf may parse successfully but trigger factory defaults at
 boot. An absent transmission flag must not be mistaken for verified receive-only
 configuration. Fail closed for schemas your integration has not qualified.
 
+Parsing a fresh protobuf is insufficient to validate first run. Explicitly set
+required operational defaults, then start the actual daemon from empty app state
+and read them back. A default-false security/console flag can suppress startup
+diagnostics even while the daemon runs. Likewise, an empty settings submessage
+may be serialized in every disabled channel slot; message presence alone does
+not prove that a slot contains a retained configuration. Check meaningful fields.
+
+Verify requested settings semantically. Firmware can populate derived modem
+fields and normalize empty submessages, so whole-message byte equality can reject
+a successful change. Compare the requested effective values and safety invariants
+such as transmission state. Test both an accepted normalization and a genuine
+readback mismatch. Treat expected tuning reboots as a planned stop/reconnect,
+while preserving unexpected disconnects as actual failures.
+
 Public and private chat channels share one radio's region, modem preset and
 frequency slot. Importing a channel key does not establish matching RF tuning.
 Expose those settings and avoid silently applying URL tuning or replacing an
