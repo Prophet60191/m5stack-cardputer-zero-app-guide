@@ -19,7 +19,7 @@ This explicit setup step uses the network. The preflight itself never does:
 
 ```bash
 git init build/store-packages
-git -C build/store-packages fetch --depth=1 https://github.com/CardputerZero/packages.git 3ed6a232372bdc769826d93aba03fb9b6bbd9589
+git -C build/store-packages fetch --depth=1 https://github.com/CardputerZero/packages.git 94eb8d7ad524e8ee01a52658f31871e6377c7544
 git -C build/store-packages checkout --detach FETCH_HEAD
 ```
 

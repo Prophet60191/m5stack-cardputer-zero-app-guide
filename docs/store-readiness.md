@@ -2,7 +2,7 @@
 
 Use this alongside chapters [6](06-building-and-packaging.md) and
 [8](08-security-and-publishing.md). Reviewed **2026-11-16** against
-[`packages` 3ed6a23](https://github.com/CardputerZero/packages/tree/3ed6a232372bdc769826d93aba03fb9b6bbd9589)
+[`packages` 94eb8d7](https://github.com/CardputerZero/packages/tree/94eb8d7ad524e8ee01a52658f31871e6377c7544)
 and [`AppBuilder` 18996b6](https://github.com/CardputerZero/AppBuilder/tree/18996b694ae305306fc5d457d982cfba0b0e7cc5).
 Check for upstream changes again before publishing; this dated snapshot does not
 reserve a code/name or guarantee future Store approval.
@@ -71,8 +71,8 @@ reserve a code/name or guarantee future Store approval.
 
 References: [schema/review rules](https://github.com/CardputerZero/AppBuilder/blob/18996b694ae305306fc5d457d982cfba0b0e7cc5/docs/APP_BUILDER_JSON.md),
 [publishing implementation](https://github.com/CardputerZero/AppBuilder/blob/18996b694ae305306fc5d457d982cfba0b0e7cc5/scripts/czdev/publish.py),
-[validation](https://github.com/CardputerZero/packages/blob/3ed6a232372bdc769826d93aba03fb9b6bbd9589/.github/workflows/validate-pr.yml),
-[first-release/automatic-update merge gate](https://github.com/CardputerZero/packages/blob/3ed6a232372bdc769826d93aba03fb9b6bbd9589/.github/workflows/validate-pr-comment.yml).
+[validation](https://github.com/CardputerZero/packages/blob/94eb8d7ad524e8ee01a52658f31871e6377c7544/.github/workflows/validate-pr.yml),
+[first-release/automatic-update merge gate](https://github.com/CardputerZero/packages/blob/94eb8d7ad524e8ee01a52658f31871e6377c7544/.github/workflows/validate-pr-comment.yml).
 
 ## Worked example: correcting an overconfident submission report
 

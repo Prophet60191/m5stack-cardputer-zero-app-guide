@@ -98,3 +98,12 @@
 Validation: all 14 synthetic-package/documentation tests pass in a read-only,
 network-disabled Debian 13 container as an ordinary user. The actual 0.1.8
 candidate produces the documented blockers, not a false ready/pass result.
+
+
+### Store-compatible user-service integration
+
+- Reviewed the catalog advance from 3ed6a23 to 94eb8d7: only a published app's
+  metadata/assets/version changed; both policy-script hashes are unchanged.
+  Refreshed the pinned catalog snapshot and added the transient user-service
+  alternative, including fixed arguments, lifecycle serialization, cgroup/stop
+  recovery and actual-device property checks. No Store submission is automated.

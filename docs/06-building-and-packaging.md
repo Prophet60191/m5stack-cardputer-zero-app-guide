@@ -203,6 +203,17 @@ fail its path check. `/etc/sudoers.d/` also has no general exception. Do not hid
 files in installer-generated state or weaken a working privilege model to evade
 validation. Resolve packaging design or ask maintainers about a policy gap.
 
+An app that needs an on-demand background process can use a **transient user
+service**, created through `systemd-run --user` with fixed, reviewed arguments.
+This uses the normal user manager/cgroup without distributing a static unit or
+writing hidden privileged files. Preserve NoNewPrivileges, kill/restart policy,
+private umask and stop/recovery hooks. Serialize start/stop, avoid restarting an
+active service when a second UI opens, and stop the old service before upgrading.
+Test actual service properties, child cleanup, failed start and repeated launches
+on the supported systemd version. Archive acceptance alone cannot inspect this
+runtime configuration. Mesh's controller is an example; arbitrary intent fields
+must never select a unit, command, executable or service property.
+
 These are automated admission checks, not an execution sandbox or a complete
 review of shell logic, `.desktop` behavior, dependencies, symlinks or hardware.
 Keep the independent [security checklist](08-security-and-publishing.md#pre-publish-checklist).
