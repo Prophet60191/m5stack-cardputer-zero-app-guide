@@ -46,3 +46,7 @@
 
 - Added persistence re-enable semantics and an immediate-restart regression for
   existing RAM drafts, with preference changes propagated to all clients.
+- Added fixed routing context versus keyboard-help layout, pixel-bound checks,
+  grouped settings and display-order-independent action keys.
+- Added uninstall cleanup for generated services/shared file-capability grants,
+  private data backups and preservation of other apps' dependencies/configuration.

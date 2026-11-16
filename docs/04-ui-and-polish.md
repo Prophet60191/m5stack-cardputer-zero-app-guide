@@ -150,3 +150,17 @@ camera frames merely to test a scanner. Missing decoder libraries and camera-bus
 failures should produce actionable UI errors, not a misleading "no QR found."
 Measure capture startup on the device before choosing the deadline; include
 startup, exposure and decoding within a bounded total budget.
+
+## Keep context and keyboard help readable
+
+On a 320x170 screen, keep the active channel/target in a fixed conversation
+header and reserve the footer for short keyboard hints or compose input. Bound
+long names and preserve the routing identity and privacy label before truncating
+the less critical text. Check actual pixel bounds with the real fonts, including
+long peer names, message selection, composing, scrolling and returning to the list.
+
+Give settings stable action keys independent of display order. Group related
+options with nonselectable headings; navigation should visit actual settings
+only. Tests should find the selected label rather than blindly pressing Down a
+historic number of times, especially before transmission or privacy actions.
+Long information overlays need keyboard scrolling as well as an Escape path.

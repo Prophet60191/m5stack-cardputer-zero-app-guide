@@ -187,3 +187,11 @@ Use private owned directories/files, bound history and record counts, define
 retention and deletion behavior, and offer an explicit RAM-only choice. Describe
 logical deletion honestly: flash, WAL and backups may retain old bytes, and private
 permissions are not at-rest encryption. Never put runtime state into CI artifacts.
+
+Uninstallation needs an audit of changes made outside the package manifest:
+generated services, setuid helpers, file capabilities, runtime data and installer
+caches. A capability applied through a virtualenv symlink can land on the shared
+system interpreter. Prefer narrow service capabilities; avoid elevating a shared
+interpreter. Back up private app data, remove only grants actually attributable
+to that app, and preserve shared dependencies, hardware configuration and groups
+needed by other applications.
