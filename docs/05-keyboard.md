@@ -29,82 +29,137 @@ Function keys are `Fn + 1…0` (F1–F10), `Fn + O / P` (F11/F12). Useful ones: 
 `Fn + J` (screenshot). So **`Fn + F / X / Z / C` is your d-pad** — that's the arrow cluster your UI
 navigates with.
 
-## How the kernel presents keys (and the gotchas)
+## Use the official map, not a hand-built approximation
 
-This is the part to get right. The keyboard driver emits Linux evdev keycodes, but **not** always the
-ones you'd expect, and the three modifiers behave differently from one another:
+The authoritative references are:
 
-### Fn is translated by the kernel
+- [M5Stack key specifications](https://github.com/CardputerZero/cardputerzero.github.io/blob/main/docs/en/CP0_keys.md): printed legends, Fn functions and hold/one-shot/lock behavior.
+- [Official launcher symbol decoder](https://github.com/CardputerZero/launcher/blob/4c05b444cb977cb90e2f33eb4c8261226e370713/ext_components/cp0_lvgl/src/cp0/cp0_keyboard_keymap.c): the complete 32-symbol map, with a runtime override from `/usr/share/keymaps/tca8418_keypad_m5stack_keymap.map`.
+- [Official Keyboard Guide input](https://github.com/CardputerZero/Keyboard-Guide/blob/main/src/input/keyboard_guide_input.cpp): examples of version-dependent modifier-state reporting. Check which kernel interface exists on the target image before adopting a backend.
 
-The kernel keymap turns the **Fn** chords into real arrow/function keycodes. So `Fn + F` arrives at
-your app as `KEY_UP`, `Fn + X` as `KEY_DOWN`, and so on — you handle `KEY_UP`/`KEY_DOWN`/`KEY_LEFT`/
-`KEY_RIGHT` normally and the Fn layer "just works." (The Fn key itself also shows up as its own
-modifier keycode, which you can ignore.)
+**Correction, 2026-11-16:** an earlier version of this chapter said there was no
+published table and supplied 14 assignments. Three were wrong (`92` was shown as
+colon, `80` as minus and `71` as slash), and 18 symbols were missing. The worked
+example inherited those errors. The device's installed map and the official
+launcher agree on all 32 assignments below. Do not reuse the old table.
 
-### Shift you track yourself
-
-Shift arrives as `KEY_LEFTSHIFT`/`KEY_RIGHTSHIFT`. Track it as held/released and use it to pick
-uppercase and the shifted punctuation for the number row (`!@#$%…`) and the punctuation keys — the
-normal US-layout mapping.
-
-### Sym is **not** translated — and this is the trap
-
-The **Sym** layer (the blue symbols) is *not* turned into ASCII by the kernel. Instead:
-
-1. Sym arrives as **its own modifier keycode** (observed as **383** on current firmware) — you must
-   track it as held, exactly like Shift.
-2. While Sym is held, each symbol key sends a **device-specific keycode** for its blue symbol — and
-   **several of those keycodes collide with ordinary punctuation keys.** For example, the `!` key
-   under Sym emits the *same* keycode as the `[` key (`KEY_LEFTBRACE`, 26). Others emit placeholder
-   keycodes (e.g. `?` emits 93) that don't map to anything standard.
-
-The practical consequence: if your input layer only tracks Shift (the obvious thing), **the entire
-Sym layer silently does nothing** — the user can't type `?`, `!`, `@`, and friends — and if you try
-to map the colliding keycodes without knowing Sym is held, you'll type `[` when they meant `!`. You
-**must** track the Sym modifier and have a Sym-specific keycode→character table.
-
-There is no published table for this; you capture it from the device. A practical mapping captured on
-current firmware (hold Sym, press the key):
-
-| Symbol | keycode | Symbol | keycode |
+| Linux event code | Symbol | Linux event code | Symbol |
 |---|---|---|---|
-| `?` | 93 | `)` | 94 |
-| `!` | 26 | `-` | 80 |
-| `@` | 27 | `/` | 71 |
-| `#` | 39 | `:` | 92 |
-| `$` | 40 | `'` | 81 |
-| `%` | 41 | | |
-| `&` | 51 | | |
-| `*` | 52 | | |
-| `(` | 53 | | |
+| 26 | `!` | 27 | `@` |
+| 39 | `#` | 40 | `$` |
+| 41 | `%` | 43 | `^` |
+| 51 | `&` | 52 | `*` |
+| 53 | `(` | 94 | `)` |
+| 55 | `~` | 69 | backtick |
+| 70 | `_` | 71 | `-` |
+| 72 | `+` | 73 | `=` |
+| 74 | `[` | 75 | `]` |
+| 76 | `{` | 77 | `}` |
+| 79 | `;` | 80 | `:` |
+| 81 | apostrophe | 82 | double quote |
+| 83 | `<` | 85 | `>` |
+| 86 | backslash | 89 | vertical bar |
+| 90 | `,` | 91 | `.` |
+| 92 | `/` | 93 | `?` |
 
-Treat this as a starting point and verify on your own unit — firmware can shift these. To capture
-them yourself, stop the launcher briefly (`systemctl --user stop APPLaunch.service`), read raw events
-from the keyboard's `/dev/input/eventN`, and press Sym + each symbol; the codes with Sym held are
-your table. Restart the launcher after.
+These are **Linux event codes**, not ASCII values, matrix positions or XKB codes
+(which use an offset). For example, Sym+N produces the symbol-layer code for
+slash, `92`; translating `92` to `:` was an application error.
 
-### Key releases: remember the press-time mapping
+## A reusable input component
 
-One more subtlety: because the character a key produces depends on modifier state (Shift/Sym), you
-must map a key **at press time** and emit that same mapping on **release** — don't re-map on release
-using the *current* modifier state. Otherwise "press Shift+A, release Shift, release A" emits an `A`
-down and an `a` up, leaving your hold-tracking inconsistent and keys "stuck." Remember each physical
-key's press-time result and reuse it at release.
+The worked example supplies a reusable C++ decoder and regression suite:
 
-## A workable input recipe
+- [keyboard_decoder.h](https://github.com/Prophet60191/m5stack-cardputer-zero-mesh-app/blob/fab958d1add0d9a46cbf7a880faaa4ec005c5283/src/platform/keyboard_decoder.h)
+- [keyboard_decoder.cpp](https://github.com/Prophet60191/m5stack-cardputer-zero-mesh-app/blob/fab958d1add0d9a46cbf7a880faaa4ec005c5283/src/platform/keyboard_decoder.cpp)
+- [independent vendor fixture](https://github.com/Prophet60191/m5stack-cardputer-zero-mesh-app/blob/fab958d1add0d9a46cbf7a880faaa4ec005c5283/tests/fixtures/cardputerzero-keymap.map)
+- [raw-event/editor tests](https://github.com/Prophet60191/m5stack-cardputer-zero-mesh-app/blob/fab958d1add0d9a46cbf7a880faaa4ec005c5283/tests/keyboard.cpp)
+- [LVGL/evdev integration](https://github.com/Prophet60191/m5stack-cardputer-zero-mesh-app/blob/fab958d1add0d9a46cbf7a880faaa4ec005c5283/src/platform/linux_input.cpp)
 
-Putting it together, an evdev → character/key layer that works:
+Use the **same component and tests** for new LVGL apps. Pin the source revision
+when copying or vendoring it, preserve MIT/M5Stack attribution, and keep the
+fixture's upstream provenance. The component has no radio, filesystem or UI-object
+ownership; its caller supplies raw event code/value and current typing context.
+It returns a character or semantic control plus press/release state. The LVGL
+adapter owns device discovery, trusted keymap-file I/O, routing and repeat timing.
 
-1. Track `KEY_LEFTSHIFT`/`KEY_RIGHTSHIFT` → `shift_held`, and keycode **383** → `sym_held`. `continue`
-   (don't emit) on the modifiers themselves.
-2. Ignore auto-repeat events (value 2).
-3. On a key **press**, compute the result in this order and store it keyed by the physical keycode:
-   control keys first (Esc/Enter/arrows/Backspace/Delete/Tab) → if `sym_held`, the Sym table → else
-   the normal printable map honoring `shift_held`.
-4. On a key **release**, emit the stored mapping for that physical keycode and forget it.
+### The driver already selected the Sym layer
 
-This gives you arrows (via the Fn-translated keycodes), uppercase and shifted punctuation (Shift), and
-the full symbol layer (Sym) — i.e. actual, usable text entry.
+On the built-in `tca8418c` keyboard, look up a symbol-layer code in the official
+map **before ordinary US key translation**. Do not require a physical Sym-down
+flag to recognize it. The driver can emit that same selected symbol after a
+single tap, under lock, or after the app opens while Sym is already active.
+Reconstructing a second modifier state machine for already-translated symbols
+can apply the layer twice or discard valid symbols.
+
+Scope this table to the identified built-in keyboard. A USB keyboard's code 26
+normally means `[`, while the CardputerZero's selected symbol code 26 means `!`.
+Applying the vendor table globally corrupts standard keyboards. The worked
+example's generic profile is US-layout input; use a qualified xkbcommon backend
+if an application needs additional layouts or composition.
+
+Keep Shift/Control/Alt state **per input device**. Preserve each key's press-time
+translation until its release, even if a modifier is released, the keymap changes,
+or the editor closes in between. Initialize/resynchronize available kernel state
+after opening a device or losing events; do not invent support for a modifier-state
+API that the installed kernel does not expose. Older images and newer vendor
+sources have different interfaces. No app needs to force access to shared I2C
+hardware merely to decode these already-selected symbol codes.
+
+### Separate text from Fn actions
+
+Fn arrow/Home/End/Delete codes are semantic controls, not printable characters.
+Help, Screenshot, PageUp/PageDown, Insert, F1-F12 and media/display actions must
+also remain non-text. Define what your app does with each one; an unbound action
+must be consumed safely rather than encoded as garbage in a draft. A one-line
+editor need not invent a PageUp or Insert action. System-wide media/display keys
+may also be handled by the platform; do not add duplicate shell-outs per app.
+
+Global Help/Screenshot should remain reachable while editing. A visible Help
+popup owns input: Enter must not send the draft underneath it. Closing help must
+restore the same editor, text and cursor.
+
+**Consume shortcuts before LVGL delivers them to the focused widget.** Returning
+`true` from your application's callback does not automatically prevent LVGL from
+sending the key onward. The worked example filters each new press/release in the
+indev read callback and exposes only unconsumed input to LVGL. Use the same route
+for simulator and device input; test that shortcut values never become text.
+
+### Stream handling and focus timing
+
+- Query the current typing context for **each event**, not once per frame. Enter
+  can open an editor and a letter can follow within the same evdev batch.
+- Store active translations per device. Handle overlapping letter presses without
+  dropping the second character or treating an older release as a newer release.
+- Choose one repeat owner (LVGL in the worked example); do not also replay Linux
+  repeat records. Repeated Enter must never queue several sends.
+- On `SYN_DROPPED`, discard records until `SYN_REPORT`, cancel stale holds and
+  resynchronize available modifiers. A lost Escape release is not an app exit.
+- EOF/disconnect must release stale input and leave the reader inert. Do not
+  perform a blocking retry loop on the UI thread.
+
+## Required regression coverage
+
+Compile the production decoder on the development host too; hiding it under
+`!USE_DESKTOP` prevents simulator tests from exercising it. On Linux, the worked
+example additionally feeds synthetic `input_event` records through the **real
+evdev reader, shortcut filter, LVGL indev and focused textarea**, using a pipe.
+There is no `/dev/input` injection, RF or live user typing in that suite.
+
+Cover every official symbol against an **independent upstream fixture**; ordinary
+letters and Shift; driver-selected symbols with held/released/locked modifiers;
+Fn cursor/Home/End/Delete; Help/Screenshot while editing; unbound Fn keys; key
+release order and rollover; same-batch focus changes; multiple device profiles;
+malformed/partial keymaps; event loss and disconnect. Check draft text and cursor,
+not only that a handler ran. Retain source/hash evidence for the fixture; never
+change both expected data and implementation solely to make a failing test pass.
+
+Automated event replay validates the software contract. A physical check can
+confirm a particular device/image's emitted events and ergonomics, but is not
+needed to rediscover an already-published mapping. Record those results separately
+and recheck compatibility when the kernel/keyboard firmware changes. Reading a
+shared evdev stream does not require stopping the launcher or grabbing the device;
+any diagnostic capture should be bounded and use synthetic input only.
 
 ## A nicety: let the d-pad keys navigate without Fn
 

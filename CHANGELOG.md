@@ -64,3 +64,14 @@
 - Added measured synthetic maintenance workloads, unchanged-state redraw/write
   suppression, typed conversation preparation, stable selection and strict
   validation before Python equality shortcuts.
+
+
+### Verified keyboard mapping and reuse
+
+- Replaced the incorrect 14-entry symbol table and the false claim that no public
+  mapping exists with the complete official 32-entry map and authoritative links.
+- Added reusable decoder/fixture/test references; covered built-in versus USB
+  profiles, driver-selected symbols, per-device state, semantic Fn actions,
+  shortcut consumption, same-batch focus, rollover, event loss and disconnect.
+- Require raw-event-to-editor regressions in addition to direct UI tests; keep
+  automated replay separate from physical device qualification.

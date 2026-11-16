@@ -52,7 +52,7 @@ need prior LVGL or Debian-packaging experience; both are covered.
 4. **[UI and polish](docs/04-ui-and-polish.md)** — LVGL 9.5 on 320×170, MVVM + reactive binding,
    navigation, theming, and the anti-slop checklist.
 5. **[The keyboard](docs/05-keyboard.md)** — the 46-key layout, the Shift / Fn / Sym modifiers, and
-   the keycode gotchas you must handle to accept real text input.
+   the official complete symbol map, reusable decoder and raw-event tests for reliable text input.
 6. **[Building and packaging](docs/06-building-and-packaging.md)** — the desktop simulator, the
    device cross-build, the `.deb` (C++ *and* Python recipes), `app-builder.json`, and `czdev`.
 7. **[Radio bring-up](docs/07-radio-bring-up.md)** — if your app drives the LoRa Cap: the robust
