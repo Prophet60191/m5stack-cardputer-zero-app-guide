@@ -209,6 +209,12 @@ Container outputs may be owned by root. Copy them into a runner-owned staging
 directory before writing checksums/source metadata and uploading the artifact.
 Download the finished artifact and verify both its checksum and source commit.
 
+On upgrade, matching installed-file hashes does not prove the live process loaded
+them. Explicitly restart the owning service after installation, then check its
+reported version and socket peer PID against the service's MainPID. Starting an
+already active unit leaves its old code running. Verify actual privilege state
+and preserved user settings as well as the files.
+
 Do not use repeated sudo subprocesses as a long-running health-check transport.
 A timeout can make an unprivileged parent attempt to kill a now-elevated child,
 causing EPERM and leaving cleanup outside its control. A separate fixed-purpose

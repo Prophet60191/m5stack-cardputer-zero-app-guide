@@ -59,3 +59,5 @@
   preview tokens, generic request deadlines and queue-independent local storage.
 - Added metadata-complete history opt-out, obsolete-grant removal, canonical
   version metadata and greeting dependency/snapshot checks.
+- Added post-upgrade service restart, live version/socket peer PID checks and
+  the distinction between installed-file hashes and running code.
