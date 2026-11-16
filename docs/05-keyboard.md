@@ -153,6 +153,8 @@ release order and rollover; same-batch focus changes; multiple device profiles;
 malformed/partial keymaps; event loss and disconnect. Check draft text and cursor,
 not only that a handler ran. Retain source/hash evidence for the fixture; never
 change both expected data and implementation solely to make a failing test pass.
+Verify the fixture is tracked in a clean checkout: templates often ignore `*.map`
+as linker output, so a deliberate exception is needed for a keymap fixture.
 
 Automated event replay validates the software contract. A physical check can
 confirm a particular device/image's emitted events and ergonomics, but is not
