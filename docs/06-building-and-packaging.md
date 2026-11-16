@@ -83,9 +83,29 @@ launcher to pick it up. Package into a `.deb` when you're ready to release.
 
 ## Packaging a Python app
 
-If your app (or just your supervisor) is Python, the proven recipe is to **vendor everything** —
-because the Store installs your `.deb` without running `apt-get update`, so an unexpected dependency
-can fail against a stale package list:
+Choose and document a dependency plan before packaging. The Store installs against
+the device's available package lists; do not assume it refreshes them or installs
+an arbitrary Python environment for you. Three plans are possible:
+
+| Plan | When it fits | What you must verify |
+|---|---|---|
+| Debian `Depends` | Libraries available for the supported device image | A fresh target image can resolve the actual version/architecture from its configured repositories |
+| App-private vendoring | Dependencies you can legally redistribute and maintain | Full dependency closure, native ABI compatibility, licenses/source obligations and a security-update process |
+| Explicit external prerequisite | A separately managed daemon, hardware stack or environment | Exact supported versions, installation instructions, runtime detection and a useful missing/incompatible-dependency screen |
+
+Combinations are normal. Mesh currently uses Debian dependencies for native/system
+components and separately installed `meshtasticd` plus a pinned app-private Python
+environment. That is a distribution choice, not a Store requirement or a GPL
+prohibition on bundling. See the [worked example's installation instructions](https://github.com/Prophet60191/m5stack-cardputer-zero-mesh-app#install--run)
+and [licensing](08-security-and-publishing.md#licensing-including-the-mitgpl-split).
+
+Test the chosen plan on a fresh supported image, then test missing/incompatible
+dependencies, an upgrade, a cold boot and uninstall. Dependency installation must
+not silently enable another daemon or start RF; inspect dependency autostart too.
+Record what is bundled, what `Depends` resolves and what the user installs. Never
+hide a network installer or `pip install` in a root maintainer script.
+
+For the **app-private vendoring** plan, this is a useful recipe:
 
 1. **Stage the on-device tree.** Put the app and its *full dependency closure* under
    `/usr/lib/<pkg>/site` via `pip install --no-compile --target /usr/lib/<pkg>/site .[extras]`, and
@@ -99,8 +119,12 @@ can fail against a stale package list:
    `PYTHONPATH=/usr/lib/<pkg>/site` and `exec /usr/bin/python3 -s -m <module> "$@"` (`-s` ignores the
    user site-dir; exporting PYTHONPATH means child processes resolve the same vendored packages). The
    APPLaunch wrapper runs the UI module; `/usr/bin/<pkg>` runs the CLI module.
-4. **Depend only on `python3`.** Everything else is vendored. Control fields: `Architecture: arm64`,
-   `Depends: python3 (>= 3.13), python3 (<< 3.14)`, a fitting `Section`, `Priority: optional`.
+4. **Declare the remaining system requirements.** If the closure is entirely pure
+   Python, the runtime dependency may be just `python3`. Native extensions can
+   still need shared libraries: derive/check those dependencies too. A Python 3.13
+   environment may need `Depends: python3 (>= 3.13), python3 (<< 3.14)`; match the
+   tested interpreter/ABI instead of copying that range to every app. Use a fitting
+   `Section`, `Priority: optional`, and the correct `Architecture` (`arm64` or `all`).
 5. **Build with `dpkg-deb --root-owner-group -Zxz --build <stagedir> <out>`.** This matters:
    `dpkg-deb --build` on a populated directory emits real directory entries — some hand-rolled
    `ar`+`tar` packagers stream only files, producing a `.deb` with zero directory entries that
@@ -111,20 +135,82 @@ can fail against a stale package list:
 
 ## The `app-builder.json` manifest
 
-This is **Store catalog metadata** (separate from the `.deb` build, which gets the `.desktop`/icon
-from `assets/`). Fill in **every** field — the publish validator **auto-rejects** the template's
-`TODO` placeholders and a `source_repo` that still points at the template.
+The top-level fields identify the app/build; `store` supplies the catalog listing.
+Keep package, runtime, manifest and release versions aligned. The launcher icon
+inside the `.deb` and the Store icon may use separate files; validate both.
+The official online build also expects its packaging fields, including `bin_name`;
+an app with its own CMake/CI build must satisfy that build's contract separately.
+`czdev publish` takes an already-built installer and does not replace its contents.
 
-- **Top level:** `package_name` (Debian name: `a-z0-9.+-`, starts alphanumeric, ≥2 chars),
-  `version`, `app_name` (display title), `description`.
-- **`store`:** `summary` (≤80 chars), `description`, `categories` (1–2 from a fixed enum),
-  `screenshots` (1–6 × **320×170 PNG**), `icon` (square PNG, 256 recommended), `license` (SPDX id),
-  `source_repo` (public URL), `author` (`{github, display_name}`), `share_code` (**4 unique
-  alphanumerics** — the code users type to jump to your app), and the **7 permission flags**.
-- **The 7 permission flags** — `camera`, `microphone`, `imu`, `network`, `additional_hardware`,
-  `background_service`, `external_display`. These are **disclosure metadata** shown on the listing,
-  **not** an OS sandbox — actual privilege is still the Debian/group/sudoers model. **Declare them
-  honestly:** they're how a user sees what your app touches before installing.
+| Field | Acceptance rule |
+|---|---|
+| `package_name` | Debian name, at least two characters, lowercase `a-z0-9.+-`, starts alphanumeric; match the `.deb` Package field |
+| `version` | Match the built upstream/full version; record a Debian revision separately and use Debian version comparison for updates |
+| `app_name` | Store title; unique after case folding and whitespace normalization |
+| `store.summary` | Nonempty, at most 80 characters, no template placeholder |
+| `store.categories` | One or two exact category names from the list below |
+| `store.screenshots` | One to six real PNGs, each exactly 320×170; source paths relative to the app directory |
+| `store.icon` | Square PNG, 128–512 pixels per side; 256 recommended |
+| `store.license` | Accurate SPDX identifier/expression for what is distributed; the validator checks text, not legal compliance |
+| `store.author` | Non-placeholder `display_name`; `github` should match the publishing account |
+| `store.share_code` | Exactly four ASCII letters/digits, unique case-insensitively across the catalog; not a placeholder such as TEMP/TODO |
+| `store.permissions` | Exactly the seven keys below, each a JSON boolean |
+| `store.description`, `source_repo`, `locales` | Recommended by upstream policy; this guide additionally expects public source, clear prerequisites and accurate descriptions |
+
+Allowed categories: `System Tools`, `Development`, `Hardware & IoT`, `Security`,
+`Radio & Comms`, `AI`, `Creative & Office`, `Media`, `Games`, `Emulators`,
+`Education`, `Lifestyle`, `Other`. Labels such as `Communication` and `Utilities`
+are not accepted synonyms.
+
+The seven permission keys are `camera`, `microphone`, `imu`, `network`,
+`additional_hardware`, `background_service`, `external_display`. They disclose
+capabilities to the user; they do not create an OS sandbox. Declare actual behavior,
+including a background process or networking needed by a supervisor.
+
+`czdev` stages icons by basename and screenshots under `screenshots/<basename>`;
+avoid basename collisions. It records the authenticated GitHub uploader and merges
+nonempty listing updates into published metadata, preserving assigned identity
+such as `uuid` and an existing share code. Check code/title availability against
+the catalog immediately before submission; a local check cannot reserve either.
+Replace template authors, summaries, Maintainer and source URLs before release.
+
+Policy references, reviewed 2026-11-16: [official schema](https://github.com/CardputerZero/AppBuilder/blob/18996b694ae305306fc5d457d982cfba0b0e7cc5/docs/APP_BUILDER_JSON.md),
+[metadata validator](https://github.com/CardputerZero/packages/blob/3ed6a232372bdc769826d93aba03fb9b6bbd9589/.github/scripts/store_meta_policy.py).
+The [preflight lock](../tools/store-policy.lock.json) records exact revisions/hashes.
+
+## Package layout and installer acceptance
+
+Inspect the actual `.deb`. The current Store checks more than non-root services:
+
+| Area | Required check |
+|---|---|
+| Identity | Valid Package/Version/Maintainer, supported `arm64` or `all`, no template identity; uploaded filename agrees with control metadata |
+| Launcher | Entry at `/usr/share/APPLaunch/applications/*.desktop`; verify its Name/Exec/Icon and graphical `Terminal=false` on the device |
+| Executables | `/usr/bin/<name>` must relate to the package name; an unrelated short helper name can fail |
+| Data/config | Use package-related directories under `/usr/share`, `/usr/lib`, `/opt`, `/var/lib`; package-related configuration under `/etc` |
+| Shared directories | Use the policy's explicit exceptions for APPLaunch, documentation, named completion/man/tmpfiles/udev files and system units |
+| Forbidden locations | No `/usr/local`; no merged-usr alias paths such as `/bin` or `/sbin`; no unrelated shared-system filenames |
+| Services/privilege | System unit names must relate to the package; no default/root `User`; `DynamicUser=yes` is recognized. No setuid/setgid files or device nodes |
+| udev | No `RUN`, `PROGRAM` or `IMPORT{program}` commands that execute as root |
+| Maintainer scripts | Read every script without executing it; the Store rejects dangerous textual patterns such as destructive deletion, disk writes, account/sudoers edits and downloaded shell pipelines |
+| Size | Release asset limit is 2 GiB; this is not a sensible target size for the handheld |
+
+The authoritative [install-path policy](https://github.com/CardputerZero/packages/blob/3ed6a232372bdc769826d93aba03fb9b6bbd9589/.github/scripts/install_path_policy.py)
+and [PR validator](https://github.com/CardputerZero/packages/blob/3ed6a232372bdc769826d93aba03fb9b6bbd9589/.github/workflows/validate-pr.yml)
+define the exact floor. The reviewed path policy has an exception for **system**
+units, but not `/usr/lib/systemd/user/`; a legitimate user unit can therefore
+fail its path check. `/etc/sudoers.d/` also has no general exception. Do not hide
+files in installer-generated state or weaken a working privilege model to evade
+validation. Resolve packaging design or ask maintainers about a policy gap.
+
+These are automated admission checks, not an execution sandbox or a complete
+review of shell logic, `.desktop` behavior, dependencies, symlinks or hardware.
+Keep the independent [security checklist](08-security-and-publishing.md#pre-publish-checklist).
+
+Documentation size is determined by install rules, not by the folder name:
+Mesh 0.1.8 includes Markdown/images under `/usr/share/doc/cardputerzero-mesh/docs`
+and explicitly excludes generated PDFs. Check archive contents before claiming
+that guides do or do not increase installer size.
 
 ## The `czdev` tool and the Store
 
@@ -134,19 +220,27 @@ cmake/cpack or the Python recipe, then hand it the file):
 ```bash
 ./czdev login                 # GitHub device-flow auth
 ./czdev new my-app            # scaffold from the template (renames project/launcher/icons)
-./czdev publish --deb build/my_app_1.0.1_arm64.deb   # validates + opens a publish PR
+./czdev publish --deb build/my-app_1.0.1_arm64.deb   # uploads binary/metadata and opens a PR
+./czdev publish --meta-only                        # listing update for an existing app
 ```
 
-What publishing checks: the `.deb` must contain a `.desktop`, a `store` section with ≥1 screenshot, a
-valid package name, and a higher version than what's published; **a bundled systemd service running
-as root is rejected**; placeholder/default metadata is rejected. The `.deb` goes to a GitHub Release
-and the Store records a **SHA-256** of it (there is no code signature — integrity is the checksum plus
-a public source repo). The **first** release of a new app isn't auto-merged: you post a short video of
-it running on real hardware and a maintainer merges after watching. Package-name ownership is
-first-come by GitHub login.
+`publish` is a mutation, not a dry run: it can create/use a fork, upload the binary
+to a release, commit listing assets/metadata and open a PR against
+`CardputerZero/packages`. On merge the Store promotes the accepted binary to its
+official release/index. Git contains metadata, not the `.deb`. Run the
+[non-publishing preflight](../tools/README.md) first; it performs no authentication,
+network requests, install, upload or PR creation. The reviewed CLI has no
+`publish --dry-run` option.
 
-Publishing to the Store is optional — you can distribute entirely through your own GitHub releases —
-but matching these checks is what makes any release trustworthy.
+`czdev` performs local checks, including a fetched metadata policy. If that fetch
+fails, it can skip the metadata precheck; uniqueness is left to server-side CI.
+A local CLI success is not evidence that the entire Store gate passed.
+The submission records a SHA-256, which PR validation verifies. That checksum
+identifies bytes; it is not a developer signature or proof of safe behavior.
+
+Publishing is optional; your own GitHub release is a separate distribution path.
+The [release checklist](store-readiness.md) covers the complete workflow and
+separates Store admission from hardware/security evidence.
 
 ---
 

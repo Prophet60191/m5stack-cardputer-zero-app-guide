@@ -108,9 +108,11 @@ author is blind to their own omissions.
   - Your **C++/LVGL UI stays MIT** — it only talks to the other process over a socket (separate
     program; preserve the distinct licenses and interfaces).
   - The supervisor incorporates the GPL client library and is licensed **GPL-3.0-or-later**.
-  - **This example does not redistribute the GPL daemon/library** in your repo or `.deb` — depend on them and have
-    the user install them. Then you distribute no GPL binaries, and only the one process that links
-    the library is itself GPL.
+  - **This example does not bundle the daemon/library** in its `.deb`; its GPL
+    supervisor sources are included. The daemon/library are installed separately
+    using documented versions. This is the example's dependency plan, not a rule
+    that all apps must use external prerequisites or that GPL forbids bundling.
+    See the [three dependency plans](06-building-and-packaging.md#packaging-a-python-app).
   - Running a separate GPL *program* as a subprocess (e.g. launching `meshtasticd`) does **not**
     by itself determine the other program's license; the nature of the integration
     and applicable terms still matter. The example publishes both components as
@@ -127,10 +129,14 @@ application's MIT license does not preserve their copyright notices.
 
 - **Public source repo; build the published binary from it; tag releases**, so a reader can match the
   downloaded `.deb` to a commit.
-- There is **no code signature** in this ecosystem. Integrity rests on a **SHA-256** of the `.deb`
-  (the Store records and verifies it) plus the public repo. Publish the `.deb` as a GitHub Release
-  and list its SHA-256 so anyone can `sha256sum` what they downloaded. **Never** `curl … | sudo bash`
-  — ship a `.deb` they can inspect.
+- Publish the exact tested `.deb`, its **SHA-256** and full source commit. The
+  Store's submission manifest records SHA-256 and PR validation checks it before
+  promotion. A checksum is not a developer signature, source-to-binary attestation
+  or security review. The [Store README](https://github.com/CardputerZero/packages/blob/3ed6a232372bdc769826d93aba03fb9b6bbd9589/README.md)
+  describes a separate on-device registry download check using MD5; do not assume
+  every installation path verifies the submission's SHA-256. Keep the trust in
+  account, hosting, catalog and installed client explicit. **Never** `curl … | sudo bash`
+  — ship an inspectable package and verify its published SHA-256 independently.
 - **Ship attribution in the package:** a `LICENSE` and a `THIRD_PARTY_NOTICES.md` naming every
   borrowed component with its source URL, exact reference commit, and full license text. Preserve
   truncated upstream license texts in full.
@@ -141,6 +147,14 @@ application's MIT license does not preserve their copyright notices.
 
 ## Pre-publish checklist
 
+- [ ] Complete the [Store readiness checklist](store-readiness.md) and save the
+      [non-publishing preflight](../tools/README.md) result with exact policy/catalog revision.
+- [ ] Categories, title/share-code uniqueness, images, author/Maintainer and seven
+      permission flags satisfy the current official metadata policy.
+- [ ] Allowed install paths, unit/executable names, udev, modes and maintainer
+      scripts checked against the actual package and current Store policy.
+- [ ] Dependency plan documented; fresh supported image can install/run it and
+      missing/incompatible dependencies fail clearly without starting hardware.
 - [ ] Public repo; binary builds from it; release tagged.
 - [ ] License chosen and shipped; **GPL vs MIT split correct** if you link a GPL library.
 - [ ] `.deb` on a GitHub Release with its **SHA-256** listed.
@@ -160,6 +174,16 @@ application's MIT license does not preserve their copyright notices.
 - [ ] Inspect the generated `.deb`, not only the source manifest: identity/version,
       native library dependencies, icon/launcher paths, helpers/services and modes.
 - [ ] Reviewed by someone who isn't you; verified on the device; ready to record the hardware video.
+
+Keep three decisions separate: **local checks pass**, **hardware/security evidence
+is complete**, and **the Store accepted the submission**. The preflight reports
+unverified evidence even on success. A first-release video does not replace an
+independent review or prove all cold-boot/network/privacy failure paths.
+
+Publish only after reviewing the concrete package/listing/video. Protect the
+publishing account and `~/.czdev/credentials`; never include its token, device-flow
+code or a personal terminal session in logs, CI artifacts or demonstration video.
+Show synthetic chats/locations and no usable private channel QR/share URL.
 
 ---
 

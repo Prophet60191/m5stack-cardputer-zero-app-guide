@@ -75,3 +75,26 @@
   shortcut consumption, same-batch focus, rollover, event loss and disconnect.
 - Require raw-event-to-editor regressions in addition to direct UI tests; keep
   automated replay separate from physical device qualification.
+
+
+### Store readiness and non-publishing preflight
+
+- Complete the listing contract: exact category enum, title/code uniqueness,
+  icon/screenshot dimensions, placeholders, seven permissions and metadata merging.
+- Document current install-path, naming, installer-script, service, udev and mode
+  rules, including user-unit/sudoers policy gaps; distinguish built-in mechanisms
+  from accepted third-party packaging and keep privilege design intact.
+- Replace blanket Python-vendoring advice with explicit Debian, private-bundle
+  and external-prerequisite plans, including fresh-image/compatibility/update checks.
+- Add a release checklist covering account ownership, first hardware video,
+  Debian version ordering, binary versus metadata-only updates and promotion.
+- Add an offline, non-publishing inspection tool with hash-verified pinned official
+  policies/catalog and separate unverified hardware/security/provenance evidence.
+  It never authenticates, fetches, installs, executes package scripts or submits.
+- Add synthetic package regressions and documentation/policy-pin checks in CI.
+  Record every supplied-report correction and actual Mesh 0.1.8 submission blocker;
+  no app/device/submission change is included in this guide pass.
+
+Validation: all 14 synthetic-package/documentation tests pass in a read-only,
+network-disabled Debian 13 container as an ordinary user. The actual 0.1.8
+candidate produces the documented blockers, not a false ready/pass result.

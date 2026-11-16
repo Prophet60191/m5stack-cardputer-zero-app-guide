@@ -17,12 +17,17 @@ A typical app installs this layout:
 
 | Path | Purpose |
 |---|---|
-| `/usr/share/APPLaunch/bin/<Binary>` | the executable |
+| `/usr/bin/<pkg>` or `/usr/share/APPLaunch/bin/<pkg>` | the executable or a launcher wrapper; use package-related names |
 | `/usr/share/APPLaunch/applications/<app>.desktop` | the launcher entry (how it appears and starts) |
 | `/usr/share/APPLaunch/share/images/<app>.png` | the icon, referenced from the `.desktop` relative to `/usr/share/APPLaunch/` |
 | `/usr/share/<App>/…` | app data/assets (fonts, sounds, images) — not next to the binary |
 | `/usr/share/doc/<pkg>/LICENSE`, `THIRD_PARTY_NOTICES.md` | license and attributions, **shipped inside the package** |
-| `/etc/sudoers.d/<pkg>` | *only* for an app that genuinely needs root — a narrow grant (see [Privilege model](#the-privilege-model)) |
+
+This table describes the launcher layout, not a complete Store allowlist. Check
+the current [package acceptance rules](06-building-and-packaging.md#package-layout-and-installer-acceptance).
+Existing built-in apps are behavioral references; they are not exemptions for
+third-party packages. In particular, the reviewed Store path policy does not
+generally allow `/etc/sudoers.d/` or `/usr/lib/systemd/user/`.
 
 Conventions worth copying: a descriptively named binary; the icon as a PNG under `share/images/`;
 bulky assets under `/usr/share/<App>/`; docs (license + notices) under `/usr/share/doc/<pkg>/`.
@@ -73,6 +78,11 @@ so SPI, GPIO, and I²C all work unprivileged. Escalate *only* for the few things
 
   The `-n` (non-interactive) means it fails fast if the rule is missing rather than hanging, and the
   grant is scoped to the single binary — never a blanket rule.
+
+  This explains a launcher mechanism used by existing apps, not a recommended
+  Store submission recipe. The current path/installer policy can reject such a
+  grant. Prefer an unprivileged UI and a narrow capability service; resolve any
+  policy conflict openly rather than generating privileged files to bypass it.
 
 A bundled `systemd` service that runs as **root is rejected** by the publish validator. Never ship a
 blanket `NOPASSWD: ALL`. If you need a privileged helper, prefer — in order — **file capabilities**

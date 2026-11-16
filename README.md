@@ -63,6 +63,11 @@ need prior LVGL or Debian-packaging experience; both are covered.
 
 New to the device? Read 1 → 2 → 3 in order, then dip into the rest as you build.
 
+Ready to distribute? Use the **[Store readiness checklist](docs/store-readiness.md)**
+and **[offline preflight tool](tools/README.md)** to check the listing and actual
+installer without logging in, uploading or submitting. The tool reports Store
+blockers separately from hardware/security evidence still needing review.
+
 ## How to use it
 
 Keep the [worked-example repo](https://github.com/Prophet60191/m5stack-cardputer-zero-mesh-app) open
@@ -77,7 +82,8 @@ collective knowledge is still forming; if you learned something the hard way, it
 ## License
 
 This guide is licensed **[CC BY 4.0](LICENSE)** — use it, adapt it, build on it, with attribution.
-Code snippets within it are provided as examples you may use freely.
+Code snippets within it are provided as examples you may use freely. The runnable
+preflight tool and its tests are MIT-licensed; see [tools/LICENSE](tools/LICENSE).
 
 > **Meshtastic®** is a registered trademark of Meshtastic LLC. **M5Stack** and **Cardputer** are
 > trademarks of their respective owners. This is an independent community guide, not affiliated with

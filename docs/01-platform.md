@@ -58,8 +58,10 @@ The practical consequences for you:
   people install by hand.
 - **The Store never runs `apt-get update`.** It installs your `.deb` against whatever package lists
   are already on the device. So any dependency you declare must already be installable from the base
-  archives; anything exotic, you **bundle** rather than depend on (more in
-  [building and packaging](06-building-and-packaging.md)).
+  archives, be legally/operationally maintainable as an app-private bundle, or be
+  an explicitly documented external prerequisite with runtime compatibility
+  checks. Choose and test the [dependency plan](06-building-and-packaging.md#packaging-a-python-app)
+  on a fresh supported image; a description alone does not install a dependency.
 
 Publishing to the Store is optional — you can distribute entirely through your own GitHub releases.
 But even if you do, matching the Store's conventions (honest metadata, a real icon, 320×170
