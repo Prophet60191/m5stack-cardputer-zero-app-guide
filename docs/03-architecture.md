@@ -121,3 +121,14 @@ are detailed in [messaging projects](projects/messaging.md) and the preserved
 [Mesh lessons](case-studies/mesh.md#architecture-and-state).
 
 Next: [UI and polish](04-ui-and-polish.md).
+
+
+## A documented modularity decision
+
+Mesh's [architecture decision](https://github.com/Prophet60191/m5stack-cardputer-zero-mesh-app/blob/f1c2c77b9ccb1a26ff366539af7d51f371a3e8af/docs/architecture.md)
+explains its native UI/Python owner choice: an existing client library, background
+reception after UI exit, explicit resource authority and independent tests. It
+also records extra resource/protocol/upgrade costs, same-user trust and hardware
+recovery limits. Describe the purpose, goal and verified benefits of a split in
+your own app; do not treat the word modular as automatic safety, reusable-library
+readiness or a reason every application needs a service.

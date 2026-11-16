@@ -36,7 +36,7 @@ index 00a3bb0..ff5c94d 100644
 +endif()
 diff --git a/NOTICE.keyboard.md b/NOTICE.keyboard.md
 new file mode 100644
-index 0000000..faaa54c
+index 0000000..ab6ccaa
 --- /dev/null
 +++ b/NOTICE.keyboard.md
 @@ -0,0 +1,20 @@
@@ -48,7 +48,7 @@ index 0000000..faaa54c
 +
 +The decoder, expanded adapter and regression foundation were adapted from
 +Prophet60191/m5stack-cardputer-zero-mesh-app at
-+c51a45ee61813bf9685766f9f45c95e6778780a5, MIT-licensed files only.
++f1c2c77b9ccb1a26ff366539af7d51f371a3e8af, MIT-licensed files only.
 +Copyright 2026 Jose Di Lenola and M5Stack Technology CO LTD as marked in sources.
 +No GPL radio, firewall, daemon or supervisor component is included.
 +
@@ -160,7 +160,7 @@ index e890910..ce99a3e 100644
          const bool is_home_exit_key =
              key == '4' &&
 diff --git a/src/app/desktop_virtual_keypad.cpp b/src/app/desktop_virtual_keypad.cpp
-index 1b2b4a4..4a862c1 100644
+index 1b2b4a4..da0be70 100644
 --- a/src/app/desktop_virtual_keypad.cpp
 +++ b/src/app/desktop_virtual_keypad.cpp
 @@ -337,7 +337,6 @@ DesktopVirtualKeypad::DesktopVirtualKeypad(lv_display_t* display) {
@@ -171,7 +171,15 @@ index 1b2b4a4..4a862c1 100644
  
      previous_default_group_ = lv_group_get_default();
      group_ = lv_group_create();
-@@ -368,6 +367,7 @@ void DesktopVirtualKeypad::read_cb(lv_indev_t* indev, lv_indev_data_t* data) {
+@@ -347,6 +346,7 @@ DesktopVirtualKeypad::DesktopVirtualKeypad(lv_display_t* display) {
+ 
+ DesktopVirtualKeypad::~DesktopVirtualKeypad() {
+     if (indev_) {
++        platform::release_key_input(indev_);
+         lv_indev_delete(indev_);
+         indev_ = nullptr;
+     }
+@@ -368,6 +368,7 @@ void DesktopVirtualKeypad::read_cb(lv_indev_t* indev, lv_indev_data_t* data) {
  
      data->key = keypad->pending_key_;
      data->state = keypad->pending_pressed_ ? LV_INDEV_STATE_PRESSED : LV_INDEV_STATE_RELEASED;
@@ -434,7 +442,7 @@ index 0000000..7bc2776
 +
 +} // namespace platform
 diff --git a/src/platform/linux_input.cpp b/src/platform/linux_input.cpp
-index 2f3f50f..4ba44d7 100644
+index 2f3f50f..a2c2b98 100644
 --- a/src/platform/linux_input.cpp
 +++ b/src/platform/linux_input.cpp
 @@ -4,14 +4,16 @@
@@ -455,7 +463,7 @@ index 2f3f50f..4ba44d7 100644
  #include <unistd.h>
  #endif
  
-@@ -26,6 +28,11 @@ std::array<lv_obj_t*, kNavKeyCount> nav_buttons{};
+@@ -26,10 +28,16 @@ std::array<lv_obj_t*, kNavKeyCount> nav_buttons{};
  uint32_t last_key = 0;
  bool last_key_pressed = false;
  bool nav_shortcut_mode = false;
@@ -467,9 +475,16 @@ index 2f3f50f..4ba44d7 100644
  uint32_t pressed_key = 0;
  uint32_t press_started_at = 0;
  bool long_press_sent = false;
-@@ -38,14 +45,16 @@ void* global_key_listener_user_data = nullptr;
+ bool pressed_key_consumed = false;
++lv_indev_t* hold_owner = nullptr;
+ lv_timer_t* long_press_timer = nullptr;
+ KeyReleaseListener key_release_listener = nullptr;
+ void* key_release_listener_user_data = nullptr;
+@@ -37,15 +45,18 @@ GlobalKeyListener global_key_listener = nullptr;
+ void* global_key_listener_user_data = nullptr;
  
  constexpr uint32_t kLongPressMs = 700;
++constexpr unsigned kReadAttemptsPerPoll = 128;
  
 -#if !USE_DESKTOP
 +#if !USE_DESKTOP || defined(TEMPLATE_INPUT_TESTING)
@@ -483,12 +498,12 @@ index 2f3f50f..4ba44d7 100644
 +    KeyboardDecoder decoder;
 +    std::optional<KeyboardDecoder::Event> pending;
 +    bool dropped{false};
-+    unsigned poll_budget{128}; // Bound raw work across LVGL continue_reading callbacks.
++    unsigned poll_budget{kReadAttemptsPerPoll};
 +    explicit EvdevKeypad(KeyboardDecoder::Profile profile) : decoder(profile) {}
  };
  #endif
  
-@@ -85,6 +94,7 @@ size_t nav_key_to_index(uint32_t key) {
+@@ -85,6 +96,7 @@ size_t nav_key_to_index(uint32_t key) {
  }
  
  void dispatch_nav_key(uint32_t key) {
@@ -496,19 +511,32 @@ index 2f3f50f..4ba44d7 100644
      const auto index = nav_key_to_index(key);
      if (index >= nav_buttons.size()) {
          return;
-@@ -124,7 +134,10 @@ void ensure_long_press_timer() {
+@@ -124,9 +136,14 @@ void ensure_long_press_timer() {
      }
  }
  
 -void route_key_state(uint32_t key, bool pressed) {
+-    const bool new_hold = pressed && (!last_key_pressed || pressed_key != key);
 +bool route_key_state(uint32_t key, bool pressed) {
 +    // Releasing an older rollover key must not cancel a newer key's hold.
-+    if (!pressed && pressed_key != key) return false;
++    auto* source = lv_indev_active();
++    if (!pressed && (pressed_key != key || hold_owner != source)) return false;
 +    const bool consumed_release = !pressed && pressed_key_consumed;
-     const bool new_hold = pressed && (!last_key_pressed || pressed_key != key);
++    const bool new_hold = pressed && (!last_key_pressed || pressed_key != key || hold_owner != source);
      if (new_hold) {
++        hold_owner = source;
          pressed_key = key;
-@@ -149,69 +162,46 @@ void route_key_state(uint32_t key, bool pressed) {
+         press_started_at = lv_tick_get();
+         long_press_sent = false;
+@@ -141,6 +158,7 @@ void route_key_state(uint32_t key, bool pressed) {
+             key_release_listener(key, describe_key(key), key_release_listener_user_data);
+         }
+         pressed_key = 0;
++        hold_owner = nullptr;
+         pressed_key_consumed = false;
+         if (long_press_timer) {
+             lv_timer_pause(long_press_timer);
+@@ -149,69 +167,48 @@ void route_key_state(uint32_t key, bool pressed) {
  
      last_key = key;
      last_key_pressed = pressed;
@@ -522,11 +550,12 @@ index 2f3f50f..4ba44d7 100644
 -    if (!indev) {
 -        return;
 -    }
-+#if !USE_DESKTOP || defined(TEMPLATE_INPUT_TESTING)
-+lv_group_t* ensure_keypad_group() {
-+    auto* group = lv_group_get_default();
-+    if (!group) { group = lv_group_create(); lv_group_set_default(group); }
-+    return group;
++void cancel_hold(lv_indev_t* owner) {
++    if (hold_owner != owner) return;
++    hold_owner=nullptr;
++    pressed_key=last_key=0;
++    last_key_pressed=pressed_key_consumed=long_press_sent=false;
++    if (long_press_timer) lv_timer_pause(long_press_timer);
 +}
  
 -#if !USE_DESKTOP
@@ -536,29 +565,30 @@ index 2f3f50f..4ba44d7 100644
 -        if (!keypad->router_event_pending) {
 -            return;
 -        }
-+bool key_down(const unsigned long* bits, unsigned code) {
-+    constexpr auto width=sizeof(unsigned long)*8;
-+    return (bits[code/width] & (1UL<<(code%width)))!=0;
++#if !USE_DESKTOP || defined(TEMPLATE_INPUT_TESTING)
++lv_group_t* ensure_keypad_group() {
++    auto* group = lv_group_get_default();
++    if (!group) { group = lv_group_create(); lv_group_set_default(group); }
++    return group;
 +}
  
 -        keypad->router_event_pending = false;
 -        const auto key = keypad->router_key;
 -        const bool pressed = keypad->router_pressed;
-+void restore_modifier_state(EvdevKeypad& keypad) {
-+    unsigned long bits[(KEY_MAX/(sizeof(unsigned long)*8))+1]{};
-+    if (ioctl(keypad.fd,EVIOCGKEY(sizeof(bits)),bits)>=0)
-+        keypad.decoder.restore_modifiers(key_down(bits,KEY_LEFTSHIFT),key_down(bits,KEY_RIGHTSHIFT),
-+            key_down(bits,KEY_LEFTCTRL),key_down(bits,KEY_RIGHTCTRL),key_down(bits,KEY_LEFTALT),key_down(bits,KEY_RIGHTALT));
++bool key_down(const unsigned long* bits, unsigned code) {
++    constexpr auto width=sizeof(unsigned long)*8;
++    return (bits[code/width] & (1UL<<(code%width)))!=0;
 +}
  
 -        route_key_state(key, pressed);
 -        return;
 -    }
 -#endif
-+void cancel_hold() {
-+    pressed_key=last_key=0;
-+    last_key_pressed=pressed_key_consumed=long_press_sent=false;
-+    if (long_press_timer) lv_timer_pause(long_press_timer);
++void restore_modifier_state(EvdevKeypad& keypad) {
++    unsigned long bits[(KEY_MAX/(sizeof(unsigned long)*8))+1]{};
++    if (ioctl(keypad.fd,EVIOCGKEY(sizeof(bits)),bits)>=0)
++        keypad.decoder.restore_modifiers(key_down(bits,KEY_LEFTSHIFT),key_down(bits,KEY_RIGHTSHIFT),
++            key_down(bits,KEY_LEFTCTRL),key_down(bits,KEY_RIGHTCTRL),key_down(bits,KEY_LEFTALT),key_down(bits,KEY_RIGHTALT));
 +}
  
 -    const auto key = lv_indev_get_key(indev);
@@ -612,7 +642,7 @@ index 2f3f50f..4ba44d7 100644
  }
  
  bool has_nav_keys(int fd) {
-@@ -231,35 +221,66 @@ bool has_nav_keys(int fd) {
+@@ -231,35 +228,66 @@ bool has_nav_keys(int fd) {
  }
  
  void evdev_read_cb(lv_indev_t* indev, lv_indev_data_t* data) {
@@ -641,12 +671,12 @@ index 2f3f50f..4ba44d7 100644
 +            if (size<0 && (errno==EAGAIN || errno==EWOULDBLOCK)) break;
 +            if (size!=sizeof(input)) {
 +                keypad->decoder.reset(); keypad->state=LV_INDEV_STATE_RELEASED;
-+                cancel_hold();
++                cancel_hold(indev);
 +                if (keypad->fd>=0) { close(keypad->fd); keypad->fd=-1; }
 +                break;
 +            }
 +            if (input.type==EV_SYN && input.code==SYN_DROPPED) {
-+                keypad->dropped=true; keypad->decoder.reset(); cancel_hold();
++                keypad->dropped=true; keypad->decoder.reset(); cancel_hold(indev);
 +                keypad->state=LV_INDEV_STATE_RELEASED;
 +                break; // release LVGL too; never treat a lost Esc as a click
 +            }
@@ -691,24 +721,24 @@ index 2f3f50f..4ba44d7 100644
 +        if (is_action_key(data->key)) data->state=LV_INDEV_STATE_RELEASED;
 +        keypad->state=data->state;
 +        data->continue_reading=keypad->poll_budget!=0;
-+        if (!data->continue_reading) keypad->poll_budget=128;
++        if (!data->continue_reading) keypad->poll_budget=kReadAttemptsPerPoll;
 +        return;
      }
 -
 -    data->key = keypad->key;
 -    data->state = keypad->state;
 +    if (!data->continue_reading || !keypad->poll_budget) {
-+        data->continue_reading=false; keypad->poll_budget=128;
++        data->continue_reading=false; keypad->poll_budget=kReadAttemptsPerPoll;
 +    }
 +    data->key=keypad->key; data->state=keypad->state;
  }
  
  void evdev_delete_cb(lv_event_t* event) {
-@@ -269,15 +290,18 @@ void evdev_delete_cb(lv_event_t* event) {
+@@ -269,15 +297,18 @@ void evdev_delete_cb(lv_event_t* event) {
          return;
      }
  
-+    cancel_hold();
++    cancel_hold(indev);
      if (keypad->fd >= 0) {
          close(keypad->fd);
      }
@@ -725,7 +755,7 @@ index 2f3f50f..4ba44d7 100644
  
      auto* indev = lv_indev_create();
      if (!indev) {
-@@ -289,8 +313,8 @@ lv_indev_t* create_keypad_from_fd(int fd) {
+@@ -289,8 +320,8 @@ lv_indev_t* create_keypad_from_fd(int fd) {
      lv_indev_set_type(indev, LV_INDEV_TYPE_KEYPAD);
      lv_indev_set_read_cb(indev, evdev_read_cb);
      lv_indev_set_driver_data(indev, keypad);
@@ -735,7 +765,7 @@ index 2f3f50f..4ba44d7 100644
      return indev;
  }
  
-@@ -311,7 +335,11 @@ lv_indev_t* try_create_keypad(const char* path) {
+@@ -311,7 +342,11 @@ lv_indev_t* try_create_keypad(const char* path) {
      }
  
      LV_LOG_INFO("using evdev key input %s", path);
@@ -748,7 +778,7 @@ index 2f3f50f..4ba44d7 100644
  }
  
  void discover_keypads(lv_display_t* display) {
-@@ -350,25 +378,50 @@ void discover_keypads(lv_display_t* display) {
+@@ -350,25 +385,54 @@ void discover_keypads(lv_display_t* display) {
  } // namespace
  
  void init_key_input(lv_display_t* display) {
@@ -774,6 +804,10 @@ index 2f3f50f..4ba44d7 100644
 +void route_key_input(lv_indev_data_t* data) {
 +    if (route_key_state(data->key,data->state==LV_INDEV_STATE_PRESSED))
 +        data->state=LV_INDEV_STATE_RELEASED;
++}
++
++void release_key_input(lv_indev_t* source) {
++    cancel_hold(source);
 +}
 +
 +void set_text_entry_query(TextEntryQuery query, void* user_data) {
@@ -804,7 +838,7 @@ index 2f3f50f..4ba44d7 100644
  void register_nav_button(size_t index, lv_obj_t* button) {
      if (index >= nav_buttons.size()) {
          return;
-@@ -419,6 +472,16 @@ const char* describe_key(uint32_t key) {
+@@ -419,6 +483,16 @@ const char* describe_key(uint32_t key) {
              return "Left";
          case LV_KEY_RIGHT:
              return "Right";
@@ -822,7 +856,7 @@ index 2f3f50f..4ba44d7 100644
              return "PrintScreen";
          case kKeyHelp:
 diff --git a/src/platform/linux_input.h b/src/platform/linux_input.h
-index d4af891..528413e 100644
+index d4af891..b80da3e 100644
 --- a/src/platform/linux_input.h
 +++ b/src/platform/linux_input.h
 @@ -1,6 +1,7 @@
@@ -843,7 +877,7 @@ index d4af891..528413e 100644
  
  using KeyReleaseListener = void (*)(uint32_t key, const char* key_name, void* user_data);
  using GlobalKeyListener = bool (*)(uint32_t key,
-@@ -19,8 +17,17 @@ using GlobalKeyListener = bool (*)(uint32_t key,
+@@ -19,8 +17,19 @@ using GlobalKeyListener = bool (*)(uint32_t key,
                                     void* user_data);
  
  void init_key_input(lv_display_t* display);
@@ -851,12 +885,14 @@ index d4af891..528413e 100644
 +// Call once for each new decoded press/release, inside the indev read callback,
 +// BEFORE LVGL can deliver it to a focused object. Consumed shortcuts never type.
 +void route_key_input(lv_indev_data_t* data);
++// Call before destroying an input adapter. Cancel its pending hold without
++// synthesizing an application key release, click, or action for another device.
++void release_key_input(lv_indev_t* source);
 +using TextEntryQuery = bool (*)(void* user_data);
 +void set_text_entry_query(TextEntryQuery query, void* user_data);
 +void clear_text_entry_query(TextEntryQuery query, void* user_data);
  void set_nav_shortcut_mode(bool enabled);
-+// Default: detect a focused LVGL textarea. A query overrides that policy and is
-+// evaluated before EACH event, including focus changes within one read batch.
++// Default: detect the focused textarea; a custom query overrides this policy.
 +bool text_entry_active();
 +void set_text_entry_mode(bool enabled);
  void register_nav_button(size_t index, lv_obj_t* button);
@@ -958,10 +994,10 @@ index 0000000..ef35dec
 +keycode 93 = question          # 0xd5 -> ?
 diff --git a/tests/keyboard.cpp b/tests/keyboard.cpp
 new file mode 100644
-index 0000000..ecc646b
+index 0000000..dc3de16
 --- /dev/null
 +++ b/tests/keyboard.cpp
-@@ -0,0 +1,195 @@
+@@ -0,0 +1,232 @@
 +// SPDX-License-Identifier: MIT
 +#include "keyboard_decoder.h"
 +#include "linux_input.h"
@@ -1077,11 +1113,12 @@ index 0000000..ecc646b
 +
 +#ifdef TEMPLATE_DEVICE_INPUT_TESTS
 +struct UiState {
-+    bool editing{false},help{false};int commits{0},screenshots{0},held_actions{0};
++    bool editing{false},help{false};int commits{0},screenshots{0},holds{0},releases{0};
 +    static bool query(void* data) {return static_cast<UiState*>(data)->editing;}
++    static void release(uint32_t,const char*,void* data) { ++static_cast<UiState*>(data)->releases; }
 +    static bool route(uint32_t key,const char*,bool held,void* data) {
 +        auto& state=*static_cast<UiState*>(data);
-+        if (held) { ++state.held_actions; return true; }
++        if (held) { ++state.holds; return true; }
 +        if (key==platform::kKeyHelp) {state.help=!state.help;return true;}
 +        if (key==platform::kKeyPrintScreen) {++state.screenshots;return true;}
 +        if (state.help) {if(key==LV_KEY_ESC)state.help=false;return true;}
@@ -1094,8 +1131,7 @@ index 0000000..ecc646b
 +    int fds[2];REQUIRE(pipe(fds)==0);REQUIRE(fcntl(fds[0],F_SETFL,O_NONBLOCK)==0);
 +    auto* device=platform::make_test_evdev(fds[0],true);lv_indev_set_display(device,display);
 +    auto* area=examples::make_keyboard_editor(lv_screen_active());
-+    auto* group=lv_group_get_default();
-+    REQUIRE(platform::text_entry_active());
++    auto* group=lv_group_get_default();REQUIRE(platform::text_entry_active());
 +    UiState state;platform::set_text_entry_query(UiState::query,&state);
 +    platform::set_global_key_listener(UiState::route,&state);
 +    auto raw=[&](unsigned type,unsigned code,int value) {input_event ev{};ev.type=type;ev.code=code;ev.value=value;REQUIRE(write(fds[1],&ev,sizeof(ev))==sizeof(ev));};
@@ -1120,31 +1156,68 @@ index 0000000..ecc646b
 +    REQUIRE(std::string(lv_textarea_get_text(area))=="ab");
 +    raw(EV_KEY,KEY_LEFTSHIFT,1);raw(EV_SYN,SYN_DROPPED,0);raw(EV_KEY,KEY_A,1);raw(EV_SYN,SYN_REPORT,0);key(KEY_B);drain();drain();
 +    REQUIRE(std::string(lv_textarea_get_text(area))=="abb");
++    // Default Template focus policy keeps toolbar digits in the editor and
++    // retains the original browsing shortcuts after focus moves away.
 +    platform::clear_text_entry_query(UiState::query,&state);
 +    int nav_clicks=0;
-+    auto* nav=lv_obj_create(lv_screen_active());
-+    lv_obj_add_flag(nav,LV_OBJ_FLAG_CLICKABLE);
-+    lv_obj_add_event_cb(nav,[](lv_event_t* e) { ++*static_cast<int*>(lv_event_get_user_data(e)); },LV_EVENT_CLICKED,&nav_clicks);
-+    platform::register_nav_button(0,nav);
-+    lv_textarea_set_text(area, "");
-+    key(KEY_4); key(KEY_5); key(KEY_Z); key(KEY_C); key(KEY_F); key(KEY_X); drain();
++    auto* nav=lv_obj_create(lv_screen_active());lv_obj_add_flag(nav,LV_OBJ_FLAG_CLICKABLE);
++    lv_obj_add_event_cb(nav,[](lv_event_t* e) {++*static_cast<int*>(lv_event_get_user_data(e));},LV_EVENT_CLICKED,&nav_clicks);
++    platform::register_nav_button(0,nav);lv_textarea_set_text(area,"");
++    key(KEY_4);key(KEY_5);key(KEY_Z);key(KEY_C);key(KEY_F);key(KEY_X);drain();
 +    REQUIRE(std::string(lv_textarea_get_text(area))=="45zcfx" && nav_clicks==0);
-+    lv_group_add_obj(group,nav);lv_group_focus_obj(nav);
-+    REQUIRE(!platform::text_entry_active());key(KEY_4);drain();REQUIRE(nav_clicks==1);
-+    lv_group_focus_obj(area);
-+    platform::unregister_nav_button(0,nav);lv_obj_delete(nav);
-+    // A raw modifier flood yields after a bounded poll, leaving later input for
-+    // the next poll instead of freezing LVGL's continue_reading loop.
++    lv_group_add_obj(group,nav);lv_group_focus_obj(nav);REQUIRE(!platform::text_entry_active());
++    key(KEY_4);drain();REQUIRE(nav_clicks==1);
++    lv_group_focus_obj(area);platform::unregister_nav_button(0,nav);lv_obj_delete(nav);
++    platform::set_text_entry_query(UiState::query,&state);lv_textarea_set_text(area,"abb");
++
++    // Both ignored/modifier events and ordinary text are bounded across the
++    // complete LVGL continue_reading chain, and unread events are retained.
 +    for(int i=0;i<140;++i) raw(EV_KEY,KEY_LEFTSHIFT,2);
 +    raw(EV_KEY,KEY_LEFTSHIFT,0);key(KEY_B);
-+    drain();REQUIRE(std::string(lv_textarea_get_text(area))=="45zcfx");
-+    drain();REQUIRE(std::string(lv_textarea_get_text(area))=="45zcfxb");
-+    // Disconnect while a shortcut is held must not later trigger its long hold.
-+    raw(EV_KEY,KEY_ESC,1);drain();
-+    close(fds[1]);drain();drain(); // EOF releases once and stays inert.
-+    lv_tick_inc(800);lv_timer_handler();REQUIRE(state.held_actions==0);
++    drain();REQUIRE(std::string(lv_textarea_get_text(area))=="abb");
++    drain();REQUIRE(std::string(lv_textarea_get_text(area))=="abbb");
++    lv_textarea_set_max_length(area,512);lv_textarea_set_text(area,"");
++    for(int i=0;i<70;++i) key(KEY_A);
++    drain();REQUIRE(std::string(lv_textarea_get_text(area))==std::string(64,'a'));
++    drain();REQUIRE(std::string(lv_textarea_get_text(area))==std::string(70,'a'));
++
++    // Closing the stream cancels a hold without a synthetic short-click/release.
++    platform::set_key_release_listener(UiState::release,&state);
++    raw(EV_KEY,KEY_ESC,1);drain();const int released_before=state.releases;
++    close(fds[1]);drain();drain();
++    lv_tick_inc(800);lv_timer_handler();
++    REQUIRE(state.holds==0 && state.releases==released_before);
++    lv_indev_delete(device);device=nullptr;
++
++    auto pipe_device=[&](int (&pipefd)[2]) {
++        REQUIRE(pipe(pipefd)==0);REQUIRE(fcntl(pipefd[0],F_SETFL,O_NONBLOCK)==0);
++        auto* input=platform::make_test_evdev(pipefd[0],true);lv_indev_set_display(input,display);return input;
++    };
++    auto send=[&](int fd,unsigned code,int value) {input_event ev{};ev.type=EV_KEY;ev.code=code;ev.value=value;REQUIRE(write(fd,&ev,sizeof(ev))==sizeof(ev));};
++    int owner_fds[2],other_fds[2];auto* owner=pipe_device(owner_fds);auto* other=pipe_device(other_fds);
++    send(other_fds[1],KEY_ESC,1);lv_indev_read(other);
++    send(owner_fds[1],KEY_ESC,1);lv_indev_read(owner);
++    // Unrelated input activity/release and teardown must not cancel this owner.
++    send(other_fds[1],KEY_ESC,0);lv_indev_read(other);
++    lv_indev_delete(other);close(other_fds[1]);
++    lv_tick_inc(800);lv_timer_handler();REQUIRE(state.holds==1);
++    send(owner_fds[1],KEY_ESC,0);lv_indev_read(owner);
++    send(owner_fds[1],KEY_ESC,1);lv_indev_read(owner);
++    const int before_delete=state.releases;
++    lv_indev_delete(owner);close(owner_fds[1]);
++    lv_tick_inc(800);lv_timer_handler();
++    REQUIRE(state.holds==1 && state.releases==before_delete);
++
++    // The generic adapter cleanup API (also used by SDL) has the same scoped
++    // behavior, without needing to delete the underlying LVGL device first.
++    int adapter_fds[2];auto* adapter=pipe_device(adapter_fds);
++    send(adapter_fds[1],KEY_ESC,1);lv_indev_read(adapter);
++    platform::release_key_input(adapter);
++    lv_tick_inc(800);lv_timer_handler();REQUIRE(state.holds==1);
++    lv_indev_delete(adapter);close(adapter_fds[1]);
++    platform::clear_key_release_listener(UiState::release,&state);
 +    platform::clear_global_key_listener(UiState::route,&state);platform::clear_text_entry_query(UiState::query,&state);
-+    lv_indev_delete(device);lv_obj_delete(area);lv_group_set_default(nullptr);lv_group_delete(group);lv_display_delete(display);
++    if(device) lv_indev_delete(device);lv_obj_delete(area);lv_group_set_default(nullptr);lv_group_delete(group);lv_display_delete(display);
 +}
 +#endif
 +

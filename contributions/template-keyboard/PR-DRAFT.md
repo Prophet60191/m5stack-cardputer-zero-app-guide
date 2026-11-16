@@ -7,7 +7,10 @@ Shift/Fn editing works, and toolbar digits type into the focused editor.
 
 Route global shortcuts before LVGL text delivery in both the native reader and
 desktop virtual keypad. Bound polling and handle rollover, event loss and
-disconnect. Keep the existing navigation demo; an optional counter-page editor
+disconnect. Limit each poll chain to 128 raw read attempts without discarding
+queued text. Scope held-action cleanup to its owning input device, so deleting
+that device cancels stale holds while another keyboard's release/deletion does
+not. Keep the existing navigation demo; an optional counter-page editor
 demonstrates text entry without persistence, radio dependencies or a new service.
 
 Validation: clean-checkout macOS arm64 and Debian 13 arm64 ASAN/UBSAN builds pass.

@@ -1,0 +1,26 @@
+name: M5Stack review report
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  report:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - run: sudo apt-get update && sudo apt-get install -y python3-venv poppler-utils
+      - run: python3 -m venv build/report-venv && build/report-venv/bin/pip install -r submissions/m5stack-2026-11-16/requirements.txt
+      - name: Build source-correlated reading copy
+        run: build/report-venv/bin/python submissions/m5stack-2026-11-16/build_package.py --output build/m5stack-review --report-only
+      - name: Render every report page
+        run: |
+          mkdir -p build/m5stack-preview
+          pdftoppm -png -r 100 build/m5stack-review/M5Stack-CardputerZero-Engineering-Report.pdf build/m5stack-preview/report
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: m5stack-review-report
+          path: |
+            build/m5stack-review/*.pdf
+            build/m5stack-preview/*.png
+          if-no-files-found: error

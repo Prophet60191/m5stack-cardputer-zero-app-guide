@@ -77,11 +77,11 @@ slash, `92`; translating `92` to `:` was an application error.
 
 The worked example supplies a reusable C++ decoder and regression suite:
 
-- [keyboard_decoder.h](https://github.com/Prophet60191/m5stack-cardputer-zero-mesh-app/blob/fab958d1add0d9a46cbf7a880faaa4ec005c5283/src/platform/keyboard_decoder.h)
-- [keyboard_decoder.cpp](https://github.com/Prophet60191/m5stack-cardputer-zero-mesh-app/blob/fab958d1add0d9a46cbf7a880faaa4ec005c5283/src/platform/keyboard_decoder.cpp)
-- [independent vendor fixture](https://github.com/Prophet60191/m5stack-cardputer-zero-mesh-app/blob/fab958d1add0d9a46cbf7a880faaa4ec005c5283/tests/fixtures/cardputerzero-keymap.map)
-- [raw-event/editor tests](https://github.com/Prophet60191/m5stack-cardputer-zero-mesh-app/blob/fab958d1add0d9a46cbf7a880faaa4ec005c5283/tests/keyboard.cpp)
-- [LVGL/evdev integration](https://github.com/Prophet60191/m5stack-cardputer-zero-mesh-app/blob/fab958d1add0d9a46cbf7a880faaa4ec005c5283/src/platform/linux_input.cpp)
+- [keyboard_decoder.h](https://github.com/Prophet60191/m5stack-cardputer-zero-mesh-app/blob/f1c2c77b9ccb1a26ff366539af7d51f371a3e8af/src/platform/keyboard_decoder.h)
+- [keyboard_decoder.cpp](https://github.com/Prophet60191/m5stack-cardputer-zero-mesh-app/blob/f1c2c77b9ccb1a26ff366539af7d51f371a3e8af/src/platform/keyboard_decoder.cpp)
+- [independent vendor fixture](https://github.com/Prophet60191/m5stack-cardputer-zero-mesh-app/blob/f1c2c77b9ccb1a26ff366539af7d51f371a3e8af/tests/fixtures/cardputerzero-keymap.map)
+- [raw-event/editor tests](https://github.com/Prophet60191/m5stack-cardputer-zero-mesh-app/blob/f1c2c77b9ccb1a26ff366539af7d51f371a3e8af/tests/keyboard.cpp)
+- [LVGL/evdev integration](https://github.com/Prophet60191/m5stack-cardputer-zero-mesh-app/blob/f1c2c77b9ccb1a26ff366539af7d51f371a3e8af/src/platform/linux_input.cpp)
 
 Use the **same component and tests** for new LVGL apps. Pin the source revision
 when copying or vendoring it, preserve MIT/M5Stack attribution, and keep the
@@ -181,3 +181,20 @@ It removes the need to reach for Fn just to move around a menu.
 ---
 
 Next: the full build-and-ship pipeline — [building and packaging](06-building-and-packaging.md).
+
+
+## Bound input work and clean up the owning device
+
+A native input reader should budget raw read attempts across the complete
+`continue_reading` chain, including ignored records, modifiers, repeats and
+interruptions. A limit on decoded characters alone does not bound that work.
+Yield on exhaustion and retain queued/pending input for the next poll. Verify both
+modifier floods and ordinary typing across the boundary without loss/duplication.
+
+Associate a pending hold action with its source input device. EOF, lost input and
+object teardown should cancel that owner's timer without synthesizing a short
+release/click. An unrelated device's release or deletion must not cancel the
+current owner's hold. Use the same cleanup contract for native and simulator
+adapters. Test two devices using the same key, owned deletion, loss/disconnect and
+simulated time passing after cleanup. Mesh's current component uses 128 raw read
+attempts per device poll; that is a scoped fairness bound, not a global timing guarantee.

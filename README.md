@@ -60,6 +60,13 @@ not an accepted upstream release or a new general framework.
 
 <a id="the-worked-example"></a>
 
+## M5Stack engineering review package
+
+The [prepared report and review package](submissions/m5stack-2026-11-16/README.md)
+explain the improvements, exact sources, tests, licenses and remaining checks,
+including Mesh's deliberate modular UI/supervisor design. The package is prepared
+for review; no upstream PR, Store submission or new general library is implied.
+
 ## Worked examples and preserved learning
 
 Mesh contributed many lessons, but it is one application. The

@@ -11,7 +11,7 @@ promise that two different build systems/components can be exchanged unchanged.
 | [Official Template](https://github.com/CardputerZero/Template/tree/477fa6d217b683e3084c361a757f03dc8ca9f753) | `477fa6d217b683e3084c361a757f03dc8ca9f753` | CMake/LVGL app shell, screens/widgets, theme/settings, SDL preview and device packaging |
 | [Launcher/shared cp0 components](https://github.com/CardputerZero/launcher/tree/4c05b444cb977cb90e2f33eb4c8261226e370713) | `4c05b444cb977cb90e2f33eb4c8261226e370713` | Runtime runner, platform/input contracts and optional services selected through SCons/Kconfig |
 | [AppBuilder](https://github.com/CardputerZero/AppBuilder) | Exact reviewed policy/tool revision in the [Store record](store-readiness.md) | Project creation, build/publication workflows and listing integration |
-| [Mesh worked example](https://github.com/Prophet60191/m5stack-cardputer-zero-mesh-app/tree/c51a45ee61813bf9685766f9f45c95e6778780a5) | `c51a45ee61813bf9685766f9f45c95e6778780a5` | One C++/LVGL UI/Python radio application, its specific fixes and tests |
+| [Mesh worked example](https://github.com/Prophet60191/m5stack-cardputer-zero-mesh-app/tree/f1c2c77b9ccb1a26ff366539af7d51f371a3e8af) | `f1c2c77b9ccb1a26ff366539af7d51f371a3e8af` | One C++/LVGL UI/Python radio application, its specific fixes and tests |
 
 ## Reuse, adapt or contribute
 
@@ -69,3 +69,13 @@ contribution. A standalone framework, replacement launcher and new app/device
 features are outside this work. Reassess after actual reuse demonstrates value.
 
 [Guide index](../README.md) · [Project sections](projects/README.md)
+
+
+## Review package and Mesh maintenance
+
+The [M5Stack review package](../submissions/m5stack-2026-11-16/README.md) separates
+Template integration from Mesh 0.1.11 maintenance. Both carry bounded-poll and
+owner-scoped hold cleanup tests, including unrelated-device teardown. It supplies
+exact source/patch hashes, reproduction steps, licenses and qualified evidence,
+plus the modular-supervisor rationale. Preparation does not submit a PR or qualify
+the Template physically. A second app/library discussion remains a later decision.

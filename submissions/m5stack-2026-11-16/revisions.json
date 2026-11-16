@@ -1,0 +1,18 @@
+{
+  "prepared_on": "2026-11-16",
+  "status": "prepared for review; not submitted to M5Stack",
+  "mesh_repository": "Prophet60191/m5stack-cardputer-zero-mesh-app",
+  "mesh_baseline_commit": "c51a45ee61813bf9685766f9f45c95e6778780a5",
+  "mesh_commit": "f1c2c77b9ccb1a26ff366539af7d51f371a3e8af",
+  "mesh_version": "0.1.11",
+  "mesh_patch_sha256": "dccbb750fb915efe083e8c5d2cf0a1052ad52354da6d118f1cbdd235a58ed111",
+  "template_repository": "CardputerZero/Template",
+  "template_commit": "477fa6d217b683e3084c361a757f03dc8ca9f753",
+  "template_patch_sha256": "22415b644c76d9ec2a15944bca24e8ce4fd785f350c04531d7cf711f4d4a4579",
+  "lvgl_repository": "lvgl/lvgl",
+  "lvgl_commit": "85aa60d18b3d5e5588d7b247abf90198f07c8a63",
+  "map_repository": "CardputerZero/launcher",
+  "map_commit": "4c05b444cb977cb90e2f33eb4c8261226e370713",
+  "fixture_sha256": "ac70eb97e9324a17c60d238f76ff90a3efb154f6bb026650ba78ced0c5b9896c",
+  "official_catalog_commit": "94eb8d7ad524e8ee01a52658f31871e6377c7544"
+}

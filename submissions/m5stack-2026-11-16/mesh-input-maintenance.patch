@@ -1,0 +1,242 @@
+diff --git a/src/app/desktop_virtual_keypad.cpp b/src/app/desktop_virtual_keypad.cpp
+index 8f8a493..c4076d5 100644
+--- a/src/app/desktop_virtual_keypad.cpp
++++ b/src/app/desktop_virtual_keypad.cpp
+@@ -350,6 +350,7 @@ DesktopVirtualKeypad::DesktopVirtualKeypad(lv_display_t* display) {
+ 
+ DesktopVirtualKeypad::~DesktopVirtualKeypad() {
+     if (indev_) {
++        platform::release_key_input(indev_);
+         lv_indev_delete(indev_);
+         indev_ = nullptr;
+     }
+diff --git a/src/platform/linux_input.cpp b/src/platform/linux_input.cpp
+index 5123cad..bd11e9c 100644
+--- a/src/platform/linux_input.cpp
++++ b/src/platform/linux_input.cpp
+@@ -37,6 +37,7 @@ uint32_t pressed_key = 0;
+ uint32_t press_started_at = 0;
+ bool long_press_sent = false;
+ bool pressed_key_consumed = false;
++lv_indev_t* hold_owner = nullptr;
+ lv_timer_t* long_press_timer = nullptr;
+ KeyReleaseListener key_release_listener = nullptr;
+ void* key_release_listener_user_data = nullptr;
+@@ -44,6 +45,7 @@ GlobalKeyListener global_key_listener = nullptr;
+ void* global_key_listener_user_data = nullptr;
+ 
+ constexpr uint32_t kLongPressMs = 700;
++constexpr unsigned kReadAttemptsPerPoll = 128;
+ 
+ #if !USE_DESKTOP || defined(MESH_INPUT_TESTING)
+ struct EvdevKeypad {
+@@ -53,6 +55,7 @@ struct EvdevKeypad {
+     KeyboardDecoder decoder;
+     std::optional<KeyboardDecoder::Event> pending;
+     bool dropped{false};
++    unsigned poll_budget{kReadAttemptsPerPoll};
+     explicit EvdevKeypad(KeyboardDecoder::Profile profile) : decoder(profile) {}
+ };
+ #endif
+@@ -134,10 +137,12 @@ void ensure_long_press_timer() {
+ 
+ bool route_key_state(uint32_t key, bool pressed) {
+     // Releasing an older rollover key must not cancel a newer key's hold.
+-    if (!pressed && pressed_key != key) return false;
++    auto* source = lv_indev_active();
++    if (!pressed && (pressed_key != key || hold_owner != source)) return false;
+     const bool consumed_release = !pressed && pressed_key_consumed;
+-    const bool new_hold = pressed && (!last_key_pressed || pressed_key != key);
++    const bool new_hold = pressed && (!last_key_pressed || pressed_key != key || hold_owner != source);
+     if (new_hold) {
++        hold_owner = source;
+         pressed_key = key;
+         press_started_at = lv_tick_get();
+         long_press_sent = false;
+@@ -152,6 +157,7 @@ bool route_key_state(uint32_t key, bool pressed) {
+             key_release_listener(key, describe_key(key), key_release_listener_user_data);
+         }
+         pressed_key = 0;
++        hold_owner = nullptr;
+         pressed_key_consumed = false;
+         if (long_press_timer) {
+             lv_timer_pause(long_press_timer);
+@@ -163,6 +169,14 @@ bool route_key_state(uint32_t key, bool pressed) {
+     return pressed ? pressed_key_consumed : consumed_release;
+ }
+ 
++void cancel_hold(lv_indev_t* owner) {
++    if (hold_owner != owner) return;
++    hold_owner=nullptr;
++    pressed_key=last_key=0;
++    last_key_pressed=pressed_key_consumed=long_press_sent=false;
++    if (long_press_timer) lv_timer_pause(long_press_timer);
++}
++
+ #if !USE_DESKTOP || defined(MESH_INPUT_TESTING)
+ lv_group_t* keypad_group = nullptr;
+ 
+@@ -186,12 +200,6 @@ void restore_modifier_state(EvdevKeypad& keypad) {
+             key_down(bits,KEY_LEFTCTRL),key_down(bits,KEY_RIGHTCTRL),key_down(bits,KEY_LEFTALT),key_down(bits,KEY_RIGHTALT));
+ }
+ 
+-void cancel_hold() {
+-    pressed_key=last_key=0;
+-    last_key_pressed=pressed_key_consumed=long_press_sent=false;
+-    if (long_press_timer) lv_timer_pause(long_press_timer);
+-}
+-
+ void load_system_map(KeyboardDecoder& decoder) {
+     // Fixed root-owned system source, never an intent/config-supplied path.
+     const int fd=open("/usr/share/keymaps/tca8418_keypad_m5stack_keymap.map", O_RDONLY|O_CLOEXEC|O_NOFOLLOW);
+@@ -226,22 +234,23 @@ void evdev_read_cb(lv_indev_t* indev, lv_indev_data_t* data) {
+     auto* keypad=static_cast<EvdevKeypad*>(lv_indev_get_driver_data(indev));
+     data->continue_reading=false;
+     if (!keypad || keypad->fd<0) { data->state=LV_INDEV_STATE_RELEASED; return; }
+-    while (true) {
++    while (keypad->poll_budget) {
+         std::optional<KeyboardDecoder::Event> decoded;
+         if (keypad->pending) { decoded=keypad->pending; keypad->pending.reset(); }
+         else {
+             input_event input{};
++            --keypad->poll_budget;
+             const auto size=read(keypad->fd,&input,sizeof(input));
+             if (size<0 && errno==EINTR) continue;
+             if (size<0 && (errno==EAGAIN || errno==EWOULDBLOCK)) break;
+             if (size!=sizeof(input)) {
+                 keypad->decoder.reset(); keypad->state=LV_INDEV_STATE_RELEASED;
+-                cancel_hold();
++                cancel_hold(indev);
+                 if (keypad->fd>=0) { close(keypad->fd); keypad->fd=-1; }
+                 break;
+             }
+             if (input.type==EV_SYN && input.code==SYN_DROPPED) {
+-                keypad->dropped=true; keypad->decoder.reset(); cancel_hold();
++                keypad->dropped=true; keypad->decoder.reset(); cancel_hold(indev);
+                 keypad->state=LV_INDEV_STATE_RELEASED;
+                 break; // release LVGL too; never treat a lost Esc as a click
+             }
+@@ -274,9 +283,13 @@ void evdev_read_cb(lv_indev_t* indev, lv_indev_data_t* data) {
+         // Unbound non-text function keys never become invalid Unicode in a draft.
+         if (is_action_key(data->key)) data->state=LV_INDEV_STATE_RELEASED;
+         keypad->state=data->state;
+-        data->continue_reading=true;
++        data->continue_reading=keypad->poll_budget!=0;
++        if (!data->continue_reading) keypad->poll_budget=kReadAttemptsPerPoll;
+         return;
+     }
++    if (!data->continue_reading || !keypad->poll_budget) {
++        data->continue_reading=false; keypad->poll_budget=kReadAttemptsPerPoll;
++    }
+     data->key=keypad->key; data->state=keypad->state;
+ }
+ 
+@@ -287,6 +300,7 @@ void evdev_delete_cb(lv_event_t* event) {
+         return;
+     }
+ 
++    cancel_hold(indev);
+     if (keypad->fd >= 0) {
+         close(keypad->fd);
+     }
+@@ -386,6 +400,10 @@ void route_key_input(lv_indev_data_t* data) {
+         data->state=LV_INDEV_STATE_RELEASED;
+ }
+ 
++void release_key_input(lv_indev_t* source) {
++    cancel_hold(source);
++}
++
+ void set_text_entry_query(TextEntryQuery query, void* user_data) {
+     text_entry_query=query; text_entry_query_data=user_data;
+ }
+diff --git a/src/platform/linux_input.h b/src/platform/linux_input.h
+index bf45f33..38fd5a2 100644
+--- a/src/platform/linux_input.h
++++ b/src/platform/linux_input.h
+@@ -20,6 +20,9 @@ void init_key_input(lv_display_t* display);
+ // Call once for each new decoded press/release, inside the indev read callback,
+ // BEFORE LVGL can deliver it to a focused object. Consumed shortcuts never type.
+ void route_key_input(lv_indev_data_t* data);
++// Call before destroying an input adapter. Cancel its pending hold without
++// synthesizing an application key release, click, or action for another device.
++void release_key_input(lv_indev_t* source);
+ using TextEntryQuery = bool (*)(void* user_data);
+ void set_text_entry_query(TextEntryQuery query, void* user_data);
+ void clear_text_entry_query(TextEntryQuery query, void* user_data);
+diff --git a/tests/keyboard.cpp b/tests/keyboard.cpp
+index b076dfb..dc949cb 100644
+--- a/tests/keyboard.cpp
++++ b/tests/keyboard.cpp
+@@ -112,11 +112,12 @@ static void decoder_checks() {
+ 
+ #ifdef MESH_DEVICE_INPUT_TESTS
+ struct UiState {
+-    bool editing{false},help{false};int commits{0},screenshots{0};
++    bool editing{false},help{false};int commits{0},screenshots{0},holds{0},releases{0};
+     static bool query(void* data) {return static_cast<UiState*>(data)->editing;}
++    static void release(uint32_t,const char*,void* data) { ++static_cast<UiState*>(data)->releases; }
+     static bool route(uint32_t key,const char*,bool held,void* data) {
+         auto& state=*static_cast<UiState*>(data);
+-        if (held) return true;
++        if (held) { ++state.holds; return true; }
+         if (key==platform::kKeyHelp) {state.help=!state.help;return true;}
+         if (key==platform::kKeyPrintScreen) {++state.screenshots;return true;}
+         if (state.help) {if(key==LV_KEY_ESC)state.help=false;return true;}
+@@ -154,9 +155,54 @@ static void device_path_checks() {
+     REQUIRE(std::string(lv_textarea_get_text(area))=="ab");
+     raw(EV_KEY,KEY_LEFTSHIFT,1);raw(EV_SYN,SYN_DROPPED,0);raw(EV_KEY,KEY_A,1);raw(EV_SYN,SYN_REPORT,0);key(KEY_B);drain();drain();
+     REQUIRE(std::string(lv_textarea_get_text(area))=="abb");
+-    close(fds[1]);drain();drain(); // EOF releases once and stays inert.
++    // Both ignored/modifier events and ordinary text are bounded across the
++    // complete LVGL continue_reading chain, and unread events are retained.
++    for(int i=0;i<140;++i) raw(EV_KEY,KEY_LEFTSHIFT,2);
++    raw(EV_KEY,KEY_LEFTSHIFT,0);key(KEY_B);
++    drain();REQUIRE(std::string(lv_textarea_get_text(area))=="abb");
++    drain();REQUIRE(std::string(lv_textarea_get_text(area))=="abbb");
++    lv_textarea_set_max_length(area,512);lv_textarea_set_text(area,"");
++    for(int i=0;i<70;++i) key(KEY_A);
++    drain();REQUIRE(std::string(lv_textarea_get_text(area))==std::string(64,'a'));
++    drain();REQUIRE(std::string(lv_textarea_get_text(area))==std::string(70,'a'));
++
++    // Closing the stream cancels a hold without a synthetic short-click/release.
++    platform::set_key_release_listener(UiState::release,&state);
++    raw(EV_KEY,KEY_ESC,1);drain();const int released_before=state.releases;
++    close(fds[1]);drain();drain();
++    lv_tick_inc(800);lv_timer_handler();
++    REQUIRE(state.holds==0 && state.releases==released_before);
++    lv_indev_delete(device);device=nullptr;
++
++    auto pipe_device=[&](int (&pipefd)[2]) {
++        REQUIRE(pipe(pipefd)==0);REQUIRE(fcntl(pipefd[0],F_SETFL,O_NONBLOCK)==0);
++        auto* input=platform::make_test_evdev(pipefd[0],true);lv_indev_set_display(input,display);return input;
++    };
++    auto send=[&](int fd,unsigned code,int value) {input_event ev{};ev.type=EV_KEY;ev.code=code;ev.value=value;REQUIRE(write(fd,&ev,sizeof(ev))==sizeof(ev));};
++    int owner_fds[2],other_fds[2];auto* owner=pipe_device(owner_fds);auto* other=pipe_device(other_fds);
++    send(other_fds[1],KEY_ESC,1);lv_indev_read(other);
++    send(owner_fds[1],KEY_ESC,1);lv_indev_read(owner);
++    // Unrelated input activity/release and teardown must not cancel this owner.
++    send(other_fds[1],KEY_ESC,0);lv_indev_read(other);
++    lv_indev_delete(other);close(other_fds[1]);
++    lv_tick_inc(800);lv_timer_handler();REQUIRE(state.holds==1);
++    send(owner_fds[1],KEY_ESC,0);lv_indev_read(owner);
++    send(owner_fds[1],KEY_ESC,1);lv_indev_read(owner);
++    const int before_delete=state.releases;
++    lv_indev_delete(owner);close(owner_fds[1]);
++    lv_tick_inc(800);lv_timer_handler();
++    REQUIRE(state.holds==1 && state.releases==before_delete);
++
++    // The generic adapter cleanup API (also used by SDL) has the same scoped
++    // behavior, without needing to delete the underlying LVGL device first.
++    int adapter_fds[2];auto* adapter=pipe_device(adapter_fds);
++    send(adapter_fds[1],KEY_ESC,1);lv_indev_read(adapter);
++    platform::release_key_input(adapter);
++    lv_tick_inc(800);lv_timer_handler();REQUIRE(state.holds==1);
++    lv_indev_delete(adapter);close(adapter_fds[1]);
++    platform::clear_key_release_listener(UiState::release,&state);
+     platform::clear_global_key_listener(UiState::route,&state);platform::clear_text_entry_query(UiState::query,&state);
+-    lv_indev_delete(device);lv_obj_delete(area);lv_group_set_default(nullptr);lv_group_delete(group);lv_display_delete(display);
++    if(device) lv_indev_delete(device);lv_obj_delete(area);lv_group_set_default(nullptr);lv_group_delete(group);lv_display_delete(display);
+ }
+ #endif
+ 

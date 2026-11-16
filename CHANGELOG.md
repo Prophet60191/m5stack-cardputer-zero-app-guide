@@ -146,3 +146,22 @@ verification passes locally on macOS arm64 and Debian 13 arm64 with ASAN/UBSAN,
 including the actual Linux reader into the example textarea, plus separate normal
 Template builds with the example disabled. Physical keys and the complete device/UI
 matrix remain explicit qualification work; GitHub CI checks the exact pushed source.
+
+### Mesh input maintenance and M5Stack review package
+
+- Carry the Mesh 0.1.11 polling/cleanup maintenance into the prepared Template
+  proposal: bound each read chain to 128 attempts, retain queued text and cancel
+  held actions only for their owning input device. Add flood/resumption and
+  multi-device cleanup regressions; preserve all official symbol fixtures.
+- Document Mesh's deliberate supervisor composition, authoritative state,
+  background lifetime, testing/reuse goals, costs and same-user trust limits.
+  The common guide still permits simple single-process applications.
+- Add a separate engineering report, exact revision/patch metadata, allowlisted
+  installed-runtime evidence and a reproducible PDF/offline review-bundle builder.
+  Include source archives, licenses, draft PR and checksums; require successful
+  source-matched application/guide/report CI before final bundle generation.
+- Add report-rendering CI and four package-evidence guards. All 22 guide/tool
+  tests and clean-source macOS/arm64 proposal checks pass locally. Mesh 0.1.11
+  passes exact-source CI and installed-device replay/runtime/preservation checks.
+  Physical Template qualification and actual upstream/Store submission remain
+  deferred; no test transmission or independent general SDK is introduced.

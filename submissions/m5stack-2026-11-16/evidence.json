@@ -1,0 +1,37 @@
+{
+  "reviewed_on": "2026-11-16",
+  "mesh_source": "f1c2c77b9ccb1a26ff366539af7d51f371a3e8af",
+  "template_baseline": "477fa6d217b683e3084c361a757f03dc8ca9f753",
+  "template_patch_sha256": "22415b644c76d9ec2a15944bca24e8ce4fd785f350c04531d7cf711f4d4a4579",
+  "local": {
+    "mesh_backend_cases": 98,
+    "mesh_macos_sanitizers": "passed",
+    "mesh_debian_arm64_reader_sanitizers": "passed",
+    "mesh_debian_arm64_package_upgrade_firewall": "passed",
+    "template_macos_sanitizers": "passed",
+    "template_arm64_clean_source_sanitizers": "passed"
+  },
+  "mesh_ci": {
+    "run_id": 43962055247,
+    "conclusion": "success"
+  },
+  "installed_mesh": {
+    "status": "verified",
+    "version": "0.1.11",
+    "package_sha256": "a11a16c1a010eeada7a10ee8f692514f847b62a771e3821e5d49960ca268cc47",
+    "runtime_files_match": true,
+    "settings_preserved": true,
+    "history_preserved": true,
+    "live_version_verified": true,
+    "input_replay": true,
+    "native_ui_startup": true,
+    "ordinary_user": true,
+    "firewall_healthy": true
+  },
+  "limits": [
+    "Template physical keys/firmware modes/full manual UI not newly qualified",
+    "US USB layout only; image variants need qualification",
+    "Mesh outdoor GPS/public-peer/physical-IPv6 remain separate gaps"
+  ],
+  "upstream_submission": "not submitted"
+}

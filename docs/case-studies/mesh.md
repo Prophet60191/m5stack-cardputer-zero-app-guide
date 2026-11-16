@@ -23,6 +23,15 @@ Outdoor GPS, live public-peer interoperability and physical IPv6 qualification
 remain separate gaps; simulated events do not constitute a physical all-key sweep.
 No new device qualification is claimed by reorganizing this guide.
 
+## Subsequent modularity and input maintenance
+
+Mesh 0.1.11 adds bounded input polling and source-owned hold cleanup. The
+[architecture decision](https://github.com/Prophet60191/m5stack-cardputer-zero-mesh-app/blob/f1c2c77b9ccb1a26ff366539af7d51f371a3e8af/docs/architecture.md)
+explains its purpose, benefits, costs and official-platform compatibility. The
+[M5Stack review package](../../submissions/m5stack-2026-11-16/README.md) keeps this
+maintenance separate from the optional Template integration. The original lesson
+blocks below remain preserved at their stated source revision.
+
 ## Architecture and state
 
 ### Make the boundary authoritative

@@ -13,6 +13,9 @@ Check docs/components.md before extracting another framework. Focused proposals
 live under contributions with pinned sources, licenses, examples and tests. Their
 explicit build verifier is separate from the non-executing Store preflight.
 Prepare/review contributions here; submitting an upstream PR requires instruction.
+Maintained review reports live under submissions with exact revisions and
+allowlisted evidence. Generate bundles only from committed source and successful
+matching CI; exclude private device logs, backups and configuration.
 
 Preserve the documentation license and attribution. Use wholly synthetic
 examples without personal paths, device identities, passwords or private keys.

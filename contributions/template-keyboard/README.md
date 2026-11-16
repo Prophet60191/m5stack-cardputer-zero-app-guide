@@ -14,13 +14,16 @@ cp0 SDK already has full keyboard contracts and the correct symbol map.
 The [patch](keyboard.patch) integrates the existing MIT decoder/adapter foundation
 from the Mesh example with that Template. It adds full built-in text, official
 Sym codes, Shift/Fn editing, separate US USB decoding, context-aware shortcuts,
-bounded polling, rollover, event-loss/disconnect handling and pre-editor routing.
+bounded polling, source-owned hold cleanup, rollover, event-loss/disconnect handling and pre-editor routing.
 The map is reused from M5Stack; it is not a new layout or a claimed vendor-map fix.
 
 Focused textareas select typing context automatically. Custom editors can provide
 and later clear a context query. Printable menu shortcuts belong to the editor
 while typing; Help/PrintScreen are consumed before text delivery. Existing toolbar
 navigation remains available outside text entry. The default demo is retained.
+
+Owner cleanup is scoped to its source device, including same-key holds from two
+keyboards; the native and SDL paths share the explicit release contract.
 
 The proposal replaces post-event `attach_key_router()` registration with
 `route_key_input()` inside each input read callback, before LVGL delivers text.
