@@ -158,6 +158,25 @@ through reordering and define a consistent tie order. Prepare/index list data on
 instead of repeating searches for every visible row. Measure realistic workloads;
 a synthetic improvement is not a measured battery-life benefit.
 
+Update selection styles and changed field values in place when layout is stable.
+Avoid reconstructing every row on each arrow key or subscribing to several
+subjects that each cause an identical initial rebuild. Preserve stable targets,
+scrolling and observer ownership. If a selected record disappears, require a safe
+explicit selection rather than silently acting on its replacement. Use small
+shared visual helpers where they simplify actual callers; keep each screen's
+confirmation, editing and resource lifetime explicit. Review cache ownership when
+consolidating records: retaining large previews can extend their memory lifetime.
+Selection helpers should not allocate unused styles on every unselected row.
+
+Observe independent facts independently: a mode can change while connection
+state stays Online. Refresh age/freshness and time-based filters even when no new
+hardware event arrives. A presentation clock can update existing age labels and
+markers without rebuilding the whole screen; bind its callbacks to screen/object
+lifetime and test destruction as well as stale/future-time boundaries. Unknown
+state must remain unknown after disconnect. Poll only the device facts actually
+displayed. Measure operation counts separately from timing, using the same build
+and data before/after; qualify device performance separately from host results.
+
 ## Keep context and keyboard help readable
 
 Keep the current task/record in a bounded header and reserve the footer for short

@@ -101,6 +101,15 @@ asynchronous work with a request ID and a stable target ID, not a vector index o
 pointer. Ignore late results after a view is dismissed, while still reporting any
 operation that actually committed. Define which client wins conflicting preferences.
 
+For debounced local edits, distinguish a transport enqueue from owner acceptance.
+Keep the edit pending through rejection/disconnect and correlate acceptance to
+the submitted edit, so a late result cannot clear newer text or resurrect a
+deleted record. An idempotent/no-op save can still require a small acceptance
+reply without another disk write or full snapshot. Distinguish RAM-only acceptance
+from durable storage when the app offers a persistence opt-out. Keep retries
+bounded, surface permanent errors and preserve a bounded graceful-exit barrier.
+Retrying local state does not authorize replaying external actions or transmissions.
+
 ## Preserve identity and durable intent safely
 
 An index or slot is a location, not an identity. Resolve stable identities again

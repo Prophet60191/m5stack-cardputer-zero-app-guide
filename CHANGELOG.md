@@ -1,5 +1,16 @@
 # Changelog
 
+## 2026-11-17 — Confirmed local state and measured UI maintenance
+
+- Document correlated acceptance for debounced/idempotent local saves, RAM-only
+  versus durable state, bounded retries and graceful shutdown without replaying
+  external actions.
+- Add stable selection/disappearance, in-place values/highlights, independent
+  mode/time freshness and object-bound clock callback guidance. Include cache
+  lifetime and unused-style/unused-polling checks when simplifying code.
+- Keep host measurements, matching arm64 checks and real device qualification
+  distinct. Mesh-specific results stay in its maintenance record.
+
 ## 2026-11-16 — Quiet preference synchronization
 
 - Keep startup/reconnect preference synchronization silent without skipping its
