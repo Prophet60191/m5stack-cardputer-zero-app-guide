@@ -39,3 +39,30 @@ nothing about the firewall. Keep isolated namespace tests and physical LAN probe
 separate. See [security](../08-security-and-publishing.md) and the [Mesh example](../case-studies/mesh.md).
 
 [Project selector](README.md)
+
+## Observation tools and existing-service permissions
+
+An enumerated adapter is not proof that the application acquired a fresh
+measurement. Preserve interface/permanent source identity, acquisition time,
+method and original units. NetworkManager AP Strength is percent and LastSeen
+is CLOCK_BOOTTIME seconds; repeated cached rows do not create new observations.
+BlueZ cached RSSI is separate from a new RSSI-bearing property event; a metadata
+update must not silently borrow its old signal. Stop only the discovery session
+your unique client acquired.
+
+Test the actual launch context. Wireless Surveyor's stationary integration found
+that direct SSH scan requests were denied on the tested image, while the existing
+ordinary-user manager/launcher context succeeded under unchanged policy. Report
+a permission failure precisely; do not infer a missing driver or add privileges
+from an SSH-only test. This result does not guarantee every image's policy.
+
+A connected test needs its actual local endpoint/interface and association before
+and after the operation. Bind/attribute DNS separately; an interface-bound TCP
+socket does not establish where a system-resolver lookup went. Reject late
+results across pause, capture and source-generation boundaries. Source contract
+tests can use a private D-Bus and loopback sockets in a network-disabled container,
+including a real before/after roam and another modeled client's discovery session.
+
+References: [NetworkManager AP API](https://networkmanager.dev/docs/api/latest/gdbus-org.freedesktop.NetworkManager.AccessPoint.html),
+[BlueZ Adapter API](https://bluez.readthedocs.io/en/latest/adapter-api/). These are
+measurement/ownership contracts, not physical qualification or packet-loss proof.

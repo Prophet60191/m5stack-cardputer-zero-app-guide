@@ -132,3 +132,19 @@ also records extra resource/protocol/upgrade costs, same-user trust and hardware
 recovery limits. Describe the purpose, goal and verified benefits of a split in
 your own app; do not treat the word modular as automatic safety, reusable-library
 readiness or a reason every application needs a service.
+
+## Worker construction and durable measurement jobs
+
+Start a worker thread in the constructor body after all mutexes, condition
+variables, settings and queues have been initialized. C++ initializes members
+in declaration order; starting a thread in an earlier member initializer can
+expose later members before their construction. Stress/sanitizer passes alone
+do not prove that race absent. Cancellation/reset handoff needs one owner/lock,
+and views should receive owned data with generation/request identities.
+
+When a batch is persisted, validate the exact collection being written and
+advance duplicate-suppression state only after its transaction commits. A failed
+write must permit the same acquisition token to be retried. Heavy report jobs
+should use a real read-only, consistent database snapshot and bounded inputs;
+opening a report reader must not run writer recovery or interrupt recording.
+Wireless Surveyor exercised these patterns in core, worker and UI regressions.

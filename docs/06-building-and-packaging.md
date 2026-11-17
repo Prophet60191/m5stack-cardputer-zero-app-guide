@@ -22,10 +22,11 @@ Why it's the right default:
 - **It's the same UI code.** LVGL draws identically; only the *frame* differs (an SDL window vs the
   framebuffer). Layout, navigation, theming, and flow are faithful.
 
-What the simulator **can't** do is the real hardware — the radio, the camera, the Cap. Those run
-through the **supervisor on the device** (or a mock), never in the UI process (see
-[architecture](03-architecture.md)). The UI should be fully usable in the simulator with the
-supervisor stubbed.
+The simulator does not qualify actual radios, cameras or Caps. Put slow hardware
+work behind a bounded worker, a compatible OS service or a resource-owning
+supervisor as the app requires (see [architecture](03-architecture.md)). A single
+foreground process can use supported OS services without a new daemon. Use fake
+source adapters for the simulator and test the real source contract separately.
 
 ### Desktop build (example: macOS Apple Silicon)
 
