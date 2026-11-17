@@ -171,3 +171,5 @@ matrix remain explicit qualification work; GitHub CI checks the exact pushed sou
 - Corrected the remaining universal-supervisor wording in the simulator chapter; a foreground app can use bounded workers and supported OS services.
 - Added tested worker-construction ordering, transaction-before-dedup and read-only report snapshot lessons; linked observation freshness/units and shared discovery ownership to the primary APIs.
 - Recorded the tested local-user-manager versus SSH scan-authorization distinction without prescribing new grants. Added actual endpoint/association attribution and isolated loopback/D-Bus test guidance. These are cross-app lessons; Surveyor-specific results remain in that app. No upstream contact, public repository, Store submission or device policy change.
+
+- Artifact follow-up: documented the tested FetchContent EXCLUDE_FROM_ALL integration after Surveyor's real archive/preflight exposed shared LVGL development payloads. The corrected installer excludes them and keeps its notices.

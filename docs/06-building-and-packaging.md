@@ -344,3 +344,12 @@ Validate the record's owner, type, writable modes, boot identity and freshness;
 fail closed when it is absent/stale/false. Test the real service identity and
 actual rule changes, not just the JSON parser. Remove stale comments and privilege
 exceptions when the normal user process no longer needs escalation.
+
+A linked dependency can also bring its own install rules into CPack. Wireless
+Surveyor's actual archive audit found LVGL development headers and its static
+library under shared include/lib directories, despite the app's own namespaced
+install rules. With the project's CMake 3.31 integration, declaring the LVGL
+FetchContent dependency `EXCLUDE_FROM_ALL` retained normal dependency linking
+and excluded those development payloads from the application installer. Verify
+the resulting archive and keep runtime licenses; an intent in CMake is not proof
+of package contents.
