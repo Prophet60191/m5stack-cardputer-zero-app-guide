@@ -195,3 +195,26 @@ historic number of Down presses, especially for privacy or destructive operation
 
 Detailed examples remain in [Mesh UI lessons](case-studies/mesh.md#ui-and-asynchronous-operations).
 Next: [the keyboard](05-keyboard.md).
+
+## Keep a complete setup in one place
+
+When a task spans several settings, provide one shared setup flow with a local
+draft across field editors, review and validation errors. Several entry points
+can open the same flow; remove obsolete independent paths rather than keeping
+duplicate implementations. Show which values belong to one item and which affect
+the whole device. Imported settings can be suggestions without silently replacing
+active configuration or device-specific calibration. Offer a separate saved
+profile when that is useful, with its effect on the active session explicit.
+
+On the small keyboard-driven display, keep the heading and help visible while
+fields/review text scroll. Update navigation selection in place. Test long errors,
+UTF-8 byte limits, masked secrets, deep selection, both themes, Escape, repeated
+Return, late replies and destroyed screens. Preserve an imported token when
+returning to edit an unrelated field; closing setup should cancel the whole draft.
+
+Separate local preparation, reviewed Save, stored verification, live hardware
+readback and actual connectivity/delivery. Cancellation before Save changes
+nothing; once a write has started, explain that leaving cannot undo it. Report
+partial success and uncertain outcomes explicitly so users do not duplicate an
+operation. Mesh exercises this pattern in its unified channel setup; the pattern
+also applies to network, peripheral and other device configuration tools.

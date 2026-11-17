@@ -157,3 +157,13 @@ write must permit the same acquisition token to be retried. Heavy report jobs
 should use a real read-only, consistent database snapshot and bounded inputs;
 opening a report reader must not run writer recovery or interrupt recording.
 Wireless Surveyor exercised these patterns in core, worker and UI regressions.
+
+For a multi-field hardware setup, let the owner validate a complete draft before
+returning a bounded, expiring review token. Bind it to the requesting connection,
+request generation and original setup fingerprint, and check again immediately
+before writing. Reserve/cancel queued preparation too: cancelling only an already
+created preview permits a delayed worker to recreate it after the user leaves.
+Keep secrets in the owner when the UI only needs summaries. Preserve a recoverable
+previous configuration and stop on unconfirmed recovery. A serialized file
+transaction, live readback and power-loss guarantees are distinct claims; explain
+which failure cases your implementation actually covers.

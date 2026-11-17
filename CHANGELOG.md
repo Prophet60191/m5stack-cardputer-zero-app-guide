@@ -1,5 +1,13 @@
 # Changelog
 
+## 2026-11-17 — Unified setup and cancellation ownership
+
+- Add local draft/shared-scope/review guidance, stable small-screen headings/help,
+  masked secrets, offline versus live verification and explicit partial outcomes.
+- Cover cancellation reservations before a worker creates its preview, and preserve
+  imported data during unrelated field edits. Keep device-specific qualification
+  in the app's implementation record.
+
 ## 2026-11-17 — Confirmed local state and measured UI maintenance
 
 - Document correlated acceptance for debounced/idempotent local saves, RAM-only
