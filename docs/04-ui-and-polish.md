@@ -44,6 +44,33 @@ approaches:
 Reuse *one* well-made list screen for every list (menus, item lists), rather than a different layout
 per page.
 
+## Forms, clear outcomes and persistent actions
+
+A complete form can serve as its own review. Do not require another summary page
+by habit when it only repeats values the user has just checked. Keep the primary
+action, such as **1: Save**, in a fixed action lane outside the scrolling fields.
+Show routine navigation under Help and in the user guide; reserve scarce footer
+space for useful screen actions. Give the space back to content when no action
+is needed. Keep the action label consistent with the actual destination (for
+example, Save channel versus Save profile).
+
+After scanning/importing, explicitly show success and the decoded item's name
+before settings. A method label such as "QR/share link" and a count alone can
+look like a reset. Distinguish "loaded into an unsaved form" from "saved"; preserve
+local entries on validation errors and Back. Confirm the named saved result.
+
+Validation and service-side preparation can run behind the Save action without
+becoming a mandatory visible review step. Keep ownership, stale-state checks,
+request correlation and cancellation before the first write. Ignore repeated
+activation while busy; a held key must not skip a consequential confirmation or
+save twice. Numeric shortcuts must remain ordinary characters inside text fields.
+
+Reject invalid or unsupported actions with a concrete reason. For valid changes
+with material side effects, use a brief, specific explanation/consent when needed
+rather than repeating the whole form. A guide supplements clear UI; it does not
+replace privacy choices. Physical risks that software cannot determine reliably
+still need appropriate user instructions and narrowly scoped acknowledgment.
+
 ## Never block the UI thread
 
 Long work — talking to a radio, a network call, shelling out to a tool — must **not** run on the
@@ -199,20 +226,20 @@ Next: [the keyboard](05-keyboard.md).
 ## Keep a complete setup in one place
 
 When a task spans several settings, provide one shared setup flow with a local
-draft across field editors, review and validation errors. Several entry points
+draft across field editors and validation errors. Several entry points
 can open the same flow; remove obsolete independent paths rather than keeping
 duplicate implementations. Show which values belong to one item and which affect
 the whole device. Imported settings can be suggestions without silently replacing
 active configuration or device-specific calibration. Offer a separate saved
 profile when that is useful, with its effect on the active session explicit.
 
-On the small keyboard-driven display, keep the heading and help visible while
-fields/review text scroll. Update navigation selection in place. Test long errors,
+On the small keyboard-driven display, keep the heading and primary action visible while
+fields scroll. Update navigation selection in place. Test long errors,
 UTF-8 byte limits, masked secrets, deep selection, both themes, Escape, repeated
 Return, late replies and destroyed screens. Preserve an imported token when
 returning to edit an unrelated field; closing setup should cancel the whole draft.
 
-Separate local preparation, reviewed Save, stored verification, live hardware
+Separate local preparation, explicit Save, stored verification, live hardware
 readback and actual connectivity/delivery. Cancellation before Save changes
 nothing; once a write has started, explain that leaving cannot undo it. Report
 partial success and uncertain outcomes explicitly so users do not duplicate an

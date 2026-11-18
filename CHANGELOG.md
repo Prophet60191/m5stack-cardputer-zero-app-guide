@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-11-17 — Forms as review and contextual action lanes
+
+- Document complete forms with persistent Save actions, named scan/import success,
+  service-side validation without duplicate review pages and specific consent.
+- Cover shortcut ownership during typing, held/repeated activation, truthful
+  outcomes and Help-based navigation. Preserve invalid-action blocking.
+
 ## 2026-11-17 — Unified setup and cancellation ownership
 
 - Add local draft/shared-scope/review guidance, stable small-screen headings/help,
