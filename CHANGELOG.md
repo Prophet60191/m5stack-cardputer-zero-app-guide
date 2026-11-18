@@ -310,3 +310,11 @@ matrix remain explicit qualification work; GitHub CI checks the exact pushed sou
 - This is the list-component specification in the preference walkthrough;
   no component/app implementation or device change is claimed. Documentation
   checks pass.
+
+## 2026-11-18 — On/Off row presentation locked
+
+- Record the owner's choice of a setting name on the left and On/Off text on
+  the right, instead of switches/checkmarks. Reserve chevrons for submenu
+  navigation. Choice selectors, immediate actions and toggle confirmation/state
+  handling are not silently settled by this presentation choice.
+- Preferences/documentation only; no app/device changes. Documentation checks pass.

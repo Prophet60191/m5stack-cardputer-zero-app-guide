@@ -51,7 +51,7 @@ their own item identity and navigation state.
 Additional rules supplied by the owner on 2026-11-18:
 
 - If the highlighted entry opens a submenu, show a right-facing chevron (`>`)
-  at the right of the row. The indicators for other row types are still undecided.
+  at the right of the row. Do not use it as a generic decoration on every row.
 - If content extends beyond the visible screen, show a slim bar on the right
   with a moving position marker, so the user can see that more content exists.
   Keep it available as navigation reveals items above/below; omit it when all
@@ -79,9 +79,22 @@ The owner's wrap-around request is recorded as component behavior during this
 preference walkthrough. No reusable list implementation exists from this record,
 and this update does not claim it has been applied to an existing app.
 
+## Locked: On/Off setting rows
+
+Agreed 2026-11-18: display the setting's **On** or **Off** value as text on the
+right, with its name on the left. Use this instead of a drawn toggle switch or
+checkmark for ordinary boolean settings. A row that changes a value inline does
+not receive a submenu chevron; reserve `>` for submenu navigation.
+
+Example: `Save history` on the left and `On` on the right. The value must reflect
+the setting's known state; handling pending/unknown states and any necessary
+confirmation remains part of the app's behavior contract, not a reason to display
+a false On/Off value. This preference selects presentation, not new toggle or
+confirmation behavior.
+
 ## Still to decide
 
-- Affordances for list entries that do not open submenus.
+- Affordances for choice/value selectors and immediate-action rows.
 - Body/supporting typography and spacing outside the locked home reference.
 - Overall palette policy and app-specific accent choices.
 - Status/title bars and footer actions outside this home reference.

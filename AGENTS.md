@@ -37,7 +37,9 @@ Mesh submenu-list selection styling is confirmed, with a chevron on highlighted
 submenu entries and an NFC-style right-side position bar when content overflows.
 See the preference record for conditions and source/render evidence; do not copy
 NFC's unconditional bar/chevron behavior as the specified rule. Other row types'
-affordances and typography remain open.
+affordances and typography remain open, except ordinary boolean setting rows:
+the owner selected right-aligned On/Off text, not switches/checkmarks. Keep `>`
+for submenu navigation; consult the preference record for remaining row types.
 List navigation preference includes wrapping last-to-first and first-to-last,
 keeping selection visible and updating the overflow-only position bar. This is
 specified behavior, not a claim of an implemented component or app migration.
