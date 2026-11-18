@@ -56,6 +56,14 @@ Additional rules supplied by the owner on 2026-11-18:
   with a moving position marker, so the user can see that more content exists.
   Keep it available as navigation reveals items above/below; omit it when all
   content fits. Reserve space so it does not obscure labels or chevrons.
+- Use wrap-around list navigation: Down from the last selectable entry moves
+  to the first; Up from the first moves to the last. Scroll the visible list
+  to keep the new selection in view, including after wrapping. Moving selection
+  does not activate/open the entry.
+- The position bar is conditional on actual content exceeding the visible list
+  area, not merely on the list being nonempty. Wrapping updates its marker to
+  the new position. An empty list has no selection; a single selectable item
+  remains selected. Preserve this behavior if item count or row height changes.
 - Visual reference for that bar: NFC Tools' Settings main page, inspected in
   `build/amber/settings.png` and `src/ui/app.cpp::App::list`. The example shows
   three of five rows, a thin right-side track and an accent-colored marker.
@@ -66,6 +74,10 @@ draws the bar for every nonempty list and draws chevrons on all displayed rows.
 Those existing conditions are not the owner's specified rules; reuse the visual
 reference while implementing the conditional behaviors above in any later work.
 No NFC change is made here. Typography and row content are not locked by these cues.
+
+The owner's wrap-around request is recorded as component behavior during this
+preference walkthrough. No reusable list implementation exists from this record,
+and this update does not claim it has been applied to an existing app.
 
 ## Still to decide
 

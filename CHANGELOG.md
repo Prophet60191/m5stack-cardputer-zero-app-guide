@@ -301,3 +301,12 @@ matrix remain explicit qualification work; GitHub CI checks the exact pushed sou
   current unconditional nonempty-list bar and all-row chevrons. No app fix or
   device inspection performed; other row affordances/type choices remain open.
 - Documentation checks pass; preferences only, no implementation changes.
+
+## 2026-11-18 — Wrap-around list navigation specified
+
+- Reinforce overflow-only visibility for the right-side position bar. Record
+  last-to-first Down and first-to-last Up navigation, selection-following scroll
+  and marker updates, with empty/single-item and changing-content considerations.
+- This is the list-component specification in the preference walkthrough;
+  no component/app implementation or device change is claimed. Documentation
+  checks pass.

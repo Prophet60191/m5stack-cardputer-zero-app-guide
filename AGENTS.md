@@ -38,6 +38,9 @@ submenu entries and an NFC-style right-side position bar when content overflows.
 See the preference record for conditions and source/render evidence; do not copy
 NFC's unconditional bar/chevron behavior as the specified rule. Other row types'
 affordances and typography remain open.
+List navigation preference includes wrapping last-to-first and first-to-last,
+keeping selection visible and updating the overflow-only position bar. This is
+specified behavior, not a claim of an implemented component or app migration.
 Focused proposals live under contributions with pinned sources, licenses,
 examples and tests. Their
 explicit build verifier is separate from the non-executing Store preflight.
