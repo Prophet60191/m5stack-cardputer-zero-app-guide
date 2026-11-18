@@ -215,3 +215,17 @@ matrix remain explicit qualification work; GitHub CI checks the exact pushed sou
   Clarify that recurring preferences can justify reuse without an official defect.
   Documentation only; no component extraction, application/device change or
   upstream submission. Relative documentation links checked.
+
+## 2026-11-18 — Reusable component inventory
+
+- Inspect source entry points across Mesh, Surveyor and NFC Tools; record the
+  component inventory, proposed 0.1 scope and hashes of 53 relevant files.
+  Both decoder files are byte-identical across all three apps; evdev adapters,
+  tests and other integration code differ. NFC has substantial uncommitted work,
+  so its evidence is provisional and does not describe its HEAD alone.
+- Separate first input/design candidates, later carousel/list widgets, official
+  shell reuse, optional backend/storage recipes and app-specific code. Record
+  footer/type/color preferences, file-license boundaries and acceptance gates.
+- Link the inventory from principles, README and agent context. App source and
+  device state remain unchanged; no build, app test, extraction, deployment or
+  upstream submission. Existing guide documentation checks pass.

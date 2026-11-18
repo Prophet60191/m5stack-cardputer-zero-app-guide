@@ -14,6 +14,9 @@ components. The personal library preserves appearance/interaction preferences,
 application logic and deliberate architecture as well as verified improvements.
 Keep those choices distinct from universal platform requirements; investigate
 official design intent and discuss meaningful departures and keep/share decisions.
+See docs/library-inventory.md and its evidence manifest for the source inventory
+and proposed first scope. NFC evidence is an uncommitted working-tree snapshot;
+no extraction or new framework has been implemented by that inventory.
 Focused proposals live under contributions with pinned sources, licenses,
 examples and tests. Their
 explicit build verifier is separate from the non-executing Store preflight.

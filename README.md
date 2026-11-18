@@ -67,6 +67,10 @@ foundations and distinguish personal choices, useful alternatives and demonstrat
 improvements. Each meaningful departure is discussed before deciding what to keep
 or share. These choices remain separate from the general guide's platform requirements.
 
+The [source inventory and proposed version 0.1 scope](docs/library-inventory.md)
+compare Mesh, Surveyor and NFC Tools, with file hashes, extraction candidates,
+open preferences and licensing/qualification boundaries.
+
 <a id="the-worked-example"></a>
 
 ## M5Stack engineering review package

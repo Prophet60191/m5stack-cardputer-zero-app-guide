@@ -1,6 +1,7 @@
 # Personal reusable-library principles
 
-Agreed 2026-11-18.
+Agreed 2026-11-18. The [component inventory](library-inventory.md) applies these
+principles to existing app code and proposes the first implementation scope.
 
 Our library captures how we prefer to build applications for CardputerZero:
 their appearance, interaction and internal design. It preserves tested work and
