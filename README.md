@@ -73,6 +73,9 @@ open preferences and licensing/qualification boundaries.
 The [official keyboard/input evaluation](docs/official-input-evaluation.md)
 records the first use/adapt decision: official shared input for that runtime,
 with a focused Template extension considered separately.
+The [official UI/shell evaluation](docs/official-ui-evaluation.md) records the
+next decision: reuse official foundations and adapt presentation to our preferences,
+preserving lifecycle, input and backend ownership.
 
 <a id="the-worked-example"></a>
 

@@ -1,5 +1,11 @@
 # Official components and contribution decisions
 
+The [2026-11-18 UI/shell evaluation](official-ui-evaluation.md) recommends reusing
+the appropriate official page/runtime foundation and adapting its presentation.
+Custom palettes, menus and layouts do not require a replacement app-shell SDK.
+Preserve ownership, input and backend authority; evaluate behavioral changes
+separately from appearance.
+
 The [2026-11-18 keyboard/input evaluation](official-input-evaluation.md) checks
 current official sources and supplements the historical comparison below. Use
 the official shared input backend when that runtime fits; adapt the Template's

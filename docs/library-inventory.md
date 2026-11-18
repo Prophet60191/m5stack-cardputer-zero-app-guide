@@ -67,8 +67,10 @@ historical comparison evidence, not completion of that current review.
 
 **Keyboard evaluation completed:** the [official-input review](official-input-evaluation.md)
 recommends the official backend for shared-runtime apps and a focused adaptation
-for Template text-entry apps. A standalone keyboard library is deferred. Other
-candidates still need their own current official evaluation. Next, define the
+for Template text-entry apps. A standalone keyboard library is deferred.
+The [UI/shell evaluation](official-ui-evaluation.md) recommends official foundations
+with personal presentation adapters and defers a replacement shell. Other
+candidates still need their own official evaluation. For input, define the
 Template integration profile and compare it with the shared-runtime path before
 deciding whether versioned code or guidance/tests best meets our needs.
 

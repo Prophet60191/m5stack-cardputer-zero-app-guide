@@ -258,3 +258,19 @@ matrix remain explicit qualification work; GitHub CI checks the exact pushed sou
   link the decision from inventory, components and agent context. No app/device
   changes, implementation extraction, firmware update or upstream submission.
   Existing guide documentation checks pass.
+
+## 2026-11-18 — Official UI/shell evaluation and preference boundaries
+
+- Inspect current official Template, shared page/runner, HelloWorld, APPLaunch
+  carousel/settings and key/UI guidance. Record exact revisions and 108 collected
+  reference-file hashes; distinguish collected evidence from a complete audit.
+- Decide to reuse the selected official foundation and adapt presentation, with
+  lifecycle/input/resource/backend boundaries preserved. Defer a replacement shell.
+  Record custom page/bar support, existing widgets, launcher-local dependencies,
+  footer recommendations and the behavioral effects to evaluate separately.
+- Four unmodified official lifecycle/helper contract tests pass with ASAN/UBSAN
+  on macOS arm64. These do not qualify rendered screens or device behavior.
+  Link the report from principles/inventory/UI guidance and agent context.
+- No app/device changes, visual-default enforcement, extraction, migration or
+  upstream submission. Next is the owner's style specification and representative
+  states. Existing guide documentation checks pass.

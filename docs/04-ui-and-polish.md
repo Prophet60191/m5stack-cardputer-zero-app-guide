@@ -3,6 +3,12 @@
 Make every screen predictable, readable and usable from the keyboard. Apply the
 patterns relevant to the chosen UI stack and app behavior.
 
+The [official UI/shell evaluation](official-ui-evaluation.md) identifies the
+current Template and shared-runtime foundations. Adapt colors, menus and layouts
+while preserving the chosen shell's lifecycle, input and backend boundaries.
+The demo's page names, palette and bar dimensions are implementation choices;
+personal preferences remain separate from platform contracts.
+
 ## The constraints shape everything
 
 - **Fixed 320×170.** Tiny and wide — design every screen for exactly this; nothing reflows. A few

@@ -25,6 +25,10 @@ The current keyboard evaluation is docs/official-input-evaluation.md: use the
 official shared backend for shared-runtime apps; adapt Template text input as
 needed. Defer a standalone keyboard library pending integration-profile work.
 Do not apply the raw decoder on top of already decoded shared-runtime events.
+For UI, read docs/official-ui-evaluation.md: reuse the selected official shell
+and adapt presentation. Preserve lifecycle, focus/input, resource ownership and
+backend authority. Discuss any preference that also changes behavior; no new
+shell framework, app migration or visual-default selection has been implemented.
 Focused proposals live under contributions with pinned sources, licenses,
 examples and tests. Their
 explicit build verifier is separate from the non-executing Store preflight.

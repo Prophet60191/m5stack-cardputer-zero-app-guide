@@ -27,6 +27,13 @@ to visual components, input, application logic and backend patterns alike.
 
 ## Preserve our preferences and deliberate design choices
 
+UI preferences should normally be expressed through styling, layout and focused
+view components on the official foundation. Preserve the selected shell's
+lifecycle/input/resource contracts and backend authority. If a preference also
+changes behavior, identify and discuss that effect rather than assuming it is
+cosmetic. The [official UI evaluation](official-ui-evaluation.md) records this
+boundary and the components already available.
+
 Reusable work can include layouts, colors, spacing, menus, highlighting, keyboard
 behavior and navigation. It can also include specific application logic,
 persistence, background work and backend organization.
