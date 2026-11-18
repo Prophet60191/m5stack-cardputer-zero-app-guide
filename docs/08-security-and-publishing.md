@@ -195,6 +195,11 @@ message text and personal paths. Test the export with synthetic sensitive sentin
 values and verify they cannot appear. A generic recursive redactor applied to a
 raw runtime dump is harder to reason about than selecting known safe fields.
 
+Keep fixed failure categories for timed-out checks, failed commands, invalid data
+and changed protection rules; do not collapse them into one cause or echo raw
+stderr/configuration. Test that failed checks still fail closed. A later healthy
+check establishes recovery, not the cause of the earlier failure or proof of a fix.
+
 Conversation history and named hardware profiles introduce new sensitive files.
 Use private owned directories/files, bound history and record counts, define
 retention and deletion behavior, and offer an explicit RAM-only choice. Describe

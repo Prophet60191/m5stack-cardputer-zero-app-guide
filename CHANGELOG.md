@@ -6,6 +6,8 @@
   service-side validation without duplicate review pages and specific consent.
 - Cover shortcut ownership during typing, held/repeated activation, truthful
   outcomes and Help-based navigation. Preserve invalid-action blocking.
+- Preserve safe, fixed diagnostic failure categories and distinguish later
+  recovery from evidence identifying or fixing an earlier fault.
 
 ## 2026-11-17 — Unified setup and cancellation ownership
 
