@@ -61,7 +61,8 @@ not an accepted upstream release or a new general framework.
 ## Personal reusable library
 
 The [UI preference record](docs/ui-preferences.md) tracks the owner's decisions:
-the exact Mesh home carousel is locked; other components remain open.
+the exact Mesh home carousel and Mesh list-selection base are confirmed;
+additional list items and other components remain open.
 
 Our [library principles](docs/library-principles.md) record the preferences and
 design choices we want to reuse across our own apps, including appearance,

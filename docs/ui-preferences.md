@@ -38,9 +38,25 @@ new app's own functions. That is content substitution, not permission to
 redesign the carousel. Preserve attribution and the selected official foundation's
 lifecycle/focus ownership when later implementing reuse.
 
+## Locked base: submenu-list selection — Mesh style
+
+Confirmed 2026-11-18: use Mesh's rounded selected row, subtle background fill
+and colored stripe on the left. Reference: the same Mesh commit above,
+`src/view/widgets/list_selection.h`, `style_list_row()` / `select_list_row()`.
+The existing implementation uses a 6 px radius, palette button fill and 3 px
+left border in the primary color; changing selection clears the old row's
+selection styling and scrolls the newly selected row into view. Screens retain
+their own item identity and navigation state.
+
+The owner also mentioned additional items for this component. Their content or
+location has not yet been supplied/identified; capture and discuss them before
+calling the full component specification complete. Do not infer those additions
+from this base-style confirmation. Typography, row content and any extra behavior
+are not automatically locked by the selection-style choice.
+
 ## Still to decide
 
-- Submenu lists and selected-row appearance.
+- Additional submenu-list items mentioned by the owner; details pending.
 - Body/supporting typography and spacing outside the locked home reference.
 - Overall palette policy and app-specific accent choices.
 - Status/title bars and footer actions outside this home reference.

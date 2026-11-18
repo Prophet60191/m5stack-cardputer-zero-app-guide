@@ -283,3 +283,11 @@ matrix remain explicit qualification work; GitHub CI checks the exact pushed sou
   slide/fade; comparison mockups do not replace the actual implementation.
 - Leave other components open. No app changes, extraction or new device/render
   qualification; documentation checks pass.
+
+## 2026-11-18 — Submenu selection base confirmed; additions pending
+
+- Record the owner's confirmation of Mesh's rounded selected row, palette fill
+  and colored left stripe, with the source helper and hash as reference.
+- Owner mentioned additional component items; their details/location remain
+  pending. Do not infer or finalize them, row content or other behavior.
+  Documentation only; no app/device changes. Documentation checks pass.

@@ -11,7 +11,8 @@
     "src/view/ui_const.h": "1abc6e07f3902f16427c795c5b546fcbe09bb0945954910368b7fa1820854570",
     "src/app/asset_manager.cpp": "3e87bdddc8206ecde69ee63516214261c1b1624f7beba32e7bb1f6db75385b2d",
     "src/viewmodel/base_viewmodel.cpp": "ed881dab23cb3a82bed0260c62bf5932738682a590a29461baea03314732c3cd",
-    "src/app/app.cpp": "5c48bed02e1cc57e2daf2251ff4051deb4b1920b2875416c13779b3cfe6d0c98"
+    "src/app/app.cpp": "5c48bed02e1cc57e2daf2251ff4051deb4b1920b2875416c13779b3cfe6d0c98",
+    "src/view/widgets/list_selection.h": "1b4e5846330069765d0538cfc047db89cf747d9b2debca187dbafd32534d9f2d"
   },
-  "scope": "Exact home-carousel reference; not a new render, timing or device test."
+  "scope": "Exact home-carousel and submenu-list selection base references; additional list items pending. No new render, timing or device test."
 }
