@@ -29,6 +29,10 @@ For UI, read docs/official-ui-evaluation.md: reuse the selected official shell
 and adapt presentation. Preserve lifecycle, focus/input, resource ownership and
 backend authority. Discuss any preference that also changes behavior; no new
 shell framework, app migration or visual-default selection has been implemented.
+Read docs/ui-preferences.md before UI reuse: the owner has locked Mesh's exact
+home-carousel appearance and feel, pinned with supporting hashes. Comparison
+mockups are illustrative, not the reference. Other UI preferences remain open;
+recording a preference does not implement or authorize app-wide restyling.
 Focused proposals live under contributions with pinned sources, licenses,
 examples and tests. Their
 explicit build verifier is separate from the non-executing Store preflight.

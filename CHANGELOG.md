@@ -274,3 +274,12 @@ matrix remain explicit qualification work; GitHub CI checks the exact pushed sou
 - No app/device changes, visual-default enforcement, extraction, migration or
   upstream submission. Next is the owner's style specification and representative
   states. Existing guide documentation checks pass.
+
+## 2026-11-18 — Home-carousel preference locked
+
+- Record the owner's explicit choice of Mesh's exact home-carousel look and
+  feel in docs/ui-preferences.md, with immutable source reference and hashes.
+  Preserve its geometry, fonts, theme treatment, wrapping and directional
+  slide/fade; comparison mockups do not replace the actual implementation.
+- Leave other components open. No app changes, extraction or new device/render
+  qualification; documentation checks pass.
