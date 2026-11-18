@@ -61,7 +61,18 @@ These are preferences to resolve, not defects established by this inventory:
 
 ## Proposed version 0.1
 
-The first implementation should be small enough to adopt and compare safely:
+This is a candidate scope, conditional on reviewing current official guidance
+and implementations first. The inventory's older official source pins are
+historical comparison evidence, not completion of that current review.
+
+**Next step:** evaluate the official Template and shared runtime's keyboard/input
+guidance, implementations, examples and applicable changes. Compare their
+integration paths with our needs and record a use-as-provided, adapt or deliberate-
+departure decision, including the possibility that no separate input component
+is needed. Only then design the selected integration or extraction.
+
+If justified by that evaluation, the first implementation should be small enough
+to adopt and compare safely:
 
 1. **Keyboard/input package:** the identical MIT decoder, official-map provenance,
    independent fixture, and reconciled regression harness. Document the evdev
@@ -84,6 +95,9 @@ in the initial general package.
 
 ## Extraction and acceptance gates
 
+- First evaluate current official guidance and implementation for each candidate;
+  record source revisions, fit, limitations and the use/adapt/depart decision.
+  Recurrence in our apps alone does not settle that decision.
 - Preserve M5Stack and other notices. Inspect file-level licenses and dependencies;
   NFC's GPL-marked UI/core and Mesh's GPL supervisor are not automatically MIT
   because other files or the communication boundary are MIT. Prefer an existing

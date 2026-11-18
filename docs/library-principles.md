@@ -16,6 +16,15 @@ starting point. The library complements that foundation. Reuse and adapt what
 works well, preserve attribution and licenses, and add pieces that serve our apps.
 Its purpose is not to replace official firmware or official app-building guides.
 
+Before designating any piece as reusable or designing its extraction, first
+inspect the relevant current official guidance, implementation and examples.
+Record the reviewed versions, what they provide and how they fit our needs.
+Then decide whether to use the official approach as provided, adapt it or
+deliberately take a different approach. Document the reasons, tradeoffs and
+compatibility implications. Existing shared code in our apps is a candidate,
+not an automatic decision to maintain our own implementation. Apply this order
+to visual components, input, application logic and backend patterns alike.
+
 ## Preserve our preferences and deliberate design choices
 
 Reusable work can include layouts, colors, spacing, menus, highlighting, keyboard

@@ -12,6 +12,10 @@ do not make Python, a supervisor, LoRa or a particular toolkit mandatory for all
 Check docs/components.md and docs/library-principles.md before extracting shared
 components. The personal library preserves appearance/interaction preferences,
 application logic and deliberate architecture as well as verified improvements.
+Before designating a reusable piece or designing extraction, inspect current
+official guidance/implementation/examples and record reviewed versions and a
+use-as-provided, adapt or deliberate-departure decision. Existing duplication
+does not by itself justify a separate implementation.
 Keep those choices distinct from universal platform requirements; investigate
 official design intent and discuss meaningful departures and keep/share decisions.
 See docs/library-inventory.md and its evidence manifest for the source inventory

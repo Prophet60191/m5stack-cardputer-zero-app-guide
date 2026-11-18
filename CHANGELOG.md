@@ -229,3 +229,15 @@ matrix remain explicit qualification work; GitHub CI checks the exact pushed sou
 - Link the inventory from principles, README and agent context. App source and
   device state remain unchanged; no build, app test, extraction, deployment or
   upstream submission. Existing guide documentation checks pass.
+
+## 2026-11-18 — Official evaluation precedes reusable-component design
+
+- Make the owner's required order explicit in library principles, agent context
+  and inventory: review current official guidance/implementation/examples first,
+  then decide use as provided, adapt or deliberately depart, with reasons and
+  tradeoffs. Apply this to UI, logic and backend choices alike.
+- Mark the initial scope as conditional. The next task is official keyboard/input
+  evaluation, including whether a separate component is needed at all; older
+  source pins and repeated app code do not complete that evaluation.
+- Documentation only; official review/extraction has not been performed by this
+  clarification. Existing documentation checks pass.
