@@ -201,3 +201,17 @@ matrix remain explicit qualification work; GitHub CI checks the exact pushed sou
 - Recorded the tested local-user-manager versus SSH scan-authorization distinction without prescribing new grants. Added actual endpoint/association attribution and isolated loopback/D-Bus test guidance. These are cross-app lessons; Surveyor-specific results remain in that app. No upstream contact, public repository, Store submission or device policy change.
 
 - Artifact follow-up: documented the tested FetchContent EXCLUDE_FROM_ALL integration after Surveyor's real archive/preflight exposed shared LVGL development payloads. The corrected installer excludes them and keeps its notices.
+
+## 2026-11-18 — Personal reusable-library principles
+
+- Record the agreed principles in docs/library-principles.md: complement official
+  firmware/components/guides; preserve our appearance, interaction, logic and
+  backend choices; investigate intentional differences before claiming defects.
+- Use Mesh modularity as an example of a deliberate choice with benefits and
+  costs, applied according to each app's needs. Distinguish personal preferences,
+  useful alternatives and demonstrated improvements; discuss keep/share decisions
+  case by case, including whether to contribute to official developers.
+- Link the principles from the guide, component decisions and agent context.
+  Clarify that recurring preferences can justify reuse without an official defect.
+  Documentation only; no component extraction, application/device change or
+  upstream submission. Relative documentation links checked.

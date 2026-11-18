@@ -58,6 +58,15 @@ adds the official symbol map, full text input, an optional editor example and
 raw-event/editor tests to a pinned official Template. It is a reviewable proposal,
 not an accepted upstream release or a new general framework.
 
+## Personal reusable library
+
+Our [library principles](docs/library-principles.md) record the preferences and
+design choices we want to reuse across our own apps, including appearance,
+interaction, application logic and backend organization. They complement official
+foundations and distinguish personal choices, useful alternatives and demonstrated
+improvements. Each meaningful departure is discussed before deciding what to keep
+or share. These choices remain separate from the general guide's platform requirements.
+
 <a id="the-worked-example"></a>
 
 ## M5Stack engineering review package
@@ -90,7 +99,8 @@ pinned and reviewed; a passing local report is not a Store acceptance.
 
 Corrections, focused examples and tested improvements are welcome. Prefer reusing
 or contributing to official components. Consider a separate library only after
-repeated gaps, two unrelated consumers and a maintenance/compatibility plan justify it.
+recurring needs or shared preferences, two unrelated consumers and a
+maintenance/compatibility plan justify it.
 
 ## License
 

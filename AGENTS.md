@@ -9,8 +9,13 @@ The common foundation covers many kinds of CardputerZero Linux apps. Put
 peripheral/transport-specific requirements in docs/projects and detailed Mesh
 examples in docs/case-studies. Preserve lessons and existing chapter links;
 do not make Python, a supervisor, LoRa or a particular toolkit mandatory for all apps.
-Check docs/components.md before extracting another framework. Focused proposals
-live under contributions with pinned sources, licenses, examples and tests. Their
+Check docs/components.md and docs/library-principles.md before extracting shared
+components. The personal library preserves appearance/interaction preferences,
+application logic and deliberate architecture as well as verified improvements.
+Keep those choices distinct from universal platform requirements; investigate
+official design intent and discuss meaningful departures and keep/share decisions.
+Focused proposals live under contributions with pinned sources, licenses,
+examples and tests. Their
 explicit build verifier is separate from the non-executing Store preflight.
 Prepare/review contributions here; submitting an upstream PR requires instruction.
 Maintained review reports live under submissions with exact revisions and

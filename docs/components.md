@@ -58,15 +58,20 @@ cross-build archive is a target sysroot; it is not by itself a ready-made app UI
 
 ## When a separate library is justified
 
-Require a repeated gap in the existing foundations, two unrelated applications
+Our [personal library principles](library-principles.md) allow reusable preferences
+and deliberate design choices alongside demonstrated fixes. A component can be
+useful without establishing a defect in the official implementation.
+
+Require a recurring need or deliberate shared preference, two unrelated applications
 that actually use the same interface, useful independent tests, documented
 supported versions, clear licenses and an owner for compatibility/security fixes.
 Prefer small source components with explicit versions initially. Avoid introducing
 a new system-wide service or mandatory runtime dependency without a measured need.
 
-Current decision: improve the general guide and prepare the focused keyboard
-contribution. A standalone framework, replacement launcher and new app/device
-features are outside this work. Reassess after actual reuse demonstrates value.
+Current direction: preserve tested reuse and record the personal library's
+principles while maintaining the general guide and focused keyboard contribution.
+The principles do not create a standalone framework or change an app, launcher
+or device. Component extraction remains a separate implementation decision.
 
 [Guide index](../README.md) · [Project sections](projects/README.md)
 
@@ -78,4 +83,5 @@ Template integration from Mesh 0.1.11 maintenance. Both carry bounded-poll and
 owner-scoped hold cleanup tests, including unrelated-device teardown. It supplies
 exact source/patch hashes, reproduction steps, licenses and qualified evidence,
 plus the modular-supervisor rationale. Preparation does not submit a PR or qualify
-the Template physically. A second app/library discussion remains a later decision.
+the Template physically. Current personal-library direction is recorded in the
+[agreed principles](library-principles.md).
