@@ -14,5 +14,13 @@
     "src/app/app.cpp": "5c48bed02e1cc57e2daf2251ff4051deb4b1920b2875416c13779b3cfe6d0c98",
     "src/view/widgets/list_selection.h": "1b4e5846330069765d0538cfc047db89cf747d9b2debca187dbafd32534d9f2d"
   },
-  "scope": "Exact home-carousel and submenu-list selection base references; additional list items pending. No new render, timing or device test."
+  "scope": "Exact home-carousel and submenu-list selection base references; additional list items pending. No new render, timing or device test.",
+  "nfc_overflow_reference": {
+    "project": "m5stack-cardputer-zero-nfc-tools",
+    "scope": "Existing working-tree source and synthetic render inspected; not a live device check or clean-HEAD snapshot",
+    "files_sha256": {
+      "src/ui/app.cpp": "e5183f260ad7fcda2681b2f1e39ee720cda993831976a86785944e3036ab1459",
+      "build/amber/settings.png": "218c796af610d1763e42d5ac7d1cf8298b315271106a99a357421eb3b0257ebb"
+    }
+  }
 }

@@ -33,9 +33,11 @@ Read docs/ui-preferences.md before UI reuse: the owner has locked Mesh's exact
 home-carousel appearance and feel, pinned with supporting hashes. Comparison
 mockups are illustrative, not the reference. Other UI preferences remain open;
 recording a preference does not implement or authorize app-wide restyling.
-Mesh submenu-list selection styling is also confirmed as the base. The owner
-mentioned additional items for that component; details remain pending, so do
-not treat its complete content/behavior specification as settled.
+Mesh submenu-list selection styling is confirmed, with a chevron on highlighted
+submenu entries and an NFC-style right-side position bar when content overflows.
+See the preference record for conditions and source/render evidence; do not copy
+NFC's unconditional bar/chevron behavior as the specified rule. Other row types'
+affordances and typography remain open.
 Focused proposals live under contributions with pinned sources, licenses,
 examples and tests. Their
 explicit build verifier is separate from the non-executing Store preflight.

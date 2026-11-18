@@ -62,7 +62,7 @@ not an accepted upstream release or a new general framework.
 
 The [UI preference record](docs/ui-preferences.md) tracks the owner's decisions:
 the exact Mesh home carousel and Mesh list-selection base are confirmed;
-additional list items and other components remain open.
+submenu chevrons and overflow indicators are specified. Other components remain open.
 
 Our [library principles](docs/library-principles.md) record the preferences and
 design choices we want to reuse across our own apps, including appearance,

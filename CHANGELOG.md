@@ -291,3 +291,13 @@ matrix remain explicit qualification work; GitHub CI checks the exact pushed sou
 - Owner mentioned additional component items; their details/location remain
   pending. Do not infer or finalize them, row content or other behavior.
   Documentation only; no app/device changes. Documentation checks pass.
+
+## 2026-11-18 — Submenu chevrons and overflow-bar preferences
+
+- Record the owner's additional rules: highlighted submenu entries show a right
+  chevron; overflowing content has a slim right-side position bar.
+- Found the referenced NFC Settings bar in its existing amber render and list
+  source. Record both hashes and distinguish the requested conditions from NFC's
+  current unconditional nonempty-list bar and all-row chevrons. No app fix or
+  device inspection performed; other row affordances/type choices remain open.
+- Documentation checks pass; preferences only, no implementation changes.

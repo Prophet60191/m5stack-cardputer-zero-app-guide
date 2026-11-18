@@ -38,7 +38,7 @@ new app's own functions. That is content substitution, not permission to
 redesign the carousel. Preserve attribution and the selected official foundation's
 lifecycle/focus ownership when later implementing reuse.
 
-## Locked base: submenu-list selection — Mesh style
+## Locked: submenu-list selection and navigation cues
 
 Confirmed 2026-11-18: use Mesh's rounded selected row, subtle background fill
 and colored stripe on the left. Reference: the same Mesh commit above,
@@ -48,15 +48,28 @@ left border in the primary color; changing selection clears the old row's
 selection styling and scrolls the newly selected row into view. Screens retain
 their own item identity and navigation state.
 
-The owner also mentioned additional items for this component. Their content or
-location has not yet been supplied/identified; capture and discuss them before
-calling the full component specification complete. Do not infer those additions
-from this base-style confirmation. Typography, row content and any extra behavior
-are not automatically locked by the selection-style choice.
+Additional rules supplied by the owner on 2026-11-18:
+
+- If the highlighted entry opens a submenu, show a right-facing chevron (`>`)
+  at the right of the row. The indicators for other row types are still undecided.
+- If content extends beyond the visible screen, show a slim bar on the right
+  with a moving position marker, so the user can see that more content exists.
+  Keep it available as navigation reveals items above/below; omit it when all
+  content fits. Reserve space so it does not obscure labels or chevrons.
+- Visual reference for that bar: NFC Tools' Settings main page, inspected in
+  `build/amber/settings.png` and `src/ui/app.cpp::App::list`. The example shows
+  three of five rows, a thin right-side track and an accent-colored marker.
+
+The NFC source/render reference is recorded by hash in the manifest and comes
+from an uncommitted working tree, not its HEAD alone. Its current list renderer
+draws the bar for every nonempty list and draws chevrons on all displayed rows.
+Those existing conditions are not the owner's specified rules; reuse the visual
+reference while implementing the conditional behaviors above in any later work.
+No NFC change is made here. Typography and row content are not locked by these cues.
 
 ## Still to decide
 
-- Additional submenu-list items mentioned by the owner; details pending.
+- Affordances for list entries that do not open submenus.
 - Body/supporting typography and spacing outside the locked home reference.
 - Overall palette policy and app-specific accent choices.
 - Status/title bars and footer actions outside this home reference.
