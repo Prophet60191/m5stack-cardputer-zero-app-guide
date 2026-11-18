@@ -10,6 +10,8 @@ backend and avoid translating its decoded characters a second time. Other
 languages should implement/adapt the same behavior and independent fixture checks
 at their own input seam. They need not embed a C++ library just to follow this guide.
 See the [component comparison](components.md) and [prepared Template contribution](../contributions/template-keyboard/README.md).
+The [current official-input evaluation](official-input-evaluation.md) records
+reviewed sources, use/adapt decisions and the limits of the selected tests.
 
 ## The layout
 
@@ -83,9 +85,11 @@ The worked example supplies a reusable C++ decoder and regression suite:
 - [raw-event/editor tests](https://github.com/Prophet60191/m5stack-cardputer-zero-mesh-app/blob/f1c2c77b9ccb1a26ff366539af7d51f371a3e8af/tests/keyboard.cpp)
 - [LVGL/evdev integration](https://github.com/Prophet60191/m5stack-cardputer-zero-mesh-app/blob/f1c2c77b9ccb1a26ff366539af7d51f371a3e8af/src/platform/linux_input.cpp)
 
-Use the **same component and tests** for new LVGL apps. Pin the source revision
-when copying or vendoring it, preserve MIT/M5Stack attribution, and keep the
-fixture's upstream provenance. The component has no radio, filesystem or UI-object
+For a Template/raw-evdev app that needs this extension, keep the component and
+tests together after evaluating current official options. A shared-runtime app
+should consume its official decoded input contract instead of adding this decoder.
+Pin the source revision when copying or vendoring, preserve MIT/M5Stack attribution,
+and keep the fixture's upstream provenance. The component has no radio, filesystem or UI-object
 ownership; its caller supplies raw event code/value and current typing context.
 It returns a character or semantic control plus press/release state. The LVGL
 adapter owns device discovery, trusted keymap-file I/O, routing and repeat timing.

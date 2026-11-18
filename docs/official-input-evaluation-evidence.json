@@ -1,0 +1,266 @@
+{
+  "reviewed": "2026-11-18",
+  "sources": {
+    "Template": {
+      "branch": "main",
+      "commit": "477fa6d217b683e3084c361a757f03dc8ca9f753",
+      "commit_date": "2026-10-12T07:45:28Z"
+    },
+    "launcher": {
+      "branch": "master",
+      "commit": "13d2f26b103e5c9292be7287bc640df9adf6faeb",
+      "commit_date": "2026-11-18T08:51:41Z"
+    },
+    "Keyboard-Guide": {
+      "branch": "main",
+      "commit": "dd0c1bf630ce2eabaca218417763a66fa8efe1cc",
+      "commit_date": "2026-09-17T11:26:44Z"
+    },
+    "cardputerzero.github.io": {
+      "branch": "main",
+      "commit": "eeb3c9f61afc33cc1ceb33f3ed0b81fd95491c0b",
+      "commit_date": "2026-11-18T13:09:52Z"
+    },
+    "AppBuilder": {
+      "branch": "main",
+      "commit": "18996b694ae305306fc5d457d982cfba0b0e7cc5",
+      "commit_date": "2026-10-26T14:55:01Z"
+    }
+  },
+  "template_pr4": {
+    "html_url": "https://github.com/CardputerZero/Template/pull/4",
+    "state": "open",
+    "merged": false,
+    "merged_at": null,
+    "title": "Add support for additional keys in linux_input.cpp"
+  },
+  "files": {
+    "Template/README.md": {
+      "sha256": "8876a06d1f0acafab4ec0315df7028ac1cae17e315537604b19bc5fae0c2fb77",
+      "url": "https://github.com/CardputerZero/Template/blob/477fa6d217b683e3084c361a757f03dc8ca9f753/README.md"
+    },
+    "Template/src/platform/linux_input.cpp": {
+      "sha256": "7c75ae40cb565d7d7db8738b99d7703c30c5203f429865c7421b6e60253262ea",
+      "url": "https://github.com/CardputerZero/Template/blob/477fa6d217b683e3084c361a757f03dc8ca9f753/src/platform/linux_input.cpp"
+    },
+    "Template/src/platform/linux_input.h": {
+      "sha256": "da9054d859123b201a4b500324f7ec2a3b98c40d2303a167a586322f072b8a2b",
+      "url": "https://github.com/CardputerZero/Template/blob/477fa6d217b683e3084c361a757f03dc8ca9f753/src/platform/linux_input.h"
+    },
+    "launcher/README.md": {
+      "sha256": "7e87d5a6eb5dfcf12b540a1938e883f5b20325c8f8445089d3f8375342ae8b82",
+      "url": "https://github.com/CardputerZero/launcher/blob/13d2f26b103e5c9292be7287bc640df9adf6faeb/README.md"
+    },
+    "launcher/docs/current-implementation-and-components.md": {
+      "sha256": "85010be2d09ba4f8ec304790a5b98d2dfe09d25ed2a34bf68f2f536cd302a55d",
+      "url": "https://github.com/CardputerZero/launcher/blob/13d2f26b103e5c9292be7287bc640df9adf6faeb/docs/current-implementation-and-components.md"
+    },
+    "launcher/ext_components/cp0_lvgl/SConstruct": {
+      "sha256": "80895560f28dd259e217cd1933d17564cae31d84a49f63d37b0cbada0c2d5c99",
+      "url": "https://github.com/CardputerZero/launcher/blob/13d2f26b103e5c9292be7287bc640df9adf6faeb/ext_components/cp0_lvgl/SConstruct"
+    },
+    "launcher/ext_components/cp0_lvgl/include/cp0_esc_state.h": {
+      "sha256": "4dc7dea5bfe85b4bc80be60ddae377839bb0a442990186c51d7477fa5c21a4d1",
+      "url": "https://github.com/CardputerZero/launcher/blob/13d2f26b103e5c9292be7287bc640df9adf6faeb/ext_components/cp0_lvgl/include/cp0_esc_state.h"
+    },
+    "launcher/ext_components/cp0_lvgl/include/cp0_keyboard_input_context.hpp": {
+      "sha256": "cc2b7409a01fd4e01cd1bef2225bf65a6957eed8514c0ccb27c349fbeb4eb3a3",
+      "url": "https://github.com/CardputerZero/launcher/blob/13d2f26b103e5c9292be7287bc640df9adf6faeb/ext_components/cp0_lvgl/include/cp0_keyboard_input_context.hpp"
+    },
+    "launcher/ext_components/cp0_lvgl/include/cp0_keyboard_navigation_contract.h": {
+      "sha256": "1d8780f85df87491ea46c0a892dd8466706d1b32f76ea8909e65634f3f5d8bde",
+      "url": "https://github.com/CardputerZero/launcher/blob/13d2f26b103e5c9292be7287bc640df9adf6faeb/ext_components/cp0_lvgl/include/cp0_keyboard_navigation_contract.h"
+    },
+    "launcher/ext_components/cp0_lvgl/include/input_keys.h": {
+      "sha256": "79473dd70230a3dd888be1985f014c68d07c0e5633b534bd3abd0353351611e3",
+      "url": "https://github.com/CardputerZero/launcher/blob/13d2f26b103e5c9292be7287bc640df9adf6faeb/ext_components/cp0_lvgl/include/input_keys.h"
+    },
+    "launcher/ext_components/cp0_lvgl/include/keyboard_input.h": {
+      "sha256": "741991a2cb909d99bd5ee82991500970b4e92ff759d6e6eb615e23eb582d4084",
+      "url": "https://github.com/CardputerZero/launcher/blob/13d2f26b103e5c9292be7287bc640df9adf6faeb/ext_components/cp0_lvgl/include/keyboard_input.h"
+    },
+    "launcher/ext_components/cp0_lvgl/src/cp0/cp0_keyboard_keymap.c": {
+      "sha256": "76cce64ad165df0b87ba8eb9bfb9d328c918f91e3d90557ee87ae19150e633b6",
+      "url": "https://github.com/CardputerZero/launcher/blob/13d2f26b103e5c9292be7287bc640df9adf6faeb/ext_components/cp0_lvgl/src/cp0/cp0_keyboard_keymap.c"
+    },
+    "launcher/ext_components/cp0_lvgl/src/cp0/cp0_keyboard_keymap.h": {
+      "sha256": "1b95162fbdd8aa2a4972f5b0119742ca6062757c3125a12da8ea39cdaa045166",
+      "url": "https://github.com/CardputerZero/launcher/blob/13d2f26b103e5c9292be7287bc640df9adf6faeb/ext_components/cp0_lvgl/src/cp0/cp0_keyboard_keymap.h"
+    },
+    "launcher/ext_components/cp0_lvgl/src/cp0/cp0_keyboard_lvgl_input.c": {
+      "sha256": "fd487cc51163fe22f8e550f2c6a5e3177fdc06f31e24a3a2547171dbe66bb15d",
+      "url": "https://github.com/CardputerZero/launcher/blob/13d2f26b103e5c9292be7287bc640df9adf6faeb/ext_components/cp0_lvgl/src/cp0/cp0_keyboard_lvgl_input.c"
+    },
+    "launcher/ext_components/cp0_lvgl/src/cp0/cp0_keyboard_lvgl_input.h": {
+      "sha256": "e16a2defdc624914e3df21197e927d63b85bccffcb3d751b2195cf7ceeac8cc7",
+      "url": "https://github.com/CardputerZero/launcher/blob/13d2f26b103e5c9292be7287bc640df9adf6faeb/ext_components/cp0_lvgl/src/cp0/cp0_keyboard_lvgl_input.h"
+    },
+    "launcher/ext_components/cp0_lvgl/src/cp0/cp0_lvgl_keyboard.c": {
+      "sha256": "d21057eb6eed6ed69e0d48ea002f4ec40e7f55262c8c74565dac78663525ca2f",
+      "url": "https://github.com/CardputerZero/launcher/blob/13d2f26b103e5c9292be7287bc640df9adf6faeb/ext_components/cp0_lvgl/src/cp0/cp0_lvgl_keyboard.c"
+    },
+    "launcher/ext_components/cp0_lvgl/src/cp0_esc_state.c": {
+      "sha256": "56bd3e2fa32c19a11342465dbd90f0fb03942aae141458cc3e8d9fdb75987f07",
+      "url": "https://github.com/CardputerZero/launcher/blob/13d2f26b103e5c9292be7287bc640df9adf6faeb/ext_components/cp0_lvgl/src/cp0_esc_state.c"
+    },
+    "launcher/ext_components/cp0_lvgl/src/cp0_keyboard_input_lifecycle.h": {
+      "sha256": "9c4e8b67cb5d1ce955d0b214f1529311f7d4f1cc3310324d6513820d9f94aa7a",
+      "url": "https://github.com/CardputerZero/launcher/blob/13d2f26b103e5c9292be7287bc640df9adf6faeb/ext_components/cp0_lvgl/src/cp0_keyboard_input_lifecycle.h"
+    },
+    "launcher/ext_components/cp0_lvgl/src/cp0_keyboard_key_contract.h": {
+      "sha256": "c3352b1fcf6bc37f13969ba9d4d861c773d215ae1e9d9aa7135dac11d9e926a6",
+      "url": "https://github.com/CardputerZero/launcher/blob/13d2f26b103e5c9292be7287bc640df9adf6faeb/ext_components/cp0_lvgl/src/cp0_keyboard_key_contract.h"
+    },
+    "launcher/ext_components/cp0_lvgl/src/cp0_keyboard_queue.c": {
+      "sha256": "7874ce4020772be603f7cbdf89ecc6a97d884a6a85a4e51eafc1ccf5bf7ba403",
+      "url": "https://github.com/CardputerZero/launcher/blob/13d2f26b103e5c9292be7287bc640df9adf6faeb/ext_components/cp0_lvgl/src/cp0_keyboard_queue.c"
+    },
+    "launcher/ext_components/cp0_lvgl/src/cp0_keyboard_queue.h": {
+      "sha256": "d5936fa01c5fe70c9582f32e310d6eba6ae322be0ea6732447cedad81bec362b",
+      "url": "https://github.com/CardputerZero/launcher/blob/13d2f26b103e5c9292be7287bc640df9adf6faeb/ext_components/cp0_lvgl/src/cp0_keyboard_queue.h"
+    },
+    "launcher/ext_components/cp0_lvgl/src/cp0_keyboard_text.c": {
+      "sha256": "4b4ee74b97fc7dacaae33ad8b9f929460a2f643acef531efeef9d3b26d018402",
+      "url": "https://github.com/CardputerZero/launcher/blob/13d2f26b103e5c9292be7287bc640df9adf6faeb/ext_components/cp0_lvgl/src/cp0_keyboard_text.c"
+    },
+    "launcher/ext_components/cp0_lvgl/src/cp0_keyboard_text.h": {
+      "sha256": "b43a7a7a243ba5003703616adc5fd2dc72ff11fe2fa40620a66ec9231cf13c37",
+      "url": "https://github.com/CardputerZero/launcher/blob/13d2f26b103e5c9292be7287bc640df9adf6faeb/ext_components/cp0_lvgl/src/cp0_keyboard_text.h"
+    },
+    "launcher/ext_components/cp0_lvgl/src/cp0_keyboard_thread_lifecycle.h": {
+      "sha256": "445ed07325136689c71459b300d90e2dca086fb31fd316c8112b9bb5cfefff48",
+      "url": "https://github.com/CardputerZero/launcher/blob/13d2f26b103e5c9292be7287bc640df9adf6faeb/ext_components/cp0_lvgl/src/cp0_keyboard_thread_lifecycle.h"
+    },
+    "launcher/ext_components/cp0_lvgl/src/sdl/sdl_lvgl_keyboard.c": {
+      "sha256": "b7e4fe28d595fcd93ed999873a6abbaebb7442d97f562b5aab19faec2f4fc097",
+      "url": "https://github.com/CardputerZero/launcher/blob/13d2f26b103e5c9292be7287bc640df9adf6faeb/ext_components/cp0_lvgl/src/sdl/sdl_lvgl_keyboard.c"
+    },
+    "launcher/ext_components/cp0_lvgl/tests/run_tests.sh": {
+      "sha256": "aebba6f3708f35ef2141f93e7c8d0cddef70fc3f53302e0931d9bc8990aa83fc",
+      "url": "https://github.com/CardputerZero/launcher/blob/13d2f26b103e5c9292be7287bc640df9adf6faeb/ext_components/cp0_lvgl/tests/run_tests.sh"
+    },
+    "launcher/ext_components/cp0_lvgl/tests/test_keyboard_contract.c": {
+      "sha256": "780f62b745e75e807b3e075534f24f4736c7dd5fe1e0af9393e554967cf74325",
+      "url": "https://github.com/CardputerZero/launcher/blob/13d2f26b103e5c9292be7287bc640df9adf6faeb/ext_components/cp0_lvgl/tests/test_keyboard_contract.c"
+    },
+    "launcher/ext_components/cp0_lvgl/tests/test_keyboard_input_context.cpp": {
+      "sha256": "32130381ab18503646b7f5ab90860265691ec01b1688e1d9c765c24f7e382e40",
+      "url": "https://github.com/CardputerZero/launcher/blob/13d2f26b103e5c9292be7287bc640df9adf6faeb/ext_components/cp0_lvgl/tests/test_keyboard_input_context.cpp"
+    },
+    "launcher/ext_components/cp0_lvgl/tests/test_keyboard_input_lifecycle.c": {
+      "sha256": "7f3accf08fd14802eec20ab96b96170b87a35f6a3b2cfdbf31fe1fc4b749b857",
+      "url": "https://github.com/CardputerZero/launcher/blob/13d2f26b103e5c9292be7287bc640df9adf6faeb/ext_components/cp0_lvgl/tests/test_keyboard_input_lifecycle.c"
+    },
+    "launcher/ext_components/cp0_lvgl/tests/test_keyboard_keymap.c": {
+      "sha256": "5f676af52fefd2d17f182d707c51de9d7e4f7119bb087145126c63d4975dde38",
+      "url": "https://github.com/CardputerZero/launcher/blob/13d2f26b103e5c9292be7287bc640df9adf6faeb/ext_components/cp0_lvgl/tests/test_keyboard_keymap.c"
+    },
+    "launcher/ext_components/cp0_lvgl/tests/test_keyboard_thread_lifecycle.c": {
+      "sha256": "a33c6ba38178516f246c5aa09f2337682562239ac7e3a4cbfae3873ba41df8b1",
+      "url": "https://github.com/CardputerZero/launcher/blob/13d2f26b103e5c9292be7287bc640df9adf6faeb/ext_components/cp0_lvgl/tests/test_keyboard_thread_lifecycle.c"
+    },
+    "launcher/projects/APPLaunch/main/lvgl/lv_sdl_keyboard.c": {
+      "sha256": "2787d3f724e997cf3086f3c2782363f39ba31f67c938bd8276d31664fa2d21ca",
+      "url": "https://github.com/CardputerZero/launcher/blob/13d2f26b103e5c9292be7287bc640df9adf6faeb/projects/APPLaunch/main/lvgl/lv_sdl_keyboard.c"
+    },
+    "launcher/projects/APPLaunch/main/ui/keyboard_text_input.cpp": {
+      "sha256": "a529ebb71c9d73e5c6b4179194861b07564cffd95d241f50355c18b501fae51e",
+      "url": "https://github.com/CardputerZero/launcher/blob/13d2f26b103e5c9292be7287bc640df9adf6faeb/projects/APPLaunch/main/ui/keyboard_text_input.cpp"
+    },
+    "launcher/projects/APPLaunch/main/ui/keyboard_text_input.hpp": {
+      "sha256": "2b2597243774d23b12fc508b69cc9df98e13822a701c0b4b143ea92cb4d63d73",
+      "url": "https://github.com/CardputerZero/launcher/blob/13d2f26b103e5c9292be7287bc640df9adf6faeb/projects/APPLaunch/main/ui/keyboard_text_input.hpp"
+    },
+    "launcher/projects/APPLaunch/tests/low_battery_ui/keyboard_backend.c": {
+      "sha256": "c524b3b88d8ebe65f314fbc1b756cb0b5aa8ed823806ae2605c227e409a57611",
+      "url": "https://github.com/CardputerZero/launcher/blob/13d2f26b103e5c9292be7287bc640df9adf6faeb/projects/APPLaunch/tests/low_battery_ui/keyboard_backend.c"
+    },
+    "launcher/projects/APPLaunch/tests/test_keyboard_text_input.cpp": {
+      "sha256": "ebabf8736a8205524eee480a6b412b971eb9b7c2922e69227d8bcfdb0560cda7",
+      "url": "https://github.com/CardputerZero/launcher/blob/13d2f26b103e5c9292be7287bc640df9adf6faeb/projects/APPLaunch/tests/test_keyboard_text_input.cpp"
+    },
+    "launcher/projects/CardputerZero-Emulator/src/keyboard_map.cpp": {
+      "sha256": "e651d67c09ad18bc0b7fb08e42f8e56ee9730bc0b770b102fb2a4ca9b492a032",
+      "url": "https://github.com/CardputerZero/launcher/blob/13d2f26b103e5c9292be7287bc640df9adf6faeb/projects/CardputerZero-Emulator/src/keyboard_map.cpp"
+    },
+    "launcher/projects/CardputerZero-Emulator/src/keyboard_map.h": {
+      "sha256": "41c352645513fa5c8ff5eb7053522cca991e6f64f96988186a786122e440e801",
+      "url": "https://github.com/CardputerZero/launcher/blob/13d2f26b103e5c9292be7287bc640df9adf6faeb/projects/CardputerZero-Emulator/src/keyboard_map.h"
+    },
+    "Keyboard-Guide/README.md": {
+      "sha256": "1e4da960ea1e7cbc10fbc90c21c54a5a08264cfa51ca3d77e29c0579edeb1a8c",
+      "url": "https://github.com/CardputerZero/Keyboard-Guide/blob/dd0c1bf630ce2eabaca218417763a66fa8efe1cc/README.md"
+    },
+    "Keyboard-Guide/src/core/keyboard_guide_app.cpp": {
+      "sha256": "28f6b8ba74c0a626834060717f3671c1aefb653b00f904214422938f4a59f4a5",
+      "url": "https://github.com/CardputerZero/Keyboard-Guide/blob/dd0c1bf630ce2eabaca218417763a66fa8efe1cc/src/core/keyboard_guide_app.cpp"
+    },
+    "Keyboard-Guide/src/core/keyboard_guide_app.hpp": {
+      "sha256": "2eb977ea34f455306c0f2a260badbf6ca73683c48c48e7da5b5003ad76c48d37",
+      "url": "https://github.com/CardputerZero/Keyboard-Guide/blob/dd0c1bf630ce2eabaca218417763a66fa8efe1cc/src/core/keyboard_guide_app.hpp"
+    },
+    "Keyboard-Guide/src/hal/keyboard_guide_lvgl_hal.cpp": {
+      "sha256": "6637e53bef15b36ff7293677180c3688137c617065c2bf8946d3119d01861c6b",
+      "url": "https://github.com/CardputerZero/Keyboard-Guide/blob/dd0c1bf630ce2eabaca218417763a66fa8efe1cc/src/hal/keyboard_guide_lvgl_hal.cpp"
+    },
+    "Keyboard-Guide/src/hal/keyboard_guide_lvgl_hal.hpp": {
+      "sha256": "5e8a7ed1a77b4b9c09579c215f51eeb16123c5d0bd0324bdddb5d1553bd99665",
+      "url": "https://github.com/CardputerZero/Keyboard-Guide/blob/dd0c1bf630ce2eabaca218417763a66fa8efe1cc/src/hal/keyboard_guide_lvgl_hal.hpp"
+    },
+    "Keyboard-Guide/src/input/keyboard_guide_input.cpp": {
+      "sha256": "2096f4f31990f99fb76ebfb2f905cddb3d77521ad6e642a9475a04fcbec580ea",
+      "url": "https://github.com/CardputerZero/Keyboard-Guide/blob/dd0c1bf630ce2eabaca218417763a66fa8efe1cc/src/input/keyboard_guide_input.cpp"
+    },
+    "Keyboard-Guide/src/input/keyboard_guide_input.hpp": {
+      "sha256": "82164cd98873b27e4e4a7d22f18269449883bc1d6870b1aded72c54410f443cf",
+      "url": "https://github.com/CardputerZero/Keyboard-Guide/blob/dd0c1bf630ce2eabaca218417763a66fa8efe1cc/src/input/keyboard_guide_input.hpp"
+    },
+    "cardputerzero.github.io/docs/en/CP0_keys.md": {
+      "sha256": "617d9a88c08420d1c666e955607732ca029add44db82ab81f43db13a4c0f6d18",
+      "url": "https://github.com/CardputerZero/cardputerzero.github.io/blob/eeb3c9f61afc33cc1ceb33f3ed0b81fd95491c0b/docs/en/CP0_keys.md"
+    },
+    "cardputerzero.github.io/docs/ja/CP0_keys.md": {
+      "sha256": "752023b9fb0816f35096add14acf0fe2819daebc7ad3f5d95d56c79ea8b3caa0",
+      "url": "https://github.com/CardputerZero/cardputerzero.github.io/blob/eeb3c9f61afc33cc1ceb33f3ed0b81fd95491c0b/docs/ja/CP0_keys.md"
+    },
+    "cardputerzero.github.io/docs/zh-CN/CP0_keys.md": {
+      "sha256": "62a8a654eb6897bf2d947c9cccc53d0cdc3cb571d1d9698962847e483ae6f537",
+      "url": "https://github.com/CardputerZero/cardputerzero.github.io/blob/eeb3c9f61afc33cc1ceb33f3ed0b81fd95491c0b/docs/zh-CN/CP0_keys.md"
+    },
+    "AppBuilder/README.md": {
+      "sha256": "c5974f29eb05f4c28ef6889cad9a456e246c47263db56f3397d8deea65a78a93",
+      "url": "https://github.com/CardputerZero/AppBuilder/blob/18996b694ae305306fc5d457d982cfba0b0e7cc5/README.md"
+    }
+  },
+  "selected_validation": {
+    "tests": [
+      {
+        "name": "input-lifecycle",
+        "result": "pass",
+        "platform": "macOS arm64",
+        "sanitizers": "ASAN/UBSAN"
+      },
+      {
+        "name": "thread-lifecycle",
+        "result": "pass",
+        "platform": "macOS arm64",
+        "sanitizers": "ASAN/UBSAN"
+      },
+      {
+        "name": "keyboard-contract",
+        "result": "pass",
+        "platform": "macOS arm64",
+        "sanitizers": "ASAN/UBSAN"
+      },
+      {
+        "name": "context-scope",
+        "result": "pass",
+        "platform": "macOS arm64",
+        "sanitizers": "ASAN/UBSAN"
+      }
+    ],
+    "official_default_map_matches_independent_fixture": 32,
+    "limits": "selected host contracts only; no full SDK, Linux evdev, xkb runtime or physical-key qualification"
+  },
+  "scope": "Focused source evaluation and four selected macOS arm64 contracts; no device or app changes, full SDK suite, Linux reader/xkb or physical-key qualification."
+}

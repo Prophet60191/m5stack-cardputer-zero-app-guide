@@ -241,3 +241,20 @@ matrix remain explicit qualification work; GitHub CI checks the exact pushed sou
   source pins and repeated app code do not complete that evaluation.
 - Documentation only; official review/extraction has not been performed by this
   clarification. Existing documentation checks pass.
+
+## 2026-11-18 — Current official keyboard/input evaluation
+
+- Check current official key guidance, Template, launcher/shared input, Keyboard
+  Guide and AppBuilder sources; record exact revisions and file hashes. Template
+  is unchanged at 477fa6d; reviewed launcher head is 13d2f26. Template PR4 remains
+  open/unmerged. Prepared contribution/policy pins remain unchanged.
+- Recommend official decoded input for shared-runtime consumers and focused
+  Template adaptation for text-entry apps. Defer a standalone keyboard library;
+  integration profiles should establish whether code extraction is useful.
+- Four selected unmodified official macOS arm64 tests pass with ASAN/UBSAN;
+  32 default map assignments match the independent vendor fixture. Full SDK,
+  Linux xkb/reader integration and physical keys remain unqualified in this pass.
+- Update keyboard guidance to avoid prescribing our decoder for every LVGL app;
+  link the decision from inventory, components and agent context. No app/device
+  changes, implementation extraction, firmware update or upstream submission.
+  Existing guide documentation checks pass.

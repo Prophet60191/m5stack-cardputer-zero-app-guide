@@ -1,5 +1,11 @@
 # Official components and contribution decisions
 
+The [2026-11-18 keyboard/input evaluation](official-input-evaluation.md) checks
+current official sources and supplements the historical comparison below. Use
+the official shared input backend when that runtime fits; adapt the Template's
+navigation subset for text-entry needs. A general replacement keyboard library
+is deferred. Existing prepared contribution pins remain unchanged.
+
 Reviewed **2026-11-16**. Start with the official implementation that fits your
 project. This is a source-level comparison, not a security certification or a
 promise that two different build systems/components can be exchanged unchanged.

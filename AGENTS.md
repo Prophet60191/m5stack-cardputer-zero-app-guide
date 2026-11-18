@@ -21,6 +21,10 @@ official design intent and discuss meaningful departures and keep/share decision
 See docs/library-inventory.md and its evidence manifest for the source inventory
 and proposed first scope. NFC evidence is an uncommitted working-tree snapshot;
 no extraction or new framework has been implemented by that inventory.
+The current keyboard evaluation is docs/official-input-evaluation.md: use the
+official shared backend for shared-runtime apps; adapt Template text input as
+needed. Defer a standalone keyboard library pending integration-profile work.
+Do not apply the raw decoder on top of already decoded shared-runtime events.
 Focused proposals live under contributions with pinned sources, licenses,
 examples and tests. Their
 explicit build verifier is separate from the non-executing Store preflight.

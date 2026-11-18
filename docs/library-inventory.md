@@ -65,11 +65,12 @@ This is a candidate scope, conditional on reviewing current official guidance
 and implementations first. The inventory's older official source pins are
 historical comparison evidence, not completion of that current review.
 
-**Next step:** evaluate the official Template and shared runtime's keyboard/input
-guidance, implementations, examples and applicable changes. Compare their
-integration paths with our needs and record a use-as-provided, adapt or deliberate-
-departure decision, including the possibility that no separate input component
-is needed. Only then design the selected integration or extraction.
+**Keyboard evaluation completed:** the [official-input review](official-input-evaluation.md)
+recommends the official backend for shared-runtime apps and a focused adaptation
+for Template text-entry apps. A standalone keyboard library is deferred. Other
+candidates still need their own current official evaluation. Next, define the
+Template integration profile and compare it with the shared-runtime path before
+deciding whether versioned code or guidance/tests best meets our needs.
 
 If justified by that evaluation, the first implementation should be small enough
 to adopt and compare safely:

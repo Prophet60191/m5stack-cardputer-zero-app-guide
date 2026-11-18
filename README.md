@@ -70,6 +70,9 @@ or share. These choices remain separate from the general guide's platform requir
 The [source inventory and proposed version 0.1 scope](docs/library-inventory.md)
 compare Mesh, Surveyor and NFC Tools, with file hashes, extraction candidates,
 open preferences and licensing/qualification boundaries.
+The [official keyboard/input evaluation](docs/official-input-evaluation.md)
+records the first use/adapt decision: official shared input for that runtime,
+with a focused Template extension considered separately.
 
 <a id="the-worked-example"></a>
 
