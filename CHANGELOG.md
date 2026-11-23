@@ -338,3 +338,14 @@ matrix remain explicit qualification work; GitHub CI checks the exact pushed sou
 - Add general task clarity/recovery guidance without changing the official
   foundation or creating another shell. Mesh implementation evidence remains
   in that app; no guide-side device qualification is claimed.
+
+## 2026-11-22 — Reading-edition refresh closeout
+
+- Render and review the complete 92-page development reading edition and the
+  companion 40-page Mesh manual plus one-page quick reference. Local source/link
+  checks pass; generated PDFs remain outside Git and device installers.
+- Refresh the owner's existing Drive manuals in place and verify PDF type, size
+  and unchanged parent placement. Preserve links and sharing organization.
+- Shorten a repeated UI explanation to avoid an isolated end-page line; preserve
+  the lesson and cross-reference. Keep implementation qualification in Mesh's
+  own refinement record. No official branding or new framework is introduced.

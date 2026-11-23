@@ -68,3 +68,9 @@ preflight must never authenticate, fetch, install, execute package scripts, uplo
 or create PRs. Test synthetic packages with the pinned official policies before
 committing tool changes. Keep local acceptance, hardware/security evidence and
 actual Store approval separate. A guide change does not authorize app submission.
+
+The 2026-11-22 preference update also locks direct two-choice rows, selection
+menus for more choices and grouped task forms. Read docs/ui-preferences.md for
+these newer decisions; earlier pending-choice notes do not override that record.
+Mesh owns its 0.1.15 implementation/device evidence; no shared library extraction
+or cross-app migration is implied by this guide update.

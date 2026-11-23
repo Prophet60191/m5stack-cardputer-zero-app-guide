@@ -264,6 +264,5 @@ available, binding the action to a stable identity rather than a moving row.
 Explain communication outcomes in ordinary language; distinguish a transport
 acknowledgment from a recipient receipt and a person reading the message. Make
 important values readable in both themes and pair meaningful color with another
-cue. Record scope/limits of search matching and qualify whole tasks rather than
-claiming hardware success from screen renders. See the
-[personal preferences](ui-preferences.md) for direct two-choice rows and grouped forms.
+cue. Document search limits. See [personal preferences](ui-preferences.md)
+for direct two-choice rows and grouped forms.
