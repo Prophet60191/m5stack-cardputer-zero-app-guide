@@ -89,8 +89,11 @@ boundary for this application's actual needs.
 
 - **Show useful progress** for long operations. A bounded, redacted log pane can
   suit a diagnostic tool; a short status or progress value can suit a simple task.
-- **Show relevant status** (connection, battery or unread count) when it helps the
+- **Show relevant status** (connection or unread count) when it helps the
   task. Reuse the chosen foundation's supported status source and avoid redundant polling.
+  Do not add a battery icon to the header by default. Our personal preference
+  keeps any useful battery percentage as text without a battery glyph; see
+  [the preference record](ui-preferences.md#locked-header-battery-presentation).
 
 Keep routine startup and reconnect preference synchronization quiet. Apply the saved
 setting and return a correlated acknowledgment without a success toast; confirm

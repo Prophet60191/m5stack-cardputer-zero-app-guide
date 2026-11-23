@@ -116,6 +116,16 @@ or a universal requirement for every project. Source and physical qualification
 remain app-specific. Mesh's 0.1.15 candidate implements a focused refinement;
 its verification record owns the actual results and remaining checks.
 
+## Locked: header battery presentation
+
+Agreed 2026-11-23: omit the battery icon from the app header. Mesh retains the
+numeric charge percentage when battery data is available, with no substitute
+charging/battery glyph. This is our presentation preference, not a platform
+requirement or a replacement for the official shell/status source. Preserve
+truthful unknown/absent state and existing backend ownership. Do not add polling
+or change telemetry merely to remove a decorative icon. Other apps are not
+silently migrated by this documentation update.
+
 ## Still to decide
 
 - Presentation of immediate-action rows beyond the recorded choice rules.

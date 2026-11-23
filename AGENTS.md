@@ -88,3 +88,8 @@ do not imply that it is a new app, an extracted library or device qualification.
 The independent-reader check in docs/first-reader-check.md remains pending until
 an unfamiliar builder actually reports completing it. Keep beginner reading
 routes distinct from the full reference, optional recipes and personal preferences.
+
+
+Header preference (2026-11-23): omit the battery glyph; useful numeric percentage
+may remain. See docs/ui-preferences.md. This is personal presentation guidance,
+not a replacement for official status sources or a cross-app migration.

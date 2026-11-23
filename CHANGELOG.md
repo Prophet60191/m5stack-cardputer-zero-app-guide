@@ -384,3 +384,11 @@ matrix remain explicit qualification work; GitHub CI checks the exact pushed sou
   together and avoid isolated paragraph lines in the reading edition.
 - Refresh the existing Drive PDF in place and verify its type, byte count and
   unchanged folder. No app, launcher, radio or device settings were changed.
+
+
+## 2026-11-23 — Header battery preference
+
+- Remove battery from the generic status example; do not recommend a battery
+  icon in app headers. Record the owner's no-icon preference while allowing
+  useful numeric percentage and preserving official shell/backend boundaries.
+- Mesh 0.1.18 owns implementation and qualification; no other app is migrated.
