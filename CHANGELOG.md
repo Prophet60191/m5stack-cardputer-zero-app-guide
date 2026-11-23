@@ -430,3 +430,7 @@ matrix remain explicit qualification work; GitHub CI checks the exact pushed sou
 - All 22 guide/preflight tests pass. The updated 105-page reading edition has a
   visually checked cover/link and packaging section; existing Drive PDF replaced
   in place. Mesh's 42-page candidate manual and one-page reference also refreshed.
+
+- Final packaging review adds `preinst` interpreter Pre-Depends and separate
+  manual/installer checksum asset names, preventing dependency-order and release
+  attachment collisions. Rebuild and inspect the updated reading edition.
