@@ -75,12 +75,15 @@ GPIO line and the spidev handle the instant it exits or crashes — no stuck pin
 
 ## If you bundle a GPL radio daemon
 
-`meshtasticd` and the `meshtastic` Python client library are **GPL-3.0**. If your supervisor imports
-the library in-process, that integration must comply with its GPL terms. This example licenses the
-supervisor GPL-3.0-or-later and the separate C++ UI MIT. The example chooses: **do not bundle the GPL daemon or
-library in your repo** — depend on them and have the user install them — and license the one process
-that *links* the GPL library as GPL-3.0 while your UI stays whatever you choose. See
-[security and publishing](08-security-and-publishing.md).
+The native daemon and Python client retain their GPL terms. Mesh's supervisor
+is GPL-3.0-or-later; its separate UI files retain their MIT terms. Preserve each
+component's applicable licenses and corresponding-source obligations. A process
+or socket boundary is not an automatic licensing exemption.
+
+Earlier Mesh versions used separate prerequisites. Version 0.1.19 redistributes
+a private native runtime and locked wheels with notices and paired source.
+Neither plan is universal; see [packaging](06-building-and-packaging.md#packaging-a-python-app)
+and [security/publishing](08-security-and-publishing.md).
 
 ## Legal/operational rules to surface in your app
 

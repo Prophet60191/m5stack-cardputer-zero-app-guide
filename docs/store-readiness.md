@@ -96,7 +96,7 @@ are useful for any app:
 | Non-root firewall account and a user supervisor mean the package passes | These address service identity; path and other policies still apply. Resolve the legitimate user-unit path conflict without weakening security |
 | A `debian-arm64.yml` workflow builds every package | Mesh actually uses the `debian-arm64` job in `.github/workflows/regressions.yml`; link the real workflow and its successful run |
 | Example uses 0.1.7 | Current reviewed candidate is 0.1.8, Debian `0.1.8-rev1`; use metadata from the selected artifact, not copied version examples |
-| Separate installation of meshtasticd/Python dependencies is always correct | This is Mesh's chosen plan. Other apps may use Debian dependencies or maintained private bundles; fresh-image install/runtime checks remain required |
+| Separate installation of meshtasticd/Python dependencies is always correct | Historical Mesh versions chose separate prerequisites; 0.1.19 uses a maintained private bundle plus Debian OS dependencies. Evaluate the current version and test first-run/upgrade/removal; do not copy an old plan blindly |
 | `docs/` does not ship | Mesh installs Markdown/images under `/usr/share/doc/cardputerzero-mesh/docs`, excluding generated PDFs; inspect install rules/archive, not assumptions |
 
 Evidence: [Mesh source fab958d](https://github.com/Prophet60191/m5stack-cardputer-zero-mesh-app/tree/fab958d1add0d9a46cbf7a880faaa4ec005c5283),

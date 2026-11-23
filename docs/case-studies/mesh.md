@@ -5,6 +5,22 @@ Its channels, acknowledgments, private-channel keys and persistence policy expla
 many of this guide's original examples. They are optional application concerns.
 A calculator or local notes app does not need the radio service or its firewall.
 
+## Current dependency distribution (0.1.19)
+
+The older source/evidence examples below retain their recorded versions. Mesh
+0.1.19 now bundles the GPS-corrected native radio and 15 locked Python wheels in
+one installer, with Debian supplying standard OS libraries. The existing user
+service prepares its private environment offline; a separate global daemon and
+manual user pip setup are no longer required. This changes distribution, not the
+UI/supervisor ownership boundary or the official components it reuses.
+
+[Qualified package/device evidence](https://github.com/Prophet60191/m5stack-cardputer-zero-mesh-app/blob/39f7ed77c80746fbb4fac25af2d3529d07b723e6/docs/distribution-validation-20261123.md)
+identifies exact source/bytes and separates minimal Debian tests from the
+owner-deferred fresh-image hardware test. The
+[current install/backup/recovery runbook](https://github.com/Prophet60191/m5stack-cardputer-zero-mesh-app/blob/main/docs/install.md)
+and [build/source instructions](https://github.com/Prophet60191/m5stack-cardputer-zero-mesh-app/blob/main/docs/distribution.md)
+are maintained operational guidance, not immutable historical evidence.
+
 ## Evidence and scope
 
 The preserved sections below come from the [previous guide revision](https://github.com/Prophet60191/m5stack-cardputer-zero-app-guide/tree/a7ddc7ff73e71a32c71b68bbc87290af73424eea),
@@ -245,11 +261,11 @@ Long information overlays need keyboard scrolling as well as an Escape path.
   - Your **C++/LVGL UI stays MIT** — it only talks to the other process over a socket (separate
     program; preserve the distinct licenses and interfaces).
   - The supervisor incorporates the GPL client library and is licensed **GPL-3.0-or-later**.
-  - **This example does not bundle the daemon/library** in its `.deb`; its GPL
-    supervisor sources are included. The daemon/library are installed separately
-    using documented versions. This is the example's dependency plan, not a rule
-    that all apps must use external prerequisites or that GPL forbids bundling.
-    See the [three dependency plans](../06-building-and-packaging.md#packaging-a-python-app).
+  - **0.1.19 bundles the qualified daemon and client wheels**, with original
+    notices and paired corresponding source. Earlier examples used separate
+    prerequisites. Neither arrangement is mandatory for other apps; the right
+    plan depends on supported images, maintenance and user installation needs.
+    See the [dependency plans](../06-building-and-packaging.md#packaging-a-python-app).
   - Running a separate GPL *program* as a subprocess (e.g. launching `meshtasticd`) does **not**
     by itself determine the other program's license; the nature of the integration
     and applicable terms still matter. The example publishes both components as

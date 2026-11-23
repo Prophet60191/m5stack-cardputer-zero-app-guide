@@ -434,3 +434,19 @@ matrix remain explicit qualification work; GitHub CI checks the exact pushed sou
 - Final packaging review adds `preinst` interpreter Pre-Depends and separate
   manual/installer checksum asset names, preventing dependency-order and release
   attachment collisions. Rebuild and inspect the updated reading edition.
+
+
+## 2026-11-23 — Complete operational documentation follow-through
+
+- Update the Mesh case study's current dependency plan to 0.1.19 private bundles
+  while preserving dated evidence/examples and optional architecture choices.
+- Correct the Store example table's old separate-prerequisite statement. Add the
+  reusable requirement to document install through rollback/removal, generate
+  offline instructions from one runbook, and preserve binary/document provenance.
+- Refresh/review the reading PDF with its existing public GitHub cover link and
+  maintain its original Drive identity. No app/runtime/device changes here.
+
+- Validation: all 22 guide/preflight tests pass; the 106-page reading edition is
+  rebuilt and changed/reflowed pages inspected. The public GitHub cover link is
+  preserved. The Mesh operational manual remains 42 pages plus a one-page
+  reference; update its current Drive/Desktop and draft copies separately.

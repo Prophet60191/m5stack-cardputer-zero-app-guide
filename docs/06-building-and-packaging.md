@@ -99,10 +99,10 @@ an arbitrary Python environment for you. Three plans are possible:
 | App-private vendoring | Dependencies you can legally redistribute and maintain | Full dependency closure, native ABI compatibility, licenses/source obligations and a security-update process |
 | Explicit external prerequisite | A separately managed daemon, hardware stack or environment | Exact supported versions, installation instructions, runtime detection and a useful missing/incompatible-dependency screen |
 
-Combinations are normal. Mesh currently uses Debian dependencies for native/system
-components and separately installed `meshtasticd` plus a pinned app-private Python
-environment. That is a distribution choice, not a Store requirement or a GPL
-prohibition on bundling. See the [worked example's installation instructions](https://github.com/Prophet60191/m5stack-cardputer-zero-mesh-app#install--run)
+Combinations are normal. Mesh 0.1.19 uses Debian dependencies for standard OS
+components plus a private qualified radio executable and locked Python wheels,
+prepared offline for the user. Earlier Mesh versions used separate prerequisites.
+This is a distribution choice, not a Store requirement or a GPL bundling ban. See the [worked example's installation instructions](https://github.com/Prophet60191/m5stack-cardputer-zero-mesh-app#install--run)
 and [licensing](08-security-and-publishing.md#licensing-including-the-mitgpl-split).
 
 Test the chosen plan on a fresh supported image, then test missing/incompatible
@@ -412,3 +412,19 @@ names so later uploads cannot replace installer verification. State which
 downloads remain: Docker/toolchains, OS packages and accounts are external.
 Offline builds need named caches/images prepared first; claim a zero-download
 first build only when supplied and tested.
+
+## Document the operator's whole lifecycle
+
+A dependency change is incomplete if only the code and release notes are updated.
+Keep one current operations runbook covering actual artifact availability,
+checksums, supported image, transfer/install, first launch, upgrade, private backup
+and deliberate restore, service/log recovery, compatible rollback and removal.
+State what is bundled, supplied by APT, optional or account-dependent. Keep dated
+evidence intact, but label obsolete commands and link to current instructions.
+
+Generate an offline installer instruction asset from that runbook, and update
+the user manual's startup/recovery sections. Keep tested binary/source hashes
+fixed when refreshing documentation; give new document assets their own
+provenance/checksums and do not imply a documentation update requalified hardware.
+A draft is not a public download. Installation examples must not assume root
+launch, a developer's username, existing private environment or account secrets.
