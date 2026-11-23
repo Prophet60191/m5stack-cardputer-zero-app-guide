@@ -1,9 +1,9 @@
 {
-  "reviewed_on": "2026-11-16",
+  "reviewed_on": "2026-11-23",
   "packages_repository": "https://github.com/CardputerZero/packages",
-  "packages_commit": "94eb8d7ad524e8ee01a52658f31871e6377c7544",
+  "packages_commit": "b6c559a0448aae7715c4b45678a0b89c9eceb12b",
   "appbuilder_repository": "https://github.com/CardputerZero/AppBuilder",
-  "appbuilder_commit": "18996b694ae305306fc5d457d982cfba0b0e7cc5",
+  "appbuilder_commit": "042356c579d728d684eccb68ed9f8669a32822bc",
   "sha256": {
     ".github/scripts/store_meta_policy.py": "748c9a2c5cb204b5e6ad1d19a44f82d61acf3e66f034ae73fc2fbe1cfdb74505",
     ".github/scripts/install_path_policy.py": "3cedaa05f85fe4a98c97f5d77221c53dd53d7772a775d2995fadb1f7c602b4c5"

@@ -10,7 +10,7 @@ not mean it is implemented or qualified in every example application.
 |---|---|---|
 | Calculator, notes, timer, simple game | [Local utilities](local-utilities.md) | Architecture/acceptance recipe; no new device app claimed |
 | Text, drafts, searchable records, messaging | [Persistence and messaging](messaging.md) | General rules with detailed Mesh examples; transports differ |
-| GPS receiver or maps | [GPS and maps](gps-and-maps.md) | Parser/freshness patterns; outdoor fix and other hardware require qualification |
+| GPS receiver or maps | [GPS and maps](gps-and-maps.md) | Official GPS reuse plus cache/ownership/privacy/startup qualification; fitted Mesh test passed, other sources need their own evidence |
 | Camera or QR scanner | [Camera and QR](camera-and-qr.md) | Mesh CSI capture experience; qualify the actual sensor/image/decoder |
 | NFC, GPIO/I2C/SPI or another Cap | [Hardware ownership](hardware.md) | Conditional safety/lifecycle recipe; verify each peripheral's documentation |
 | LoRa Cap | [Radio bring-up](../07-radio-bring-up.md) plus [hardware ownership](hardware.md) | Board/Cap-specific wiring and lessons; not a universal pinout |

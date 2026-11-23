@@ -32,6 +32,19 @@ explains its purpose, benefits, costs and official-platform compatibility. The
 maintenance separate from the optional Template integration. The original lesson
 blocks below remain preserved at their stated source revision.
 
+## Subsequent GPS integration qualification
+
+The [2026-11-23 GPS record](https://github.com/Prophet60191/m5stack-cardputer-zero-mesh-app/blob/cd82b8ce24a1cab1ef68369e744a508c4ac887ef/docs/internal-gps-validation.md)
+supersedes the earlier outdoor-GPS gap for that fitted receiver and exact versions.
+App 0.1.17 refreshes exported local-node snapshots without enabling location
+broadcasts. A separate pinned Meshtastic native-service patch extends its ATGM
+identification window from 500 to 1500ms after seven of eight measured replies
+arrived later than 500ms. The driver had suppressed normal output before probing.
+That is a measured third-party integration problem, not an official GPS-app defect.
+Its reserved nonce, 30s snapshot interval and two-minute freshness policy are
+Mesh-specific, not defaults for other GPS apps. The general [GPS section](../projects/gps-and-maps.md)
+explains the transferable cache, ownership, privacy, timing and qualification lessons.
+
 ## Subsequent everyday-use refinement
 
 Mesh 0.1.15's [implementation](https://github.com/Prophet60191/m5stack-cardputer-zero-mesh-app/tree/5f0bc3ee80ff3b8bd1cfa6e496999dac6e8edc29)

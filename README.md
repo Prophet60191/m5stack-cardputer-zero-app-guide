@@ -52,7 +52,7 @@ are retained for existing links; [7. LoRa bring-up](docs/07-radio-bring-up.md) i
 ## Optional project sections
 
 The [project selector](docs/projects/README.md) covers local utilities, persistent
-text/messaging, GPS/maps, camera/QR, NFC/other hardware, networked apps and audio/media.
+text/messaging, [GPS/maps](docs/projects/gps-and-maps.md), camera/QR, NFC/other hardware, networked apps and audio/media.
 Each section distinguishes transferable patterns, actual examples and qualification
 still required for a new app. A radio antenna rule does not become a calculator
 requirement; a camera example does not certify every image's camera stack.

@@ -93,3 +93,19 @@ routes distinct from the full reference, optional recipes and personal preferenc
 Header preference (2026-11-23): omit the battery glyph; useful numeric percentage
 may remain. See docs/ui-preferences.md. This is personal presentation guidance,
 not a replacement for official status sources or a cross-app migration.
+
+
+## GPS supplement and current Store review — 2026-11-23
+
+The expanded docs/projects/gps-and-maps.md is the dedicated GPS recipe. Read
+its pinned official-source/evidence review before reuse: official GPS already
+provides parsing, age states, locking/exclusivity and retry. Add owner/API/cache/
+UI diagnosis, measurement time, omitted fields, privacy, safe startup timing and
+source/recovery qualification without forking that support. Official preinstalled
+root GPS packaging is not a third-party Store exemption. Mesh's probe fix is in
+Meshtastic, not an M5Stack GPS-app defect. USB receiver work remains deferred.
+Store review now pins packages b6c559a and AppBuilder 042356c; both policy-script
+hashes are unchanged. Catalog MESH is occupied by meshtandem. Exact Mesh 0.1.18
+preflight is blocked by that code, not a new runtime defect. The app's dated
+submission report owns dependency/fresh-image/demo/source-release next steps.
+No app/device change, new library, authentication, upload, PR or submission.

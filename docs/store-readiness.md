@@ -1,9 +1,10 @@
 # Store readiness checklist
 
 Use this alongside chapters [6](06-building-and-packaging.md) and
-[8](08-security-and-publishing.md). Reviewed **2026-11-16** against
-[`packages` 94eb8d7](https://github.com/CardputerZero/packages/tree/94eb8d7ad524e8ee01a52658f31871e6377c7544)
-and [`AppBuilder` 18996b6](https://github.com/CardputerZero/AppBuilder/tree/18996b694ae305306fc5d457d982cfba0b0e7cc5).
+[8](08-security-and-publishing.md). Reviewed **2026-11-23** against
+[`packages` b6c559a](https://github.com/CardputerZero/packages/tree/b6c559a0448aae7715c4b45678a0b89c9eceb12b)
+and [`AppBuilder` 042356c](https://github.com/CardputerZero/AppBuilder/tree/042356c579d728d684eccb68ed9f8669a32822bc),
+plus the [official submission guide](https://github.com/CardputerZero/cardputerzero.github.io/blob/5d5123ca05bfc23e5a920f4e9fdbfaf12685e3ab/docs/en/CP0_submit.md).
 Check for upstream changes again before publishing; this dated snapshot does not
 reserve a code/name or guarantee future Store approval.
 
@@ -46,7 +47,11 @@ reserve a code/name or guarantee future Store approval.
 
 1. **Review first.** The checklist/preflight does not log in or submit. Resolve
    open policy questions and select the concrete artifact/listing/video first.
-2. **Authenticate only for publishing.** `czdev login` uses GitHub device flow and
+2. **Choose a submission route and authenticate only for publishing.** The official
+   [Developer Center](https://dev.cardputer.cc/) also accepts a `.deb`, parses its
+   metadata and creates the submission PR after the contributor confirms upload.
+   It and the CLI share server-side policy; neither is a way around review.
+   For the CLI, `czdev login` uses GitHub device flow and
    stores credentials locally. Protect those credentials and use the intended
    account: the recorded uploader controls the package name. It is not based on
    matching the Debian Maintainer's email.
@@ -59,7 +64,11 @@ reserve a code/name or guarantee future Store approval.
    CardputerZero in the PR comments; a maintainer reviews/merges it. Passing CI
    does not auto-merge a new package name. Track PR approval, promotion/index job
    success and the final listing/download independently.
-5. **Binary updates.** Use the recorded owning account and a strictly higher
+5. **Binary updates.** The current catalog retains the highest Debian version
+   per app; promotion can supersede older manifests and later clean their official
+   binary assets. Do not promise users a permanent Store rollback archive; keep
+   a separate verified release/rollback plan.
+   Use the recorded owning account and a strictly higher
    **Debian** version. The reviewed policy allows validated updates to merge
    automatically; versioning is not determined by the GitHub release title/tag.
    `1.0.0~rc1-1` sorts before `1.0.0-1`; marking a GitHub release “prerelease”
@@ -69,10 +78,10 @@ reserve a code/name or guarantee future Store approval.
    listing without a new binary/version, subject to ownership and metadata checks.
    Retain assigned identity (`uuid`, existing share code) and verify staged assets.
 
-References: [schema/review rules](https://github.com/CardputerZero/AppBuilder/blob/18996b694ae305306fc5d457d982cfba0b0e7cc5/docs/APP_BUILDER_JSON.md),
-[publishing implementation](https://github.com/CardputerZero/AppBuilder/blob/18996b694ae305306fc5d457d982cfba0b0e7cc5/scripts/czdev/publish.py),
-[validation](https://github.com/CardputerZero/packages/blob/94eb8d7ad524e8ee01a52658f31871e6377c7544/.github/workflows/validate-pr.yml),
-[first-release/automatic-update merge gate](https://github.com/CardputerZero/packages/blob/94eb8d7ad524e8ee01a52658f31871e6377c7544/.github/workflows/validate-pr-comment.yml).
+References: [schema/review rules](https://github.com/CardputerZero/AppBuilder/blob/042356c579d728d684eccb68ed9f8669a32822bc/docs/APP_BUILDER_JSON.md),
+[publishing implementation](https://github.com/CardputerZero/AppBuilder/blob/042356c579d728d684eccb68ed9f8669a32822bc/scripts/czdev/publish.py),
+[validation](https://github.com/CardputerZero/packages/blob/b6c559a0448aae7715c4b45678a0b89c9eceb12b/.github/workflows/validate-pr.yml),
+[first-release/automatic-update merge gate](https://github.com/CardputerZero/packages/blob/b6c559a0448aae7715c4b45678a0b89c9eceb12b/.github/workflows/validate-pr-comment.yml).
 
 ## Worked example: correcting an overconfident submission report
 
@@ -92,8 +101,23 @@ are useful for any app:
 
 Evidence: [Mesh source fab958d](https://github.com/Prophet60191/m5stack-cardputer-zero-mesh-app/tree/fab958d1add0d9a46cbf7a880faaa4ec005c5283),
 package SHA-256 `8ff56073d45b43ed1cd1212f46bbdfcc9e345219c0897fbdf97d5fac2ad7b3b4`;
-official policy/catalog revision given above. A filename-normalization warning
+historical policy/catalog revision `94eb8d7` reviewed on 2026-11-16. A filename-normalization warning
 also notes that `czdev` uploads `cardputerzero-mesh_0.1.8-rev1_arm64.deb` based on
 the control fields. Missing localization is advisory. No Store submission was
 performed in this guide pass, and these blockers are not described as repaired
 in the installed app. This record is a dated example, not current app status.
+
+
+## Current-review boundaries
+
+Both official policy-script hashes are unchanged from the previous lock; the
+catalog, CLI and publishing lifecycle have advanced. The lock/CI checkout is
+updated only after comparing those sources. Run the exact candidate against
+this current catalog: a previously available title/code can become occupied.
+On this snapshot `MESH` belongs to `meshtandem`; an older Mesh preflight pass is
+not a reservation. See the application's dated submission-readiness report.
+
+Official preinstalled apps and third-party Store packages can have different
+privilege policies. The official GPS example's root/sudo packaging is not a
+third-party exemption from the Store's no-root rule. Reuse its appropriate
+parser/model ideas while preserving least privilege in the package being submitted.

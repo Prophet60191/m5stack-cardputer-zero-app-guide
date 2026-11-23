@@ -12,7 +12,7 @@ jobs:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           repository: CardputerZero/packages
-          ref: 94eb8d7ad524e8ee01a52658f31871e6377c7544
+          ref: b6c559a0448aae7715c4b45678a0b89c9eceb12b
           path: build/store-packages
           persist-credentials: false
       - name: Test documentation and non-publishing checks

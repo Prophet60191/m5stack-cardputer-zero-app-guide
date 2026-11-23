@@ -396,3 +396,23 @@ matrix remain explicit qualification work; GitHub CI checks the exact pushed sou
 - Native Mesh checking also caught a partial-framebuffer redraw problem after
   removing a status element. Add the reusable sibling-visibility/hardware check
   and bounded-redraw lesson; desktop rendering alone did not reveal it.
+
+
+## 2026-11-23 — GPS integration supplement and refreshed submission guidance
+
+- Expand the existing GPS chapter into a dedicated official-first integration
+  recipe; preserve the official parser/age/locking/retry work and identify added
+  cache/owner/UI diagnosis, source timestamps, privacy and timing/side-effect
+  lessons. Pin reviewed official GPS/site/source hashes; correct stale Mesh
+  outdoor-pending wording while retaining exact qualification limits.
+- Review current development/submission/CLI/catalog sources. Refresh dated policy
+  lock/CI catalog pins after confirming both policy scripts unchanged; document
+  the Developer Center route and current version-retention lifecycle.
+- Exact Mesh 0.1.18 package checked in an offline container against the current
+  catalog is blocked because MESH belongs to meshtandem; record this in the app's
+  separate readiness report. No app metadata/runtime/device or submission change.
+- All 22 guide/preflight tests pass against the refreshed catalog. Rebuild and
+  visually verify the reading edition before refreshing its existing Drive copy.
+
+- The final reading edition is 105 pages (655020 bytes); GPS, Store and case-
+  study reflows are visually reviewed. Preserve the existing Drive ID/folder.

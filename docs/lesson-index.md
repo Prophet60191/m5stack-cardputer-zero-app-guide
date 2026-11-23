@@ -17,7 +17,7 @@ General chapters retain their existing paths and forwarding headings where neede
 | Stable channel identity, drafts, history, retries and ACK source | [Stable identity](03-architecture.md#preserve-identity-and-durable-intent-safely), [messaging](projects/messaging.md), [original details](case-studies/mesh.md#architecture-and-state) |
 | Pending/Unknown state, overlay lifetimes and deadlines | [UI ownership](04-ui-and-polish.md#privacy-state-and-asynchronous-overlays), [original details](case-studies/mesh.md#ui-and-asynchronous-operations) |
 | First run, receive-only, transmitter/location consent and profiles | [General setup](04-ui-and-polish.md#first-run-and-uncertain-live-data), [LoRa](07-radio-bring-up.md), [hardware](projects/hardware.md) |
-| GPS validity, freshness and receiver versus sharing | [GPS/maps](projects/gps-and-maps.md) |
+| GPS official reuse, receiver-to-screen diagnosis, source freshness, privacy and safe startup | [GPS/maps](projects/gps-and-maps.md) |
 | Actual camera stack, Return starts scan, busy feedback, preview/commit and cancellation | [Camera/QR](projects/camera-and-qr.md), [original details](case-studies/mesh.md#ui-and-asynchronous-operations) |
 | Debounced saves, independent workers, stable selection and measured optimization | [UI persistence/performance](04-ui-and-polish.md#persistence-and-redraws), [Mesh measurements](https://github.com/Prophet60191/m5stack-cardputer-zero-mesh-app/blob/c51a45ee61813bf9685766f9f45c95e6778780a5/docs/maintenance-pass.md) |
 | Fixed context/help lanes, inside borders, settings groups and stable actions | [UI layout](04-ui-and-polish.md#keep-context-and-keyboard-help-readable), [original details](case-studies/mesh.md#ui-and-asynchronous-operations) |
