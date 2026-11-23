@@ -32,6 +32,24 @@ explains its purpose, benefits, costs and official-platform compatibility. The
 maintenance separate from the optional Template integration. The original lesson
 blocks below remain preserved at their stated source revision.
 
+## Subsequent everyday-use refinement
+
+Mesh 0.1.15's [implementation](https://github.com/Prophet60191/m5stack-cardputer-zero-mesh-app/tree/5f0bc3ee80ff3b8bd1cfa6e496999dac6e8edc29)
+and [qualification record](https://github.com/Prophet60191/m5stack-cardputer-zero-mesh-app/blob/0b63be648324d47581963b8fe535ae5ba6060ce8/docs/usability-refinement.md)
+provide later evidence for readable editor states, stable Cancel-first deletion,
+grouped forms, explicit saved-setup consequences and English case-insensitive
+search. The installed candidate passed its native/backend/package gates,
+ordinary-user synthetic device replay and the owner's specified physical checks.
+Those checks did not add powered-radio, public-peer or outdoor GPS qualification.
+
+The upgrade also demonstrated why files and running processes must be checked
+separately: the existing service still reported the old version until restarted
+through its normal lifecycle. A GUI version-query attempt opened a UI because
+that option was unsupported; the temporary instance was stopped. The general
+[build/install guidance](../06-building-and-packaging.md#automate-the-matching-package-build)
+records safer verification and preservation checks. These results qualify the
+named Mesh revision, not a reusable library or another application's hardware.
+
 ## Architecture and state
 
 ### Make the boundary authoritative

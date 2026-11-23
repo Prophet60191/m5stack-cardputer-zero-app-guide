@@ -108,6 +108,19 @@ separately; validate any optional quiet flag as a boolean.
   "the row you're on") and the theme maps them to pixels. Use a border
   consistently to indicate selection, and keep its meaning and contrast clear.
 
+Style a text editor's background, entered text, placeholder and cursor for the
+selected theme; setting only the screen background is insufficient. A widget can
+inherit colors from a global theme initialized earlier. Check an empty editor,
+entered text, focus and theme changes, including opening and closing overlays.
+This is an integration check, not evidence that the official widget is defective.
+
+Treat meaningful secondary text differently from unavailable controls. A current
+setting value or delivery result must remain readable; a muted color must not
+make it look disabled. Check both foreground/background pairs in message bubbles
+and other colored surfaces. Pair freshness or status colors with text or shape,
+and retain approved component styling deliberately rather than changing it as a
+side effect of a global palette adjustment.
+
 ## Build screenshots into the app
 
 Bind a key to dump the active screen to a PNG with a small confirmation toast. You need **320×170
@@ -139,8 +152,6 @@ in the font — a missing glyph renders as a tofu box and screams "unfinished." 
 <a id="the-anti-slop-checklist"></a>
 
 ## UI checklist
-
-Before you call it done:
 
 - [ ] Consistent navigation on every screen; Esc always goes back; every action key labeled.
 - [ ] Reads cleanly at 320×170 — legible font, not crammed.
@@ -239,6 +250,13 @@ the whole device. Imported settings can be suggestions without silently replacin
 active configuration or device-specific calibration. Offer a separate saved
 profile when that is useful, with its effect on the active session explicit.
 
+Describe a saved setup's contract before applying it: what is saved, what stays
+unchanged, what is deliberately reset, and any prerequisite such as releasing a
+resource first. Do not imply that a profile restores every operating mode when
+it stores only configuration. A safe reset must still be predictable. Mesh's
+transmission/location defaults are a radio-specific example, not a rule that
+all applications must disable their hardware when switching profiles.
+
 On the small keyboard-driven display, keep the heading and primary action visible while
 fields scroll. Update navigation selection in place. Test long errors,
 UTF-8 byte limits, masked secrets, deep selection, both themes, Escape, repeated
@@ -266,3 +284,23 @@ acknowledgment from a recipient receipt and a person reading the message. Make
 important values readable in both themes and pair meaningful color with another
 cue. Document search limits. See [personal preferences](ui-preferences.md)
 for direct two-choice rows and grouped forms.
+
+A destructive prompt must name the scope: one item versus its history, draft or
+saved setup, and local copies versus copies elsewhere. Cancelling the prompt
+must not submit a destructive operation. Re-resolve the captured identity when
+confirming; an item that vanished must not be replaced by the next row. Test Cancel, Esc, repeated keys
+and new/reordered content while the prompt is open, and clear the pending action
+when the prompt closes.
+
+Form section headings and explanatory rows are not actions. Skip them during
+keyboard navigation and wrapping; keep the selected field, its nearby section
+heading and the primary action understandable as the viewport moves. Use the
+selected toolkit's overflow-only scrollbar behavior and reserve space for its
+marker. Check both overflowing and fully visible lists.
+
+Validate complete tasks as well as isolated screens: create/import, edit, cancel,
+save, reopen, switch a saved setup and recover from a failed operation. Host
+renders, headless replay on the actual device and a physical operator walkthrough
+answer different questions. Replay with synthetic commands and installed fonts
+can check the UI without opening hardware; it does not prove physical key input,
+framebuffer ownership, RF delivery or outdoor positioning.

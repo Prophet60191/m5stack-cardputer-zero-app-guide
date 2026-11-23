@@ -324,10 +324,28 @@ directory before writing checksums/source metadata and uploading the artifact.
 Download the finished artifact and verify both its checksum and source commit.
 
 On upgrade, matching installed-file hashes does not prove the live process loaded
-them. Explicitly restart the owning service after installation, then check its
-reported version and socket peer PID against the service's MainPID. Starting an
-already active unit leaves its old code running. Verify actual privilege state
+them. Coordinate a restart through the resource owner's lifecycle, then check
+its reported version and socket peer PID against the service's MainPID. Starting
+an already active unit leaves its old code running. Determine how restart affects
+in-flight work and hardware first; do not enable a transmitter or restore privacy
+opt-ins merely to produce a healthy-looking status. Verify actual privilege state
 and preserved user settings as well as the files.
+
+Inspect supported command-line arguments before a smoke test. Do not assume a
+GUI executable implements `--version` or `--help`: an ignored argument can launch
+the UI, claim the display/input devices or initialize hardware, especially from
+a root installation shell. Use About or package metadata when a version option
+is not documented; neither alone establishes which code an existing service has
+loaded. A future app can offer an explicit read-only version command that exits
+before UI/hardware initialization.
+
+Use a consistent private snapshot for preservation checks. For SQLite, use its
+backup facility or another documented consistency method; comparing live database
+file bytes can misread WAL/checkpoint activity as data loss. Compare logical rows
+and relevant configuration fields, keeping keys and raw records out of public
+logs. Classify bookkeeping differences only after inspection, and distinguish
+upgrade effects from edits the operator makes during a walkthrough. Do not
+restore a whole backup over legitimate new work just to make checksums agree.
 
 Measure optimization on a fixed synthetic workload before and after the change.
 Include typical and maximum supported history sizes; separate data preparation

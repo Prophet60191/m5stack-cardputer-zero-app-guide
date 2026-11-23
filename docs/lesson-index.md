@@ -18,6 +18,10 @@ General chapters retain their existing paths and forwarding headings where neede
 | Actual camera stack, Return starts scan, busy feedback, preview/commit and cancellation | [Camera/QR](projects/camera-and-qr.md), [original details](case-studies/mesh.md#ui-and-asynchronous-operations) |
 | Debounced saves, independent workers, stable selection and measured optimization | [UI persistence/performance](04-ui-and-polish.md#persistence-and-redraws), [Mesh measurements](https://github.com/Prophet60191/m5stack-cardputer-zero-mesh-app/blob/c51a45ee61813bf9685766f9f45c95e6778780a5/docs/maintenance-pass.md) |
 | Fixed context/help lanes, inside borders, settings groups and stable actions | [UI layout](04-ui-and-polish.md#keep-context-and-keyboard-help-readable), [original details](case-studies/mesh.md#ui-and-asynchronous-operations) |
+| Editor theme inheritance, readable secondary values and color-independent status | [Theme states](04-ui-and-polish.md#theme-support-light-and-dark), [later Mesh evidence](case-studies/mesh.md#subsequent-everyday-use-refinement) |
+| Cancel-first deletion during live updates, form heading navigation and whole-task checks | [Task recovery](04-ui-and-polish.md#task-clarity-and-recovery), [complete setup](04-ui-and-polish.md#keep-a-complete-setup-in-one-place) |
+| Search scope and ASCII versus Unicode matching | [Search behavior](projects/messaging.md#search-behavior) |
+| Safe version probes, stale running processes and logical preservation checks | [Upgrade verification](06-building-and-packaging.md#automate-the-matching-package-build) |
 | Correct official Sym/Fn map, per-device state and real event-path tests | [Keyboard](05-keyboard.md), [focused contribution](../contributions/template-keyboard/README.md) |
 | Retention toast on startup/reconnect | [Quiet synchronization](04-ui-and-polish.md#show-whats-happening) |
 | Private data, metadata opt-out, diagnostics whitelist and uninstall cleanup | [Security and diagnostics](08-security-and-publishing.md#useful-diagnostics-without-an-accidental-data-export), [messaging](projects/messaging.md) |

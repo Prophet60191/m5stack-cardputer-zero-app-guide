@@ -30,6 +30,20 @@ old context instead of silently sending its drafts to a replacement channel.
 A DM draft belongs to both its peer and selected channel. Those rules must be
 adapted explicitly for a different transport rather than inheriting LoRa fields.
 
+## Search behavior
+
+When search is offered, define which names, content and drafts it covers and how
+capitalization is handled. Test a match in an older saved item, a draft-only
+record, mixed capitalization and clearing the filter. Keep the search/display
+normalization separate from stored text and stable record IDs.
+
+ASCII-only case matching is not full Unicode case folding. State that limit
+rather than claiming every language is handled; if broader matching is needed,
+choose an appropriate Unicode implementation and test accented text and supported
+scripts. Mesh 0.1.15 deliberately ignores English-letter capitalization while
+other characters still match exactly. Other applications should decide their
+own language requirements.
+
 ## Acceptance checks
 
 Cover interrupted saves/sends, delayed and wrong-source replies, retries, reconnect

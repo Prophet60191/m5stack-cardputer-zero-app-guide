@@ -349,3 +349,17 @@ matrix remain explicit qualification work; GitHub CI checks the exact pushed sou
 - Shorten a repeated UI explanation to avoid an isolated end-page line; preserve
   the lesson and cross-reference. Keep implementation qualification in Mesh's
   own refinement record. No official branding or new framework is introduced.
+
+## 2026-11-22 — Reusable findings from the installed Mesh refinement
+
+- Expand UI guidance for explicit editor theme states, meaningful value contrast,
+  saved-setup scope, stable destructive targets and nonselectable form headings.
+- Add search-language limits and whole-task checks; distinguish host rendering,
+  synthetic device replay and physical/hardware qualification.
+- Strengthen existing upgrade guidance with safe CLI probes, coordinated service
+  restart and logical private data comparisons; avoid duplicate generic chapters.
+- Index the lessons and link exact Mesh 0.1.15 source/qualification evidence.
+  Radio-specific policy remains an optional example, not a universal requirement.
+- Rebuild the 94-page PDF, check links/body bounds and inspect new/reflowed pages
+  against the previously reviewed edition. Refresh the existing Drive copy in
+  place. Documentation checks pass; no app or device changes.

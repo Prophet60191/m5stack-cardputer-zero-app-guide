@@ -74,3 +74,9 @@ menus for more choices and grouped task forms. Read docs/ui-preferences.md for
 these newer decisions; earlier pending-choice notes do not override that record.
 Mesh owns its 0.1.15 implementation/device evidence; no shared library extraction
 or cross-app migration is implied by this guide update.
+
+For future apps, consult chapter 4's editor-state, task recovery and saved-setup
+lessons; the messaging recipe's search-language contract; and chapter 6's safe
+CLI/running-version/private snapshot verification. The lesson index points to
+Mesh 0.1.15 evidence. These are documented lessons, not extracted components or
+new device qualification; preserve the official-foundation evaluation rule.
