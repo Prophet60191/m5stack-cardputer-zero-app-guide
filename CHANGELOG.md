@@ -392,3 +392,7 @@ matrix remain explicit qualification work; GitHub CI checks the exact pushed sou
   icon in app headers. Record the owner's no-icon preference while allowing
   useful numeric percentage and preserving official shell/backend boundaries.
 - Mesh 0.1.18 owns implementation and qualification; no other app is migrated.
+
+- Native Mesh checking also caught a partial-framebuffer redraw problem after
+  removing a status element. Add the reusable sibling-visibility/hardware check
+  and bounded-redraw lesson; desktop rendering alone did not reveal it.

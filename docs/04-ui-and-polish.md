@@ -95,6 +95,12 @@ boundary for this application's actual needs.
   keeps any useful battery percentage as text without a battery glyph; see
   [the preference record](ui-preferences.md#locked-header-battery-presentation).
 
+When removing a status element, check its unchanged neighbors on the actual
+framebuffer, in both themes and after live updates. A desktop screenshot can
+miss partial-redraw problems. If hardware evidence shows a sibling being erased,
+invalidate the bounded status strip when needed rather than refreshing every
+screen or keeping a hidden decorative widget as a workaround.
+
 Keep routine startup and reconnect preference synchronization quiet. Apply the saved
 setting and return a correlated acknowledgment without a success toast; confirm
 deliberate user changes when useful. Do not skip synchronization or suppress all
