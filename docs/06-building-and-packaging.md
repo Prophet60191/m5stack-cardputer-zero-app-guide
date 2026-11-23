@@ -372,3 +372,44 @@ FetchContent dependency `EXCLUDE_FROM_ALL` retained normal dependency linking
 and excluded those development payloads from the application installer. Verify
 the resulting archive and keep runtime licenses; an intent in CMake is not proof
 of package contents.
+
+## Reduce installation friction without hiding dependencies
+
+Prefer the official image's well-maintained system facilities. Inventory what a
+new user actually needs: distinguish OS packages, app-private components, optional
+peripherals and account setup. The current official Store backend uses APT when
+Debian dependencies are missing; correct `Depends` metadata can remove manual
+steps without copying system libraries into every app. Recheck the actual
+[Store implementation](https://github.com/CardputerZero/Store/blob/1ceeaed715766d336b1a885f58d03d5e4c33d6fa/main/backend/appstore_native.cpp)
+before relying on that behavior. It does not guarantee package availability or
+platform permissions on every image.
+
+For a dependency that needs a specific correction, an app-private runtime can
+avoid PATH drift and a competing system daemon. This is a deliberate option,
+not a requirement that every app use Python, a supervisor or bundled binaries.
+Pin original artifact hashes, supported ABI and source/patch revisions; retain
+licenses and paired corresponding source. Keep large generated dependency/source
+archives as release assets rather than committing build output into Git.
+
+If preparing a user environment on first launch, make preparation offline,
+bounded and repeatable. Verify package-owned inputs, ignore inherited installer
+index/config overrides, lock concurrent preparation, recognize incomplete caches
+and repair only a fixed private cache. Keep existing user environments and app
+data untouched. Installation scripts must not run user-managed environments as
+root or silently start hardware. An update must stop the app's own live service
+before replacing its modules, then verify the newly started process afterward.
+
+Test this in a minimal supported Debian container with no preinstalled SDK,
+global daemon or operator environment. Disable networking for first launch;
+check import/functionality, repeat launch, damaged-cache recovery, tampered input
+rejection and uninstall/data preservation. This complements a fresh-image device
+check; it cannot prove hardware permissions, display behavior or boot timing. If
+no spare card is available, record physical fresh-image testing as deferred and
+never erase the working device to turn a checklist green.
+
+A prebuilt installer and paired source/dependency archive serve different users.
+Offer a short install path plus a reproducible build entry point and checksums.
+State which downloads remain: Docker/toolchains, OS packages and account services
+are not eliminated by bundling the application's own runtime. Offline mode should
+name the caches/images that must already exist; never promise a zero-download
+first build unless it has actually been supplied and tested that way.

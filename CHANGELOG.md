@@ -416,3 +416,17 @@ matrix remain explicit qualification work; GitHub CI checks the exact pushed sou
 
 - The final reading edition is 105 pages (655020 bytes); GPS, Store and case-
   study reflows are visually reviewed. Preserve the existing Drive ID/folder.
+
+## 2026-11-23 — Cover attribution and distribution lessons
+
+- Add the maintainer's public GitHub URL to the PDF cover without a real name.
+- Record optional app-private runtime/dependency distribution, official Store APT
+  behavior, offline first-launch and cache integrity, safe live-service upgrades,
+  paired corresponding source and honest fresh-container/device boundaries.
+- Mesh's local minimal Debian 13 container passed offline first launch, reuse,
+  cache repair, tamper rejection, QR imports and data-preserving removal. These
+  are packaging lessons, not universal architecture requirements or fresh-image
+  physical acceptance. No spare card: that hardware test is explicitly deferred.
+- All 22 guide/preflight tests pass. The updated 105-page reading edition has a
+  visually checked cover/link and packaging section; existing Drive PDF replaced
+  in place. Mesh's 42-page candidate manual and one-page reference also refreshed.
