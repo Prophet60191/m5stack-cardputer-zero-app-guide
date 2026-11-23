@@ -92,9 +92,33 @@ confirmation remains part of the app's behavior contract, not a reason to displa
 a false On/Off value. This preference selects presentation, not new toggle or
 confirmation behavior.
 
+## Locked: direct choices and task forms
+
+Agreed 2026-11-22: a setting with two choices changes directly on its row;
+Appearance alternates Light/Dark without a submenu. More than two choices open
+an appropriate selection menu with the current value selected. Inline actions
+do not receive a submenu chevron. Preserve any specific consent required for
+privacy, transmission or irreversible effects; do not show an unconfirmed value
+as already applied.
+
+Group everything needed for a task in one place. A channel setup form includes
+its related channel, radio, sharing and save fields rather than requiring trips
+through Settings. Use visible groups inside the same form, identify changes
+that affect the whole radio, preserve edits on errors, and keep Save reachable
+while scrolling. The form itself is the review; do not add a generic second
+review page. Specific consequential changes can require targeted acknowledgment.
+
+Use readable contrast for important values and results in both themes, plain
+language for outcomes, non-color cues where color carries meaning, and
+Cancel-first confirmation for irreversible deletion when Undo is unavailable.
+These are our interaction preferences; they do not create a replacement shell
+or a universal requirement for every project. Source and physical qualification
+remain app-specific. Mesh's 0.1.15 candidate implements a focused refinement;
+its verification record owns the actual results and remaining checks.
+
 ## Still to decide
 
-- Affordances for choice/value selectors and immediate-action rows.
+- Presentation of immediate-action rows beyond the recorded choice rules.
 - Body/supporting typography and spacing outside the locked home reference.
 - Overall palette policy and app-specific accent choices.
 - Status/title bars and footer actions outside this home reference.

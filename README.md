@@ -116,6 +116,13 @@ or contributing to official components. Consider a separate library only after
 recurring needs or shared preferences, two unrelated consumers and a
 maintenance/compatibility plan justify it.
 
+## Offline reading edition
+
+The [PDF builder](tools/README.md#offline-reading-edition-pdf) creates a styled
+reading edition with contents, bookmarks, internal chapter links and an attached
+source snapshot. It includes the current library principles and UI preferences;
+generated PDFs stay in ignored build output, separate from device installers.
+
 ## License
 
 The guide is [CC BY 4.0](LICENSE), with attribution. The runnable preflight tool

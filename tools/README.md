@@ -97,3 +97,24 @@ sentinel in a maintainer script verifies that inspection never runs it. The
 
 The tool/tests are [MIT](LICENSE). The guide remains CC BY 4.0; official policy
 code remains in its own upstream repository and is not relicensed or copied here.
+
+## Offline reading edition (PDF)
+
+The separate [PDF builder](build_guide_pdf.py) renders the maintained Markdown
+as a complete reading edition. It does not call the Store preflight, access a
+device, publish or upload. Install Python packages reportlab, markdown-it-py and
+pypdf, and supply DejaVu Sans regular/bold/oblique/bold-oblique plus DejaVu Sans
+Mono font files and their license notice.
+
+```bash
+python3 tools/build_guide_pdf.py --edition 2026-11-18 \
+  --font-dir /path/to/dejavu-fonts \
+  --font-license /path/to/DejaVu-LICENSE.txt
+```
+
+Output defaults to ignored build/guide-pdf/output/pdf. The PDF includes a cover,
+linked contents, chapter bookmarks, readable tables/code, page headers/numbers,
+an attached Markdown/evidence snapshot and font notices. The manifest records
+edition, page/chapter count and SHA256. Review rendered pages before sharing;
+text extraction alone does not establish layout quality. This reading edition
+preserves pending preferences and historical qualification limits.

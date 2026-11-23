@@ -251,3 +251,19 @@ nothing; once a write has started, explain that leaving cannot undo it. Report
 partial success and uncertain outcomes explicitly so users do not duplicate an
 operation. Mesh exercises this pattern in its unified channel setup; the pattern
 also applies to network, peripheral and other device configuration tools.
+
+## Task clarity and recovery
+
+Keep related configuration in one task form with visible groups and a reachable
+Save action. Identify whole-device changes; preserve edits on errors. The form
+can be the review without a duplicate summary page. Reserve extra acknowledgment
+for a specific irreversible, privacy or hardware consequence.
+
+Use Cancel-first confirmation for irreversible deletion when Undo is not
+available, binding the action to a stable identity rather than a moving row.
+Explain communication outcomes in ordinary language; distinguish a transport
+acknowledgment from a recipient receipt and a person reading the message. Make
+important values readable in both themes and pair meaningful color with another
+cue. Record scope/limits of search matching and qualify whole tasks rather than
+claiming hardware success from screen renders. See the
+[personal preferences](ui-preferences.md) for direct two-choice rows and grouped forms.

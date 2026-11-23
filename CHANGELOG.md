@@ -318,3 +318,23 @@ matrix remain explicit qualification work; GitHub CI checks the exact pushed sou
   navigation. Choice selectors, immediate actions and toggle confirmation/state
   handling are not silently settled by this presentation choice.
 - Preferences/documentation only; no app/device changes. Documentation checks pass.
+
+## 2026-11-18 — Offline PDF reading editions
+
+- Add a maintained PDF builder and usage instructions for the complete app guide,
+  including project recipes, component evaluations and recorded UI preferences.
+- Produce a dated 92-page reading edition with linked contents, bookmarks,
+  readable tables/code, source/evidence attachments and font attribution.
+- Rebuild the current Mesh user manual (40 pages) and upload both PDFs to the
+  owner's requested Drive folder; verify uploaded MIME type, size and parent.
+- Review every rendered page and check text margins and internal destinations;
+  documentation tests pass. No app/device changes or new hardware qualification.
+
+## 2026-11-22 — Everyday interaction preferences and lessons
+
+- Record direct two-choice rows, submenus for more choices, task-grouped forms,
+  readable result/value text and Cancel-first irreversible deletion. Keep these
+  personal preferences distinct from platform rules and app qualification.
+- Add general task clarity/recovery guidance without changing the official
+  foundation or creating another shell. Mesh implementation evidence remains
+  in that app; no guide-side device qualification is claimed.
