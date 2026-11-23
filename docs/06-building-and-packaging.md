@@ -10,7 +10,7 @@ it gives you the MVVM scaffold, the simulator, and the cross-build/packaging pre
 
 ## Develop in the desktop simulator — and why
 
-**Build and run the UI in the desktop simulator first; flash to the device only to confirm.** The
+**Build and run the UI in the desktop simulator first; qualify the installed app on the device separately.** The
 template ships this: a desktop preset builds an SDL window that renders the *real* LVGL UI at the
 device's 320×170, using the same screens, widgets, fonts, and theme as the device build.
 
@@ -19,8 +19,8 @@ Why it's the right default:
 - **The device loop is slow and fragile.** Cross-compile → package → copy → install → relaunch is
   minutes per change, and the device's Wi-Fi can be flaky. The simulator is seconds, on your laptop,
   no network.
-- **It's the same UI code.** LVGL draws identically; only the *frame* differs (an SDL window vs the
-  framebuffer). Layout, navigation, theming, and flow are faithful.
+- **It uses the same UI code.** Preview layout, themes and flow without the hardware.
+  Display/input backends, installed fonts and runtime conditions still need device checks.
 
 The simulator does not qualify actual radios, cameras or Caps. Put slow hardware
 work behind a bounded worker, a compatible OS service or a resource-owning
@@ -82,9 +82,10 @@ REMOTE_USER=<user> REMOTE_HOST=<device-ip> ./deploy.sh      # copies the .deb ov
 sudo apt install --no-install-recommends ./<App>_<ver>_rev<n>_arm64.deb
 ```
 
-For a fast dev loop you can skip packaging entirely: build natively on the device
-(`cmake --preset cp0-native …`) and copy the binary into `/usr/share/APPLaunch/bin/`, restarting the
-launcher to pick it up. Package into a `.deb` when you're ready to release.
+For native device compilation, the official `cp0-native` preset is available,
+but keep build dependencies out of a release installer. Prefer a traceable package
+install for qualification; an ad hoc binary copy does not verify package paths,
+upgrade behavior or the exact artifact users will receive.
 
 ## Packaging a Python app
 

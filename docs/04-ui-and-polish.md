@@ -87,10 +87,10 @@ boundary for this application's actual needs.
 
 ## Show what's happening
 
-- **Stream long output** in a tail-following log pane that scrolls as results arrive, rather than a
-  spinner that hides everything. It reassures the user and is invaluable for debugging.
-- **A small persistent status bar** (radio/connection state, battery, an unread badge) lends a
-  finished feel for very little code — read from `/sys`, refresh every few seconds.
+- **Show useful progress** for long operations. A bounded, redacted log pane can
+  suit a diagnostic tool; a short status or progress value can suit a simple task.
+- **Show relevant status** (connection, battery or unread count) when it helps the
+  task. Reuse the chosen foundation's supported status source and avoid redundant polling.
 
 Keep routine startup and reconnect preference synchronization quiet. Apply the saved
 setting and return a correlated acknowledgment without a success toast; confirm
@@ -158,7 +158,7 @@ in the font — a missing glyph renders as a tofu box and screams "unfinished." 
 - [ ] Both light and dark themes tested in the simulator.
 - [ ] UI never freezes — all slow work off the LVGL thread.
 - [ ] Long operations show progress; errors shown on screen in plain words; empty states guided.
-- [ ] A status bar (connection/battery) present.
+- [ ] Relevant status is visible; no unnecessary status bar or polling.
 - [ ] A real icon (not the template default) and real 320×170 screenshots.
 - [ ] No missing-glyph boxes anywhere.
 - [ ] No placeholder/`TODO` text anywhere in the UI or metadata.
@@ -257,8 +257,8 @@ it stores only configuration. A safe reset must still be predictable. Mesh's
 transmission/location defaults are a radio-specific example, not a rule that
 all applications must disable their hardware when switching profiles.
 
-On the small keyboard-driven display, keep the heading and primary action visible while
-fields scroll. Update navigation selection in place. Test long errors,
+Use the fixed heading/action arrangement described under
+[forms](#forms-clear-outcomes-and-persistent-actions), with selection updated in place. Test long errors,
 UTF-8 byte limits, masked secrets, deep selection, both themes, Escape, repeated
 Return, late replies and destroyed screens. Preserve an imported token when
 returning to edit an unrelated field; closing setup should cancel the whole draft.
@@ -272,25 +272,23 @@ also applies to network, peripheral and other device configuration tools.
 
 ## Task clarity and recovery
 
-Keep related configuration in one task form with visible groups and a reachable
-Save action. Identify whole-device changes; preserve edits on errors. The form
-can be the review without a duplicate summary page. Reserve extra acknowledgment
-for a specific irreversible, privacy or hardware consequence.
+For form actions and validation, use [forms and clear outcomes](#forms-clear-outcomes-and-persistent-actions);
+for setup scope and saved profiles, use [complete setup](#keep-a-complete-setup-in-one-place).
+The [personal preference record](ui-preferences.md) separately specifies our
+direct two-choice rows and selection menus.
 
 Use Cancel-first confirmation for irreversible deletion when Undo is not
-available, binding the action to a stable identity rather than a moving row.
-Explain communication outcomes in ordinary language; distinguish a transport
-acknowledgment from a recipient receipt and a person reading the message. Make
-important values readable in both themes and pair meaningful color with another
-cue. Document search limits. See [personal preferences](ui-preferences.md)
-for direct two-choice rows and grouped forms.
-
-A destructive prompt must name the scope: one item versus its history, draft or
+available. Bind the action to a stable identity rather than a moving row.
+The prompt must name the scope: one item versus its history, draft or
 saved setup, and local copies versus copies elsewhere. Cancelling the prompt
 must not submit a destructive operation. Re-resolve the captured identity when
 confirming; an item that vanished must not be replaced by the next row. Test Cancel, Esc, repeated keys
 and new/reordered content while the prompt is open, and clear the pending action
 when the prompt closes.
+
+Communication outcomes and search limits belong in the
+[messaging recipe](projects/messaging.md); readable values and non-color cues are
+covered under [theme states](#theme-support-light-and-dark).
 
 Form section headings and explanatory rows are not actions. Skip them during
 keyboard navigation and wrapping; keep the selected field, its nearby section

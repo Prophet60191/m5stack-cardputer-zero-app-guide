@@ -80,3 +80,11 @@ lessons; the messaging recipe's search-language contract; and chapter 6's safe
 CLI/running-version/private snapshot verification. The lesson index points to
 Mesh 0.1.15 evidence. These are documented lessons, not extracted components or
 new device qualification; preserve the official-foundation evaluation rule.
+
+For first-time builders, start with docs/start-here.md and docs/first-app.md,
+which build the existing official Template counter at pinned revisions. Keep
+this small example separate from release-ready identity/package requirements;
+do not imply that it is a new app, an extracted library or device qualification.
+The independent-reader check in docs/first-reader-check.md remains pending until
+an unfamiliar builder actually reports completing it. Keep beginner reading
+routes distinct from the full reference, optional recipes and personal preferences.

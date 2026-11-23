@@ -1,0 +1,56 @@
+{
+  "checked_on": "2026-11-22",
+  "template_repository": "https://github.com/CardputerZero/Template",
+  "template_commit": "477fa6d217b683e3084c361a757f03dc8ca9f753",
+  "lvgl_repository": "https://github.com/lvgl/lvgl",
+  "lvgl_commit": "85aa60d18b3d5e5588d7b247abf90198f07c8a63",
+  "customization": "BaseModel::greeting(): Hello World -> My first counter",
+  "customization_diff_sha256": "bae9aba610b777565aa863911a7bd32193dd232133ec365a3cd4a7e2444f017e",
+  "desktop": {
+    "os": "macOS 26.3",
+    "architecture": "arm64",
+    "compiler": "Apple clang 21.0.0",
+    "cmake": "3.31.5",
+    "configuration": "Debug",
+    "baseline_build": "pass",
+    "greeting_edit_rebuild": "pass",
+    "edited_greeting_in_binary": true,
+    "headless_smoke": {
+      "SDL_VIDEODRIVER": "dummy",
+      "alive_after_seconds": 3,
+      "termination_exit_code": 0
+    },
+    "interactive_walkthrough": "not performed"
+  },
+  "device_target": {
+    "os": "Debian 13.7",
+    "architecture": "arm64",
+    "cmake": "3.31.6",
+    "configuration": "Release",
+    "clean_build_and_package": "pass; unprivileged container user; network disabled; preprovisioned dependencies",
+    "package": {
+      "sha256": "9f767caf2f881c814837862a0201b6199f1f47a8da1fff30a6cdac64f563c9f3",
+      "bytes": 1881774,
+      "architecture": "arm64",
+      "elf_machine": 183,
+      "desktop_exec": "/usr/bin/template_app",
+      "terminal": false,
+      "systemd_service": false,
+      "maintainer_scripts": false,
+      "edited_greeting_in_binary": true
+    }
+  },
+  "not_performed": [
+    "fresh dependency installation",
+    "Linux desktop run",
+    "interactive simulator walkthrough",
+    "device installation",
+    "physical keyboard qualification",
+    "independent-reader exercise"
+  ],
+  "guide_test_suite": {
+    "environment": "Debian arm64, network disabled, ordinary user",
+    "tests": 22,
+    "result": "pass"
+  }
+}

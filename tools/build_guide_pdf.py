@@ -20,7 +20,7 @@ from reportlab.lib.pagesizes import letter
 from reportlab.lib.styles import ParagraphStyle
 from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
-from reportlab.platypus import BaseDocTemplate, Frame, LongTable, PageBreak, PageTemplate, Paragraph, Spacer, TableStyle, Preformatted, Flowable
+from reportlab.platypus import BaseDocTemplate, Frame, LongTable, PageBreak, PageTemplate, Paragraph, Spacer, TableStyle, Preformatted, Flowable, KeepTogether
 from reportlab.platypus.tableofcontents import TableOfContents
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -29,7 +29,8 @@ INK, ACCENT, MUTED = map(colors.HexColor, ['#192b40', '#8b2447', '#536174'])
 REPO = 'https://github.com/Prophet60191/m5stack-cardputer-zero-app-guide'
 WIDTH = 516
 GROUPS = [
-    ('Common foundation', ['README.md', *['docs/'+x for x in ['01-platform.md','02-app-anatomy.md','03-architecture.md','04-ui-and-polish.md','05-keyboard.md','06-building-and-packaging.md','08-security-and-publishing.md']]]),
+    ('Getting started', ['README.md', 'docs/start-here.md', 'docs/first-app.md', 'docs/first-reader-check.md']),
+    ('Common foundation', ['docs/'+x for x in ['01-platform.md','02-app-anatomy.md','03-architecture.md','04-ui-and-polish.md','05-keyboard.md','06-building-and-packaging.md','08-security-and-publishing.md']]),
     ('Project recipes', ['docs/projects/'+x for x in ['README.md','local-utilities.md','messaging.md','gps-and-maps.md','camera-and-qr.md','hardware.md','networking.md','audio-and-media.md']] + ['docs/07-radio-bring-up.md']),
     ('Components and personal library', ['docs/'+x for x in ['components.md','library-principles.md','library-inventory.md','official-input-evaluation.md','official-ui-evaluation.md','ui-preferences.md']]),
     ('Release references and preserved learning', ['docs/store-readiness.md','tools/README.md','docs/lesson-index.md','docs/case-studies/mesh.md','contributions/template-keyboard/README.md','contributions/template-keyboard/VALIDATION.md']),
@@ -70,7 +71,7 @@ class Document(BaseDocTemplate):
 
 class Renderer:
     def __init__(self):
-        self.body = ParagraphStyle('Body',fontName='Body',fontSize=10,leading=14.4,textColor=INK,spaceAfter=7,splitLongWords=True)
+        self.body = ParagraphStyle('Body',fontName='Body',fontSize=10,leading=14.4,textColor=INK,spaceAfter=7,splitLongWords=True,allowWidows=0,allowOrphans=0)
         self.small = ParagraphStyle('Small',parent=self.body,fontSize=8.4,leading=11.5,textColor=MUTED)
         self.cell = ParagraphStyle('Cell',parent=self.body,fontSize=8.1,leading=11,spaceAfter=0)
         self.h = {1:ParagraphStyle('Chapter',parent=self.body,fontName='Body-Bold',fontSize=23,leading=28,textColor=ACCENT,spaceAfter=18,keepWithNext=True),
@@ -176,7 +177,8 @@ class Renderer:
                 lines=[]
                 for line in normalize(t.content).expandtabs(4).splitlines():
                     lines.extend(textwrap.wrap(line,width=104,replace_whitespace=False,drop_whitespace=False) or [''])
-                output.append(Preformatted('\n'.join(lines),self.code))
+                block=Preformatted('\n'.join(lines),self.code)
+                output.append(KeepTogether([block]) if len(lines)<=40 else block)
             elif t.type=='html_block':
                 for alias in re.findall(r'<a\s+id="([^"]+)"',t.content):output.append(Anchor(key(path)+'--'+alias))
             elif t.type in ('hr','list_item_close'):pass
@@ -223,7 +225,7 @@ def main():
     for text in ['This edition includes all Markdown chapters under docs/, plus the guide introduction, offline-tool instructions and the prepared keyboard contribution overview/validation. Source references and qualification dates remain as recorded in those chapters.',
                  'The guide is licensed CC BY 4.0. Attribution: Cardputer Zero App Guide contributors. The source repository is '+REPO+'. Runnable tools have their own MIT terms. Official and third-party component licenses remain applicable.',
                  'The Markdown snapshot, source-hash manifest, evidence JSON and DejaVu font notices are embedded as attachments for offline reference. Links to included chapters work within this PDF; external repositories and tools require Internet access.',
-                 'Personal UI choices are a working specification, not implemented library features. The appearance-choice row shown in the conversation remains undecided unless recorded in the preference chapter.']:
+                 'Personal UI choices are recorded in the UI preference chapter. That record is authoritative for confirmed and pending decisions; recording a choice does not implement a library feature.']:
         story.append(Paragraph(html.escape(text),r.body))
     doc.multiBuild(story)
     writer=PdfWriter(clone_from=raw)

@@ -23,6 +23,16 @@ contracts with their own rendering/build implementations.
 
 <a id="contents"></a>
 
+## Start here
+
+New to this device? Follow **[Build your first app](docs/start-here.md)**, then the
+**[official counter walkthrough](docs/first-app.md)**. You can build a working
+example before reading the full reference or connecting a device.
+
+Returning with a specific task? Use the [project selector](docs/projects/README.md).
+Use the chapters below as a reference. Library decisions and historical Mesh
+lessons are separate resources further down this page.
+
 ## Common foundation
 
 | Read | Covers |
@@ -35,7 +45,7 @@ contracts with their own rendering/build implementations.
 | [6. Building and packaging](docs/06-building-and-packaging.md) | Native/Python paths, dependencies, arm64 builds and installed checks |
 | [8. Security, licensing and publishing](docs/08-security-and-publishing.md) | Threat boundaries, private data, attribution and release evidence |
 
-Read 1, 2 and 3 first. Then choose the UI/build path and
+For deeper background, read 1, 2 and 3. Then choose the UI/build path and
 [project sections](docs/projects/README.md) that apply. Chapter numbers and paths
 are retained for existing links; [7. LoRa bring-up](docs/07-radio-bring-up.md) is optional.
 
@@ -91,6 +101,10 @@ including Mesh's deliberate modular UI/supervisor design. The package is prepare
 for review; no upstream PR, Store submission or new general library is implied.
 
 ## Worked examples and preserved learning
+
+The [first counter walkthrough](docs/first-app.md) is the small starting example.
+The [independent-reader check](docs/first-reader-check.md) records how to test the
+guide without our chat context; that check is still pending.
 
 Mesh contributed many lessons, but it is one application. The
 [Mesh case study](docs/case-studies/mesh.md) retains detailed state, privacy,

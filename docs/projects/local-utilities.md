@@ -5,6 +5,9 @@ Use the [official shell](../components.md), supported keyboard path and ordinary
 app settings. A backend process is optional. Keep file indexing or other slow work
 on bounded jobs and deliver results on the UI thread.
 
+For a first build, use the [official counter walkthrough](../first-app.md).
+It reuses the existing demo rather than introducing a new utility framework.
+
 ## Decide the behavior before adding infrastructure
 
 - Keep a calculator's state local; distinguish clear-entry, clear-all and Escape.

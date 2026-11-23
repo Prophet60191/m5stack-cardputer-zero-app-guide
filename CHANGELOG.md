@@ -363,3 +363,24 @@ matrix remain explicit qualification work; GitHub CI checks the exact pushed sou
 - Rebuild the 94-page PDF, check links/body bounds and inspect new/reflowed pages
   against the previously reviewed edition. Refresh the existing Drive copy in
   place. Documentation checks pass; no app or device changes.
+
+## 2026-11-22 — Beginner route and first worked build
+
+- Add a short first-app route, capability selector and a pinned official counter
+  walkthrough from source to desktop build, greeting edit and arm64 package
+  inspection. Reuse the official shell/input rather than create another framework.
+- Add an independent-reader exercise; keep its pending status distinct from
+  maintainer build checks and physical hardware qualification.
+- Reduce repeated form/recovery prose using primary-section links, preserve
+  chapter paths/headings and the detailed case studies, and correct simulator
+  equivalence/ad hoc install wording. Relevant progress/status is conditional.
+- Include the new chapters in the reading edition and replace a stale PDF note
+  about an undecided UI choice with a pointer to the authoritative preference record.
+- Validate native macOS arm64 build/startup and the greeting edit; clean-build
+  and inspect its Debian 13 arm64 package without networking or device installation.
+  Record exact sources, artifact hash and remaining checks in the example evidence.
+- Pass all 22 guide/preflight tests in Debian; rebuild the 102-page PDF, verify
+  the embedded sources and inspect new/reflowed pages. Keep short command blocks
+  together and avoid isolated paragraph lines in the reading edition.
+- Refresh the existing Drive PDF in place and verify its type, byte count and
+  unchanged folder. No app, launcher, radio or device settings were changed.

@@ -1,5 +1,8 @@
 # Where the lessons live
 
+Begin with the [short route](start-here.md) for a first app. This index is a
+reference for finding a specific lesson, not a required reading sequence.
+
 The guide is now organized around a common foundation and optional project types.
 The detailed source paragraphs moved from chapters 3/4 and the radio/licensing
 examples in chapter 8 are preserved in the [Mesh case study](case-studies/mesh.md).

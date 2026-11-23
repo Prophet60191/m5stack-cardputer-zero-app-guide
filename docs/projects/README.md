@@ -1,5 +1,7 @@
 # Choose the project sections you need
 
+First app? Take the [short route](../start-here.md) before choosing extras.
+
 All apps use the [common foundation](../../README.md#common-foundation). Add the
 sections below only when their capabilities apply. A topic being documented does
 not mean it is implemented or qualified in every example application.
