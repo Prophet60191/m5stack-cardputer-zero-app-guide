@@ -43,8 +43,8 @@ is there when the next design question arises.
 
 **Platform requirements** describe the device, launcher and packaging contract.
 **Project recipes** apply only to the facilities you use. **Personal UI preferences**
-record our chosen appearance and interaction; they are not official requirements.
-**Case studies** record what a particular project taught us, with its own test limits.
+record my chosen appearance and interaction; they are not official requirements.
+**Case studies** record what a particular project taught me, with its own test limits.
 
 Start by inspecting official guidance and code. Reuse what fits; adapt what your
 app needs. Record the reason for a departure before treating it as a reusable
@@ -59,7 +59,7 @@ release reviewed. Mark unperformed checks **pending**, with the reason. A statio
 GPS or Wi-Fi check, for example, cannot prove performance while walking a survey.
 
 The [independent-reader check](first-reader-check.md) is a short handoff for
-someone trying this guide without our chat history. Their experience will tell
-us which instructions still need work.
+someone trying this guide without the original chat history. Their experience will tell
+me which instructions still need work.
 
 [Counter walkthrough](first-app.md) · [Full reference](../README.md#common-foundation)

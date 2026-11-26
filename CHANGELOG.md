@@ -212,8 +212,8 @@ matrix remain explicit qualification work; GitHub CI checks the exact pushed sou
 ## 2026-11-18 — Personal reusable-library principles
 
 - Record the agreed principles in docs/library-principles.md: complement official
-  firmware/components/guides; preserve our appearance, interaction, logic and
-  backend choices; investigate intentional differences before claiming defects.
+  firmware/components/guides; preserve my choices for appearance,
+  interaction, logic and backend design; investigate intentional differences before claiming defects.
 - Use Mesh modularity as an example of a deliberate choice with benefits and
   costs, applied according to each app's needs. Distinguish personal preferences,
   useful alternatives and demonstrated improvements; discuss keep/share decisions
@@ -261,7 +261,7 @@ matrix remain explicit qualification work; GitHub CI checks the exact pushed sou
 - Four selected unmodified official macOS arm64 tests pass with ASAN/UBSAN;
   32 default map assignments match the independent vendor fixture. Full SDK,
   Linux xkb/reader integration and physical keys remain unqualified in this pass.
-- Update keyboard guidance to avoid prescribing our decoder for every LVGL app;
+- Update keyboard guidance to avoid prescribing my decoder for every LVGL app;
   link the decision from inventory, components and agent context. No app/device
   changes, implementation extraction, firmware update or upstream submission.
   Existing guide documentation checks pass.

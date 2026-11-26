@@ -54,7 +54,7 @@ fixture and pre-editor shortcut filtering. Built-in CardputerZero and US USB
 profiles remain separate. A focused textarea selects typing context; custom editors
 can supply their own context query. Both native and simulator routing are updated.
 
-A concrete acceptance example is Sym+N producing `/`, not `:`. This corrects our
+A concrete acceptance example is Sym+N producing `/`, not `:`. This corrects my
 historical application integration, not the vendor's map. While editing, toolbar
 digits/letters belong to the text field. Outside editing, browsing shortcuts remain
 available. Help consumes typing until dismissed. Unbound semantic Fn actions do
@@ -172,7 +172,7 @@ conversations, coordinates, raw device logs and backups are excluded. Public
 copyright/GitHub attribution is intentional. The package builder does not install,
 transmit, authenticate or submit anything to M5Stack/the Store.
 
-We request engineering review of the keyboard integration and tests, guidance on
+I request engineering review of the keyboard integration and tests, guidance on
 fit with the current Template/shared-backend direction and coordination with
 [existing additional-key PR #4](https://github.com/CardputerZero/Template/pull/4).
 Maintainers can consider the integration, tests or smaller portions independently.

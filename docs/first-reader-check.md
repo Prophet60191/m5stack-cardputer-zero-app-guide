@@ -1,4 +1,6 @@
-# Try the guide without our help
+<a id="try-the-guide-without-our-help"></a>
+
+# Try the guide on your own
 
 This is a usability check of the instructions, separate from testing an app.
 Give a new builder the [short route](start-here.md) and

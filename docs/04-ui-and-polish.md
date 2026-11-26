@@ -91,7 +91,7 @@ boundary for this application's actual needs.
   suit a diagnostic tool; a short status or progress value can suit a simple task.
 - **Show relevant status** (connection or unread count) when it helps the
   task. Reuse the chosen foundation's supported status source and avoid redundant polling.
-  Do not add a battery icon to the header by default. Our personal preference
+  Do not add a battery icon to the header by default. My personal preference
   keeps any useful battery percentage as text without a battery glyph; see
   [the preference record](ui-preferences.md#locked-header-battery-presentation).
 
@@ -283,7 +283,7 @@ also applies to network, peripheral and other device configuration tools.
 
 For form actions and validation, use [forms and clear outcomes](#forms-clear-outcomes-and-persistent-actions);
 for setup scope and saved profiles, use [complete setup](#keep-a-complete-setup-in-one-place).
-The [personal preference record](ui-preferences.md) separately specifies our
+The [personal preference record](ui-preferences.md) separately specifies my
 direct two-choice rows and selection menus.
 
 Use Cancel-first confirmation for irreversible deletion when Undo is not

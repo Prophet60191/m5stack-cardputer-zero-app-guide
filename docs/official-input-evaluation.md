@@ -23,14 +23,14 @@ the libraries or firmware installed on a particular device.
 
 Template PR [#4](https://github.com/CardputerZero/Template/pull/4) remains open
 and unmerged at this review. Its existence does not change the current base or
-establish acceptance of our separate prepared proposal. No upstream contact occurred.
+establish acceptance of my separate prepared proposal. No upstream contact occurred.
 
 ## What the official approach provides
 
 **Guidance:** hold/one-shot/lock modifier behavior and Fn actions are already
 specified. Bare F/Z/X/C as arrows outside text entry is an official recommendation,
-not a new layout invented by our apps. The specification recommends aligned 4–8
-action hints and also allows other keys with visible explanations. Our footer
+not a new layout invented by my apps. The specification recommends aligned 4–8
+action hints and also allows other keys with visible explanations. My footer
 preferences should be evaluated against that guidance during visual design;
 they are not a reason to alter the physical keymap.
 
@@ -39,7 +39,7 @@ they are not a reason to alter the physical keymap.
 adapter: ordinary letters and the full Sym map are absent. A text-heavy app
 scaffolded from it still needs input integration. AppBuilder copying the latest
 Template does not add that missing behavior. This is an integration limitation
-for our use case; the review does not establish that the demo's scope was accidental.
+for my use case; the review does not establish that the demo's scope was accidental.
 
 **Shared runtime:** `keyboard_input.h` supplies physical key identity, Unicode/
 UTF-8, modifiers, press/release/repeat and semantic input context. It exposes a
@@ -53,7 +53,7 @@ including code 92 as slash.
 Applications must distinguish native LVGL navigation events from the structured
 keyboard event, and must not retain the borrowed event object. Consume decoded
 text at that API boundary; sending it through another raw decoder would apply
-translation twice. Our decoder's LVGL/special-action values are not interchangeable
+translation twice. The prepared decoder’s LVGL/special-action values are not interchangeable
 with the shared backend's evdev/keysym/semantic fields.
 
 **Build and ownership:** this shared implementation is source integrated through
@@ -71,11 +71,11 @@ for normal text input. Do not copy its legacy I2C ownership into every app.
 
 | Area | Recommendation | Reason and boundary |
 |---|---|---|
-| Physical symbols and Fn assignments | **Use official** | Complete guidance/map exists. Our independent fixture matches it; no evidence justifies a competing map. |
-| New shared-runtime app | **Use official backend; adapt app callbacks** | Rich decoded input/context/filter APIs already exist. Keep our visual preferences above that boundary. No separate decoder alongside it. |
+| Physical symbols and Fn assignments | **Use official** | Complete guidance/map exists. The independently checked fixture matches it; no evidence justifies a competing map. |
+| New shared-runtime app | **Use official backend; adapt app callbacks** | Rich decoded input/context/filter APIs already exist. Keep my visual preferences above that boundary. No separate decoder alongside it. |
 | Existing Template/CMake apps | **Adapt Template** | The native subset does not satisfy text entry. Retain existing qualified integration while evaluating a focused source extension and its tests. Avoid a broad architecture migration merely to eliminate repeated files. |
 | Portable decoder | **Candidate focused extension, not yet a new library** | It isolates raw-event translation for Template consumers and already has three identical copies. Central versioning might reduce maintenance, but it must retain provenance/tests and justify its integration cost. |
-| Broader layouts and composition | **Evaluate official xkb path** | Our generic profile is US-oriented and the symbol loader expects the complete known map. It is not feature-equivalent to xkb composition or arbitrary UTF-8 remapping. |
+| Broader layouts and composition | **Evaluate official xkb path** | The generic profile in the proposal is US-oriented and the symbol loader expects the complete known map. It is not feature-equivalent to xkb composition or arbitrary UTF-8 remapping. |
 | Shortcuts, editor focus, Help and menu controls | **Adapt per app** | Official contexts/filtering provide foundations; the app owns whether an action is available, consumed or restored after an overlay. |
 | A wholesale alternative keyboard subsystem | **Defer** | This review finds no demonstrated need to replace the shared runtime. No intentional departure is selected at that level. |
 

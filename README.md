@@ -1,6 +1,6 @@
 <h1 align="center">Building Apps for the M5Stack Cardputer Zero</h1>
 
-A community guide for building many kinds of applications on the **CardputerZero
+An independent guide for building many kinds of applications on the **CardputerZero
 Linux handheld**: utilities, notes, games, networking tools, media and peripheral
 apps. Start with official foundations, choose only the facilities your app needs,
 and preserve useful lessons from real projects.
@@ -68,7 +68,7 @@ requirement; a camera example does not certify every image's camera stack.
 ## Official foundations and focused contributions
 
 Use the [component comparison](docs/components.md) to see what the official
-Template, launcher/shared SDK and AppBuilder already provide, where our Mesh code
+Template, launcher/shared SDK and AppBuilder already provide, where my Mesh code
 is specific to that app, and which gaps are worth addressing upstream.
 
 The first [prepared keyboard contribution](contributions/template-keyboard/README.md)
@@ -78,15 +78,15 @@ not an accepted upstream release or a new general framework.
 
 ## Personal reusable library
 
-The [UI preference record](docs/ui-preferences.md) tracks the owner's decisions:
+The [UI preference record](docs/ui-preferences.md) tracks my design decisions:
 the exact Mesh home carousel and Mesh list-selection base are confirmed;
 submenu chevrons and overflow indicators are specified. Other components remain open.
 
-Our [library principles](docs/library-principles.md) record the preferences and
-design choices we want to reuse across our own apps, including appearance,
+My [library principles](docs/library-principles.md) record the preferences and
+design choices I want to reuse across my apps, including appearance,
 interaction, application logic and backend organization. They complement official
 foundations and distinguish personal choices, useful alternatives and demonstrated
-improvements. Each meaningful departure is discussed before deciding what to keep
+improvements. I review each meaningful departure before deciding what to keep
 or share. These choices remain separate from the general guide's platform requirements.
 
 The [source inventory and proposed version 0.1 scope](docs/library-inventory.md)
@@ -96,7 +96,7 @@ The [official keyboard/input evaluation](docs/official-input-evaluation.md)
 records the first use/adapt decision: official shared input for that runtime,
 with a focused Template extension considered separately.
 The [official UI/shell evaluation](docs/official-ui-evaluation.md) records the
-next decision: reuse official foundations and adapt presentation to our preferences,
+next decision: reuse official foundations and adapt presentation to my preferences,
 preserving lifecycle, input and backend ownership.
 
 <a id="the-worked-example"></a>
@@ -112,7 +112,7 @@ for review; no upstream PR, Store submission or new general library is implied.
 
 The [first counter walkthrough](docs/first-app.md) is the small starting example.
 The [independent-reader check](docs/first-reader-check.md) records how to test the
-guide without our chat context; that check is still pending.
+guide without the original chat context; that check is still pending.
 
 Mesh contributed many lessons, but it is one application. The
 [Mesh case study](docs/case-studies/mesh.md) retains detailed state, privacy,

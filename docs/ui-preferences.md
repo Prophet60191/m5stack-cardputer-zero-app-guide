@@ -1,7 +1,7 @@
 # Personal UI preferences
 
 Decisions are recorded component by component. A locked preference is the default
-for our own apps; revisit any necessary app-specific exception explicitly.
+for my own apps; revisit any necessary app-specific exception explicitly.
 Preserve the [official shell/input/backend boundaries](official-ui-evaluation.md).
 This record does not implement a library or change existing apps.
 
@@ -111,7 +111,7 @@ review page. Specific consequential changes can require targeted acknowledgment.
 Use readable contrast for important values and results in both themes, plain
 language for outcomes, non-color cues where color carries meaning, and
 Cancel-first confirmation for irreversible deletion when Undo is unavailable.
-These are our interaction preferences; they do not create a replacement shell
+These are my interaction preferences; they do not create a replacement shell
 or a universal requirement for every project. Source and physical qualification
 remain app-specific. Mesh's 0.1.15 candidate implements a focused refinement;
 its verification record owns the actual results and remaining checks.
@@ -120,7 +120,7 @@ its verification record owns the actual results and remaining checks.
 
 Agreed 2026-11-23: omit the battery icon from the app header. Mesh retains the
 numeric charge percentage when battery data is available, with no substitute
-charging/battery glyph. This is our presentation preference, not a platform
+charging/battery glyph. This is my presentation preference, not a platform
 requirement or a replacement for the official shell/status source. Preserve
 truthful unknown/absent state and existing backend ownership. Do not add polling
 or change telemetry merely to remove a decorative icon. Other apps are not

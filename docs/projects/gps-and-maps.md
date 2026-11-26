@@ -4,7 +4,7 @@ This section helps any CardputerZero app consume GPS reliably: a map, survey
 logger, tracker or local instrument. It complements the official hardware and
 app guidance. It does not introduce a GPS framework, require Mesh's supervisor,
 or replace M5Stack's receiver support. USB receiver work remains unqualified in
-our apps; the source-selection guidance below is a design checklist.
+my apps; the source-selection guidance below is a design checklist.
 
 ## Start with what M5Stack already provides
 
@@ -35,7 +35,9 @@ power-control path. That is **not** a third-party Store exemption: the current
 prohibit apps running as root. Adapt privilege/resource integration rather than
 copying that packaging into a Store app. See [hardware ownership](hardware.md).
 
-## What our experience adds
+<a id="what-our-experience-adds"></a>
+
+## What my experience adds
 
 The reviewed official usage/specification pages explain hardware and operation;
 the source already covers many parser, age and ownership concerns. The following
@@ -138,7 +140,7 @@ protocol, speed and power needs. Keep identifying serial numbers private. An
 external antenna is not automatically a new GPS receiver. USB switching can also
 remove the maintenance connection; plan network access independently.
 
-These are design requirements, not a claim that our deferred dongle is supported,
+These are design requirements, not a claim that the deferred USB dongle is supported,
 automatically preferred, or physically tested.
 
 ## Acceptance checks

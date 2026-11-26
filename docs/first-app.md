@@ -5,7 +5,7 @@ working reset action. Optional: build and inspect a device package. This is a le
 Store-ready app**. It needs no radio, account, Cap, Python backend or service.
 
 The example uses the official Template's existing shell, input routing, themes,
-assets, model/viewmodel and screens. We deliberately reuse them rather than
+assets, model/viewmodel and screens. I deliberately reuse them rather than
 creating another starter framework. No keyboard patch is needed for this
 navigation-only example; full text entry is a separate [input decision](05-keyboard.md).
 
@@ -204,7 +204,7 @@ dpkg-deb --contents dist/TemplateApp_0.2.1_rev1_arm64.deb
 `uname -m` must report `aarch64` for this native arm64 recipe. `/` is the dependency
 root **inside that Debian arm64 environment**, not a macOS sysroot or a cross
 compiler setting. The package is written to the Template's `dist/` directory.
-We disable the optional system service: this foreground demo needs none.
+The command disables the optional system service: this foreground demo needs none.
 These commands explicitly compile reviewed source; they are separate from the
 non-executing [Store preflight](../tools/README.md).
 

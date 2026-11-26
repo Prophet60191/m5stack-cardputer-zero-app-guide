@@ -213,7 +213,7 @@ def main():
     pdfmetrics.registerFontFamily('Body',normal='Body',bold='Body-Bold',italic='Body-Italic',boldItalic='Body-BoldItalic')
     r=Renderer()
     raw=out/'.app-development-guide.pdf'
-    doc=Document(str(raw),pagesize=letter,pageCompression=1,title='Building Apps for the M5Stack Cardputer Zero',author='Cardputer Zero App Guide contributors')
+    doc=Document(str(raw),pagesize=letter,pageCompression=1,title='Building Apps for the M5Stack Cardputer Zero',author='Cardputer Zero App Guide')
     def page(canvas,document):
         if document.page==1:return
         canvas.setFillColor(MUTED);canvas.setFont('Body',8)
@@ -236,7 +236,7 @@ def main():
             story.append(PageBreak());story.extend(r.chapter((ROOT/path).resolve()))
     story.append(PageBreak());f=Paragraph('Source snapshot and attribution',r.h[1]);f.bookmark=('source-notes','Source snapshot and attribution',0);story.append(f)
     for text in ['This edition includes all Markdown chapters under docs/, plus the guide introduction, offline-tool instructions and the prepared keyboard contribution overview/validation. Source references and qualification dates remain as recorded in those chapters.',
-                 'The guide is licensed CC BY 4.0. Attribution: Cardputer Zero App Guide contributors. The source repository is '+REPO+'. Runnable tools have their own MIT terms. Official and third-party component licenses remain applicable.',
+                 'The guide is licensed CC BY 4.0. Attribution: Cardputer Zero App Guide. The source repository is '+REPO+'. Runnable tools have their own MIT terms. Official and third-party component licenses remain applicable.',
                  'The Markdown snapshot, source-hash manifest, evidence JSON and DejaVu font notices are embedded as attachments for offline reference. Links to included chapters work within this PDF; external repositories and tools require Internet access.',
                  'Personal UI choices are recorded in the UI preference chapter. That record is authoritative for confirmed and pending decisions; recording a choice does not implement a library feature.']:
         story.append(Paragraph(html.escape(text),r.body))
@@ -253,7 +253,7 @@ def main():
     writer.add_attachment('guide-source-snapshot.zip',buf.getvalue())
     writer.add_attachment('source-manifest.json',json.dumps(source_manifest,indent=2).encode())
     writer.add_attachment('DejaVu-LICENSE.txt',args.font_license.read_bytes())
-    writer.add_metadata({'/Title':'Building Apps for the M5Stack Cardputer Zero','/Author':'Cardputer Zero App Guide contributors','/Subject':'App development, official foundations and personal reusable-library principles','/Creator':'Cardputer Zero App Guide PDF builder'})
+    writer.add_metadata({'/Title':'Building Apps for the M5Stack Cardputer Zero','/Author':'Cardputer Zero App Guide','/Subject':'App development, official foundations and personal reusable-library principles','/Creator':'Cardputer Zero App Guide PDF builder'})
     final=out/'Cardputer-Zero-App-Development-Guide.pdf'
     with final.open('wb') as stream:writer.write(stream)
     raw.unlink()

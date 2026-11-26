@@ -3,7 +3,7 @@
 Reviewed 2026-11-18 under the [library principles](library-principles.md).
 
 **Decision: reuse the official foundation appropriate to the app, adapt its
-presentation to our preferences, and defer a separate app-shell framework.**
+presentation to my preferences, and defer a separate app-shell framework.**
 Colors, menus and layouts can be personal choices while lifecycle, input,
 resource ownership and backend authority remain intact. If a visual request
 also changes behavior, evaluate that behavior explicitly rather than assuming
@@ -62,15 +62,15 @@ tree or hardware service selection into every application.
 
 ## Use, adapt or depart
 
-| Area | Decision | Our freedom and the compatibility boundary |
+| Area | Decision | What can change and what must stay compatible |
 |---|---|---|
 | App loop, screen ownership and teardown | **Use the selected official foundation** | Retain one coherent initialization/input/render/cleanup path. Do not add a second runner to obtain a different appearance. Existing apps need no migration solely for visual uniformity. |
 | Screen transitions and Back | **Adapt app navigation above that foundation** | Page names, menu order and navigation depth belong to the app. Preserve safe deferred destruction, pending-work cancellation and focus restoration. |
 | Colors and selection | **Adapt palette/styles** | Burgundy, amber, rounded rows, left rails and bubble outlines can differ by app and state. Keep focus distinguishable and errors understandable without relying on color alone. No source-level need to retain the demo accent was found. |
 | Fonts, spacing and geometry | **Adapt within measured content bounds** | Template uses 30 px title/footer constants; shared page API has a 20 px standard top bar. Those are implementation defaults, not one universal visual mandate. Derive usable content size from the selected layout and verify full font height, long text and selected-row visibility at 320×170. |
 | Top/status bar | **Reuse/adapt supplied components** | Customize title and placement using the chosen page API. A blank page or disabled bar is supported by the shared API; if status is shown, its source and meaning must stay truthful. Detach subscriptions/timers before destroying associated objects. |
-| Footers and actions | **Adapt with documented key choices** | Official guidance recommends aligned 4–8 action hints and also permits other keys with explanations. Our contextual actions and reduced navigation hints are preferences to review, not automatically incompatible. Keep actual shortcuts and displayed actions consistent, and preserve Help access. |
-| Carousel | **Use official examples as references; adapt presentation** | APPLaunch's five-slot geometry, images, slider and registry are launcher-specific. We can keep our lightweight app carousel style without transplanting the entire launcher. A later reusable widget needs item/callback and ownership boundaries plus lifecycle tests. |
+| Footers and actions | **Adapt with documented key choices** | Official guidance recommends aligned 4–8 action hints and also permits other keys with explanations. My contextual actions and reduced navigation hints are preferences to review, not automatically incompatible. Keep actual shortcuts and displayed actions consistent, and preserve Help access. |
+| Carousel | **Use official examples as references; adapt presentation** | APPLaunch's five-slot geometry, images, slider and registry are launcher-specific. I can keep my lightweight app carousel style without transplanting the entire launcher. A later reusable widget needs item/callback and ownership boundaries plus lifecycle tests. |
 | Lists and settings menus | **Evaluate/adapt existing examples** | APPLaunch already has a settings roller with centered selection, long-text scrolling and focus changes. Its settings-tree/font/component dependencies differ from a simple app list. Compare those dependencies before extracting another list implementation. Row style does not justify importing global setting actions. |
 | Help, toast and progress | **Reuse/adapt Template widgets where suitable** | Supply app content, dimensions and font choices; keep timer/observer cleanup. Help must own input while open. Keep transient/persistent messages distinct and show real operation state rather than optimistic success. |
 | Screenshots and overlays | **Adapt capture integration if needed** | Template parents Help/Toast to the top layer while its screenshot service snapshots the active screen. An overlay screenshot therefore needs an explicit capture/parenting decision. This is an integration concern, not a demonstrated firmware defect. |

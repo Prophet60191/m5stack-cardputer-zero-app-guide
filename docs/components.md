@@ -47,7 +47,7 @@ keyboard layout or alleging the official shared map is wrong.
 
 An existing [Template contribution](https://github.com/CardputerZero/Template/pull/4)
 also requests additional keys. Inspect its current state before proposing another
-upstream change. Our [prepared proposal](../contributions/template-keyboard/README.md)
+upstream change. My [prepared proposal](../contributions/template-keyboard/README.md)
 records its exact base, scope, code provenance, tests and remaining qualification.
 It has not been submitted or accepted upstream.
 
@@ -70,7 +70,7 @@ cross-build archive is a target sysroot; it is not by itself a ready-made app UI
 
 ## When a separate library is justified
 
-Our [personal library principles](library-principles.md) allow reusable preferences
+My [personal library principles](library-principles.md) allow reusable preferences
 and deliberate design choices alongside demonstrated fixes. A component can be
 useful without establishing a defect in the official implementation.
 
