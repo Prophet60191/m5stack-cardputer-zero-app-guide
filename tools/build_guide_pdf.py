@@ -20,7 +20,7 @@ from reportlab.lib.pagesizes import letter
 from reportlab.lib.styles import ParagraphStyle
 from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
-from reportlab.platypus import BaseDocTemplate, Frame, LongTable, PageBreak, PageTemplate, Paragraph, Spacer, TableStyle, Preformatted, Flowable, KeepTogether
+from reportlab.platypus import BaseDocTemplate, Frame, LongTable, PageBreak, PageTemplate, Paragraph, Spacer, TableStyle, Preformatted, Flowable, KeepTogether, Image
 from reportlab.platypus.tableofcontents import TableOfContents
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -36,6 +36,7 @@ GROUPS = [
     ('Release references and preserved learning', ['docs/store-readiness.md','tools/README.md','docs/lesson-index.md','docs/case-studies/mesh.md','contributions/template-keyboard/README.md','contributions/template-keyboard/VALIDATION.md']),
 ]
 PATHS = [(ROOT/p).resolve() for _, paths in GROUPS for p in paths]
+IMAGE_DIR = ROOT/'docs/images'
 
 
 def slug(s):
@@ -162,6 +163,18 @@ class Renderer:
             elif t.type=='blockquote_open':quote+=1
             elif t.type=='blockquote_close':quote-=1
             elif t.type=='paragraph_open':
+                children=ts[i+1].children or []
+                if len(children)==1 and children[0].type=='image':
+                    image_path=(path.parent/unquote(children[0].attrGet('src'))).resolve()
+                    if not image_path.is_relative_to(IMAGE_DIR) or image_path.suffix.lower()!='.png':
+                        raise ValueError('Illustrations must be local PNG assets under docs/images')
+                    illustration=Image(str(image_path),width=WIDTH,height=190,kind='proportional')
+                    illustration.hAlign='LEFT'
+                    illustration.keepWithNext=True
+                    illustration.spaceAfter=5
+                    output.append(illustration)
+                    i+=3
+                    continue
                 prefix=''
                 if lists and item:
                     prefix='• ' if lists[-1] is None else str(lists[-1])+'. '
@@ -229,11 +242,12 @@ def main():
         story.append(Paragraph(html.escape(text),r.body))
     doc.multiBuild(story)
     writer=PdfWriter(clone_from=raw)
-    source_manifest={'edition':args.edition,'files':{str(p.relative_to(ROOT)):hashlib.sha256(p.read_bytes()).hexdigest() for p in PATHS}}
+    snapshot_paths=PATHS+sorted(IMAGE_DIR.glob('*.png'))
+    source_manifest={'edition':args.edition,'files':{str(p.relative_to(ROOT)):hashlib.sha256(p.read_bytes()).hexdigest() for p in snapshot_paths}}
     import zipfile,io
     buf=io.BytesIO()
     with zipfile.ZipFile(buf,'w',zipfile.ZIP_DEFLATED) as z:
-        for p in PATHS:z.write(p,p.relative_to(ROOT).as_posix())
+        for p in snapshot_paths:z.write(p,p.relative_to(ROOT).as_posix())
         z.write(ROOT/'LICENSE','LICENSE')
         for p in sorted((ROOT/'docs').glob('*evidence.json')):z.write(p,p.relative_to(ROOT).as_posix())
     writer.add_attachment('guide-source-snapshot.zip',buf.getvalue())

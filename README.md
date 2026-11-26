@@ -25,9 +25,17 @@ contracts with their own rendering/build implementations.
 
 ## Start here
 
-New to this device? Follow **[Build your first app](docs/start-here.md)**, then the
-**[official counter walkthrough](docs/first-app.md)**. You can build a working
-example before reading the full reference or connecting a device.
+New to this device? **[Build your first app](docs/first-app.md)** in the desktop
+simulator. You don't need a Cardputer Zero for this first build. Start with the
+[short route](docs/start-here.md) if you want to see what to read and what to skip.
+
+![The official Template counter in the desktop simulator. Press 8 on the home screen to open it, C or Right to add one, Z or Left to subtract one, and Escape to go back.](docs/images/first-counter-quickstart.png)
+
+*Open the counter with **8**, try **C/Right** and **Z/Left**, then press
+**Esc** to go back. Once it works, change the greeting and add your own reset
+action. Simulator capture: [official Template, M5Stack CardputerZero Community
+(MIT)](https://github.com/CardputerZero/Template/blob/477fa6d217b683e3084c361a757f03dc8ca9f753/LICENSE);
+annotations added.*
 
 Returning with a specific task? Use the [project selector](docs/projects/README.md).
 Use the chapters below as a reference. Library decisions and historical Mesh

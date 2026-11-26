@@ -12,6 +12,9 @@ are needed for the first build.
 - Which route they followed and whether they found the correct dependency list.
 - Whether they could build, locate the executable, open the counter, change the
   greeting and rebuild without unwritten assistance.
+- Optionally, whether they could add the reset action from the walkthrough and
+  confirm that the same key still changes the theme on the home screen. Record
+  this separately from the first-build result.
 - The first instruction that was unclear, its expected result and what happened.
 - Whether they understood the difference between a desktop build, an arm64
   package, physical testing and a publishable app.

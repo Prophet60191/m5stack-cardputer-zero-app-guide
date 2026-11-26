@@ -12,9 +12,9 @@ for **CardputerZero running Debian**, not the ESP32 Cardputer or Cardputer ADV.
 2. **Build the official starting point.** Follow the
    [counter walkthrough](first-app.md). It takes you from pinned source to a
    desktop build and an inspectable arm64 package. No device is needed yet.
-3. **Make one small change.** Change the greeting as described in the walkthrough,
-   rebuild, and check the result. Learn the existing model, subjects and screens
-   before replacing them.
+3. **Make it yours.** Change the greeting, then try the counter reset exercise.
+   Rebuild and check both changes in the simulator. Follow a key press through
+   the viewmodel to the screen before replacing any of the Template's structure.
 4. **Choose only relevant extras.** Use the table below. Read the linked recipe
    when adding that capability; the recipe is not a requirement for every app.
 5. **Prepare a real app for release.** Give it its own identity, handle errors,
@@ -22,7 +22,8 @@ for **CardputerZero running Debian**, not the ESP32 Cardputer or Cardputer ADV.
    and [security/publishing](08-security-and-publishing.md). A successful build
    is a starting point, not a release certificate.
 
-Stop after step 3 if you only want a first working example. The fuller reference
+Stop after the greeting if you only want a first working example, or do the reset
+exercise to add a feature of your own. The fuller reference
 is there when the next design question arises.
 
 ## Which sections do I need next?

@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-11-26 — First counter walkthrough
+
+- Put an annotated desktop counter screenshot next to the README quickstart.
+- Add a small reset exercise after the greeting edit, with simulator checks
+  for the new action and the original controls.
+- Keep the independent-builder check pending until a new reader tries it.
+
 ## 2026-11-17 — Forms as review and contextual action lanes
 
 - Document complete forms with persistent Save actions, named scan/import success,

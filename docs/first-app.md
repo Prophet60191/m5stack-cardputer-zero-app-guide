@@ -1,7 +1,7 @@
 # First app: build the official counter
 
-Build the official Template, open its counter, make one small change, and inspect
-a device package. This is a learning example, **not a new production utility or a
+Build the official Template, open its counter, change the greeting, then add a
+working reset action. Optional: build and inspect a device package. This is a learning example, **not a new production utility or a
 Store-ready app**. It needs no radio, account, Cap, Python backend or service.
 
 The example uses the official Template's existing shell, input routing, themes,
@@ -100,7 +100,78 @@ work, define a maximum count, persistence/reset behavior and recovery from write
 failure. Its increment action is not bounded for indefinite use; do not confuse
 this short exercise with production acceptance testing.
 
-## 5. Build an arm64 package without using the device
+## 5. Add a reset action
+
+Now change behavior, not just text: pressing **6** on the counter page should
+set the count to zero. On the home page, **6** should still switch themes. The
+official example already routes this key and binds the label to the count, so
+there is no need to add a driver, create a new screen or redraw the label
+yourself. Close the simulator and make these edits in `first-counter`.
+
+1. **Give the viewmodel an action.** In `src/viewmodel/base_viewmodel.h`, add
+   `void reset_counter();` immediately above `void increment_counter();`. In
+   `src/viewmodel/base_viewmodel.cpp`, add this above the existing increment
+   method:
+
+   ```cpp
+   void BaseViewModel::reset_counter() {
+       counter_subject_.set(0);
+   }
+   ```
+
+2. **Route the key on the counter page only.** In
+   `src/platform/linux_input.cpp`, find `nav_key_to_index()`. Inside the
+   first switch, the one under `if (nav_shortcut_mode)`, add this case.
+   Leave the second switch (home page) as it is:
+
+   ```cpp
+   case '6':
+       return 2;
+   ```
+
+3. **Connect slot 2 to the action.** In `src/view/widgets/navbar.h`, add
+   `static void reset_counter_cb(lv_event_t* event);` next to
+   `increment_counter_cb`. In `src/view/widgets/navbar.cpp`, replace the
+   middle entry (index 2) in `butter_icons` with `{"", reset_counter_cb},`.
+   Add `lv_obj_remove_event_cb(button->root(), reset_counter_cb);` immediately
+   above the existing line that removes `increment_counter_cb`. This cleans
+   up the old handler when switching screens. Add this definition immediately
+   above `NavBar::increment_counter_cb()`:
+
+   ```cpp
+   void NavBar::reset_counter_cb(lv_event_t* event) {
+       auto* view_model = static_cast<viewmodel::BaseViewModel*>(lv_event_get_user_data(event));
+       if (view_model) {
+           view_model->reset_counter();
+       }
+   }
+   ```
+
+4. **Show people what to press.** In `navbar.cpp`, change the size of
+   `kButterShortcuts` from 3 to 4 and insert `{"6", "Reset"},` between the
+   Less and More entries. To keep all four hints readable on 320×170,
+   shorten those two key labels from `Z/Left` and `C/Right` to `Z` and `C`.
+   The arrow keys still work and remain in Help. In `navbar.h`, change the size of
+   `shortcut_key_labels_` from 3 to 4 so it has room for the new hint. In
+   `src/view/widgets/help_popup.cpp`, change the size of `kButterRows` from
+   3 to 4 and insert `{"6", "Reset to zero"},` between Decrease and Increase.
+
+5. **Rebuild and try it.** Run the same build and launch commands as step 3.
+   Press **8** to open the counter, press **C/Right** twice, then press **6**.
+   You should see `Counter: 2` change immediately to `Counter: 0`.
+   Press **C/Right** once and **Z/Left** once to check the original controls.
+   Tap **Esc** to go home and press **6** there: it should still change the
+   theme. Check that the counter footer fits in both themes.
+
+Follow the action you added: **key → navigation slot → callback → viewmodel →
+counter label**. If the reset appears in the footer but does nothing, check
+that the new key maps to index 2 in the first switch and that index 2 in
+`butter_icons` points at the reset callback. If the counter changes, the
+existing subject binding takes care of updating the label.
+
+<a id="5-build-an-arm64-package-without-using-the-device"></a>
+
+## 6. Build an arm64 package without using the device
 
 Continue only if you need the device artifact now. Desktop build success does
 not produce an arm64 binary. Use a **separate Debian 13 arm64 environment**, such
@@ -137,7 +208,9 @@ We disable the optional system service: this foreground demo needs none.
 These commands explicitly compile reviewed source; they are separate from the
 non-executing [Store preflight](../tools/README.md).
 
-## 6. Inspect before installing or publishing
+<a id="6-inspect-before-installing-or-publishing"></a>
+
+## 7. Inspect before installing or publishing
 
 Check that the package architecture is arm64, the desktop entry has
 `Terminal=false`, and its executable is `/usr/bin/template_app`. You can inspect
@@ -172,8 +245,16 @@ Maintainer check on **2026-11-22**, using the pinned sources above:
   inspection confirmed arm64, foreground desktop entry and no systemd service or
   install/remove maintainer scripts. No package was installed on a device.
 - A fresh dependency installation/container-image build, Linux desktop run,
-  interactive simulator walkthrough, physical keyboard check and
+  manual end-to-end walkthrough, physical keyboard check and
   [independent-reader exercise](first-reader-check.md) remain unperformed here.
+
+The reset extension was checked separately in a temporary pinned Template copy
+on Apple Silicon. The Debug build succeeded. Synthetic desktop input exercised
+the simulator's normal event handler: opening the counter, going from 0 to 2,
+resetting to 0, incrementing and decrementing again, going back, and switching
+the home theme with the same key. The counter footer was visually inspected at
+320×170 in both themes. The reset extension was not installed on a device; the
+arm64 package above was verified for the greeting edit, not the reset extension.
 
 The source/package checks show that the example can compile and package in those
 specific environments. [The evidence record](first-app-evidence.json) pins the
