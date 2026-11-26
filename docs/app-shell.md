@@ -104,9 +104,16 @@ secondary text, 12 px body and controls, and 16 px section titles. The
 **About** list demonstrates selection, wrapping and a position indicator that
 appears only on overflow.
 
+Use one focus style on every selectable row: the NFC Tools warm fill,
+6 px corners, and a 3 px inset accent stripe on the left. The stripe shortens
+for a compact row. Only the selected row gets the fill and stripe. Keep this
+style in About, Settings, forms, and confirmation prompts, in both themes.
+Helper and error text do not change the selection style.
+
+Choose the row layout separately:
+
 - **Explanation rows (NFC Tools):** Put a title on the first line and a short,
-  muted explanation beneath it. Keep the unchanged NFC-style selected fill,
-  6 px corners, and left accent stripe. A chevron marks a row that opens a page.
+  muted explanation beneath it. A chevron marks a row that opens a page.
 - **Settings rows (Mesh):** Put the setting name on the left and its current
   value on the right, on one line. Keep values as text; a boolean can simply
   read **On** or **Off**. Don’t add a chevron to an inline setting or a read-only
