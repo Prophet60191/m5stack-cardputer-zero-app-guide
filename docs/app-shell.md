@@ -104,11 +104,12 @@ secondary text, 12 px body and controls, and 16 px section titles. The
 **About** list demonstrates selection, wrapping and a position indicator that
 appears only on overflow.
 
-Use one focus style on every selectable row: the NFC Tools warm fill,
-6 px corners, and a 3 px inset accent stripe on the left. The stripe shortens
-for a compact row. Only the selected row gets the fill and stripe. Keep this
-style in About, Settings, forms, and confirmation prompts, in both themes.
-Helper and error text do not change the selection style.
+Use the **Start form** as the reference for selection on every page:
+a neutral fill (light gray in light mode, charcoal in dark mode), 6 px rounded
+corners, and a 3 px accent stripe that runs the full height of the row at the
+left edge. Only the selected row gets the fill and stripe. Use the same style
+in About, Settings, forms, and confirmation prompts, even when their rows
+have different heights. Helper and error text do not change the selection style.
 
 Choose the row layout separately:
 
