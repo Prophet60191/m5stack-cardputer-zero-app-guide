@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-11-26 — First-app showcase and shell scope
+
+- Connect the guide, working Tick & Bell example and reusable App Shell.
+- Define a fresh-checkout path from a first screen edit to an installable package.
+
 ## 2026-11-26 — App Shell simulator workflow
 
 - Document which edits update in place, which need a deliberate reopen, and how to start fresh.

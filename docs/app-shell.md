@@ -4,7 +4,10 @@ The shell is a small native Cardputer Zero sample with three destinations:
 **Start**, **Settings** and **About**. Its purpose is to give you a working
 launch point, not to make you reverse-engineer Tick & Bell or adopt a particular
 menu design. The carousel is my preference and a demonstration, not an M5Stack
-requirement. A direct list may suit your app better.
+requirement. A direct list may suit your app better. The shell gives you a
+menu, lists, one small form and a detail page with one ordinary action. Start
+here to build a first screen. Add storage, background services or specialized
+controls only when your own app needs them.
 
 ![App Shell on the Start menu in the desktop simulator](images/app-shell-home.png)
 
@@ -201,6 +204,11 @@ The shell is not a Store listing. Use [Store readiness](store-readiness.md)
 only when you are actually preparing a submission.
 
 ## Check the result
+
+Try the first-app path from a fresh checkout: launch the desktop preview,
+change a title in the layout file, see it update, and build an arm64 package
+under your own app ID. You should be able to do it using only the shell README
+and this guide. That is a better readiness check than adding more components.
 
 - In both themes, confirm text reads comfortably at 320×170, the dot follows
   selection in both directions, and the displayed shortcuts work.

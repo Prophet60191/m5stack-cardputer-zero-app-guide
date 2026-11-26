@@ -38,13 +38,15 @@ the desktop simulator.
 
 ## Start here
 
-New to this device? Use the [short reading route](docs/start-here.md) to see
-where to start. The [App Shell chapter](docs/app-shell.md) explains how to make
-the reusable starter your own. For a minimal hands-on exercise, the official Template's
+New to this device? Use the [short reading route](docs/start-here.md). The
+guide explains the choices, [Tick & Bell](docs/case-studies/tick-bell.md)
+shows them in a working timer and alarm, and the [App Shell chapter](docs/app-shell.md)
+shows how to start your own app with a small set of reusable components.
+
+Want a smaller exercise before starting your own app? The
 [simulator counter](docs/first-app.md) runs without a Cardputer Zero. The
 [optional device exercise](docs/first-device-app.md) covers installation,
-upgrading and rollback with a separate teaching counter. Neither exercise
-is required to read the guide.
+upgrading and rollback with a separate teaching counter.
 
 If a build runs on your desktop but not on the device, start with
 [symptom-first troubleshooting](docs/device-app-troubleshooting.md).
