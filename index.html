@@ -1,0 +1,1590 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="An independent guide to building native apps for the M5Stack Cardputer Zero Linux handheld.">
+      
+      
+      
+        <link rel="canonical" href="https://prophet60191.github.io/m5stack-cardputer-zero-app-guide/index.html">
+      
+      
+      
+        <link rel="next" href="docs/start-here.html">
+      
+      
+      <link rel="icon" href="assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.23">
+    
+    
+      
+        <title>Cardputer Zero App Guide</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.84d31ad4.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="styles/reader.css">
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#building-apps-for-the-cardputer-zero" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="index.html" title="Cardputer Zero App Guide" class="md-header__button md-logo" aria-label="Cardputer Zero App Guide" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m19 1-5 5v11l5-4.5zm2 4v13.5c-1.1-.35-2.3-.5-3.5-.5-1.7 0-4.15.65-5.5 1.5V6c-1.45-1.1-3.55-1.5-5.5-1.5S2.45 4.9 1 6v14.65c0 .25.25.5.5.5.1 0 .15-.05.25-.05C3.1 20.45 5.05 20 6.5 20c1.95 0 4.05.4 5.5 1.5 1.35-.85 3.8-1.5 5.5-1.5 1.65 0 3.35.3 4.75 1.05.1.05.15.05.25.05.25 0 .5-.25.5-.5V6c-.6-.45-1.25-.75-2-1M10 18.41C8.75 18.09 7.5 18 6.5 18c-1.06 0-2.32.19-3.5.5V7.13c.91-.4 2.14-.63 3.5-.63s2.59.23 3.5.63z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Cardputer Zero App Guide
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Contents
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/Prophet60191/m5stack-cardputer-zero-app-guide" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    View source on GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="Cardputer Zero App Guide" class="md-nav__button md-logo" aria-label="Cardputer Zero App Guide" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m19 1-5 5v11l5-4.5zm2 4v13.5c-1.1-.35-2.3-.5-3.5-.5-1.7 0-4.15.65-5.5 1.5V6c-1.45-1.1-3.55-1.5-5.5-1.5S2.45 4.9 1 6v14.65c0 .25.25.5.5.5.1 0 .15-.05.25-.05C3.1 20.45 5.05 20 6.5 20c1.95 0 4.05.4 5.5 1.5 1.35-.85 3.8-1.5 5.5-1.5 1.65 0 3.35.3 4.75 1.05.1.05.15.05.25.05.25 0 .5-.25.5-.5V6c-.6-.45-1.25-.75-2-1M10 18.41C8.75 18.09 7.5 18 6.5 18c-1.06 0-2.32.19-3.5.5V7.13c.91-.4 2.14-.63 3.5-.63s2.59.23 3.5.63z"/></svg>
+
+    </a>
+    Cardputer Zero App Guide
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Prophet60191/m5stack-cardputer-zero-app-guide" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    View source on GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Contents
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="index.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Contents
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#scope-and-starting-point" class="md-nav__link">
+    <span class="md-ellipsis">
+      Scope and starting point
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#start-here" class="md-nav__link">
+    <span class="md-ellipsis">
+      Start here
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#common-foundation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common foundation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#optional-project-sections" class="md-nav__link">
+    <span class="md-ellipsis">
+      Optional project sections
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#official-foundations-and-focused-contributions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Official foundations and focused contributions
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#personal-reusable-library" class="md-nav__link">
+    <span class="md-ellipsis">
+      Personal reusable library
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#m5stack-engineering-review-package" class="md-nav__link">
+    <span class="md-ellipsis">
+      M5Stack engineering review package
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#worked-examples-and-preserved-learning" class="md-nav__link">
+    <span class="md-ellipsis">
+      Worked examples and preserved learning
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#release-and-contribution-checks" class="md-nav__link">
+    <span class="md-ellipsis">
+      Release and contribution checks
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#offline-reading-edition" class="md-nav__link">
+    <span class="md-ellipsis">
+      Offline reading edition
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#license" class="md-nav__link">
+    <span class="md-ellipsis">
+      License
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Start here
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Start here
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="docs/start-here.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Reading routes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="docs/first-app.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    First app
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="docs/first-reader-check.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    First reader check
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Chapters
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Chapters
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="docs/01-platform.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Platform
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="docs/02-app-anatomy.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    App anatomy
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="docs/03-architecture.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Architecture choices
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="docs/04-ui-and-polish.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    UI and polish
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="docs/05-keyboard.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Keyboard
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="docs/06-building-and-packaging.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Build and package
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="docs/07-radio-bring-up.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    LoRa bring-up
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="docs/08-security-and-publishing.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Security and publishing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Project recipes
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Project recipes
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="docs/projects/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Project selector
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="docs/projects/local-utilities.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Local utilities
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="docs/projects/messaging.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Messaging
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="docs/projects/networking.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Networking
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="docs/projects/audio-and-media.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Audio and media
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="docs/projects/camera-and-qr.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Camera and QR
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="docs/projects/gps-and-maps.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    GPS and maps
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="docs/projects/hardware.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Hardware
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Reference
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Reference
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="docs/components.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Components
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="docs/library-principles.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Library principles
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="docs/library-inventory.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Library inventory
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="docs/official-input-evaluation.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Input evaluation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="docs/official-ui-evaluation.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    UI foundation evaluation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="docs/ui-preferences.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    UI preferences
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="docs/store-readiness.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Store readiness
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="docs/lesson-index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lesson index
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="docs/case-studies/mesh.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Mesh case study
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#scope-and-starting-point" class="md-nav__link">
+    <span class="md-ellipsis">
+      Scope and starting point
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#start-here" class="md-nav__link">
+    <span class="md-ellipsis">
+      Start here
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#common-foundation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common foundation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#optional-project-sections" class="md-nav__link">
+    <span class="md-ellipsis">
+      Optional project sections
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#official-foundations-and-focused-contributions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Official foundations and focused contributions
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#personal-reusable-library" class="md-nav__link">
+    <span class="md-ellipsis">
+      Personal reusable library
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#m5stack-engineering-review-package" class="md-nav__link">
+    <span class="md-ellipsis">
+      M5Stack engineering review package
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#worked-examples-and-preserved-learning" class="md-nav__link">
+    <span class="md-ellipsis">
+      Worked examples and preserved learning
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#release-and-contribution-checks" class="md-nav__link">
+    <span class="md-ellipsis">
+      Release and contribution checks
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#offline-reading-edition" class="md-nav__link">
+    <span class="md-ellipsis">
+      Offline reading edition
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#license" class="md-nav__link">
+    <span class="md-ellipsis">
+      License
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="building-apps-for-the-cardputer-zero">Building apps for the Cardputer Zero<a class="headerlink" href="#building-apps-for-the-cardputer-zero" title="Permanent link">&para;</a></h1>
+<p>An independent guide for building many kinds of applications on the <strong>CardputerZero
+Linux handheld</strong>: utilities, notes, games, networking tools, media and peripheral
+apps. Start with official foundations, choose only the facilities your app needs,
+and preserve useful lessons from real projects.</p>
+<p><a id="why-this-exists"></a>
+<a id="who-its-for"></a>
+<a id="how-to-use-it"></a></p>
+<h2 id="scope-and-starting-point">Scope and starting point<a class="headerlink" href="#scope-and-starting-point" title="Permanent link">&para;</a></h2>
+<p>This guide targets the CardputerZero's Debian arm64/APPLaunch environment. The
+original ESP32 Cardputer and Cardputer ADV need different firmware, input and
+packaging instructions. Hardware/image variants can differ; document your tested
+profile and probe capabilities instead of assuming every device has a camera or Cap.</p>
+<p>No radio, Python backend, local socket or background service is required by the
+guide. C++/LVGL with the official Template is the main native UI recipe. Other
+languages/toolkits can follow the same launcher, keyboard, privacy and package
+contracts with their own rendering/build implementations.</p>
+<p><a id="contents"></a></p>
+<h2 id="start-here">Start here<a class="headerlink" href="#start-here" title="Permanent link">&para;</a></h2>
+<p>New to this device? <strong><a href="docs/first-app.html">Build your first app</a></strong> in the desktop
+simulator. You don't need a Cardputer Zero for this first build. Start with the
+<a href="docs/start-here.html">short route</a> if you want to see what to read and what to skip.</p>
+<p><img alt="The official Template counter in the desktop simulator. Press 8 on the home screen to open it, C or Right to add one, Z or Left to subtract one, and Escape to go back." src="docs/images/first-counter-quickstart.png" /></p>
+<p><em>Open the counter with </em><em>8</em><em>, try </em><em>C/Right</em><em> and </em><em>Z/Left</em><em>, then press
+</em><em>Esc</em><em> to go back. Once it works, change the greeting and add your own reset
+action. Simulator capture: <a href="https://github.com/CardputerZero/Template/blob/477fa6d217b683e3084c361a757f03dc8ca9f753/LICENSE">official Template, M5Stack CardputerZero Community
+(MIT)</a>;
+annotations added.</em></p>
+<p>Returning with a specific task? Use the <a href="docs/projects/index.html">project selector</a>.
+Use the chapters below as a reference. Library decisions and historical Mesh
+lessons are separate resources further down this page.</p>
+<h2 id="common-foundation">Common foundation<a class="headerlink" href="#common-foundation" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Read</th>
+<th>Covers</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="docs/01-platform.html">1. Platform</a></td>
+<td>Device constraints, Debian, launcher and Store</td>
+</tr>
+<tr>
+<td><a href="docs/02-app-anatomy.html">2. App anatomy</a></td>
+<td>Package layout, launcher entry, privileges and resource ownership</td>
+</tr>
+<tr>
+<td><a href="docs/03-architecture.html">3. Architecture choices</a></td>
+<td>A single process, workers or a separate resource-owning service</td>
+</tr>
+<tr>
+<td><a href="docs/04-ui-and-polish.html">4. UI and polish</a></td>
+<td>Navigation, accessibility, overlays, settings, progress and performance</td>
+</tr>
+<tr>
+<td><a href="docs/05-keyboard.html">5. Keyboard</a></td>
+<td>Official map, text/navigation context, modifiers and event-path tests</td>
+</tr>
+<tr>
+<td><a href="docs/06-building-and-packaging.html">6. Building and packaging</a></td>
+<td>Native/Python paths, dependencies, arm64 builds and installed checks</td>
+</tr>
+<tr>
+<td><a href="docs/08-security-and-publishing.html">8. Security, licensing and publishing</a></td>
+<td>Threat boundaries, private data, attribution and release evidence</td>
+</tr>
+</tbody>
+</table>
+<p>For deeper background, read 1, 2 and 3. Then choose the UI/build path and
+<a href="docs/projects/index.html">project sections</a> that apply. Chapter numbers and paths
+are retained for existing links; <a href="docs/07-radio-bring-up.html">7. LoRa bring-up</a> is optional.</p>
+<h2 id="optional-project-sections">Optional project sections<a class="headerlink" href="#optional-project-sections" title="Permanent link">&para;</a></h2>
+<p>The <a href="docs/projects/index.html">project selector</a> covers local utilities, persistent
+text/messaging, <a href="docs/projects/gps-and-maps.html">GPS/maps</a>, camera/QR, NFC/other hardware, networked apps and audio/media.
+Each section distinguishes transferable patterns, actual examples and qualification
+still required for a new app. A radio antenna rule does not become a calculator
+requirement; a camera example does not certify every image's camera stack.</p>
+<h2 id="official-foundations-and-focused-contributions">Official foundations and focused contributions<a class="headerlink" href="#official-foundations-and-focused-contributions" title="Permanent link">&para;</a></h2>
+<p>Use the <a href="docs/components.html">component comparison</a> to see what the official
+Template, launcher/shared SDK and AppBuilder already provide, where my Mesh code
+is specific to that app, and which gaps are worth addressing upstream.</p>
+<p>The first <a href="https://github.com/Prophet60191/m5stack-cardputer-zero-app-guide/blob/11531dbdf785408e1c41ecc8ab059c6678c14ded/contributions/template-keyboard/README.md">prepared keyboard contribution</a>
+adds the official symbol map, full text input, an optional editor example and
+raw-event/editor tests to a pinned official Template. It is a reviewable proposal,
+not an accepted upstream release or a new general framework.</p>
+<h2 id="personal-reusable-library">Personal reusable library<a class="headerlink" href="#personal-reusable-library" title="Permanent link">&para;</a></h2>
+<p>The <a href="docs/ui-preferences.html">UI preference record</a> tracks my design decisions:
+the exact Mesh home carousel and Mesh list-selection base are confirmed;
+submenu chevrons and overflow indicators are specified. Other components remain open.</p>
+<p>My <a href="docs/library-principles.html">library principles</a> record the preferences and
+design choices I want to reuse across my apps, including appearance,
+interaction, application logic and backend organization. They complement official
+foundations and distinguish personal choices, useful alternatives and demonstrated
+improvements. I review each meaningful departure before deciding what to keep
+or share. These choices remain separate from the general guide's platform requirements.</p>
+<p>The <a href="docs/library-inventory.html">source inventory and proposed version 0.1 scope</a>
+compare Mesh, Surveyor and NFC Tools, with file hashes, extraction candidates,
+open preferences and licensing/qualification boundaries.
+The <a href="docs/official-input-evaluation.html">official keyboard/input evaluation</a>
+records the first use/adapt decision: official shared input for that runtime,
+with a focused Template extension considered separately.
+The <a href="docs/official-ui-evaluation.html">official UI/shell evaluation</a> records the
+next decision: reuse official foundations and adapt presentation to my preferences,
+preserving lifecycle, input and backend ownership.</p>
+<p><a id="the-worked-example"></a></p>
+<h2 id="m5stack-engineering-review-package">M5Stack engineering review package<a class="headerlink" href="#m5stack-engineering-review-package" title="Permanent link">&para;</a></h2>
+<p>The <a href="https://github.com/Prophet60191/m5stack-cardputer-zero-app-guide/blob/11531dbdf785408e1c41ecc8ab059c6678c14ded/submissions/m5stack-2026-11-16/README.md">prepared report and review package</a>
+explain the improvements, exact sources, tests, licenses and remaining checks,
+including Mesh's deliberate modular UI/supervisor design. The package is prepared
+for review; no upstream PR, Store submission or new general library is implied.</p>
+<h2 id="worked-examples-and-preserved-learning">Worked examples and preserved learning<a class="headerlink" href="#worked-examples-and-preserved-learning" title="Permanent link">&para;</a></h2>
+<p>The <a href="docs/first-app.html">first counter walkthrough</a> is the small starting example.
+The <a href="docs/first-reader-check.html">independent-reader check</a> records how to test the
+guide without the original chat context; that check is still pending.</p>
+<p>Mesh contributed many lessons, but it is one application. The
+<a href="docs/case-studies/mesh.html">Mesh case study</a> retains detailed state, privacy,
+conversation, camera and licensing examples with pinned implementation/evidence.
+The <a href="docs/lesson-index.html">lesson index</a> explains where those lessons now live.
+The earlier guide remains available through its linked Git revision.</p>
+<p>Keep <a href="docs/components.html#evidence-and-limits">source-level tests</a>, container checks,
+actual-device qualification and Store admission separate. No test count guarantees
+security, hardware compatibility or approval for a different application.</p>
+<p><a id="contributing"></a></p>
+<h2 id="release-and-contribution-checks">Release and contribution checks<a class="headerlink" href="#release-and-contribution-checks" title="Permanent link">&para;</a></h2>
+<p>Use the <a href="docs/store-readiness.html">Store readiness checklist</a> and
+<a href="https://github.com/Prophet60191/m5stack-cardputer-zero-app-guide/blob/11531dbdf785408e1c41ecc8ab059c6678c14ded/tools/README.md">offline preflight tool</a> to inspect a listing and its actual installer
+without authentication, upload or submission. Official policy/catalog revisions are
+pinned and reviewed; a passing local report is not a Store acceptance.</p>
+<p>Corrections, focused examples and tested improvements are welcome. Prefer reusing
+or contributing to official components. Consider a separate library only after
+recurring needs or shared preferences, two unrelated consumers and a
+maintenance/compatibility plan justify it.</p>
+<h2 id="offline-reading-edition">Offline reading edition<a class="headerlink" href="#offline-reading-edition" title="Permanent link">&para;</a></h2>
+<p>The <a href="https://github.com/Prophet60191/m5stack-cardputer-zero-app-guide/blob/11531dbdf785408e1c41ecc8ab059c6678c14ded/tools/README.md#offline-reading-edition-pdf">PDF builder</a> creates a styled
+reading edition with contents, bookmarks, internal chapter links and an attached
+source snapshot. It includes the current library principles and UI preferences;
+generated PDFs stay in ignored build output, separate from device installers.</p>
+<h2 id="license">License<a class="headerlink" href="#license" title="Permanent link">&para;</a></h2>
+<p>The guide is <a href="https://github.com/Prophet60191/m5stack-cardputer-zero-app-guide/blob/11531dbdf785408e1c41ecc8ab059c6678c14ded/LICENSE">CC BY 4.0</a>, with attribution. The runnable preflight tool
+and tests are <a href="https://github.com/Prophet60191/m5stack-cardputer-zero-app-guide/blob/11531dbdf785408e1c41ecc8ab059c6678c14ded/tools/LICENSE">MIT</a>. The prepared contribution has its own
+<a href="https://github.com/Prophet60191/m5stack-cardputer-zero-app-guide/blob/11531dbdf785408e1c41ecc8ab059c6678c14ded/contributions/template-keyboard/LICENSE">MIT license and notices</a>; preserve
+upstream attribution and each component's actual terms when reusing code.</p>
+<p>Meshtastic is a trademark of Meshtastic LLC; M5Stack and Cardputer are trademarks
+of their owners. This is an independent community guide, not an official SDK.</p>
+<hr />
+<p><a href="https://github.com/Prophet60191/m5stack-cardputer-zero-app-guide/tree/11531dbdf785408e1c41ecc8ab059c6678c14ded">Guide source on GitHub</a> · <a href="LICENSE.txt">Documentation license</a></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": ".", "features": ["navigation.top", "search.highlight", "search.suggest", "content.code.copy"], "search": "assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+    
+  </body>
+</html>

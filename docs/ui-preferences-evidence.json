@@ -1,0 +1,26 @@
+{
+  "agreed": "2026-11-18",
+  "reference_project": "m5stack-cardputer-zero-mesh-app",
+  "source_commit": "5f21eebe83402119c5c3ad3a3aee3aef905fccd3",
+  "files_sha256": {
+    "src/view/screens/menu_screen.cpp": "e263fd77765cd2633c0d075b51a376a01e6436cf6d7270ab3ff370cadb651ef1",
+    "src/view/screens/menu_screen.h": "ac3911a7e5959d5652d25e2d645cc71fff3b9abd6bd9814615a0a17fbbe37992",
+    "src/view/screens/base_screen.cpp": "88b85f27c8c96e61ca62f4d5230bc3bb4e36e8328c6e312bca1c7dc883351a41",
+    "src/view/theme.h": "ae52c9c773961fe14e38cba932ba0faaa1a5cf93001b82b69adced9442ed4f2e",
+    "src/view/theme.cpp": "b3444f58954ffc4b180894dd6ee3c330e5de05522ff330fb2ff0d7dbbe321937",
+    "src/view/ui_const.h": "1abc6e07f3902f16427c795c5b546fcbe09bb0945954910368b7fa1820854570",
+    "src/app/asset_manager.cpp": "3e87bdddc8206ecde69ee63516214261c1b1624f7beba32e7bb1f6db75385b2d",
+    "src/viewmodel/base_viewmodel.cpp": "ed881dab23cb3a82bed0260c62bf5932738682a590a29461baea03314732c3cd",
+    "src/app/app.cpp": "5c48bed02e1cc57e2daf2251ff4051deb4b1920b2875416c13779b3cfe6d0c98",
+    "src/view/widgets/list_selection.h": "1b4e5846330069765d0538cfc047db89cf747d9b2debca187dbafd32534d9f2d"
+  },
+  "scope": "Exact home-carousel and submenu-list selection base references; additional list items pending. No new render, timing or device test.",
+  "nfc_overflow_reference": {
+    "project": "m5stack-cardputer-zero-nfc-tools",
+    "scope": "Existing working-tree source and synthetic render inspected; not a live device check or clean-HEAD snapshot",
+    "files_sha256": {
+      "src/ui/app.cpp": "e5183f260ad7fcda2681b2f1e39ee720cda993831976a86785944e3036ab1459",
+      "build/amber/settings.png": "218c796af610d1763e42d5ac7d1cf8298b315271106a99a357421eb3b0257ebb"
+    }
+  }
+}

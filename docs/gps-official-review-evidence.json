@@ -1,0 +1,63 @@
+{
+  "reviewed_on": "2026-11-23",
+  "scope": "Documented and source-reviewed entry points; not an exhaustive absence claim or new physical qualification.",
+  "sources": {
+    "packages": {
+      "repository": "CardputerZero/packages",
+      "commit": "b6c559a0448aae7715c4b45678a0b89c9eceb12b"
+    },
+    "AppBuilder": {
+      "repository": "CardputerZero/AppBuilder",
+      "commit": "042356c579d728d684eccb68ed9f8669a32822bc"
+    },
+    "launcher": {
+      "repository": "CardputerZero/launcher",
+      "commit": "aae0e48eb3e901863261a15a726071e54e8e68c2"
+    },
+    "site": {
+      "repository": "CardputerZero/cardputerzero.github.io",
+      "commit": "5d5123ca05bfc23e5a920f4e9fdbfaf12685e3ab"
+    },
+    "GPS": {
+      "repository": "CardputerZero/Cap-LoRa-1262-GPS",
+      "commit": "f69d99a183a53dd822cebad53692ad94b1d06786"
+    }
+  },
+  "reviewed_files": {
+    "GPS": {
+      "README.md": "d74ca35d29fb18f1588a7eea7d5fa57df5a793709415ad11c97f9d2018bb103a",
+      "src/gps/linux_serial_backend.cpp": "645dca52b2ab62d5fbe8dee31c0f29740561ac3a5f93e441de733ee94da11bea",
+      "src/gps/nmea_decoder.cpp": "4f4c6f062841b0cb80441305e723d8f0e943719cdb0625c957ac81a95c8da388",
+      "src/gps/gps_types.hpp": "7367e3d4217e5b571479acae53e1372fe07fb381ad53bd25590ce81434c6b957",
+      "src/models/gps_model.cpp": "31e65cb3aa3eeec3175861bc408f5875d83551b76693916582c3b3759cba90bb",
+      "tests/gps_model_test.cpp": "89ef6ca7d983d10d17ec75bedee225f06317a368182efa47868d1ab02e98d0dd",
+      "src/views/details_panel.cpp": "8134c37ea4cdee936ad4b0aebe33a2548887f3a1845530eb48c9124f81aad40f"
+    },
+    "site": {
+      "docs/en/CP0_dev.md": "8f67bea289c37fcc11ad8da84d996ef1a355b3c9b6fb2fe8024153edddb0be1b",
+      "docs/en/CP0_submit.md": "9f34074a7c1c642f6164de898a52a45e024f7a6cf98fa5e6d7db53219591d45f"
+    },
+    "packages": {
+      "README.md": "44ab869836cb825332d6d0a69e2a853f8413a50aed25ed5ce7934a0a62029607",
+      "docs/PUBLISHING.md": "c02dbaf575e2e8c2be71f86bc5401889c36c35a3ce0ac6ef99e3d368307a418e",
+      ".github/scripts/store_meta_policy.py": "748c9a2c5cb204b5e6ad1d19a44f82d61acf3e66f034ae73fc2fbe1cfdb74505",
+      ".github/scripts/install_path_policy.py": "3cedaa05f85fe4a98c97f5d77221c53dd53d7772a775d2995fadb1f7c602b4c5",
+      ".github/workflows/validate-pr.yml": "612abb9e62477804224e9dd4453bdf338df2fcadcca23f703ce8d812d8ba2cef",
+      ".github/workflows/validate-pr-comment.yml": "d525f44efd6b0abff1f714cd616a1f5ccce2c36d73bda7d1f688dec9e4abc6b3"
+    },
+    "AppBuilder": {
+      "docs/APP_BUILDER_JSON.md": "615e4afff3b9131ad2e5a4e4f27cff8457385d1766835ec7ed5cf8829f752139",
+      "scripts/czdev/publish.py": "4f56af9e75244a8bf484eca051d3fe914fcd4bdf4b0098b82f00809b5bd1c0bf"
+    }
+  },
+  "hardware_pages": [
+    {
+      "url": "https://docs.m5stack.com/en/compute/cardputerzero/usage",
+      "reviewed_on": "2026-11-23"
+    },
+    {
+      "url": "https://docs.m5stack.com/en/cap/Cap_LoRa-1262",
+      "reviewed_on": "2026-11-23"
+    }
+  ]
+}

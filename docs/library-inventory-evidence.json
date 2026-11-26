@@ -1,0 +1,401 @@
+{
+  "reviewed": "2026-11-18",
+  "scope": "Local source inventory; no builds, device checks, extraction or current-upstream audit. File hashes identify reviewed working-tree files, not complete release snapshots.",
+  "projects": {
+    "mesh": {
+      "directory": "m5stack-cardputer-zero-mesh-app",
+      "head": "5f21eebe83402119c5c3ad3a3aee3aef905fccd3",
+      "dirty": false,
+      "status_entries": 0,
+      "files": {
+        "src/platform/keyboard_decoder.cpp": {
+          "sha256": "1ca14ba288e9f8cab39dafefd822c105a57927f2b7447e46bd6af3b1f43b3c5c",
+          "lines": 190,
+          "spdx": [
+            "MIT"
+          ]
+        },
+        "src/platform/keyboard_decoder.h": {
+          "sha256": "04a744fdd5b1d53859aa854a17b258ba3dee66320268ddad0e7a95f413b0e1d5",
+          "lines": 52,
+          "spdx": [
+            "MIT"
+          ]
+        },
+        "src/platform/linux_input.cpp": {
+          "sha256": "1f40872a4e1745c6250a37e19441f9809fa1f5e6164301cc8c660bf8e64de7f1",
+          "lines": 509,
+          "spdx": []
+        },
+        "tests/keyboard.cpp": {
+          "sha256": "eb37542edbf96c1e2a8b91d2e1dae42c51a55a6856083946f5ccc1d933923228",
+          "lines": 224,
+          "spdx": [
+            "MIT"
+          ]
+        },
+        "src/view/screens/menu_screen.cpp": {
+          "sha256": "e263fd77765cd2633c0d075b51a376a01e6436cf6d7270ab3ff370cadb651ef1",
+          "lines": 140,
+          "spdx": [
+            "MIT"
+          ]
+        },
+        "src/view/widgets/list_selection.h": {
+          "sha256": "1b4e5846330069765d0538cfc047db89cf747d9b2debca187dbafd32534d9f2d",
+          "lines": 34,
+          "spdx": [
+            "MIT"
+          ]
+        },
+        "src/view/theme.cpp": {
+          "sha256": "b3444f58954ffc4b180894dd6ee3c330e5de05522ff330fb2ff0d7dbbe321937",
+          "lines": 57,
+          "spdx": [
+            "MIT"
+          ]
+        },
+        "src/view/widgets/toast.cpp": {
+          "sha256": "690451ecd8015935085760cbda99ce7650c1e6bcb9362de93461f9a2954c45f5",
+          "lines": 279,
+          "spdx": [
+            "MIT"
+          ]
+        },
+        "src/view/widgets/help_popup.cpp": {
+          "sha256": "9db052357dd5d3fbd6f5220b2754fe36117b1bb09d79e9b1d07e2caff2954bec",
+          "lines": 238,
+          "spdx": [
+            "MIT"
+          ]
+        },
+        "src/app/screen_namager.cpp": {
+          "sha256": "c75192b449d444e23998d71c56d4726ebd356232b863339e9e0da1c0b889b800",
+          "lines": 163,
+          "spdx": [
+            "MIT"
+          ]
+        },
+        "src/reactive/subjects.cpp": {
+          "sha256": "c06683ea30ae8c43d362372ba88a3c63747059d9acebc0c54f0e87794bc90140",
+          "lines": 128,
+          "spdx": [
+            "MIT"
+          ]
+        },
+        "src/reactive/bindings.cpp": {
+          "sha256": "345635934932df7cc44d978ee93fcaaadbfcc2f02ea14529f4f79f6dbb375a87",
+          "lines": 449,
+          "spdx": [
+            "MIT"
+          ]
+        },
+        "src/platform/device_status.cpp": {
+          "sha256": "6f0658106b2530158b856a66920dd1f4018044403b3c85d5edbd3b9821db402a",
+          "lines": 87,
+          "spdx": [
+            "MIT"
+          ]
+        },
+        "src/platform/screenshot_service.cpp": {
+          "sha256": "dfbdc5b44cf6e122523513d80337d513b0b5f9d5275860f592cce83ec36f1f40",
+          "lines": 171,
+          "spdx": [
+            "MIT"
+          ]
+        },
+        "src/app/application_config.cpp": {
+          "sha256": "3c45f40163d4ac894797f12660cc48ff23e51ef232b1119fea737771a7ddd4d9",
+          "lines": 169,
+          "spdx": [
+            "MIT"
+          ]
+        },
+        "src/platform/supervisor_client.cpp": {
+          "sha256": "5d9981efa68ffc374385d8f9be8df6e927b948c3c596312e9d21233e80e2cef1",
+          "lines": 270,
+          "spdx": [
+            "MIT"
+          ]
+        },
+        "docs/architecture.md": {
+          "sha256": "98ae77cc0fd3f30ca393247c786560ecf54e7ba92ca46b1f9bd56eabd3e5eec7",
+          "lines": 98,
+          "spdx": []
+        }
+      }
+    },
+    "surveyor": {
+      "directory": "m5stack-cardputer-zero-wireless-surveyor",
+      "head": "a4d1c278d12a87f0ed89f0aaffd6555e768856b5",
+      "dirty": false,
+      "status_entries": 0,
+      "files": {
+        "src/platform/keyboard_decoder.cpp": {
+          "sha256": "1ca14ba288e9f8cab39dafefd822c105a57927f2b7447e46bd6af3b1f43b3c5c",
+          "lines": 190,
+          "spdx": [
+            "MIT"
+          ]
+        },
+        "src/platform/keyboard_decoder.h": {
+          "sha256": "04a744fdd5b1d53859aa854a17b258ba3dee66320268ddad0e7a95f413b0e1d5",
+          "lines": 52,
+          "spdx": [
+            "MIT"
+          ]
+        },
+        "src/platform/linux_input.cpp": {
+          "sha256": "4419662aa73742a6f7517ff4189729722245d914cefd0704c9c31aad80c1be36",
+          "lines": 514,
+          "spdx": []
+        },
+        "tests/keyboard.cpp": {
+          "sha256": "2b54a00f06b27912afdeb0e308e978268ccce79c58cc6e6055ec2a0fa6fe6c1a",
+          "lines": 232,
+          "spdx": [
+            "MIT"
+          ]
+        },
+        "src/view/screens/survey_screen.cpp": {
+          "sha256": "20300a66a7d609ed961bcf0a1fe83b731e02de5bfa4c20c3970cd5b23c4d2463",
+          "lines": 566,
+          "spdx": [
+            "MIT"
+          ]
+        },
+        "src/view/theme.cpp": {
+          "sha256": "b3444f58954ffc4b180894dd6ee3c330e5de05522ff330fb2ff0d7dbbe321937",
+          "lines": 57,
+          "spdx": [
+            "MIT"
+          ]
+        },
+        "src/view/typography.h": {
+          "sha256": "66c33bf6c8574159c8db6cde30b61ffae1165fabd7c7124b1f6d706a6399db61",
+          "lines": 15,
+          "spdx": [
+            "MIT"
+          ]
+        },
+        "src/view/widgets/toast.cpp": {
+          "sha256": "89bbb93b4c50631234c2a310f7e61ae722cbaaaf67e8a440db7e920abedaacf4",
+          "lines": 277,
+          "spdx": [
+            "MIT"
+          ]
+        },
+        "src/view/widgets/help_popup.cpp": {
+          "sha256": "cac611cc23080bcdb449ac11a34dba3fd030b4cb58f76282adbf30822f69ae2d",
+          "lines": 203,
+          "spdx": [
+            "MIT"
+          ]
+        },
+        "src/reactive/subjects.cpp": {
+          "sha256": "c06683ea30ae8c43d362372ba88a3c63747059d9acebc0c54f0e87794bc90140",
+          "lines": 128,
+          "spdx": [
+            "MIT"
+          ]
+        },
+        "src/reactive/bindings.cpp": {
+          "sha256": "a4a015a35f698901ffce00b18d4cca30ad0bec8506f801d63b48f3d1cec7d265",
+          "lines": 452,
+          "spdx": [
+            "MIT"
+          ]
+        },
+        "src/platform/device_status.cpp": {
+          "sha256": "8b73b08a17d3fe5614da6ff4c95037049fe0d05b6484e587f39f177690dbc837",
+          "lines": 154,
+          "spdx": [
+            "MIT"
+          ]
+        },
+        "src/platform/screenshot_service.cpp": {
+          "sha256": "699448a8848c719187c4746655e54c821b9d30e3fc6e95b96f3e1838daff01cb",
+          "lines": 172,
+          "spdx": [
+            "MIT"
+          ]
+        },
+        "src/platform/survey_sources.cpp": {
+          "sha256": "5b64ab6144c8a569218bdac9034dddec271e515a6717dfc79bf7c8684ff6f318",
+          "lines": 1157,
+          "spdx": [
+            "MIT"
+          ]
+        },
+        "src/viewmodel/survey_controller.cpp": {
+          "sha256": "b63e4b98fe885b932c260efc4a65535ea024761f120f8bfb10fd20e5b9890c62",
+          "lines": 1153,
+          "spdx": [
+            "MIT"
+          ]
+        },
+        "src/model/survey.cpp": {
+          "sha256": "b46808f29d88e30be1fa4c28cea05d778aa8a479938570435c6a8eb66cdc90ee",
+          "lines": 1036,
+          "spdx": [
+            "MIT"
+          ]
+        },
+        "tests/review.cpp": {
+          "sha256": "16075ee64eb0843572b4c44b10315440f6f1ee12594d8c0016e159f9afa297f2",
+          "lines": 237,
+          "spdx": [
+            "MIT"
+          ]
+        },
+        "tests/ui.cpp": {
+          "sha256": "0ab9ef5f4c7430dbad38b9c38a34de0bcd2cc8648995a8306a4de81c96ef5ac6",
+          "lines": 671,
+          "spdx": [
+            "MIT"
+          ]
+        },
+        "tools/package-lifecycle.sh": {
+          "sha256": "0d2cfbc2fe6c0be8c95851a737cd3c69d31093dbd63f8fb018484ed482216361",
+          "lines": 37,
+          "spdx": []
+        }
+      }
+    },
+    "nfc": {
+      "directory": "m5stack-cardputer-zero-nfc-tools",
+      "head": "8e4c8841e37630f36819598354ed522ebcfe6fcc",
+      "dirty": true,
+      "status_entries": 52,
+      "files": {
+        "src/platform/keyboard_decoder.cpp": {
+          "sha256": "1ca14ba288e9f8cab39dafefd822c105a57927f2b7447e46bd6af3b1f43b3c5c",
+          "lines": 190,
+          "spdx": [
+            "MIT"
+          ]
+        },
+        "src/platform/keyboard_decoder.h": {
+          "sha256": "04a744fdd5b1d53859aa854a17b258ba3dee66320268ddad0e7a95f413b0e1d5",
+          "lines": 52,
+          "spdx": [
+            "MIT"
+          ]
+        },
+        "src/platform/linux_input.cpp": {
+          "sha256": "5e6fdbe41909004bdd07c6c697d6b2eabc546ba92ee767ebd5ee635bface1a0a",
+          "lines": 505,
+          "spdx": []
+        },
+        "tests/keyboard.cpp": {
+          "sha256": "354cfcad1589c950a62225a7063ba55a8f958a573ec7842c45d97f28c0a56884",
+          "lines": 195,
+          "spdx": [
+            "MIT"
+          ]
+        },
+        "src/ui/app.cpp": {
+          "sha256": "e5183f260ad7fcda2681b2f1e39ee720cda993831976a86785944e3036ab1459",
+          "lines": 1853,
+          "spdx": [
+            "GPL-3.0-or-later"
+          ]
+        },
+        "src/ui/app.h": {
+          "sha256": "620a86e5309a12d547ed69ab5c08ac631e767ef53ca95729f71faaa327aeea91",
+          "lines": 91,
+          "spdx": [
+            "GPL-3.0-or-later"
+          ]
+        },
+        "src/ui/theme.h": {
+          "sha256": "ae901fda1ea7aea56bd54399ea000316e5757e56dbd242b7d06fdaf9ea4527f0",
+          "lines": 18,
+          "spdx": [
+            "MIT"
+          ]
+        },
+        "src/hardware/reader.cpp": {
+          "sha256": "772cf8f1af099a7eb99767921d3fa2e286e8cfbe4825c43e39a855861714b197",
+          "lines": 196,
+          "spdx": [
+            "MIT"
+          ]
+        },
+        "src/hardware/reader.h": {
+          "sha256": "ab08da5c728865270c9c09761dd8b1736fd3b6c558020d07c7c9e4835f359081",
+          "lines": 35,
+          "spdx": [
+            "MIT"
+          ]
+        },
+        "src/hardware/helper.cpp": {
+          "sha256": "8b967291db6d74a7c368afea9377ace9d369fd451735731f5ad389a603afe8dd",
+          "lines": 175,
+          "spdx": [
+            "GPL-3.0-or-later"
+          ]
+        },
+        "src/hardware/backend_session.h": {
+          "sha256": "f02236dfc29e91c6917820c98a1ebe133bb6b5b2f1bcaf365b725a033ca03e01",
+          "lines": 17,
+          "spdx": [
+            "GPL-3.0-or-later"
+          ]
+        },
+        "src/core/core.cpp": {
+          "sha256": "3c71c258025e276c3b115831c7d325848b98cf75075e80757589631122b3b812",
+          "lines": 665,
+          "spdx": [
+            "MIT"
+          ]
+        },
+        "src/core/qr.cpp": {
+          "sha256": "1e8b1d47f3bd13dd9bdb2c9561003b25843085a6f8c2d6b15c42da87dfcfef1a",
+          "lines": 134,
+          "spdx": [
+            "MIT"
+          ]
+        },
+        "tests/ui.cpp": {
+          "sha256": "fdf15b79c4e51a9407be14808b1644d73fde6319790350b2a79cb59c3765107f",
+          "lines": 84,
+          "spdx": [
+            "GPL-3.0-or-later"
+          ]
+        },
+        "tests/app_evdev.cpp": {
+          "sha256": "038a8c093ef0ad9cd9228fe70b147f47fcf44117daf29d5aef295a85e0feb537",
+          "lines": 128,
+          "spdx": [
+            "GPL-3.0-or-later"
+          ]
+        },
+        "docs/architecture.md": {
+          "sha256": "80086ca402c92efadda6ef363152566bf57443c8eb9e43ad3b440a30a2a8400e",
+          "lines": 55,
+          "spdx": []
+        },
+        "THIRD_PARTY_NOTICES.md": {
+          "sha256": "197f0ff13cce3aabefadb087c03e093e92b77284c2c9d0bb094bf520f292afef",
+          "lines": 30,
+          "spdx": []
+        }
+      }
+    }
+  },
+  "official_basis": {
+    "reviewed": "2026-11-16",
+    "template_repository": "CardputerZero/Template",
+    "template_commit": "477fa6d217b683e3084c361a757f03dc8ca9f753",
+    "lvgl_repository": "lvgl/lvgl",
+    "lvgl_commit": "85aa60d18b3d5e5588d7b247abf90198f07c8a63",
+    "map_repository": "CardputerZero/launcher",
+    "map_commit": "4c05b444cb977cb90e2f33eb4c8261226e370713",
+    "fixture_sha256": "ac70eb97e9324a17c60d238f76ff90a3efb154f6bb026650ba78ced0c5b9896c",
+    "source_repository": "Prophet60191/m5stack-cardputer-zero-mesh-app",
+    "source_commit": "f1c2c77b9ccb1a26ff366539af7d51f371a3e8af",
+    "patch_sha256": "22415b644c76d9ec2a15944bca24e8ce4fd785f350c04531d7cf711f4d4a4579",
+    "status": "prepared; not submitted or accepted upstream"
+  }
+}

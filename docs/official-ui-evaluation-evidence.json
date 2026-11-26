@@ -1,0 +1,482 @@
+{
+  "reviewed": "2026-11-18",
+  "sources": {
+    "Template": {
+      "branch": "main",
+      "commit": "477fa6d217b683e3084c361a757f03dc8ca9f753"
+    },
+    "launcher": {
+      "branch": "master",
+      "commit": "13d2f26b103e5c9292be7287bc640df9adf6faeb"
+    },
+    "cardputerzero.github.io": {
+      "branch": "main",
+      "commit": "eeb3c9f61afc33cc1ceb33f3ed0b81fd95491c0b"
+    }
+  },
+  "collected_reference_files": {
+    "Template/CMakeLists.txt": {
+      "sha256": "73493fcf24f42b515a68a5f1a42f84fa398e0f44f62585d6efa0d6fe4667ebf7",
+      "url": "https://github.com/CardputerZero/Template/blob/477fa6d217b683e3084c361a757f03dc8ca9f753/CMakeLists.txt"
+    },
+    "Template/README.md": {
+      "sha256": "8876a06d1f0acafab4ec0315df7028ac1cae17e315537604b19bc5fae0c2fb77",
+      "url": "https://github.com/CardputerZero/Template/blob/477fa6d217b683e3084c361a757f03dc8ca9f753/README.md"
+    },
+    "Template/cmake/cm0-package.cmake": {
+      "sha256": "aa9c0e3fadc08ab7ee54c8b056ba54617cb6961c39029a4a3e61a4eb38b4fb18",
+      "url": "https://github.com/CardputerZero/Template/blob/477fa6d217b683e3084c361a757f03dc8ca9f753/cmake/cm0-package.cmake"
+    },
+    "Template/src/app/app.cpp": {
+      "sha256": "c42978c4844397ae54b4ab67292710479cfc76d67f610ad846046d3e66bc5623",
+      "url": "https://github.com/CardputerZero/Template/blob/477fa6d217b683e3084c361a757f03dc8ca9f753/src/app/app.cpp"
+    },
+    "Template/src/app/app.h": {
+      "sha256": "88c4a87d57f2e4241b3a806ddb75ac3401635ba0c933e465f162cf8bdd546fbb",
+      "url": "https://github.com/CardputerZero/Template/blob/477fa6d217b683e3084c361a757f03dc8ca9f753/src/app/app.h"
+    },
+    "Template/src/app/application_config.cpp": {
+      "sha256": "bb515295dbfeb90391d4940ac93d8f2040ae84845170225365574f89fe6add2a",
+      "url": "https://github.com/CardputerZero/Template/blob/477fa6d217b683e3084c361a757f03dc8ca9f753/src/app/application_config.cpp"
+    },
+    "Template/src/app/application_config.h": {
+      "sha256": "1c39df41542cd78bbde11e98d966f9261248fd254e2e48008fa1b007354ef583",
+      "url": "https://github.com/CardputerZero/Template/blob/477fa6d217b683e3084c361a757f03dc8ca9f753/src/app/application_config.h"
+    },
+    "Template/src/app/asset_manager.cpp": {
+      "sha256": "e262315b44cd97c063973b5522a090f96622505501c6cb106fac72af9a4b604d",
+      "url": "https://github.com/CardputerZero/Template/blob/477fa6d217b683e3084c361a757f03dc8ca9f753/src/app/asset_manager.cpp"
+    },
+    "Template/src/app/asset_manager.h": {
+      "sha256": "8d1161fea03a207267d23ea6160117a8b12f3dcf88aa39980841d35413cc9834",
+      "url": "https://github.com/CardputerZero/Template/blob/477fa6d217b683e3084c361a757f03dc8ca9f753/src/app/asset_manager.h"
+    },
+    "Template/src/app/desktop_simulator_frame.cpp": {
+      "sha256": "941ad09a9ac48f0643b712cad47f644ce94899e07b1db96efcbaf002aa505932",
+      "url": "https://github.com/CardputerZero/Template/blob/477fa6d217b683e3084c361a757f03dc8ca9f753/src/app/desktop_simulator_frame.cpp"
+    },
+    "Template/src/app/desktop_simulator_frame.h": {
+      "sha256": "d2da71efae0f2275c4e41a8359ac4cc7d24053f3934be5539842bdae20fa9ca8",
+      "url": "https://github.com/CardputerZero/Template/blob/477fa6d217b683e3084c361a757f03dc8ca9f753/src/app/desktop_simulator_frame.h"
+    },
+    "Template/src/app/desktop_virtual_keypad.cpp": {
+      "sha256": "d7ef31ba1507abc349fac2e43c7c8eac67277ffd6c5cd3ce68062dbcd8131d03",
+      "url": "https://github.com/CardputerZero/Template/blob/477fa6d217b683e3084c361a757f03dc8ca9f753/src/app/desktop_virtual_keypad.cpp"
+    },
+    "Template/src/app/desktop_virtual_keypad.h": {
+      "sha256": "72cf439245dd2978618ec87f7ff0484fc7ed24b5dba9ea2a79252e59f3ed857f",
+      "url": "https://github.com/CardputerZero/Template/blob/477fa6d217b683e3084c361a757f03dc8ca9f753/src/app/desktop_virtual_keypad.h"
+    },
+    "Template/src/app/screen_manager.h": {
+      "sha256": "059d9556ef37c3fbfd4a2cb850c193235384745a924e996f514f423d295fcbb7",
+      "url": "https://github.com/CardputerZero/Template/blob/477fa6d217b683e3084c361a757f03dc8ca9f753/src/app/screen_manager.h"
+    },
+    "Template/src/app/screen_namager.cpp": {
+      "sha256": "30cd5c3944afdf5b076e496883f0bb8fef3d796f2f8f3e7c45643a2d3e8e2544",
+      "url": "https://github.com/CardputerZero/Template/blob/477fa6d217b683e3084c361a757f03dc8ca9f753/src/app/screen_namager.cpp"
+    },
+    "Template/src/config/lv_conf.h": {
+      "sha256": "c45f44e17660ed4cea2cb0747da3e512d85faa7e66985880982d8379f30a5fd9",
+      "url": "https://github.com/CardputerZero/Template/blob/477fa6d217b683e3084c361a757f03dc8ca9f753/src/config/lv_conf.h"
+    },
+    "Template/src/config/lv_conf_cm0.h": {
+      "sha256": "8dab005dca937bcb762c0be47a2106a9fe81e9a996fae4322cbe2a011e13e589",
+      "url": "https://github.com/CardputerZero/Template/blob/477fa6d217b683e3084c361a757f03dc8ca9f753/src/config/lv_conf_cm0.h"
+    },
+    "Template/src/config/lv_conf_desktop.h": {
+      "sha256": "40bf130dfe14ceed8ac8dce8ef178a0b97bb84695d1c1f8a01de73961568c219",
+      "url": "https://github.com/CardputerZero/Template/blob/477fa6d217b683e3084c361a757f03dc8ca9f753/src/config/lv_conf_desktop.h"
+    },
+    "Template/src/logger/logger.cpp": {
+      "sha256": "f85b14d7e07b67897dd03e4563387683e710f2361d2a95a6027c9cd196073422",
+      "url": "https://github.com/CardputerZero/Template/blob/477fa6d217b683e3084c361a757f03dc8ca9f753/src/logger/logger.cpp"
+    },
+    "Template/src/logger/logger.h": {
+      "sha256": "338a0349467996958d035e4646a966f3a7f89d28bb9e84ca6ddbf94d018fa9c3",
+      "url": "https://github.com/CardputerZero/Template/blob/477fa6d217b683e3084c361a757f03dc8ca9f753/src/logger/logger.h"
+    },
+    "Template/src/main.cpp": {
+      "sha256": "4764037fe1c2257409dcc85ce6aaf534faaad1b0694ebbbc94702cbd125f6533",
+      "url": "https://github.com/CardputerZero/Template/blob/477fa6d217b683e3084c361a757f03dc8ca9f753/src/main.cpp"
+    },
+    "Template/src/model/base_model.cpp": {
+      "sha256": "f20aa66e99f2632e6d306ab47f088255f75da8ee1ab79706ad5aab32468b5256",
+      "url": "https://github.com/CardputerZero/Template/blob/477fa6d217b683e3084c361a757f03dc8ca9f753/src/model/base_model.cpp"
+    },
+    "Template/src/model/base_model.h": {
+      "sha256": "59d7e47cc5db4b6637ba1a098a955e25a6afc3bbd914c011de346d005b046dfd",
+      "url": "https://github.com/CardputerZero/Template/blob/477fa6d217b683e3084c361a757f03dc8ca9f753/src/model/base_model.h"
+    },
+    "Template/src/platform/device_status.cpp": {
+      "sha256": "8b73b08a17d3fe5614da6ff4c95037049fe0d05b6484e587f39f177690dbc837",
+      "url": "https://github.com/CardputerZero/Template/blob/477fa6d217b683e3084c361a757f03dc8ca9f753/src/platform/device_status.cpp"
+    },
+    "Template/src/platform/device_status.h": {
+      "sha256": "00f1122c7dd65e2d560220a8a69f209f7cab3c1e94a22709c1f07b6a093c8375",
+      "url": "https://github.com/CardputerZero/Template/blob/477fa6d217b683e3084c361a757f03dc8ca9f753/src/platform/device_status.h"
+    },
+    "Template/src/platform/linux_input.cpp": {
+      "sha256": "7c75ae40cb565d7d7db8738b99d7703c30c5203f429865c7421b6e60253262ea",
+      "url": "https://github.com/CardputerZero/Template/blob/477fa6d217b683e3084c361a757f03dc8ca9f753/src/platform/linux_input.cpp"
+    },
+    "Template/src/platform/linux_input.h": {
+      "sha256": "da9054d859123b201a4b500324f7ec2a3b98c40d2303a167a586322f072b8a2b",
+      "url": "https://github.com/CardputerZero/Template/blob/477fa6d217b683e3084c361a757f03dc8ca9f753/src/platform/linux_input.h"
+    },
+    "Template/src/platform/screenshot_service.cpp": {
+      "sha256": "f10d7d9796f3bfa7450d5721e518e74572239c6895c4c04d79dc97621f9a22c8",
+      "url": "https://github.com/CardputerZero/Template/blob/477fa6d217b683e3084c361a757f03dc8ca9f753/src/platform/screenshot_service.cpp"
+    },
+    "Template/src/platform/screenshot_service.h": {
+      "sha256": "b1b92d38c3686f044d4c36d2519ec8826ab54a26852bba1fb97523d213768fd7",
+      "url": "https://github.com/CardputerZero/Template/blob/477fa6d217b683e3084c361a757f03dc8ca9f753/src/platform/screenshot_service.h"
+    },
+    "Template/src/reactive/bindings.cpp": {
+      "sha256": "345635934932df7cc44d978ee93fcaaadbfcc2f02ea14529f4f79f6dbb375a87",
+      "url": "https://github.com/CardputerZero/Template/blob/477fa6d217b683e3084c361a757f03dc8ca9f753/src/reactive/bindings.cpp"
+    },
+    "Template/src/reactive/bindings.h": {
+      "sha256": "b32093a2118a9373b337592a2c1e24a2aff641523c469fbec00009c46c2f0866",
+      "url": "https://github.com/CardputerZero/Template/blob/477fa6d217b683e3084c361a757f03dc8ca9f753/src/reactive/bindings.h"
+    },
+    "Template/src/reactive/subjects.cpp": {
+      "sha256": "c06683ea30ae8c43d362372ba88a3c63747059d9acebc0c54f0e87794bc90140",
+      "url": "https://github.com/CardputerZero/Template/blob/477fa6d217b683e3084c361a757f03dc8ca9f753/src/reactive/subjects.cpp"
+    },
+    "Template/src/reactive/subjects.h": {
+      "sha256": "28eea209789a4d90beb184b86b9eee5e80ebba6028d8e1ccaf3928c905aae221",
+      "url": "https://github.com/CardputerZero/Template/blob/477fa6d217b683e3084c361a757f03dc8ca9f753/src/reactive/subjects.h"
+    },
+    "Template/src/view/screens/apple_screen.cpp": {
+      "sha256": "b1a905322acc3a067028f05acca8b9447d621f6d7c27c426db03cbbd2b57628a",
+      "url": "https://github.com/CardputerZero/Template/blob/477fa6d217b683e3084c361a757f03dc8ca9f753/src/view/screens/apple_screen.cpp"
+    },
+    "Template/src/view/screens/apple_screen.h": {
+      "sha256": "7de47937a35dbbe54aedc18b817eb149193f2bb5fd3459efef46fbc62f6ebdf7",
+      "url": "https://github.com/CardputerZero/Template/blob/477fa6d217b683e3084c361a757f03dc8ca9f753/src/view/screens/apple_screen.h"
+    },
+    "Template/src/view/screens/base_screen.cpp": {
+      "sha256": "93673355b86e35aa54e54968a52dff9bb8aeb0c996167969ef71352eaab88a7e",
+      "url": "https://github.com/CardputerZero/Template/blob/477fa6d217b683e3084c361a757f03dc8ca9f753/src/view/screens/base_screen.cpp"
+    },
+    "Template/src/view/screens/base_screen.h": {
+      "sha256": "e91c774fd2ba7201496386db49cda4bee11430617e602548142a01795352ad7f",
+      "url": "https://github.com/CardputerZero/Template/blob/477fa6d217b683e3084c361a757f03dc8ca9f753/src/view/screens/base_screen.h"
+    },
+    "Template/src/view/screens/butter_screen.cpp": {
+      "sha256": "26bea81ffb4758d6298eb54ad4fa9ed16088ff5b759395872e85ce34c185ab61",
+      "url": "https://github.com/CardputerZero/Template/blob/477fa6d217b683e3084c361a757f03dc8ca9f753/src/view/screens/butter_screen.cpp"
+    },
+    "Template/src/view/screens/butter_screen.h": {
+      "sha256": "945074d2194fe94b0ad8d6774d8b5a322b133da91f77dfcda2a025827a650688",
+      "url": "https://github.com/CardputerZero/Template/blob/477fa6d217b683e3084c361a757f03dc8ca9f753/src/view/screens/butter_screen.h"
+    },
+    "Template/src/view/theme.cpp": {
+      "sha256": "b3444f58954ffc4b180894dd6ee3c330e5de05522ff330fb2ff0d7dbbe321937",
+      "url": "https://github.com/CardputerZero/Template/blob/477fa6d217b683e3084c361a757f03dc8ca9f753/src/view/theme.cpp"
+    },
+    "Template/src/view/theme.h": {
+      "sha256": "05af367f0adce292a0e3550b8dd12e1b4808027f40d9f7b1d9fbb4f037aa2f62",
+      "url": "https://github.com/CardputerZero/Template/blob/477fa6d217b683e3084c361a757f03dc8ca9f753/src/view/theme.h"
+    },
+    "Template/src/view/ui_const.h": {
+      "sha256": "67c32c613ee158f44804b631f01910694d9d37d98dd399f604f75a3a7f3c1322",
+      "url": "https://github.com/CardputerZero/Template/blob/477fa6d217b683e3084c361a757f03dc8ca9f753/src/view/ui_const.h"
+    },
+    "Template/src/view/widgets/base_widget.h": {
+      "sha256": "bd4c13376628d86225da0673461c628e206fdf0fef971860594957fee0c44652",
+      "url": "https://github.com/CardputerZero/Template/blob/477fa6d217b683e3084c361a757f03dc8ca9f753/src/view/widgets/base_widget.h"
+    },
+    "Template/src/view/widgets/help_popup.cpp": {
+      "sha256": "880c295e851c09a45b9e22512d98cc92a33aab1421289d6276437ea5f1a649c9",
+      "url": "https://github.com/CardputerZero/Template/blob/477fa6d217b683e3084c361a757f03dc8ca9f753/src/view/widgets/help_popup.cpp"
+    },
+    "Template/src/view/widgets/help_popup.h": {
+      "sha256": "82da00b72535b7baf7572370416ed058ddf4a82496d738b4a36b2c52541cef5a",
+      "url": "https://github.com/CardputerZero/Template/blob/477fa6d217b683e3084c361a757f03dc8ca9f753/src/view/widgets/help_popup.h"
+    },
+    "Template/src/view/widgets/icon_button.cpp": {
+      "sha256": "ebeddb6fea6a786f78391f3b0f9edeb00b71e3aeda655acf7a7372e74aca99bc",
+      "url": "https://github.com/CardputerZero/Template/blob/477fa6d217b683e3084c361a757f03dc8ca9f753/src/view/widgets/icon_button.cpp"
+    },
+    "Template/src/view/widgets/icon_button.h": {
+      "sha256": "c7c6832e0e7e4478c46979d35ef26355d63e9b1a6d80b9b09896fa95d80f6717",
+      "url": "https://github.com/CardputerZero/Template/blob/477fa6d217b683e3084c361a757f03dc8ca9f753/src/view/widgets/icon_button.h"
+    },
+    "Template/src/view/widgets/navbar.cpp": {
+      "sha256": "a304b5c94df1f1715c7efee2b19515352a09a1608452d9d41449f0c9ee8bcc35",
+      "url": "https://github.com/CardputerZero/Template/blob/477fa6d217b683e3084c361a757f03dc8ca9f753/src/view/widgets/navbar.cpp"
+    },
+    "Template/src/view/widgets/navbar.h": {
+      "sha256": "0160055fbeffa3b86dfa4c7946f0cc609fb5cf9cda0161a1461e3ff032ddb9cd",
+      "url": "https://github.com/CardputerZero/Template/blob/477fa6d217b683e3084c361a757f03dc8ca9f753/src/view/widgets/navbar.h"
+    },
+    "Template/src/view/widgets/titlebar.cpp": {
+      "sha256": "e58f84ae43db46a5ed7ba13fc23c9426edd1a78dfa377e8adbad35cd04ff7742",
+      "url": "https://github.com/CardputerZero/Template/blob/477fa6d217b683e3084c361a757f03dc8ca9f753/src/view/widgets/titlebar.cpp"
+    },
+    "Template/src/view/widgets/titlebar.h": {
+      "sha256": "98e2280dd16925dff2a672cc5dcbdf678cdeededb0c79ac2384f5bf1b772644b",
+      "url": "https://github.com/CardputerZero/Template/blob/477fa6d217b683e3084c361a757f03dc8ca9f753/src/view/widgets/titlebar.h"
+    },
+    "Template/src/view/widgets/toast.cpp": {
+      "sha256": "690451ecd8015935085760cbda99ce7650c1e6bcb9362de93461f9a2954c45f5",
+      "url": "https://github.com/CardputerZero/Template/blob/477fa6d217b683e3084c361a757f03dc8ca9f753/src/view/widgets/toast.cpp"
+    },
+    "Template/src/view/widgets/toast.h": {
+      "sha256": "82e3aa4c0a659404ff0336c69a2d5cd4633c701a912ec5f834a471de0aa25946",
+      "url": "https://github.com/CardputerZero/Template/blob/477fa6d217b683e3084c361a757f03dc8ca9f753/src/view/widgets/toast.h"
+    },
+    "Template/src/viewmodel/base_viewmodel.cpp": {
+      "sha256": "785dfe710a8ab26a45cf01300c7e6cc08460e2d3d6da1627bc0cd76e0b1d8fa8",
+      "url": "https://github.com/CardputerZero/Template/blob/477fa6d217b683e3084c361a757f03dc8ca9f753/src/viewmodel/base_viewmodel.cpp"
+    },
+    "Template/src/viewmodel/base_viewmodel.h": {
+      "sha256": "4c8532c9b39c59955eb7fc49b501303d6ec7a93dca8bff182cd2fdc523e94fce",
+      "url": "https://github.com/CardputerZero/Template/blob/477fa6d217b683e3084c361a757f03dc8ca9f753/src/viewmodel/base_viewmodel.h"
+    },
+    "launcher/docs/current-implementation-and-components.md": {
+      "sha256": "85010be2d09ba4f8ec304790a5b98d2dfe09d25ed2a34bf68f2f536cd302a55d",
+      "url": "https://github.com/CardputerZero/launcher/blob/13d2f26b103e5c9292be7287bc640df9adf6faeb/docs/current-implementation-and-components.md"
+    },
+    "launcher/docs/launcher-project-guide/02-runtime-framework-and-boot-flow.md": {
+      "sha256": "4760a149accebe9ebbd97931d1607c40d3cbbc97a5cd51728da48c2d6beb65d5",
+      "url": "https://github.com/CardputerZero/launcher/blob/13d2f26b103e5c9292be7287bc640df9adf6faeb/docs/launcher-project-guide/02-runtime-framework-and-boot-flow.md"
+    },
+    "launcher/docs/launcher-project-guide-ja/02-runtime-framework-and-boot-flow.md": {
+      "sha256": "71b328d5bd9126854c6df9fc56608de4129eec6b6de234972d78358632320131",
+      "url": "https://github.com/CardputerZero/launcher/blob/13d2f26b103e5c9292be7287bc640df9adf6faeb/docs/launcher-project-guide-ja/02-runtime-framework-and-boot-flow.md"
+    },
+    "launcher/ext_components/cp0_lvgl/include/cp0_keyboard_navigation_contract.h": {
+      "sha256": "1d8780f85df87491ea46c0a892dd8466706d1b32f76ea8909e65634f3f5d8bde",
+      "url": "https://github.com/CardputerZero/launcher/blob/13d2f26b103e5c9292be7287bc640df9adf6faeb/ext_components/cp0_lvgl/include/cp0_keyboard_navigation_contract.h"
+    },
+    "launcher/ext_components/cp0_lvgl/include/cp0_lvgl_app.h": {
+      "sha256": "809ed0333948d654e1ace8a2ce10015d45303103f97390e9c12a9f97470996cd",
+      "url": "https://github.com/CardputerZero/launcher/blob/13d2f26b103e5c9292be7287bc640df9adf6faeb/ext_components/cp0_lvgl/include/cp0_lvgl_app.h"
+    },
+    "launcher/ext_components/cp0_lvgl/include/cp0_lvgl_app_page_assets.h": {
+      "sha256": "39b4e68751fe607f5be341bf5e0f31f3e83f996c2495e2b65cf648563c76b86a",
+      "url": "https://github.com/CardputerZero/launcher/blob/13d2f26b103e5c9292be7287bc640df9adf6faeb/ext_components/cp0_lvgl/include/cp0_lvgl_app_page_assets.h"
+    },
+    "launcher/ext_components/cp0_lvgl/include/cp0_lvgl_app_runner.hpp": {
+      "sha256": "c01b88b13b359cdcdd567ceed842f27b62651815a4ed036c17830b3ff20c501d",
+      "url": "https://github.com/CardputerZero/launcher/blob/13d2f26b103e5c9292be7287bc640df9adf6faeb/ext_components/cp0_lvgl/include/cp0_lvgl_app_runner.hpp"
+    },
+    "launcher/ext_components/cp0_lvgl/include/ui_app_page.hpp": {
+      "sha256": "1e4e8834e5739263754544eb1ada76bc7362716d802f8fa12c760b64167a7847",
+      "url": "https://github.com/CardputerZero/launcher/blob/13d2f26b103e5c9292be7287bc640df9adf6faeb/ext_components/cp0_lvgl/include/ui_app_page.hpp"
+    },
+    "launcher/ext_components/cp0_lvgl/src/cp0/cp0_lora_runtime_policy.cpp": {
+      "sha256": "b3d84fc2457970f49ceb3d0385f6405efb44816248df7ab9a6fde003ef9b3d2b",
+      "url": "https://github.com/CardputerZero/launcher/blob/13d2f26b103e5c9292be7287bc640df9adf6faeb/ext_components/cp0_lvgl/src/cp0/cp0_lora_runtime_policy.cpp"
+    },
+    "launcher/ext_components/cp0_lvgl/src/cp0/cp0_lora_runtime_policy.hpp": {
+      "sha256": "db2897942c3ed5369a8e9ad4252ae395139f03172f015cefccfd565f458891fe",
+      "url": "https://github.com/CardputerZero/launcher/blob/13d2f26b103e5c9292be7287bc640df9adf6faeb/ext_components/cp0_lvgl/src/cp0/cp0_lora_runtime_policy.hpp"
+    },
+    "launcher/ext_components/cp0_lvgl/src/cp0/cp0_lvgl_screenshot.cpp": {
+      "sha256": "a9209ace69b93b4a58368edf0a5cbd9fb234a646b7c7f6bfdc360496d6840ee3",
+      "url": "https://github.com/CardputerZero/launcher/blob/13d2f26b103e5c9292be7287bc640df9adf6faeb/ext_components/cp0_lvgl/src/cp0/cp0_lvgl_screenshot.cpp"
+    },
+    "launcher/ext_components/cp0_lvgl/src/cp0_audio_runtime_lifecycle.hpp": {
+      "sha256": "6bf11010bdccdd97cd85059018811ecdf7d0d9ab7c0422784f623f6fd2f9b287",
+      "url": "https://github.com/CardputerZero/launcher/blob/13d2f26b103e5c9292be7287bc640df9adf6faeb/ext_components/cp0_lvgl/src/cp0_audio_runtime_lifecycle.hpp"
+    },
+    "launcher/ext_components/cp0_lvgl/src/cp0_battery_runtime.hpp": {
+      "sha256": "8d06be30428f54f6ce52c2da0e8d3ddc859f59398fb32653aafd01b6a38dfe68",
+      "url": "https://github.com/CardputerZero/launcher/blob/13d2f26b103e5c9292be7287bc640df9adf6faeb/ext_components/cp0_lvgl/src/cp0_battery_runtime.hpp"
+    },
+    "launcher/ext_components/cp0_lvgl/src/cp0_callback_contract.hpp": {
+      "sha256": "68cdbc52b33f04dd3634cb89b4d8f426865f31b1b85750972147963e67e8615c",
+      "url": "https://github.com/CardputerZero/launcher/blob/13d2f26b103e5c9292be7287bc640df9adf6faeb/ext_components/cp0_lvgl/src/cp0_callback_contract.hpp"
+    },
+    "launcher/ext_components/cp0_lvgl/src/cp0_callback_result.hpp": {
+      "sha256": "deec4da8b58f2e4b908c769f41feac7ee04becf1596c916ccf262f8f105e0d7e",
+      "url": "https://github.com/CardputerZero/launcher/blob/13d2f26b103e5c9292be7287bc640df9adf6faeb/ext_components/cp0_lvgl/src/cp0_callback_result.hpp"
+    },
+    "launcher/ext_components/cp0_lvgl/src/cp0_display_screenshot_contract.cpp": {
+      "sha256": "2c495d1fafeea86c792ec11537f5976f7ec5e46316cc72dd16c3b11c058d2be1",
+      "url": "https://github.com/CardputerZero/launcher/blob/13d2f26b103e5c9292be7287bc640df9adf6faeb/ext_components/cp0_lvgl/src/cp0_display_screenshot_contract.cpp"
+    },
+    "launcher/ext_components/cp0_lvgl/src/cp0_display_screenshot_contract.hpp": {
+      "sha256": "e5cb1310286bdf27814f5ca3b22af6589c342ec812d19d8967599ff641245a5d",
+      "url": "https://github.com/CardputerZero/launcher/blob/13d2f26b103e5c9292be7287bc640df9adf6faeb/ext_components/cp0_lvgl/src/cp0_display_screenshot_contract.hpp"
+    },
+    "launcher/ext_components/cp0_lvgl/src/cp0_lvgl_app_runner.cpp": {
+      "sha256": "1053e20c6b70930a8c7a0d81f99371b172142969decc549f50348e8bc2fedecf",
+      "url": "https://github.com/CardputerZero/launcher/blob/13d2f26b103e5c9292be7287bc640df9adf6faeb/ext_components/cp0_lvgl/src/cp0_lvgl_app_runner.cpp"
+    },
+    "launcher/ext_components/cp0_lvgl/src/cp0_rpc_runtime_contract.hpp": {
+      "sha256": "33a161d78460fdcf3ee690a2119406b3e1194ead17d99187f48dc158db8f5019",
+      "url": "https://github.com/CardputerZero/launcher/blob/13d2f26b103e5c9292be7287bc640df9adf6faeb/ext_components/cp0_lvgl/src/cp0_rpc_runtime_contract.hpp"
+    },
+    "launcher/ext_components/cp0_lvgl/src/cp0_runner_contract.hpp": {
+      "sha256": "85bc7d0772d3203e67918d7c1211e673cb547356a67686a20d672fa1b5576850",
+      "url": "https://github.com/CardputerZero/launcher/blob/13d2f26b103e5c9292be7287bc640df9adf6faeb/ext_components/cp0_lvgl/src/cp0_runner_contract.hpp"
+    },
+    "launcher/ext_components/cp0_lvgl/src/cp0_status_component_contract.hpp": {
+      "sha256": "f8fbe2ff44d70b9cee870651876aad97d88d2433769b7ef8d3fee4a9c90c6805",
+      "url": "https://github.com/CardputerZero/launcher/blob/13d2f26b103e5c9292be7287bc640df9adf6faeb/ext_components/cp0_lvgl/src/cp0_status_component_contract.hpp"
+    },
+    "launcher/ext_components/cp0_lvgl/src/cp0_status_lifecycle.cpp": {
+      "sha256": "d803217151dd04460c1604c8a6e9ce6fe6844d9aae4b84552f2670cb693ffd78",
+      "url": "https://github.com/CardputerZero/launcher/blob/13d2f26b103e5c9292be7287bc640df9adf6faeb/ext_components/cp0_lvgl/src/cp0_status_lifecycle.cpp"
+    },
+    "launcher/ext_components/cp0_lvgl/src/cp0_status_lifecycle.hpp": {
+      "sha256": "1df05048e179475dbf90a52ea2743bc1b8538376ad5c906fd7e7fd205a7a8ac0",
+      "url": "https://github.com/CardputerZero/launcher/blob/13d2f26b103e5c9292be7287bc640df9adf6faeb/ext_components/cp0_lvgl/src/cp0_status_lifecycle.hpp"
+    },
+    "launcher/ext_components/cp0_lvgl/src/sdl/sdl_lvgl_screenshot.cpp": {
+      "sha256": "bb6c6d9e17321cf41c67b3a323836ff5afbfa6b952c419499abe9468333f4299",
+      "url": "https://github.com/CardputerZero/launcher/blob/13d2f26b103e5c9292be7287bc640df9adf6faeb/ext_components/cp0_lvgl/src/sdl/sdl_lvgl_screenshot.cpp"
+    },
+    "launcher/ext_components/cp0_lvgl/src/ui_app_page.cpp": {
+      "sha256": "5273e722980b570ba21d6a67bb74496876eff418c846b0ff764265b56d985146",
+      "url": "https://github.com/CardputerZero/launcher/blob/13d2f26b103e5c9292be7287bc640df9adf6faeb/ext_components/cp0_lvgl/src/ui_app_page.cpp"
+    },
+    "launcher/ext_components/cp0_lvgl/tests/test_audio_runtime_lifecycle.cpp": {
+      "sha256": "ee2e8e84f6ea2f01da52133442dea2aab10efe35197e4a377a6172ae43efc710",
+      "url": "https://github.com/CardputerZero/launcher/blob/13d2f26b103e5c9292be7287bc640df9adf6faeb/ext_components/cp0_lvgl/tests/test_audio_runtime_lifecycle.cpp"
+    },
+    "launcher/ext_components/cp0_lvgl/tests/test_battery_runtime_shutdown.cpp": {
+      "sha256": "a33d1e6c7d065ee20d720cc3af3d116584dcc82c4851ffd996bf64209e7fc954",
+      "url": "https://github.com/CardputerZero/launcher/blob/13d2f26b103e5c9292be7287bc640df9adf6faeb/ext_components/cp0_lvgl/tests/test_battery_runtime_shutdown.cpp"
+    },
+    "launcher/ext_components/cp0_lvgl/tests/test_callback_owner_contract.cpp": {
+      "sha256": "f4979df656df391eaebd3684f2b2260f81bb3167974aee7ee1f24eb73ad41c40",
+      "url": "https://github.com/CardputerZero/launcher/blob/13d2f26b103e5c9292be7287bc640df9adf6faeb/ext_components/cp0_lvgl/tests/test_callback_owner_contract.cpp"
+    },
+    "launcher/ext_components/cp0_lvgl/tests/test_display_screenshot_contract.cpp": {
+      "sha256": "2935ec48e53167bc285759e9a1c8747bc5a376af217aa9931180ce60bf8d1521",
+      "url": "https://github.com/CardputerZero/launcher/blob/13d2f26b103e5c9292be7287bc640df9adf6faeb/ext_components/cp0_lvgl/tests/test_display_screenshot_contract.cpp"
+    },
+    "launcher/ext_components/cp0_lvgl/tests/test_lora_runtime_policy.cpp": {
+      "sha256": "d5e5f6d479afa94b326dcf1560e8ea48d4513d74f1c539641c8c19ec512255b7",
+      "url": "https://github.com/CardputerZero/launcher/blob/13d2f26b103e5c9292be7287bc640df9adf6faeb/ext_components/cp0_lvgl/tests/test_lora_runtime_policy.cpp"
+    },
+    "launcher/ext_components/cp0_lvgl/tests/test_owned_component_lifecycle.cpp": {
+      "sha256": "3b8dd5168c966312dbff5ecd812f224fc57fc3bfc82bd88d9e6da6238c83e62a",
+      "url": "https://github.com/CardputerZero/launcher/blob/13d2f26b103e5c9292be7287bc640df9adf6faeb/ext_components/cp0_lvgl/tests/test_owned_component_lifecycle.cpp"
+    },
+    "launcher/ext_components/cp0_lvgl/tests/test_pty_runtime.cpp": {
+      "sha256": "91b6e9e990057fc4e991e119c1c99a81234a358d3ec2cbc8493240f4475110c4",
+      "url": "https://github.com/CardputerZero/launcher/blob/13d2f26b103e5c9292be7287bc640df9adf6faeb/ext_components/cp0_lvgl/tests/test_pty_runtime.cpp"
+    },
+    "launcher/ext_components/cp0_lvgl/tests/test_rpc_runtime_contract.cpp": {
+      "sha256": "c78112dbfc4627831326392520af488aa14273c84089aa642a15bc5f72a171ce",
+      "url": "https://github.com/CardputerZero/launcher/blob/13d2f26b103e5c9292be7287bc640df9adf6faeb/ext_components/cp0_lvgl/tests/test_rpc_runtime_contract.cpp"
+    },
+    "launcher/ext_components/cp0_lvgl/tests/test_runner_contract.cpp": {
+      "sha256": "52fd9a7931382074cacf4f76fae8cdc262264c869a0e213535f801b5ba753fc1",
+      "url": "https://github.com/CardputerZero/launcher/blob/13d2f26b103e5c9292be7287bc640df9adf6faeb/ext_components/cp0_lvgl/tests/test_runner_contract.cpp"
+    },
+    "launcher/ext_components/cp0_lvgl/tests/test_runner_resume_callback.cpp": {
+      "sha256": "76f1fc8a3939fdc365600bd07d0bedf4d31087363688d20fda7a5ba01ffaba70",
+      "url": "https://github.com/CardputerZero/launcher/blob/13d2f26b103e5c9292be7287bc640df9adf6faeb/ext_components/cp0_lvgl/tests/test_runner_resume_callback.cpp"
+    },
+    "launcher/ext_components/cp0_lvgl/tests/test_runner_service_shutdown.cpp": {
+      "sha256": "65d4ca2e7eb4a681e2f573c1188d14f7b4dfb586de9255c095ce8df7709542ab",
+      "url": "https://github.com/CardputerZero/launcher/blob/13d2f26b103e5c9292be7287bc640df9adf6faeb/ext_components/cp0_lvgl/tests/test_runner_service_shutdown.cpp"
+    },
+    "launcher/ext_components/cp0_lvgl/tests/test_screen_component_detach.cpp": {
+      "sha256": "abd83447d723650a99514502b949ddb03a37312d91059a488540c074f254e861",
+      "url": "https://github.com/CardputerZero/launcher/blob/13d2f26b103e5c9292be7287bc640df9adf6faeb/ext_components/cp0_lvgl/tests/test_screen_component_detach.cpp"
+    },
+    "launcher/ext_components/cp0_lvgl/tests/test_screen_delete_cleanup.cpp": {
+      "sha256": "b2d1e5a053cafe63400d06157574d47da8104cfbbb650775c6bd56647f92065f",
+      "url": "https://github.com/CardputerZero/launcher/blob/13d2f26b103e5c9292be7287bc640df9adf6faeb/ext_components/cp0_lvgl/tests/test_screen_delete_cleanup.cpp"
+    },
+    "launcher/ext_components/cp0_lvgl/tests/test_status_component_contract.cpp": {
+      "sha256": "b747f1048f80d1d542823e0712352053018e427f18c65d5064bae9b9d439d51a",
+      "url": "https://github.com/CardputerZero/launcher/blob/13d2f26b103e5c9292be7287bc640df9adf6faeb/ext_components/cp0_lvgl/tests/test_status_component_contract.cpp"
+    },
+    "launcher/projects/APPLaunch/main/ui/animation/launcher_carousel_layout.h": {
+      "sha256": "7649a258576618433577fe3c3d8d2132caf52b0e0d5c2f543122f47c9260a38e",
+      "url": "https://github.com/CardputerZero/launcher/blob/13d2f26b103e5c9292be7287bc640df9adf6faeb/projects/APPLaunch/main/ui/animation/launcher_carousel_layout.h"
+    },
+    "launcher/projects/APPLaunch/main/ui/launcher_ui_runtime.cpp": {
+      "sha256": "e9b6df97e86092ebc2ff8c0969d906bf904779ec5ecdd1b4bee419b1c50a58d9",
+      "url": "https://github.com/CardputerZero/launcher/blob/13d2f26b103e5c9292be7287bc640df9adf6faeb/projects/APPLaunch/main/ui/launcher_ui_runtime.cpp"
+    },
+    "launcher/projects/APPLaunch/main/ui/launcher_ui_runtime.h": {
+      "sha256": "811a8ba23b03de196b1666117df3f480565895248a1f178e98eae673b6afd534",
+      "url": "https://github.com/CardputerZero/launcher/blob/13d2f26b103e5c9292be7287bc640df9adf6faeb/projects/APPLaunch/main/ui/launcher_ui_runtime.h"
+    },
+    "launcher/projects/APPLaunch/main/ui/settings/lvgl_components.hpp": {
+      "sha256": "5160a5dd14592dfce07d23d9faa43d5ca11e71c6cc3b930e2ea74a8bcbf8c331",
+      "url": "https://github.com/CardputerZero/launcher/blob/13d2f26b103e5c9292be7287bc640df9adf6faeb/projects/APPLaunch/main/ui/settings/lvgl_components.hpp"
+    },
+    "launcher/projects/APPLaunch/main/ui/settings/settings_menu_roller.hpp": {
+      "sha256": "bf355699995f9966eba6a0fa76de6faef18dbbf1c1343515904df98c0852f56c",
+      "url": "https://github.com/CardputerZero/launcher/blob/13d2f26b103e5c9292be7287bc640df9adf6faeb/projects/APPLaunch/main/ui/settings/settings_menu_roller.hpp"
+    },
+    "launcher/projects/APPLaunch/main/ui/settings/settings_submenu_page.hpp": {
+      "sha256": "5672f174879a4234c1cfc0a57f99c3bca28cde26bdf70824e5749f930eb3b584",
+      "url": "https://github.com/CardputerZero/launcher/blob/13d2f26b103e5c9292be7287bc640df9adf6faeb/projects/APPLaunch/main/ui/settings/settings_submenu_page.hpp"
+    },
+    "launcher/projects/APPLaunch/main/ui/ui_launch_page_carousel_view.cpp": {
+      "sha256": "78d9ec5b2c7e14ea3ad339e84cae0c2540964a92b426b3964bcb8535de37b37f",
+      "url": "https://github.com/CardputerZero/launcher/blob/13d2f26b103e5c9292be7287bc640df9adf6faeb/projects/APPLaunch/main/ui/ui_launch_page_carousel_view.cpp"
+    },
+    "launcher/projects/APPLaunch/main/ui/ui_launch_page_input.cpp": {
+      "sha256": "cccba555ad370c4785c31c07600b5c79b15a3902bf4555b5d55205106edcfa95",
+      "url": "https://github.com/CardputerZero/launcher/blob/13d2f26b103e5c9292be7287bc640df9adf6faeb/projects/APPLaunch/main/ui/ui_launch_page_input.cpp"
+    },
+    "launcher/projects/HelloWorld/main/SConstruct": {
+      "sha256": "112ce2271b022f973be7c564daf57b8e3d49e66f4f30cae77d2d4c5a70971e6f",
+      "url": "https://github.com/CardputerZero/launcher/blob/13d2f26b103e5c9292be7287bc640df9adf6faeb/projects/HelloWorld/main/SConstruct"
+    },
+    "launcher/projects/HelloWorld/main/src/main.cpp": {
+      "sha256": "8e2f18bd1ab01dba419fb929529785c830e4aaa107649bcdf47c96ecbee9e19d",
+      "url": "https://github.com/CardputerZero/launcher/blob/13d2f26b103e5c9292be7287bc640df9adf6faeb/projects/HelloWorld/main/src/main.cpp"
+    },
+    "launcher/projects/HelloWorld/main/ui/helloworld.cpp": {
+      "sha256": "20053d5a486e58a53f21b3f25ce948c9cc89eefee1791b4b2da2fc5b442690e3",
+      "url": "https://github.com/CardputerZero/launcher/blob/13d2f26b103e5c9292be7287bc640df9adf6faeb/projects/HelloWorld/main/ui/helloworld.cpp"
+    },
+    "launcher/projects/HelloWorld/main/ui/helloworld.hpp": {
+      "sha256": "0559afb36ebe0b21a80f1c0f6ee83d60a9511de69203467385a0a8550d8a923f",
+      "url": "https://github.com/CardputerZero/launcher/blob/13d2f26b103e5c9292be7287bc640df9adf6faeb/projects/HelloWorld/main/ui/helloworld.hpp"
+    },
+    "launcher/projects/HelloWorld/main/ui/lvgl_componens.hpp": {
+      "sha256": "5b0724340e2af3d36b200a0977221fb8c1978d5da9dee940c0298121ad8f08cb",
+      "url": "https://github.com/CardputerZero/launcher/blob/13d2f26b103e5c9292be7287bc640df9adf6faeb/projects/HelloWorld/main/ui/lvgl_componens.hpp"
+    },
+    "cardputerzero.github.io/docs/en/CP0_keys.md": {
+      "sha256": "617d9a88c08420d1c666e955607732ca029add44db82ab81f43db13a4c0f6d18",
+      "url": "https://github.com/CardputerZero/cardputerzero.github.io/blob/eeb3c9f61afc33cc1ceb33f3ed0b81fd95491c0b/docs/en/CP0_keys.md"
+    }
+  },
+  "selected_tests": [
+    {
+      "test": "screen_component_detach",
+      "result": "pass",
+      "platform": "macOS arm64",
+      "sanitizers": "ASAN/UBSAN",
+      "scope": "unmodified upstream helper contract; not a rendered UI test"
+    },
+    {
+      "test": "screen_delete_cleanup",
+      "result": "pass",
+      "platform": "macOS arm64",
+      "sanitizers": "ASAN/UBSAN",
+      "scope": "unmodified upstream helper contract; not a rendered UI test"
+    },
+    {
+      "test": "status_component_contract",
+      "result": "pass",
+      "platform": "macOS arm64",
+      "sanitizers": "ASAN/UBSAN",
+      "scope": "unmodified upstream helper contract; not a rendered UI test"
+    },
+    {
+      "test": "runner_contract",
+      "result": "pass",
+      "platform": "macOS arm64",
+      "sanitizers": "ASAN/UBSAN",
+      "scope": "unmodified upstream helper contract; not a rendered UI test"
+    }
+  ],
+  "scope": "Source evaluation and selected helper contracts; file hashes identify collected references, not a complete audit of each file. No rendered UI/app/device qualification or implementation changes."
+}

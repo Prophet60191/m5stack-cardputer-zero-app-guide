@@ -1,0 +1,1971 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="An independent guide to building native apps for the M5Stack Cardputer Zero Linux handheld.">
+      
+      
+      
+        <link rel="canonical" href="https://prophet60191.github.io/m5stack-cardputer-zero-app-guide/docs/06-building-and-packaging.html">
+      
+      
+        <link rel="prev" href="05-keyboard.html">
+      
+      
+        <link rel="next" href="07-radio-bring-up.html">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.23">
+    
+    
+      
+        <title>Build and package - Cardputer Zero App Guide</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.84d31ad4.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="../styles/reader.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#6-building-and-packaging" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../index.html" title="Cardputer Zero App Guide" class="md-header__button md-logo" aria-label="Cardputer Zero App Guide" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m19 1-5 5v11l5-4.5zm2 4v13.5c-1.1-.35-2.3-.5-3.5-.5-1.7 0-4.15.65-5.5 1.5V6c-1.45-1.1-3.55-1.5-5.5-1.5S2.45 4.9 1 6v14.65c0 .25.25.5.5.5.1 0 .15-.05.25-.05C3.1 20.45 5.05 20 6.5 20c1.95 0 4.05.4 5.5 1.5 1.35-.85 3.8-1.5 5.5-1.5 1.65 0 3.35.3 4.75 1.05.1.05.15.05.25.05.25 0 .5-.25.5-.5V6c-.6-.45-1.25-.75-2-1M10 18.41C8.75 18.09 7.5 18 6.5 18c-1.06 0-2.32.19-3.5.5V7.13c.91-.4 2.14-.63 3.5-.63s2.59.23 3.5.63z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Cardputer Zero App Guide
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Build and package
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/Prophet60191/m5stack-cardputer-zero-app-guide" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    View source on GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../index.html" title="Cardputer Zero App Guide" class="md-nav__button md-logo" aria-label="Cardputer Zero App Guide" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m19 1-5 5v11l5-4.5zm2 4v13.5c-1.1-.35-2.3-.5-3.5-.5-1.7 0-4.15.65-5.5 1.5V6c-1.45-1.1-3.55-1.5-5.5-1.5S2.45 4.9 1 6v14.65c0 .25.25.5.5.5.1 0 .15-.05.25-.05C3.1 20.45 5.05 20 6.5 20c1.95 0 4.05.4 5.5 1.5 1.35-.85 3.8-1.5 5.5-1.5 1.65 0 3.35.3 4.75 1.05.1.05.15.05.25.05.25 0 .5-.25.5-.5V6c-.6-.45-1.25-.75-2-1M10 18.41C8.75 18.09 7.5 18 6.5 18c-1.06 0-2.32.19-3.5.5V7.13c.91-.4 2.14-.63 3.5-.63s2.59.23 3.5.63z"/></svg>
+
+    </a>
+    Cardputer Zero App Guide
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Prophet60191/m5stack-cardputer-zero-app-guide" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    View source on GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Contents
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Start here
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Start here
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="start-here.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Reading routes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="first-app.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    First app
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="first-reader-check.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    First reader check
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Chapters
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Chapters
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="01-platform.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Platform
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="02-app-anatomy.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    App anatomy
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="03-architecture.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Architecture choices
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="04-ui-and-polish.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    UI and polish
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="05-keyboard.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Keyboard
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Build and package
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="06-building-and-packaging.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Build and package
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#develop-in-the-desktop-simulator-and-why" class="md-nav__link">
+    <span class="md-ellipsis">
+      Develop in the desktop simulator — and why
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Develop in the desktop simulator — and why">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#desktop-build-example-macos-apple-silicon" class="md-nav__link">
+    <span class="md-ellipsis">
+      Desktop build (example: macOS Apple Silicon)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#add-a-screen-the-recipe" class="md-nav__link">
+    <span class="md-ellipsis">
+      Add a screen (the recipe)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cross-build-to-a-device-deb-c" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cross-build to a device .deb (C++)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Cross-build to a device .deb (C++)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#install-on-the-device" class="md-nav__link">
+    <span class="md-ellipsis">
+      Install on the device
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#packaging-a-python-app" class="md-nav__link">
+    <span class="md-ellipsis">
+      Packaging a Python app
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-app-builderjson-manifest" class="md-nav__link">
+    <span class="md-ellipsis">
+      The app-builder.json manifest
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#package-layout-and-installer-acceptance" class="md-nav__link">
+    <span class="md-ellipsis">
+      Package layout and installer acceptance
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-czdev-tool-and-the-store" class="md-nav__link">
+    <span class="md-ellipsis">
+      The czdev tool and the Store
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#validate-the-installed-result" class="md-nav__link">
+    <span class="md-ellipsis">
+      Validate the installed result
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#automate-the-matching-package-build" class="md-nav__link">
+    <span class="md-ellipsis">
+      Automate the matching package build
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reduce-installation-friction-without-hiding-dependencies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reduce installation friction without hiding dependencies
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#document-the-operators-whole-lifecycle" class="md-nav__link">
+    <span class="md-ellipsis">
+      Document the operator's whole lifecycle
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="07-radio-bring-up.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    LoRa bring-up
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="08-security-and-publishing.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Security and publishing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Project recipes
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Project recipes
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="projects/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Project selector
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="projects/local-utilities.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Local utilities
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="projects/messaging.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Messaging
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="projects/networking.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Networking
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="projects/audio-and-media.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Audio and media
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="projects/camera-and-qr.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Camera and QR
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="projects/gps-and-maps.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    GPS and maps
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="projects/hardware.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Hardware
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Reference
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Reference
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="components.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Components
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="library-principles.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Library principles
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="library-inventory.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Library inventory
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="official-input-evaluation.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Input evaluation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="official-ui-evaluation.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    UI foundation evaluation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="ui-preferences.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    UI preferences
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="store-readiness.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Store readiness
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="lesson-index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lesson index
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="case-studies/mesh.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Mesh case study
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#develop-in-the-desktop-simulator-and-why" class="md-nav__link">
+    <span class="md-ellipsis">
+      Develop in the desktop simulator — and why
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Develop in the desktop simulator — and why">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#desktop-build-example-macos-apple-silicon" class="md-nav__link">
+    <span class="md-ellipsis">
+      Desktop build (example: macOS Apple Silicon)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#add-a-screen-the-recipe" class="md-nav__link">
+    <span class="md-ellipsis">
+      Add a screen (the recipe)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cross-build-to-a-device-deb-c" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cross-build to a device .deb (C++)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Cross-build to a device .deb (C++)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#install-on-the-device" class="md-nav__link">
+    <span class="md-ellipsis">
+      Install on the device
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#packaging-a-python-app" class="md-nav__link">
+    <span class="md-ellipsis">
+      Packaging a Python app
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-app-builderjson-manifest" class="md-nav__link">
+    <span class="md-ellipsis">
+      The app-builder.json manifest
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#package-layout-and-installer-acceptance" class="md-nav__link">
+    <span class="md-ellipsis">
+      Package layout and installer acceptance
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-czdev-tool-and-the-store" class="md-nav__link">
+    <span class="md-ellipsis">
+      The czdev tool and the Store
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#validate-the-installed-result" class="md-nav__link">
+    <span class="md-ellipsis">
+      Validate the installed result
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#automate-the-matching-package-build" class="md-nav__link">
+    <span class="md-ellipsis">
+      Automate the matching package build
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reduce-installation-friction-without-hiding-dependencies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reduce installation friction without hiding dependencies
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#document-the-operators-whole-lifecycle" class="md-nav__link">
+    <span class="md-ellipsis">
+      Document the operator's whole lifecycle
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="6-building-and-packaging">6. Building and packaging<a class="headerlink" href="#6-building-and-packaging" title="Permanent link">&para;</a></h1>
+<p>The C++/LVGL recipes below apply to the official CMake Template. Other stacks
+can use the same package/launcher/Store contract with their own build system.
+Python dependency plans are a separate path. A backend or service is optional.</p>
+<p>From source to an installed <code>.deb</code>. Start a native app from the official
+<strong><a href="https://github.com/CardputerZero/Template">CardputerZero/Template</a></strong> (MIT, LVGL 9.5, CMake, C++);
+it gives you the MVVM scaffold, the simulator, and the cross-build/packaging presets.</p>
+<h2 id="develop-in-the-desktop-simulator-and-why">Develop in the desktop simulator — and why<a class="headerlink" href="#develop-in-the-desktop-simulator-and-why" title="Permanent link">&para;</a></h2>
+<p><strong>Build and run the UI in the desktop simulator first; qualify the installed app on the device separately.</strong> The
+template ships this: a desktop preset builds an SDL window that renders the <em>real</em> LVGL UI at the
+device's 320×170, using the same screens, widgets, fonts, and theme as the device build.</p>
+<p>Why it's the right default:</p>
+<ul>
+<li><strong>The device loop is slow and fragile.</strong> Cross-compile → package → copy → install → relaunch is
+  minutes per change, and the device's Wi-Fi can be flaky. The simulator is seconds, on your laptop,
+  no network.</li>
+<li><strong>It uses the same UI code.</strong> Preview layout, themes and flow without the hardware.
+  Display/input backends, installed fonts and runtime conditions still need device checks.</li>
+</ul>
+<p>The simulator does not qualify actual radios, cameras or Caps. Put slow hardware
+work behind a bounded worker, a compatible OS service or a resource-owning
+supervisor as the app requires (see <a href="03-architecture.html">architecture</a>). A single
+foreground process can use supported OS services without a new daemon. Use fake
+source adapters for the simulator and test the real source contract separately.</p>
+<h3 id="desktop-build-example-macos-apple-silicon">Desktop build (example: macOS Apple Silicon)<a class="headerlink" href="#desktop-build-example-macos-apple-silicon" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>brew<span class="w"> </span>install<span class="w"> </span>cmake<span class="w"> </span>ninja<span class="w"> </span>libpng<span class="w"> </span>jpeg<span class="w"> </span>fmt<span class="w"> </span>sdl2<span class="w"> </span>freetype<span class="w"> </span>dpkg<span class="w"> </span>zlib
+cmake<span class="w"> </span>--preset<span class="w"> </span>darwin-arm64<span class="w">                        </span><span class="c1"># fetches LVGL 9.5 on first configure</span>
+cmake<span class="w"> </span>--build<span class="w"> </span>build/darwin-arm64<span class="w"> </span>--config<span class="w"> </span>Release
+./build/darwin-arm64/Release/&lt;app&gt;<span class="w">                 </span><span class="c1"># opens the SDL window</span>
+</code></pre></div>
+<p>Linux desktop: <code>sudo apt install -y build-essential cmake ninja-build libpng-dev libjpeg-dev
+libfmt-dev libsdl2-dev libfreetype-dev zlib1g-dev</code>, then the <code>linux-x86-64</code> preset. (On Windows, use
+the <code>win32-msvc</code>/<code>win32-mingw64</code> presets; deps come through vcpkg.) Preset families: <code>linux-x86-64</code>,
+<code>darwin-arm64</code>, <code>darwin-x86-64</code>, <code>win32-msvc</code>, <code>win32-mingw64</code>, each with <code>-dbg</code>/<code>-rel</code>.</p>
+<blockquote>
+<p>Note: the template's README badge may say "SDL3", but the dependency it actually pins is <strong>SDL2</strong> —
+trust the SDL2 install commands.</p>
+</blockquote>
+<h2 id="add-a-screen-the-recipe">Add a screen (the recipe)<a class="headerlink" href="#add-a-screen-the-recipe" title="Permanent link">&para;</a></h2>
+<p>Adding a screen is a few small, local edits — sources are globbed, so a new file is picked up with no
+CMake change:</p>
+<ol>
+<li><strong>The screen file</strong> — <code>src/view/screens/&lt;name&gt;_screen.{h,cpp}</code>, subclassing <code>BaseScreen</code>,
+   implementing <code>build_content(lv_obj_t* content)</code>, calling <code>init()</code> in the constructor. Use the
+   viewmodel's subjects, the asset manager's fonts, and the theme-binding helpers.</li>
+<li><strong>The page id</strong> — add a value to the <code>AppPage</code> enum and bump the count.</li>
+<li><strong>The viewmodel navigation</strong> — add <code>show_&lt;name&gt;_page()</code>.</li>
+<li><strong>The screen manager</strong> — add <code>show_&lt;name&gt;_screen()</code> and a <code>case</code> in its page switch.</li>
+<li>It's reachable: set the page and the manager reacts (you never load a screen directly from UI
+   code). Wire a key/button to <code>show_&lt;name&gt;_page()</code> for direct access.</li>
+</ol>
+<h2 id="cross-build-to-a-device-deb-c">Cross-build to a device <code>.deb</code> (C++)<a class="headerlink" href="#cross-build-to-a-device-deb-c" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>cmake<span class="w"> </span>--preset<span class="w"> </span>cp0-cross<span class="w">                </span><span class="c1"># cross toolchain; may fetch the device BSP/SDK on first run</span>
+cmake<span class="w"> </span>--build<span class="w"> </span>--preset<span class="w"> </span>cp0-cross-rel
+cpack<span class="w"> </span>--preset<span class="w"> </span>cp0-cross-deb<span class="w">            </span><span class="c1"># -&gt; dist/&lt;App&gt;_&lt;ver&gt;_rev&lt;n&gt;_arm64.deb</span>
+</code></pre></div>
+<ul>
+<li><strong>Toolchain:</strong> <code>aarch64-linux-gnu-</code> (<code>crossbuild-essential-arm64</code> on Debian; a corresponding
+  cross-gcc via Homebrew on macOS).</li>
+<li><strong>Package on a Debian host.</strong> cpack needs <code>dpkg</code>, <code>dpkg-shlibdeps</code>, <code>objdump</code>, and <code>readelf</code> to
+  resolve dependencies; other OSes may produce a <code>.deb</code> with wrong <code>Depends</code>.</li>
+</ul>
+<p>The resulting package installs the layout from <a href="02-app-anatomy.html">how an app lives on the device</a>.</p>
+<h3 id="install-on-the-device">Install on the device<a class="headerlink" href="#install-on-the-device" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="nv">REMOTE_USER</span><span class="o">=</span>&lt;user&gt;<span class="w"> </span><span class="nv">REMOTE_HOST</span><span class="o">=</span>&lt;device-ip&gt;<span class="w"> </span>./deploy.sh<span class="w">      </span><span class="c1"># copies the .deb over SSH</span>
+<span class="c1"># then, on the device:</span>
+sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>--no-install-recommends<span class="w"> </span>./&lt;App&gt;_&lt;ver&gt;_rev&lt;n&gt;_arm64.deb
+</code></pre></div>
+<p>For native device compilation, the official <code>cp0-native</code> preset is available,
+but keep build dependencies out of a release installer. Prefer a traceable package
+install for qualification; an ad hoc binary copy does not verify package paths,
+upgrade behavior or the exact artifact users will receive.</p>
+<h2 id="packaging-a-python-app">Packaging a Python app<a class="headerlink" href="#packaging-a-python-app" title="Permanent link">&para;</a></h2>
+<p>Choose and document a dependency plan before packaging. The Store installs against
+the device's available package lists; do not assume it refreshes them or installs
+an arbitrary Python environment for you. Three plans are possible:</p>
+<table>
+<thead>
+<tr>
+<th>Plan</th>
+<th>When it fits</th>
+<th>What you must verify</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Debian <code>Depends</code></td>
+<td>Libraries available for the supported device image</td>
+<td>A fresh target image can resolve the actual version/architecture from its configured repositories</td>
+</tr>
+<tr>
+<td>App-private vendoring</td>
+<td>Dependencies you can legally redistribute and maintain</td>
+<td>Full dependency closure, native ABI compatibility, licenses/source obligations and a security-update process</td>
+</tr>
+<tr>
+<td>Explicit external prerequisite</td>
+<td>A separately managed daemon, hardware stack or environment</td>
+<td>Exact supported versions, installation instructions, runtime detection and a useful missing/incompatible-dependency screen</td>
+</tr>
+</tbody>
+</table>
+<p>Combinations are normal. Mesh 0.1.19 uses Debian dependencies for standard OS
+components plus a private qualified radio executable and locked Python wheels,
+prepared offline for the user. Earlier Mesh versions used separate prerequisites.
+This is a distribution choice, not a Store requirement or a GPL bundling ban. See the <a href="https://github.com/Prophet60191/m5stack-cardputer-zero-mesh-app#install--run">worked example's installation instructions</a>
+and <a href="08-security-and-publishing.html#licensing-including-the-mitgpl-split">licensing</a>.</p>
+<p>Test the chosen plan on a fresh supported image, then test missing/incompatible
+dependencies, an upgrade, a cold boot and uninstall. Dependency installation must
+not silently enable another daemon or start RF; inspect dependency autostart too.
+Record what is bundled, what <code>Depends</code> resolves and what the user installs. Never
+hide a network installer or <code>pip install</code> in a root maintainer script.</p>
+<p>For the <strong>app-private vendoring</strong> plan, this is a useful recipe:</p>
+<ol>
+<li><strong>Stage the on-device tree.</strong> Put the app and its <em>full dependency closure</em> under
+   <code>/usr/lib/&lt;pkg&gt;/site</code> via <code>pip install --no-compile --target /usr/lib/&lt;pkg&gt;/site .[extras]</code>, and
+   delete pip's generated <code>bin/</code> (its shebangs point at the build venv). Put assets/fonts under
+   <code>/usr/lib/&lt;pkg&gt;/…</code>. Add the <code>.desktop</code>, the icon, a <code>/usr/bin/&lt;pkg&gt;</code> CLI wrapper, and
+   <code>/usr/share/doc/&lt;pkg&gt;/</code> (LICENSE, NOTICE, third-party notices, Debian copyright).</li>
+<li><strong>Compile bytecode:</strong> <code>python -m compileall -q --invalidation-mode unchecked-hash
+   /usr/lib/&lt;pkg&gt;/site</code> (files are read-only in <code>/usr/lib</code>; <code>unchecked-hash</code> skips the mtime check
+   and speeds cold start).</li>
+<li><strong>Launch via tiny <code>/bin/sh</code> wrappers</strong>, not a package shebang. The wrapper exports
+   <code>PYTHONPATH=/usr/lib/&lt;pkg&gt;/site</code> and <code>exec /usr/bin/python3 -s -m &lt;module&gt; "$@"</code> (<code>-s</code> ignores the
+   user site-dir; exporting PYTHONPATH means child processes resolve the same vendored packages). The
+   APPLaunch wrapper runs the UI module; <code>/usr/bin/&lt;pkg&gt;</code> runs the CLI module.</li>
+<li><strong>Declare the remaining system requirements.</strong> If the closure is entirely pure
+   Python, the runtime dependency may be just <code>python3</code>. Native extensions can
+   still need shared libraries: derive/check those dependencies too. A Python 3.13
+   environment may need <code>Depends: python3 (&gt;= 3.13), python3 (&lt;&lt; 3.14)</code>; match the
+   tested interpreter/ABI instead of copying that range to every app. Use a fitting
+   <code>Section</code>, <code>Priority: optional</code>, and the correct <code>Architecture</code> (<code>arm64</code> or <code>all</code>).</li>
+<li><strong>Build with <code>dpkg-deb --root-owner-group -Zxz --build &lt;stagedir&gt; &lt;out&gt;</code>.</strong> This matters:
+   <code>dpkg-deb --build</code> on a populated directory emits real directory entries — some hand-rolled
+   <code>ar</code>+<code>tar</code> packagers stream only files, producing a <code>.deb</code> with zero directory entries that
+   <strong>won't install</strong>. Never hand-build the archive. (<code>umask 022</code> for deterministic perms; set
+   <code>SOURCE_DATE_EPOCH</code> + <code>--clamp-mtime</code> if you want byte-for-byte reproducibility.)</li>
+<li><strong>Smoke-test the staged tree first:</strong> run <code>python3 -s -m &lt;module&gt; --help</code> with <code>PYTHONPATH</code> pointed
+   at the stage. Cheap, and it catches a broken vendor.</li>
+</ol>
+<h2 id="the-app-builderjson-manifest">The <code>app-builder.json</code> manifest<a class="headerlink" href="#the-app-builderjson-manifest" title="Permanent link">&para;</a></h2>
+<p>The top-level fields identify the app/build; <code>store</code> supplies the catalog listing.
+Keep package, runtime, manifest and release versions aligned. The launcher icon
+inside the <code>.deb</code> and the Store icon may use separate files; validate both.
+The official online build also expects its packaging fields, including <code>bin_name</code>;
+an app with its own CMake/CI build must satisfy that build's contract separately.
+<code>czdev publish</code> takes an already-built installer and does not replace its contents.</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Acceptance rule</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>package_name</code></td>
+<td>Debian name, at least two characters, lowercase <code>a-z0-9.+-</code>, starts alphanumeric; match the <code>.deb</code> Package field</td>
+</tr>
+<tr>
+<td><code>version</code></td>
+<td>Match the built upstream/full version; record a Debian revision separately and use Debian version comparison for updates</td>
+</tr>
+<tr>
+<td><code>app_name</code></td>
+<td>Store title; unique after case folding and whitespace normalization</td>
+</tr>
+<tr>
+<td><code>store.summary</code></td>
+<td>Nonempty, at most 80 characters, no template placeholder</td>
+</tr>
+<tr>
+<td><code>store.categories</code></td>
+<td>One or two exact category names from the list below</td>
+</tr>
+<tr>
+<td><code>store.screenshots</code></td>
+<td>One to six real PNGs, each exactly 320×170; source paths relative to the app directory</td>
+</tr>
+<tr>
+<td><code>store.icon</code></td>
+<td>Square PNG, 128–512 pixels per side; 256 recommended</td>
+</tr>
+<tr>
+<td><code>store.license</code></td>
+<td>Accurate SPDX identifier/expression for what is distributed; the validator checks text, not legal compliance</td>
+</tr>
+<tr>
+<td><code>store.author</code></td>
+<td>Non-placeholder <code>display_name</code>; <code>github</code> should match the publishing account</td>
+</tr>
+<tr>
+<td><code>store.share_code</code></td>
+<td>Exactly four ASCII letters/digits, unique case-insensitively across the catalog; not a placeholder such as TEMP/TODO</td>
+</tr>
+<tr>
+<td><code>store.permissions</code></td>
+<td>Exactly the seven keys below, each a JSON boolean</td>
+</tr>
+<tr>
+<td><code>store.description</code>, <code>source_repo</code>, <code>locales</code></td>
+<td>Recommended by upstream policy; this guide additionally expects public source, clear prerequisites and accurate descriptions</td>
+</tr>
+</tbody>
+</table>
+<p>Allowed categories: <code>System Tools</code>, <code>Development</code>, <code>Hardware &amp; IoT</code>, <code>Security</code>,
+<code>Radio &amp; Comms</code>, <code>AI</code>, <code>Creative &amp; Office</code>, <code>Media</code>, <code>Games</code>, <code>Emulators</code>,
+<code>Education</code>, <code>Lifestyle</code>, <code>Other</code>. Labels such as <code>Communication</code> and <code>Utilities</code>
+are not accepted synonyms.</p>
+<p>The seven permission keys are <code>camera</code>, <code>microphone</code>, <code>imu</code>, <code>network</code>,
+<code>additional_hardware</code>, <code>background_service</code>, <code>external_display</code>. They disclose
+capabilities to the user; they do not create an OS sandbox. Declare actual behavior,
+including a background process or networking needed by a supervisor.</p>
+<p><code>czdev</code> stages icons by basename and screenshots under <code>screenshots/&lt;basename&gt;</code>;
+avoid basename collisions. It records the authenticated GitHub uploader and merges
+nonempty listing updates into published metadata, preserving assigned identity
+such as <code>uuid</code> and an existing share code. Check code/title availability against
+the catalog immediately before submission; a local check cannot reserve either.
+Replace template authors, summaries, Maintainer and source URLs before release.</p>
+<p>Policy references, reviewed 2026-11-16: <a href="https://github.com/CardputerZero/AppBuilder/blob/18996b694ae305306fc5d457d982cfba0b0e7cc5/docs/APP_BUILDER_JSON.md">official schema</a>,
+<a href="https://github.com/CardputerZero/packages/blob/3ed6a232372bdc769826d93aba03fb9b6bbd9589/.github/scripts/store_meta_policy.py">metadata validator</a>.
+The <a href="https://github.com/Prophet60191/m5stack-cardputer-zero-app-guide/blob/11531dbdf785408e1c41ecc8ab059c6678c14ded/tools/store-policy.lock.json">preflight lock</a> records exact revisions/hashes.</p>
+<h2 id="package-layout-and-installer-acceptance">Package layout and installer acceptance<a class="headerlink" href="#package-layout-and-installer-acceptance" title="Permanent link">&para;</a></h2>
+<p>Inspect the actual <code>.deb</code>. The current Store checks more than non-root services:</p>
+<table>
+<thead>
+<tr>
+<th>Area</th>
+<th>Required check</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Identity</td>
+<td>Valid Package/Version/Maintainer, supported <code>arm64</code> or <code>all</code>, no template identity; uploaded filename agrees with control metadata</td>
+</tr>
+<tr>
+<td>Launcher</td>
+<td>Entry at <code>/usr/share/APPLaunch/applications/*.desktop</code>; verify its Name/Exec/Icon and graphical <code>Terminal=false</code> on the device</td>
+</tr>
+<tr>
+<td>Executables</td>
+<td><code>/usr/bin/&lt;name&gt;</code> must relate to the package name; an unrelated short helper name can fail</td>
+</tr>
+<tr>
+<td>Data/config</td>
+<td>Use package-related directories under <code>/usr/share</code>, <code>/usr/lib</code>, <code>/opt</code>, <code>/var/lib</code>; package-related configuration under <code>/etc</code></td>
+</tr>
+<tr>
+<td>Shared directories</td>
+<td>Use the policy's explicit exceptions for APPLaunch, documentation, named completion/man/tmpfiles/udev files and system units</td>
+</tr>
+<tr>
+<td>Forbidden locations</td>
+<td>No <code>/usr/local</code>; no merged-usr alias paths such as <code>/bin</code> or <code>/sbin</code>; no unrelated shared-system filenames</td>
+</tr>
+<tr>
+<td>Services/privilege</td>
+<td>System unit names must relate to the package; no default/root <code>User</code>; <code>DynamicUser=yes</code> is recognized. No setuid/setgid files or device nodes</td>
+</tr>
+<tr>
+<td>udev</td>
+<td>No <code>RUN</code>, <code>PROGRAM</code> or <code>IMPORT{program}</code> commands that execute as root</td>
+</tr>
+<tr>
+<td>Maintainer scripts</td>
+<td>Read every script without executing it; the Store rejects dangerous textual patterns such as destructive deletion, disk writes, account/sudoers edits and downloaded shell pipelines</td>
+</tr>
+<tr>
+<td>Size</td>
+<td>Release asset limit is 2 GiB; this is not a sensible target size for the handheld</td>
+</tr>
+</tbody>
+</table>
+<p>The authoritative <a href="https://github.com/CardputerZero/packages/blob/3ed6a232372bdc769826d93aba03fb9b6bbd9589/.github/scripts/install_path_policy.py">install-path policy</a>
+and <a href="https://github.com/CardputerZero/packages/blob/3ed6a232372bdc769826d93aba03fb9b6bbd9589/.github/workflows/validate-pr.yml">PR validator</a>
+define the exact floor. The reviewed path policy has an exception for <strong>system</strong>
+units, but not <code>/usr/lib/systemd/user/</code>; a legitimate user unit can therefore
+fail its path check. <code>/etc/sudoers.d/</code> also has no general exception. Do not hide
+files in installer-generated state or weaken a working privilege model to evade
+validation. Resolve packaging design or ask maintainers about a policy gap.</p>
+<p>An app that needs an on-demand background process can use a <strong>transient user
+service</strong>, created through <code>systemd-run --user</code> with fixed, reviewed arguments.
+This uses the normal user manager/cgroup without distributing a static unit or
+writing hidden privileged files. Preserve NoNewPrivileges, kill/restart policy,
+private umask and stop/recovery hooks. Serialize start/stop, avoid restarting an
+active service when a second UI opens, and stop the old service before upgrading.
+Test actual service properties, child cleanup, failed start and repeated launches
+on the supported systemd version. Archive acceptance alone cannot inspect this
+runtime configuration. Mesh's controller is an example; arbitrary intent fields
+must never select a unit, command, executable or service property.
+Do not assume static-unit specifiers expand inside transient command properties:
+the device probe found <code>%t</code> remained literal in ExecStopPost. Mesh constructs
+the Debian runtime path from the kernel UID instead. Verify the actual cleanup
+argument and outcome, not merely that the property was accepted.</p>
+<p>These are automated admission checks, not an execution sandbox or a complete
+review of shell logic, <code>.desktop</code> behavior, dependencies, symlinks or hardware.
+Keep the independent <a href="08-security-and-publishing.html#pre-publish-checklist">security checklist</a>.</p>
+<p>Documentation size is determined by install rules, not by the folder name:
+Mesh 0.1.8 includes Markdown/images under <code>/usr/share/doc/cardputerzero-mesh/docs</code>
+and explicitly excludes generated PDFs. Check archive contents before claiming
+that guides do or do not increase installer size.</p>
+<h2 id="the-czdev-tool-and-the-store">The <code>czdev</code> tool and the Store<a class="headerlink" href="#the-czdev-tool-and-the-store" title="Permanent link">&para;</a></h2>
+<p><code>czdev</code> (Python) scaffolds and publishes; it does <strong>not</strong> build the <code>.deb</code> (you build with
+cmake/cpack or the Python recipe, then hand it the file):</p>
+<div class="highlight"><pre><span></span><code>./czdev<span class="w"> </span>login<span class="w">                 </span><span class="c1"># GitHub device-flow auth</span>
+./czdev<span class="w"> </span>new<span class="w"> </span>my-app<span class="w">            </span><span class="c1"># scaffold from the template (renames project/launcher/icons)</span>
+./czdev<span class="w"> </span>publish<span class="w"> </span>--deb<span class="w"> </span>build/my-app_1.0.1_arm64.deb<span class="w">   </span><span class="c1"># uploads binary/metadata and opens a PR</span>
+./czdev<span class="w"> </span>publish<span class="w"> </span>--meta-only<span class="w">                        </span><span class="c1"># listing update for an existing app</span>
+</code></pre></div>
+<p><code>publish</code> is a mutation, not a dry run: it can create/use a fork, upload the binary
+to a release, commit listing assets/metadata and open a PR against
+<code>CardputerZero/packages</code>. On merge the Store promotes the accepted binary to its
+official release/index. Git contains metadata, not the <code>.deb</code>. Run the
+<a href="https://github.com/Prophet60191/m5stack-cardputer-zero-app-guide/blob/11531dbdf785408e1c41ecc8ab059c6678c14ded/tools/README.md">non-publishing preflight</a> first; it performs no authentication,
+network requests, install, upload or PR creation. The reviewed CLI has no
+<code>publish --dry-run</code> option.</p>
+<p><code>czdev</code> performs local checks, including a fetched metadata policy. If that fetch
+fails, it can skip the metadata precheck; uniqueness is left to server-side CI.
+A local CLI success is not evidence that the entire Store gate passed.
+The submission records a SHA-256, which PR validation verifies. That checksum
+identifies bytes; it is not a developer signature or proof of safe behavior.</p>
+<p>Publishing is optional; your own GitHub release is a separate distribution path.
+The <a href="store-readiness.html">release checklist</a> covers the complete workflow and
+separates Store admission from hardware/security evidence.</p>
+<hr />
+<p>Next: if your app drives the LoRa Cap — <a href="projects/index.html">optional project sections</a>. Otherwise skip to
+<a href="08-security-and-publishing.html">security and publishing</a>.</p>
+<h2 id="validate-the-installed-result">Validate the installed result<a class="headerlink" href="#validate-the-installed-result" title="Permanent link">&para;</a></h2>
+<p>A manifest is not the package. Give the CMake project version, runtime About text,
+Debian control metadata and store manifest one consistent release version; test
+that they agree. Keep inherited internal build-target names separate from public
+package/display names. Install the real icon at the exact launcher path, plus
+all required supervisor files, licenses, user units and scoped policy helpers.
+Generate native library dependencies from the built ELF with <code>dpkg-shlibdeps</code>
+in a matching distro/architecture environment; hardcoding libfmt/libjpeg package
+names can produce a package that builds but cannot install.</p>
+<p>Respect the actual minimum CMake version (the template currently needs 3.31),
+choose a writable package output directory, and inspect both <code>dpkg-deb --info</code>
+and <code>dpkg-deb --contents</code>. Check maintainer scripts, modes, sudoers with <code>visudo
+-cf</code>, and units with <code>systemd-analyze verify</code>. Test a clean install and cold boot
+on the target image. Ensure firewall/setup dependencies exist before any daemon
+opens a network listener. A service file with no enable/install path does not
+provide reboot persistence. Package installation should not silently start RF.</p>
+<p>Keep personal checkout paths out of release binaries as well as source files:
+use compiler prefix maps and avoid embedding source asset paths in device builds.
+State which checks used mocks, containers, simulator, or real hardware; a prior
+review or successful build is not proof that the installed/rebooted app is safe.</p>
+<p>Use an app-specific settings directory, binary, launcher entry and asset namespace.
+Two apps retaining <code>template-app</code> settings paths can accidentally share preferences.
+Migrate deliberately, and require explicit re-enabling of hardware auto-start. For
+INI saves, use a unique private temporary file per writer, sync before atomic
+rename, and sync the directory. Escape or reject line breaks in single-line values;
+test concurrent writers and malformed/overflowing numeric preferences.</p>
+<p>Test the actual user service, not just <code>systemd-analyze verify</code>. In a user unit,
+filesystem sandboxing can imply a user namespace that maps host root to nobody;
+seccomp restrictions can imply NoNewPrivileges. Both can break an otherwise valid
+scoped sudo helper. Inspect the live process's UID map/NoNewPrivs and execute the
+real privileged check. Use a consistent privilege design; keep root-owned files
+protected by DAC when a fixed sudo check requires host credentials.</p>
+<h2 id="automate-the-matching-package-build">Automate the matching package build<a class="headerlink" href="#automate-the-matching-package-build" title="Permanent link">&para;</a></h2>
+<p>Use a native arm64 CI runner and a container matching the device's Debian release.
+Fetch qualified dependency commits explicitly, build and install the real package,
+then validate its dependency metadata, executable paths, service files, permissions,
+policy helpers and offline regressions. Disable networking and isolate the network
+namespace during firewall tests so a test cannot change the host's rules.
+Upload a checksummed candidate and corresponding source commit. A successful
+artifact job is still separate from RF, camera, GPS and physical cold-boot proof.</p>
+<p>Use one authoritative version field and read it from each runtime/build path.
+For a split UI/backend app, install that metadata alongside the backend as well
+as deriving CMake's project/package version from it. Avoid independent fallback
+literals that silently drift when one component is bumped.
+Container outputs may be owned by root. Copy them into a runner-owned staging
+directory before writing checksums/source metadata and uploading the artifact.
+Download the finished artifact and verify both its checksum and source commit.</p>
+<p>On upgrade, matching installed-file hashes does not prove the live process loaded
+them. Coordinate a restart through the resource owner's lifecycle, then check
+its reported version and socket peer PID against the service's MainPID. Starting
+an already active unit leaves its old code running. Determine how restart affects
+in-flight work and hardware first; do not enable a transmitter or restore privacy
+opt-ins merely to produce a healthy-looking status. Verify actual privilege state
+and preserved user settings as well as the files.</p>
+<p>Inspect supported command-line arguments before a smoke test. Do not assume a
+GUI executable implements <code>--version</code> or <code>--help</code>: an ignored argument can launch
+the UI, claim the display/input devices or initialize hardware, especially from
+a root installation shell. Use About or package metadata when a version option
+is not documented; neither alone establishes which code an existing service has
+loaded. A future app can offer an explicit read-only version command that exits
+before UI/hardware initialization.</p>
+<p>Use a consistent private snapshot for preservation checks. For SQLite, use its
+backup facility or another documented consistency method; comparing live database
+file bytes can misread WAL/checkpoint activity as data loss. Compare logical rows
+and relevant configuration fields, keeping keys and raw records out of public
+logs. Classify bookkeeping differences only after inspection, and distinguish
+upgrade effects from edits the operator makes during a walkthrough. Do not
+restore a whole backup over legitimate new work just to make checksums agree.</p>
+<p>Measure optimization on a fixed synthetic workload before and after the change.
+Include typical and maximum supported history sizes; separate data preparation
+from LVGL rendering, disk writes and RF latency. Use warmups and report medians
+without fragile timing thresholds in tests. A headless benchmark can run on the
+actual device without opening its radio/camera/display, and should stay outside
+the installed app. Reduced work does not establish hours of battery life.</p>
+<p>Do not use repeated sudo subprocesses as a long-running health-check transport.
+A timeout can make an unprivileged parent attempt to kill a now-elevated child,
+causing EPERM and leaving cleanup outside its control. A separate fixed-purpose
+capability service can own the privileged probe and publish an atomic verdict.
+Validate the record's owner, type, writable modes, boot identity and freshness;
+fail closed when it is absent/stale/false. Test the real service identity and
+actual rule changes, not just the JSON parser. Remove stale comments and privilege
+exceptions when the normal user process no longer needs escalation.</p>
+<p>A linked dependency can also bring its own install rules into CPack. Wireless
+Surveyor's actual archive audit found LVGL development headers and its static
+library under shared include/lib directories, despite the app's own namespaced
+install rules. With the project's CMake 3.31 integration, declaring the LVGL
+FetchContent dependency <code>EXCLUDE_FROM_ALL</code> retained normal dependency linking
+and excluded those development payloads from the application installer. Verify
+the resulting archive and keep runtime licenses; an intent in CMake is not proof
+of package contents.</p>
+<h2 id="reduce-installation-friction-without-hiding-dependencies">Reduce installation friction without hiding dependencies<a class="headerlink" href="#reduce-installation-friction-without-hiding-dependencies" title="Permanent link">&para;</a></h2>
+<p>Prefer the official image's system facilities. Distinguish required OS packages,
+app-private components, optional peripherals and account setup. The current
+<a href="https://github.com/CardputerZero/Store/blob/1ceeaed715766d336b1a885f58d03d5e4c33d6fa/main/backend/appstore_native.cpp">Store implementation</a>
+uses APT for missing Debian dependencies: correct <code>Depends</code> can remove manual
+steps without copying system libraries into every app. Recheck that behavior,
+package availability and permissions on the supported image before relying on it.</p>
+<p>For a dependency that needs a specific correction, an app-private runtime can
+avoid PATH drift and a competing system daemon. This is a deliberate option,
+not a requirement that every app use Python, a supervisor or bundled binaries.
+Pin original artifact hashes, supported ABI and source/patch revisions; retain
+licenses and paired corresponding source. Keep large generated dependency/source
+archives as release assets rather than committing build output into Git.</p>
+<p>If preparing a user environment on first launch, make preparation offline,
+bounded and repeatable. Verify package-owned inputs, ignore inherited installer
+index/config overrides, lock concurrent preparation, recognize incomplete caches
+and repair only a fixed private cache. Keep existing user environments and app
+data untouched. A <code>preinst</code> interpreter belongs in <code>Pre-Depends</code>; ordinary
+dependencies may arrive too late. Never run a user environment as root or start
+hardware during install. Stop only the app's live service before replacing its
+modules; verify the newly started process afterward.</p>
+<p>Test this in a minimal supported Debian container with no preinstalled SDK,
+global daemon or operator environment. Disable networking for first launch;
+check import/functionality, repeat launch, damaged-cache recovery, tampered input
+rejection and uninstall/data preservation. This complements a fresh-image device
+check; it cannot prove hardware permissions, display behavior or boot timing. If
+no spare card is available, record physical fresh-image testing as deferred and
+never erase the working device to turn a checklist green.</p>
+<p>Offer a prebuilt installer plus paired source/dependency archive, simple
+install/build entry points and checksums. Give manuals separate checksum asset
+names so later uploads cannot replace installer verification. State which
+downloads remain: Docker/toolchains, OS packages and accounts are external.
+Offline builds need named caches/images prepared first; claim a zero-download
+first build only when supplied and tested.</p>
+<h2 id="document-the-operators-whole-lifecycle">Document the operator's whole lifecycle<a class="headerlink" href="#document-the-operators-whole-lifecycle" title="Permanent link">&para;</a></h2>
+<p>A dependency change is incomplete if only the code and release notes are updated.
+Keep one current operations runbook covering actual artifact availability,
+checksums, supported image, transfer/install, first launch, upgrade, private backup
+and deliberate restore, service/log recovery, compatible rollback and removal.
+State what is bundled, supplied by APT, optional or account-dependent. Keep dated
+evidence intact, but label obsolete commands and link to current instructions.</p>
+<p>Generate an offline installer instruction asset from that runbook, and update
+the user manual's startup/recovery sections. Keep tested binary/source hashes
+fixed when refreshing documentation; give new document assets their own
+provenance/checksums and do not imply a documentation update requalified hardware.
+A draft is not a public download. Installation examples must not assume root
+launch, a developer's username, existing private environment or account secrets.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "..", "features": ["navigation.top", "search.highlight", "search.suggest", "content.code.copy"], "search": "../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+    
+  </body>
+</html>

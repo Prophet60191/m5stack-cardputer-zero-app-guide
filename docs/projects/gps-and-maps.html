@@ -1,0 +1,1590 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="An independent guide to building native apps for the M5Stack Cardputer Zero Linux handheld.">
+      
+      
+      
+        <link rel="canonical" href="https://prophet60191.github.io/m5stack-cardputer-zero-app-guide/docs/projects/gps-and-maps.html">
+      
+      
+        <link rel="prev" href="camera-and-qr.html">
+      
+      
+        <link rel="next" href="hardware.html">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.23">
+    
+    
+      
+        <title>GPS and maps - Cardputer Zero App Guide</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.84d31ad4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="../../styles/reader.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#gps-receivers-and-maps" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../index.html" title="Cardputer Zero App Guide" class="md-header__button md-logo" aria-label="Cardputer Zero App Guide" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m19 1-5 5v11l5-4.5zm2 4v13.5c-1.1-.35-2.3-.5-3.5-.5-1.7 0-4.15.65-5.5 1.5V6c-1.45-1.1-3.55-1.5-5.5-1.5S2.45 4.9 1 6v14.65c0 .25.25.5.5.5.1 0 .15-.05.25-.05C3.1 20.45 5.05 20 6.5 20c1.95 0 4.05.4 5.5 1.5 1.35-.85 3.8-1.5 5.5-1.5 1.65 0 3.35.3 4.75 1.05.1.05.15.05.25.05.25 0 .5-.25.5-.5V6c-.6-.45-1.25-.75-2-1M10 18.41C8.75 18.09 7.5 18 6.5 18c-1.06 0-2.32.19-3.5.5V7.13c.91-.4 2.14-.63 3.5-.63s2.59.23 3.5.63z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Cardputer Zero App Guide
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              GPS and maps
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/Prophet60191/m5stack-cardputer-zero-app-guide" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    View source on GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../index.html" title="Cardputer Zero App Guide" class="md-nav__button md-logo" aria-label="Cardputer Zero App Guide" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m19 1-5 5v11l5-4.5zm2 4v13.5c-1.1-.35-2.3-.5-3.5-.5-1.7 0-4.15.65-5.5 1.5V6c-1.45-1.1-3.55-1.5-5.5-1.5S2.45 4.9 1 6v14.65c0 .25.25.5.5.5.1 0 .15-.05.25-.05C3.1 20.45 5.05 20 6.5 20c1.95 0 4.05.4 5.5 1.5 1.35-.85 3.8-1.5 5.5-1.5 1.65 0 3.35.3 4.75 1.05.1.05.15.05.25.05.25 0 .5-.25.5-.5V6c-.6-.45-1.25-.75-2-1M10 18.41C8.75 18.09 7.5 18 6.5 18c-1.06 0-2.32.19-3.5.5V7.13c.91-.4 2.14-.63 3.5-.63s2.59.23 3.5.63z"/></svg>
+
+    </a>
+    Cardputer Zero App Guide
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Prophet60191/m5stack-cardputer-zero-app-guide" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    View source on GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Contents
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Start here
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Start here
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../start-here.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Reading routes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../first-app.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    First app
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../first-reader-check.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    First reader check
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Chapters
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Chapters
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-platform.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Platform
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-app-anatomy.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    App anatomy
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-architecture.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Architecture choices
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-ui-and-polish.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    UI and polish
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-keyboard.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Keyboard
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06-building-and-packaging.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Build and package
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07-radio-bring-up.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    LoRa bring-up
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08-security-and-publishing.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Security and publishing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Project recipes
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Project recipes
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Project selector
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="local-utilities.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Local utilities
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="messaging.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Messaging
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="networking.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Networking
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="audio-and-media.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Audio and media
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="camera-and-qr.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Camera and QR
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    GPS and maps
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="gps-and-maps.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    GPS and maps
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#start-with-what-m5stack-already-provides" class="md-nav__link">
+    <span class="md-ellipsis">
+      Start with what M5Stack already provides
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-my-experience-adds" class="md-nav__link">
+    <span class="md-ellipsis">
+      What my experience adds
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="What my experience adds">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#prove-each-layer-separately" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prove each layer separately
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#preserve-measurement-time-and-missing-fields" class="md-nav__link">
+    <span class="md-ellipsis">
+      Preserve measurement time and missing fields
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#treat-startup-commands-as-state-changes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Treat startup commands as state changes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#keep-diagnostics-exclusive-and-location-private" class="md-nav__link">
+    <span class="md-ellipsis">
+      Keep diagnostics exclusive and location private
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#choosing-internal-or-external-sources" class="md-nav__link">
+    <span class="md-ellipsis">
+      Choosing internal or external sources
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#acceptance-checks" class="md-nav__link">
+    <span class="md-ellipsis">
+      Acceptance checks
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="hardware.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Hardware
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Reference
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Reference
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../components.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Components
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../library-principles.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Library principles
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../library-inventory.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Library inventory
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../official-input-evaluation.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Input evaluation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../official-ui-evaluation.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    UI foundation evaluation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ui-preferences.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    UI preferences
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../store-readiness.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Store readiness
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lesson-index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lesson index
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../case-studies/mesh.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Mesh case study
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#start-with-what-m5stack-already-provides" class="md-nav__link">
+    <span class="md-ellipsis">
+      Start with what M5Stack already provides
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-my-experience-adds" class="md-nav__link">
+    <span class="md-ellipsis">
+      What my experience adds
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="What my experience adds">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#prove-each-layer-separately" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prove each layer separately
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#preserve-measurement-time-and-missing-fields" class="md-nav__link">
+    <span class="md-ellipsis">
+      Preserve measurement time and missing fields
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#treat-startup-commands-as-state-changes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Treat startup commands as state changes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#keep-diagnostics-exclusive-and-location-private" class="md-nav__link">
+    <span class="md-ellipsis">
+      Keep diagnostics exclusive and location private
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#choosing-internal-or-external-sources" class="md-nav__link">
+    <span class="md-ellipsis">
+      Choosing internal or external sources
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#acceptance-checks" class="md-nav__link">
+    <span class="md-ellipsis">
+      Acceptance checks
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="gps-receivers-and-maps">GPS receivers and maps<a class="headerlink" href="#gps-receivers-and-maps" title="Permanent link">&para;</a></h1>
+<p>This section helps any CardputerZero app consume GPS reliably: a map, survey
+logger, tracker or local instrument. It complements the official hardware and
+app guidance. It does not introduce a GPS framework, require Mesh's supervisor,
+or replace M5Stack's receiver support. USB receiver work remains unqualified in
+my apps; the source-selection guidance below is a design checklist.</p>
+<h2 id="start-with-what-m5stack-already-provides">Start with what M5Stack already provides<a class="headerlink" href="#start-with-what-m5stack-already-provides" title="Permanent link">&para;</a></h2>
+<p>Reviewed 2026-11-23. Use the <a href="https://docs.m5stack.com/en/compute/cardputerzero/usage">official Zero usage guide</a>
+for the built-in GPS app and <a href="https://docs.m5stack.com/en/cap/Cap_LoRa-1262">Cap specification</a>
+for wiring, supply, UART, antenna and power-off-before-removal precautions.
+Do not substitute ESP32 Cardputer/ADV GPIO examples for Zero's Linux device paths.
+For this fitted receiver, GNSS is on the Cap; it is not evidence of GPS in a bare Zero.</p>
+<p>The <a href="https://github.com/CardputerZero/Cap-LoRa-1262-GPS/tree/f69d99a183a53dd822cebad53692ad94b1d06786">official GPS app</a>
+already offers useful implementation patterns:</p>
+<table>
+<thead>
+<tr>
+<th>Official source</th>
+<th>What to reuse or evaluate</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>src/gps/linux_serial_backend.cpp</code></td>
+<td>Console conflict check, nonblocking reads, advisory lock plus exclusive-open request, restoration and cleanup</td>
+</tr>
+<tr>
+<td><code>src/gps/nmea_decoder.cpp</code></td>
+<td>Bounded sentence assembly/checksum handling and per-field validity</td>
+</tr>
+<tr>
+<td><code>src/models/gps_model.cpp</code>, <code>tests/gps_model_test.cpp</code></td>
+<td>Separate data/fix ages, no-data/search/fix/stale/error states, bounded work and retry tests</td>
+</tr>
+<tr>
+<td><code>src/views/details_panel.cpp</code></td>
+<td>Receiver/data diagnostics instead of an unexplained empty map</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Decision:</strong> reuse or adapt the official direct-receiver model when it fits.
+When another service owns the receiver, consume that service's supported API;
+do not start a second raw reader just to reuse a serial example. Keep the app's
+chosen official shell, lifecycle and resource contracts.</p>
+<p>The official GPS README describes root/sudo packaging for its preinstalled
+power-control path. That is <strong>not</strong> a third-party Store exemption: the current
+<a href="https://github.com/CardputerZero/cardputerzero.github.io/blob/5d5123ca05bfc23e5a920f4e9fdbfaf12685e3ab/docs/en/CP0_dev.md">development rules</a>
+prohibit apps running as root. Adapt privilege/resource integration rather than
+copying that packaging into a Store app. See <a href="hardware.html">hardware ownership</a>.</p>
+<p><a id="what-our-experience-adds"></a></p>
+<h2 id="what-my-experience-adds">What my experience adds<a class="headerlink" href="#what-my-experience-adds" title="Permanent link">&para;</a></h2>
+<p>The reviewed official usage/specification pages explain hardware and operation;
+the source already covers many parser, age and ownership concerns. The following
+is additional application-integration and qualification guidance, not a claim
+that these topics are absent from every M5Stack document or that its GPS app is
+broken. Reviewed sources/hashes are in <a href="../gps-official-review-evidence.json">the evidence record</a>.</p>
+<h3 id="prove-each-layer-separately">Prove each layer separately<a class="headerlink" href="#prove-each-layer-separately" title="Permanent link">&para;</a></h3>
+<p>A working receiver does not prove a working application. Follow the actual path:</p>
+<p><strong>Receiver -&gt; resource owner -&gt; exported API -&gt; client cache -&gt; UI/map.</strong></p>
+<table>
+<thead>
+<tr>
+<th>Layer</th>
+<th>Evidence to seek</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Receiver</td>
+<td>Recent valid fixes from the receiver; counts/checksums can prove activity without saving coordinates</td>
+</tr>
+<tr>
+<td>Resource owner</td>
+<td>The owning process has accepted the fix and has the correct power/port/profile</td>
+</tr>
+<tr>
+<td>API</td>
+<td>The supported response really exports the current fix and the fields the app needs</td>
+</tr>
+<tr>
+<td>Client</td>
+<td>A cache receives newer measurements, including loss-of-fix, after connect/reconnect</td>
+</tr>
+<tr>
+<td>UI</td>
+<td>The actual screen shows the fix, its source and truthful age/last-known state</td>
+</tr>
+</tbody>
+</table>
+<p>If raw fixes exist but a map is empty, investigate the boundaries above before
+changing receiver firmware, baud rate, antenna or sharing settings. A client
+method named “get current position” may only return a cache. Repeated reads of
+that cache cannot produce an update that the service never exported.</p>
+<p>Use documented stream/snapshot support. Bound refresh frequency, outstanding
+requests, completion deadlines and retry backoff. Correlate replies with the
+current connection/source generation so an old reply cannot update a replacement
+receiver. Do not clear unrelated client state or open a competing connection to
+force a refresh. Neither a successful API reply nor new bytes proves a new fix.</p>
+<h3 id="preserve-measurement-time-and-missing-fields">Preserve measurement time and missing fields<a class="headerlink" href="#preserve-measurement-time-and-missing-fields" title="Permanent link">&para;</a></h3>
+<p>Represent validity, acquisition time/age and source explicitly. Keep transport
+receipt time separate: receiving the same cached fix again must not reset its
+age. Use a local monotonic clock for elapsed deadlines; handle source UTC changes,
+unknown time and implausible future timestamps separately. A monotonic timestamp
+from another boot/device is not directly comparable to your current clock.</p>
+<p>Choose stale thresholds for the receiver cadence, transport delay and action's
+risk. The official live viewer uses a different age policy from Mesh's cached
+map; neither value is a universal GPS rule. A valid old position may be shown as
+<strong>last known</strong>, while navigation, geofence actions or sending may need a fresh fix.
+Do not silently repeat an old location as a new measurement.</p>
+<p>Validate finite coordinates and geographic bounds. Missing coordinates should
+be explicit, not invented at <code>(0, 0)</code>; that coordinate is itself a real place
+and needs a validity flag to interpret correctly. Distinguish satellites visible,
+satellites used and a valid fix. An API that omits satellite count should show
+<strong>unknown</strong>, not zero or a count copied from a different diagnostic/source.
+Expose altitude, quality/accuracy and constellation details only when supported.</p>
+<h3 id="treat-startup-commands-as-state-changes">Treat startup commands as state changes<a class="headerlink" href="#treat-startup-commands-as-state-changes" title="Permanent link">&para;</a></h3>
+<p>Identify the exact receiver, owner/library version and protocol before choosing
+a workaround. An apparently simple discovery routine may first suppress normal
+output. A too-short identification timeout can then leave an enabled receiver
+silent. Measure repeated reply latency and command side effects, including the
+receiver's output schedule, before changing a deadline.</p>
+<p>Separate power/port initialization, model identification and satellite acquisition
+timeouts. Increasing one is not a cure for another. Every wait still needs a
+bound, cancellation and useful retry/error state. Check whether an attempt changed
+receiver output and how normal operation is recovered. Do not hide failures with
+endless reset loops, silently flash firmware or persistently change baud/rate/
+constellation settings as an unproven repair.</p>
+<h3 id="keep-diagnostics-exclusive-and-location-private">Keep diagnostics exclusive and location private<a class="headerlink" href="#keep-diagnostics-exclusive-and-location-private" title="Permanent link">&para;</a></h3>
+<p>There should be one physical resource owner. Access through its API during normal
+operation. For a raw diagnostic, stop that owner normally, acquire the supported
+hardware/port lease, run a bounded reader, then restore the prior settings and
+owner. The official lock/exclusive-open pattern is useful, but do not assume
+unrelated programs all cooperate with an advisory lock. Never launch a separate
+GPS viewer while a radio service owns the same UART.</p>
+<p>Receiver enablement is separate from permission to record, transmit or upload
+location. A local map must work with sharing Off. Check this explicitly. A Cap
+may share power/resources with other hardware, so retain its documented safety
+requirements even when the app only wants GPS; do not generalize a rail or pinout
+to other receivers.</p>
+<p>For support logs, prefer fix booleans, age, model, error category, latency and
+sentence/checksum counts. Raw NMEA, coordinates, track files, screenshots and USB
+serial identities can reveal a home or route. Redact or omit them from public
+issues and videos; obtain permission before any purposeful location export.</p>
+<h2 id="choosing-internal-or-external-sources">Choosing internal or external sources<a class="headerlink" href="#choosing-internal-or-external-sources" title="Permanent link">&para;</a></h2>
+<p>Specify source selection before implementing USB support: manual selection or a
+stated priority; what happens on unplug; when fallback is allowed; how stale fixes
+are labeled; and whether the user's choice survives restart. Show the active
+source. Reconnecting a new receiver must not relabel the previous receiver's
+cached position as its fresh fix.</p>
+<p>Use supported discovery/stable identity where available, not an assumption that
+<code>/dev/ttyUSB0</code> always names the same device. Check driver/interface, permissions,
+protocol, speed and power needs. Keep identifying serial numbers private. An
+external antenna is not automatically a new GPS receiver. USB switching can also
+remove the maintenance connection; plan network access independently.</p>
+<p>These are design requirements, not a claim that the deferred USB dongle is supported,
+automatically preferred, or physically tested.</p>
+<h2 id="acceptance-checks">Acceptance checks<a class="headerlink" href="#acceptance-checks" title="Permanent link">&para;</a></h2>
+<ol>
+<li>Test synthetic valid, invalid, absent, stale, future, malformed and out-of-range
+   measurements, including per-field omissions and repeated cached fixes.</li>
+<li>Test partial/oversized/bad-checksum input through the selected parser when
+   consuming raw data. Reuse official tests/components where suitable.</li>
+<li>Test receiver enable/disable independently of sharing. Check one resource
+   owner and no location emission when sharing is Off.</li>
+<li>Exercise API timeout, reconnect, late replies, source replacement and clock
+   changes. Confirm no fabricated freshness or loss of unrelated app state.</li>
+<li>Use the actual intended receiver outdoors with a clear sky view and safe
+   hardware setup. First acquisition time depends on conditions; a five-minute
+   timeout alone does not prove defective hardware.</li>
+<li>Observe successive acquisition timestamps across a steady interval, not just
+   one coordinate. Check the real map/display and loss/stale/recovery states.</li>
+<li>Repeat starts and error/retry paths. Treat normal receiver restarts, a cold
+   whole-device boot and long-term field use as different tests.</li>
+<li>Record exact app/dependency/package versions, elapsed time and reduced results.
+   Preserve settings/data, restore intended operating mode and retain rollback.</li>
+</ol>
+<p>Mesh's <a href="https://github.com/Prophet60191/m5stack-cardputer-zero-mesh-app/blob/cd82b8ce24a1cab1ef68369e744a508c4ac887ef/docs/internal-gps-validation.md">qualification record</a>
+now includes actual raw receiver fixes, a local-cache correction, owner-confirmed
+Map marker, eight receiver starts and a final 31-sample/321.5-second outdoor watch.
+These bounded results supersede the old “outdoor unqualified” note here; they do
+not qualify every future app, a USB receiver or unlimited reliability.</p>
+<p>The <a href="../case-studies/mesh.html#subsequent-gps-integration-qualification">Mesh case study</a>
+keeps its reserved API nonce, refresh interval and Meshtastic identification
+patch separate from this general recipe. Do not copy those settings into an
+unrelated receiver or call the Meshtastic defect an M5Stack firmware defect.</p>
+<p><a href="index.html">Project selector</a> · <a href="hardware.html">Hardware ownership</a> · <a href="../07-radio-bring-up.html">LoRa-specific bring-up</a></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.top", "search.highlight", "search.suggest", "content.code.copy"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+    
+  </body>
+</html>

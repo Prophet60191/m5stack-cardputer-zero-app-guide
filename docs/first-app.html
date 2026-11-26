@@ -1,0 +1,1615 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="An independent guide to building native apps for the M5Stack Cardputer Zero Linux handheld.">
+      
+      
+      
+        <link rel="canonical" href="https://prophet60191.github.io/m5stack-cardputer-zero-app-guide/docs/first-app.html">
+      
+      
+        <link rel="prev" href="start-here.html">
+      
+      
+        <link rel="next" href="first-reader-check.html">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.23">
+    
+    
+      
+        <title>First app - Cardputer Zero App Guide</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.84d31ad4.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="../styles/reader.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#first-app-build-the-official-counter" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../index.html" title="Cardputer Zero App Guide" class="md-header__button md-logo" aria-label="Cardputer Zero App Guide" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m19 1-5 5v11l5-4.5zm2 4v13.5c-1.1-.35-2.3-.5-3.5-.5-1.7 0-4.15.65-5.5 1.5V6c-1.45-1.1-3.55-1.5-5.5-1.5S2.45 4.9 1 6v14.65c0 .25.25.5.5.5.1 0 .15-.05.25-.05C3.1 20.45 5.05 20 6.5 20c1.95 0 4.05.4 5.5 1.5 1.35-.85 3.8-1.5 5.5-1.5 1.65 0 3.35.3 4.75 1.05.1.05.15.05.25.05.25 0 .5-.25.5-.5V6c-.6-.45-1.25-.75-2-1M10 18.41C8.75 18.09 7.5 18 6.5 18c-1.06 0-2.32.19-3.5.5V7.13c.91-.4 2.14-.63 3.5-.63s2.59.23 3.5.63z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Cardputer Zero App Guide
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              First app
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/Prophet60191/m5stack-cardputer-zero-app-guide" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    View source on GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../index.html" title="Cardputer Zero App Guide" class="md-nav__button md-logo" aria-label="Cardputer Zero App Guide" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m19 1-5 5v11l5-4.5zm2 4v13.5c-1.1-.35-2.3-.5-3.5-.5-1.7 0-4.15.65-5.5 1.5V6c-1.45-1.1-3.55-1.5-5.5-1.5S2.45 4.9 1 6v14.65c0 .25.25.5.5.5.1 0 .15-.05.25-.05C3.1 20.45 5.05 20 6.5 20c1.95 0 4.05.4 5.5 1.5 1.35-.85 3.8-1.5 5.5-1.5 1.65 0 3.35.3 4.75 1.05.1.05.15.05.25.05.25 0 .5-.25.5-.5V6c-.6-.45-1.25-.75-2-1M10 18.41C8.75 18.09 7.5 18 6.5 18c-1.06 0-2.32.19-3.5.5V7.13c.91-.4 2.14-.63 3.5-.63s2.59.23 3.5.63z"/></svg>
+
+    </a>
+    Cardputer Zero App Guide
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Prophet60191/m5stack-cardputer-zero-app-guide" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    View source on GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Contents
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Start here
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Start here
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="start-here.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Reading routes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    First app
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="first-app.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    First app
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-prepare-your-desktop" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Prepare your desktop
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-get-reviewed-source" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Get reviewed source
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-build-and-open-the-desktop-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Build and open the desktop example
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-make-one-visible-change" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Make one visible change
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-add-a-reset-action" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Add a reset action
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-build-an-arm64-package-without-using-the-device" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Build an arm64 package without using the device
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-inspect-before-installing-or-publishing" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Inspect before installing or publishing
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#verification-and-limits" class="md-nav__link">
+    <span class="md-ellipsis">
+      Verification and limits
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="first-reader-check.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    First reader check
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Chapters
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Chapters
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="01-platform.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Platform
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="02-app-anatomy.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    App anatomy
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="03-architecture.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Architecture choices
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="04-ui-and-polish.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    UI and polish
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="05-keyboard.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Keyboard
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="06-building-and-packaging.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Build and package
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="07-radio-bring-up.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    LoRa bring-up
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="08-security-and-publishing.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Security and publishing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Project recipes
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Project recipes
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="projects/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Project selector
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="projects/local-utilities.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Local utilities
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="projects/messaging.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Messaging
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="projects/networking.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Networking
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="projects/audio-and-media.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Audio and media
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="projects/camera-and-qr.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Camera and QR
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="projects/gps-and-maps.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    GPS and maps
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="projects/hardware.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Hardware
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Reference
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Reference
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="components.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Components
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="library-principles.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Library principles
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="library-inventory.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Library inventory
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="official-input-evaluation.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Input evaluation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="official-ui-evaluation.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    UI foundation evaluation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="ui-preferences.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    UI preferences
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="store-readiness.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Store readiness
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="lesson-index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lesson index
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="case-studies/mesh.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Mesh case study
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-prepare-your-desktop" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Prepare your desktop
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-get-reviewed-source" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Get reviewed source
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-build-and-open-the-desktop-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Build and open the desktop example
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-make-one-visible-change" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Make one visible change
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-add-a-reset-action" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Add a reset action
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-build-an-arm64-package-without-using-the-device" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Build an arm64 package without using the device
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-inspect-before-installing-or-publishing" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Inspect before installing or publishing
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#verification-and-limits" class="md-nav__link">
+    <span class="md-ellipsis">
+      Verification and limits
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="first-app-build-the-official-counter">First app: build the official counter<a class="headerlink" href="#first-app-build-the-official-counter" title="Permanent link">&para;</a></h1>
+<p>Build the official Template, open its counter, change the greeting, then add a
+working reset action. Optional: build and inspect a device package. This is a learning example, <strong>not a new production utility or a
+Store-ready app</strong>. It needs no radio, account, Cap, Python backend or service.</p>
+<p>The example uses the official Template's existing shell, input routing, themes,
+assets, model/viewmodel and screens. I deliberately reuse them rather than
+creating another starter framework. No keyboard patch is needed for this
+navigation-only example; full text entry is a separate <a href="05-keyboard.html">input decision</a>.</p>
+<h2 id="1-prepare-your-desktop">1. Prepare your desktop<a class="headerlink" href="#1-prepare-your-desktop" title="Permanent link">&para;</a></h2>
+<p>Use a working C++17 compiler, Git, Ninja and <strong>CMake 3.31 or newer</strong>. Desktop builds
+also need SDL2, FreeType, PNG, JPEG, fmt and zlib development files. On macOS with
+Homebrew, the <a href="https://github.com/CardputerZero/Template/blob/477fa6d217b683e3084c361a757f03dc8ca9f753/README.md">official Template instructions</a>
+list these dependencies:</p>
+<div class="highlight"><pre><span></span><code>brew<span class="w"> </span>install<span class="w"> </span>cmake<span class="w"> </span>ninja<span class="w"> </span>sdl2<span class="w"> </span>freetype<span class="w"> </span>libpng<span class="w"> </span>jpeg<span class="w"> </span>fmt<span class="w"> </span>zlib
+git<span class="w"> </span>--version
+cmake<span class="w"> </span>--version
+</code></pre></div>
+<p>Linux dependency names and the broader build paths are in
+<a href="06-building-and-packaging.html#develop-in-the-desktop-simulator-and-why">chapter 6</a>.
+Check the actual CMake version: a distribution's default package may be older
+than 3.31. Install dependencies as a separate, deliberate setup step; the Store
+preflight never installs them for you.</p>
+<h2 id="2-get-reviewed-source">2. Get reviewed source<a class="headerlink" href="#2-get-reviewed-source" title="Permanent link">&para;</a></h2>
+<p>From a working directory of your choice, use new directory names:</p>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/CardputerZero/Template.git<span class="w"> </span>first-counter
+git<span class="w"> </span>-C<span class="w"> </span>first-counter<span class="w"> </span>checkout<span class="w"> </span>--detach<span class="w"> </span>477fa6d217b683e3084c361a757f03dc8ca9f753
+git<span class="w"> </span>clone<span class="w"> </span>https://github.com/lvgl/lvgl.git<span class="w"> </span>first-counter-lvgl
+git<span class="w"> </span>-C<span class="w"> </span>first-counter-lvgl<span class="w"> </span>checkout<span class="w"> </span>--detach<span class="w"> </span>85aa60d18b3d5e5588d7b247abf90198f07c8a63
+<span class="nb">cd</span><span class="w"> </span>first-counter
+git<span class="w"> </span>rev-parse<span class="w"> </span>HEAD
+</code></pre></div>
+<p>These commands download source. The pinned revisions make the walkthrough
+repeatable; they are not a claim that newer upstream changes are unnecessary.
+Compare later revisions before adopting them. The LVGL revision is the v9.5.0
+source used for this example. Keep upstream MIT notices and asset licenses.</p>
+<h2 id="3-build-and-open-the-desktop-example">3. Build and open the desktop example<a class="headerlink" href="#3-build-and-open-the-desktop-example" title="Permanent link">&para;</a></h2>
+<p>For an Apple Silicon Mac:</p>
+<div class="highlight"><pre><span></span><code>cmake<span class="w"> </span>--preset<span class="w"> </span>darwin-arm64<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-DFETCHCONTENT_SOURCE_DIR_LVGL<span class="o">=</span><span class="s2">&quot;</span><span class="nv">$PWD</span><span class="s2">/../first-counter-lvgl&quot;</span>
+cmake<span class="w"> </span>--build<span class="w"> </span>--preset<span class="w"> </span>darwin-arm64-dbg<span class="w"> </span>--parallel<span class="w"> </span><span class="m">4</span>
+./build/darwin-arm64/Debug/template_app
+</code></pre></div>
+<p>The result is an SDL simulator window containing the device UI, not a Debian
+installer. Keep the terminal open to see startup errors. If configuration fails,
+check the first missing dependency and CMake version; do not solve a missing
+library by running the application as root.</p>
+<p>For Linux x86-64, use <code>linux-x86-64</code> and <code>linux-x86-64-dbg</code> instead, then run
+<code>./build/linux-x86-64/Debug/template_app</code>. This alternative is supplied by the
+pinned official presets but was not freshly executed for this walkthrough.</p>
+<p>Try the following in the focused simulator window or its virtual keyboard:</p>
+<ol>
+<li>On the first page, use <strong>8</strong> to open the counter.</li>
+<li>Use <strong>C/Right</strong> twice: the counter should show 2.</li>
+<li>Use <strong>Z/Left</strong> three times: it should stop at 0.</li>
+<li>Tap <strong>Esc</strong> to return. On the first page, <strong>6</strong> changes the theme.</li>
+<li>Reopen the counter; its value remains for this running session. Hold <strong>Esc</strong>
+   on the first page to exit. A fresh process starts at 0.</li>
+</ol>
+<p>These keys come from the pinned
+<a href="https://github.com/CardputerZero/Template/blob/477fa6d217b683e3084c361a757f03dc8ca9f753/src/platform/linux_input.cpp">input router</a>
+and <a href="https://github.com/CardputerZero/Template/blob/477fa6d217b683e3084c361a757f03dc8ca9f753/src/view/widgets/navbar.cpp">navbar</a>,
+not a guessed keyboard map. Check the specific counter shortcuts: the first
+page's 4–8 actions are not its counter-page controls.</p>
+<h2 id="4-make-one-visible-change">4. Make one visible change<a class="headerlink" href="#4-make-one-visible-change" title="Permanent link">&para;</a></h2>
+<p>Close the simulator. In <code>src/model/base_model.cpp</code>, change only the greeting
+returned by <code>BaseModel::greeting()</code> from <code>Hello World</code> to <code>My first counter</code>.
+Then rebuild and launch with the same commands from step 3. The first page should
+show the new text. Check both themes and return from the counter. <code>git diff</code>
+should show only that greeting change.</p>
+<p>The path from action to pixels is small: the navbar calls a viewmodel action;
+<code>counter_subject_</code> holds this demo's session value; <code>ButterScreen</code> binds its label
+to that subject. The greeting comes from the model, published by the viewmodel
+and bound on the first screen. The existing screen manager owns screen changes.
+You do not need another process to understand or extend this example.</p>
+<p>This demo is not a durable counting application. Before relying on it for real
+work, define a maximum count, persistence/reset behavior and recovery from write
+failure. Its increment action is not bounded for indefinite use; do not confuse
+this short exercise with production acceptance testing.</p>
+<h2 id="5-add-a-reset-action">5. Add a reset action<a class="headerlink" href="#5-add-a-reset-action" title="Permanent link">&para;</a></h2>
+<p>Now change behavior, not just text: pressing <strong>6</strong> on the counter page should
+set the count to zero. On the home page, <strong>6</strong> should still switch themes. The
+official example already routes this key and binds the label to the count, so
+there is no need to add a driver, create a new screen or redraw the label
+yourself. Close the simulator and make these edits in <code>first-counter</code>.</p>
+<ol>
+<li><strong>Give the viewmodel an action.</strong> In <code>src/viewmodel/base_viewmodel.h</code>, add
+   <code>void reset_counter();</code> immediately above <code>void increment_counter();</code>. In
+   <code>src/viewmodel/base_viewmodel.cpp</code>, add this above the existing increment
+   method:</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">BaseViewModel::reset_counter</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">counter_subject_</span><span class="p">.</span><span class="n">set</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<ol>
+<li><strong>Route the key on the counter page only.</strong> In
+   <code>src/platform/linux_input.cpp</code>, find <code>nav_key_to_index()</code>. Inside the
+   first switch, the one under <code>if (nav_shortcut_mode)</code>, add this case.
+   Leave the second switch (home page) as it is:</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="k">case</span><span class="w"> </span><span class="sc">&#39;6&#39;</span><span class="p">:</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
+</code></pre></div>
+<ol>
+<li><strong>Connect slot 2 to the action.</strong> In <code>src/view/widgets/navbar.h</code>, add
+   <code>static void reset_counter_cb(lv_event_t* event);</code> next to
+   <code>increment_counter_cb</code>. In <code>src/view/widgets/navbar.cpp</code>, replace the
+   middle entry (index 2) in <code>butter_icons</code> with <code>{"", reset_counter_cb},</code>.
+   Add <code>lv_obj_remove_event_cb(button-&gt;root(), reset_counter_cb);</code> immediately
+   above the existing line that removes <code>increment_counter_cb</code>. This cleans
+   up the old handler when switching screens. Add this definition immediately
+   above <code>NavBar::increment_counter_cb()</code>:</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">NavBar::reset_counter_cb</span><span class="p">(</span><span class="n">lv_event_t</span><span class="o">*</span><span class="w"> </span><span class="n">event</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">auto</span><span class="o">*</span><span class="w"> </span><span class="n">view_model</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">static_cast</span><span class="o">&lt;</span><span class="n">viewmodel</span><span class="o">::</span><span class="n">BaseViewModel</span><span class="o">*&gt;</span><span class="p">(</span><span class="n">lv_event_get_user_data</span><span class="p">(</span><span class="n">event</span><span class="p">));</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">view_model</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">view_model</span><span class="o">-&gt;</span><span class="n">reset_counter</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<ol>
+<li>
+<p><strong>Show people what to press.</strong> In <code>navbar.cpp</code>, change the size of
+   <code>kButterShortcuts</code> from 3 to 4 and insert <code>{"6", "Reset"},</code> between the
+   Less and More entries. To keep all four hints readable on 320×170,
+   shorten those two key labels from <code>Z/Left</code> and <code>C/Right</code> to <code>Z</code> and <code>C</code>.
+   The arrow keys still work and remain in Help. In <code>navbar.h</code>, change the size of
+   <code>shortcut_key_labels_</code> from 3 to 4 so it has room for the new hint. In
+   <code>src/view/widgets/help_popup.cpp</code>, change the size of <code>kButterRows</code> from
+   3 to 4 and insert <code>{"6", "Reset to zero"},</code> between Decrease and Increase.</p>
+</li>
+<li>
+<p><strong>Rebuild and try it.</strong> Run the same build and launch commands as step 3.
+   Press <strong>8</strong> to open the counter, press <strong>C/Right</strong> twice, then press <strong>6</strong>.
+   You should see <code>Counter: 2</code> change immediately to <code>Counter: 0</code>.
+   Press <strong>C/Right</strong> once and <strong>Z/Left</strong> once to check the original controls.
+   Tap <strong>Esc</strong> to go home and press <strong>6</strong> there: it should still change the
+   theme. Check that the counter footer fits in both themes.</p>
+</li>
+</ol>
+<p>Follow the action you added: <strong>key → navigation slot → callback → viewmodel →
+counter label</strong>. If the reset appears in the footer but does nothing, check
+that the new key maps to index 2 in the first switch and that index 2 in
+<code>butter_icons</code> points at the reset callback. If the counter changes, the
+existing subject binding takes care of updating the label.</p>
+<p><a id="5-build-an-arm64-package-without-using-the-device"></a></p>
+<h2 id="6-build-an-arm64-package-without-using-the-device">6. Build an arm64 package without using the device<a class="headerlink" href="#6-build-an-arm64-package-without-using-the-device" title="Permanent link">&para;</a></h2>
+<p>Continue only if you need the device artifact now. Desktop build success does
+not produce an arm64 binary. Use a <strong>separate Debian 13 arm64 environment</strong>, such
+as an isolated container/VM; do not install build dependencies on your handheld
+for this exercise. Copy the Template and LVGL source into that environment as
+sibling directories named <code>first-counter</code> and <code>first-counter-lvgl</code>.</p>
+<p>Install the build dependencies there, then work as an ordinary user:</p>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>apt-get<span class="w"> </span>update
+sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>--no-install-recommends<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>build-essential<span class="w"> </span>cmake<span class="w"> </span>ninja-build<span class="w"> </span>dpkg-dev<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>libfreetype-dev<span class="w"> </span>libpng-dev<span class="w"> </span>libjpeg-dev<span class="w"> </span>libfmt-dev<span class="w"> </span>zlib1g-dev
+uname<span class="w"> </span>-m
+cmake<span class="w"> </span>--version
+<span class="nb">cd</span><span class="w"> </span>first-counter
+cmake<span class="w"> </span>-S<span class="w"> </span>.<span class="w"> </span>-B<span class="w"> </span>build/arm64<span class="w"> </span>-G<span class="w"> </span>Ninja<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-DCMAKE_BUILD_TYPE<span class="o">=</span>Release<span class="w"> </span>-DUSE_DESKTOP<span class="o">=</span>OFF<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-DAPP_USE_DRM<span class="o">=</span>OFF<span class="w"> </span>-DCM0_SDK_ROOT<span class="o">=</span>/<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-DCM0_ALLOW_FETCH_DEPS<span class="o">=</span>OFF<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-DFETCHCONTENT_SOURCE_DIR_LVGL<span class="o">=</span><span class="s2">&quot;</span><span class="nv">$PWD</span><span class="s2">/../first-counter-lvgl&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-DAPP_INSTALL_SYSTEMD_SERVICE<span class="o">=</span>OFF
+cmake<span class="w"> </span>--build<span class="w"> </span>build/arm64<span class="w"> </span>--parallel<span class="w"> </span><span class="m">4</span>
+<span class="o">(</span><span class="nb">cd</span><span class="w"> </span>build/arm64<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>cpack<span class="o">)</span>
+dpkg-deb<span class="w"> </span>--info<span class="w"> </span>dist/TemplateApp_0.2.1_rev1_arm64.deb
+dpkg-deb<span class="w"> </span>--contents<span class="w"> </span>dist/TemplateApp_0.2.1_rev1_arm64.deb
+</code></pre></div>
+<p><code>uname -m</code> must report <code>aarch64</code> for this native arm64 recipe. <code>/</code> is the dependency
+root <strong>inside that Debian arm64 environment</strong>, not a macOS sysroot or a cross
+compiler setting. The package is written to the Template's <code>dist/</code> directory.
+The command disables the optional system service: this foreground demo needs none.
+These commands explicitly compile reviewed source; they are separate from the
+non-executing <a href="https://github.com/Prophet60191/m5stack-cardputer-zero-app-guide/blob/11531dbdf785408e1c41ecc8ab059c6678c14ded/tools/README.md">Store preflight</a>.</p>
+<p><a id="6-inspect-before-installing-or-publishing"></a></p>
+<h2 id="7-inspect-before-installing-or-publishing">7. Inspect before installing or publishing<a class="headerlink" href="#7-inspect-before-installing-or-publishing" title="Permanent link">&para;</a></h2>
+<p>Check that the package architecture is arm64, the desktop entry has
+<code>Terminal=false</code>, and its executable is <code>/usr/bin/template_app</code>. You can inspect
+package content in an isolated environment without installing or running it.
+No system service should be included with the option used above.</p>
+<p><strong>Do not install this demo over an existing Template-based app.</strong> It still uses
+the Template binary, config, icon and metadata identities. A different display
+name alone does not prevent file collisions. To make a real app, first give the
+CMake project/executable, asset namespace, desktop/icon paths, config path,
+Debian identity and <code>app-builder.json</code> coherent unique names. Replace placeholder
+maintainer/store data, preserve licenses, check actual runtime dependencies, and
+follow <a href="02-app-anatomy.html">app anatomy</a> and <a href="store-readiness.html">Store readiness</a>.
+The demo's placeholder maintainer is intentionally not a real person's identity.</p>
+<p>Only then plan installation, launch/back behavior, physical keys and upgrade/data
+preservation checks using <a href="06-building-and-packaging.html">chapter 6</a>. A device check
+should verify the exact installed artifact; no flashing or radio changes are
+needed for a counter. Store acceptance is a later, separate step.</p>
+<h2 id="verification-and-limits">Verification and limits<a class="headerlink" href="#verification-and-limits" title="Permanent link">&para;</a></h2>
+<p>Maintainer check on <strong>2026-11-22</strong>, using the pinned sources above:</p>
+<ul>
+<li>macOS arm64 desktop Debug build succeeded. Headless SDL startup remained alive
+  for three seconds and exited cleanly when terminated. That is a startup smoke
+  check, not the interactive sequence in step 3.</li>
+<li>The greeting edit was rebuilt successfully; the diff and compiled executable
+  contained the new text. Visual confirmation remains a reader check.</li>
+<li>Debian 13 arm64 Release build and CPack packaging succeeded in a network-disabled
+  container using already provisioned build dependencies. Package control/payload
+  inspection confirmed arm64, foreground desktop entry and no systemd service or
+  install/remove maintainer scripts. No package was installed on a device.</li>
+<li>A fresh dependency installation/container-image build, Linux desktop run,
+  manual end-to-end walkthrough, physical keyboard check and
+  <a href="first-reader-check.html">independent-reader exercise</a> remain unperformed here.</li>
+</ul>
+<p>The reset extension was checked separately in a temporary pinned Template copy
+on Apple Silicon. The Debug build succeeded. Synthetic desktop input exercised
+the simulator's normal event handler: opening the counter, going from 0 to 2,
+resetting to 0, incrementing and decrementing again, going back, and switching
+the home theme with the same key. The counter footer was visually inspected at
+320×170 in both themes. The reset extension was not installed on a device; the
+arm64 package above was verified for the greeting edit, not the reset extension.</p>
+<p>The source/package checks show that the example can compile and package in those
+specific environments. <a href="first-app-evidence.json">The evidence record</a> pins the
+source, one-line edit, tool versions and inspected package hash. They do not prove that a new reader can follow it unaided,
+that a renamed app is release-ready, or that any peripheral works.</p>
+<p><a href="start-here.html">Short route</a> · <a href="projects/index.html">Choose the next capability</a></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "..", "features": ["navigation.top", "search.highlight", "search.suggest", "content.code.copy"], "search": "../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,1834 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="An independent guide to building native apps for the M5Stack Cardputer Zero Linux handheld.">
+      
+      
+      
+        <link rel="canonical" href="https://prophet60191.github.io/m5stack-cardputer-zero-app-guide/docs/04-ui-and-polish.html">
+      
+      
+        <link rel="prev" href="03-architecture.html">
+      
+      
+        <link rel="next" href="05-keyboard.html">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.23">
+    
+    
+      
+        <title>UI and polish - Cardputer Zero App Guide</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.84d31ad4.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="../styles/reader.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#4-ui-and-polish" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../index.html" title="Cardputer Zero App Guide" class="md-header__button md-logo" aria-label="Cardputer Zero App Guide" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m19 1-5 5v11l5-4.5zm2 4v13.5c-1.1-.35-2.3-.5-3.5-.5-1.7 0-4.15.65-5.5 1.5V6c-1.45-1.1-3.55-1.5-5.5-1.5S2.45 4.9 1 6v14.65c0 .25.25.5.5.5.1 0 .15-.05.25-.05C3.1 20.45 5.05 20 6.5 20c1.95 0 4.05.4 5.5 1.5 1.35-.85 3.8-1.5 5.5-1.5 1.65 0 3.35.3 4.75 1.05.1.05.15.05.25.05.25 0 .5-.25.5-.5V6c-.6-.45-1.25-.75-2-1M10 18.41C8.75 18.09 7.5 18 6.5 18c-1.06 0-2.32.19-3.5.5V7.13c.91-.4 2.14-.63 3.5-.63s2.59.23 3.5.63z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Cardputer Zero App Guide
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              UI and polish
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/Prophet60191/m5stack-cardputer-zero-app-guide" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    View source on GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../index.html" title="Cardputer Zero App Guide" class="md-nav__button md-logo" aria-label="Cardputer Zero App Guide" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m19 1-5 5v11l5-4.5zm2 4v13.5c-1.1-.35-2.3-.5-3.5-.5-1.7 0-4.15.65-5.5 1.5V6c-1.45-1.1-3.55-1.5-5.5-1.5S2.45 4.9 1 6v14.65c0 .25.25.5.5.5.1 0 .15-.05.25-.05C3.1 20.45 5.05 20 6.5 20c1.95 0 4.05.4 5.5 1.5 1.35-.85 3.8-1.5 5.5-1.5 1.65 0 3.35.3 4.75 1.05.1.05.15.05.25.05.25 0 .5-.25.5-.5V6c-.6-.45-1.25-.75-2-1M10 18.41C8.75 18.09 7.5 18 6.5 18c-1.06 0-2.32.19-3.5.5V7.13c.91-.4 2.14-.63 3.5-.63s2.59.23 3.5.63z"/></svg>
+
+    </a>
+    Cardputer Zero App Guide
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Prophet60191/m5stack-cardputer-zero-app-guide" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    View source on GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Contents
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Start here
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Start here
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="start-here.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Reading routes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="first-app.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    First app
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="first-reader-check.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    First reader check
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Chapters
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Chapters
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="01-platform.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Platform
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="02-app-anatomy.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    App anatomy
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="03-architecture.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Architecture choices
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    UI and polish
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="04-ui-and-polish.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    UI and polish
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#the-constraints-shape-everything" class="md-nav__link">
+    <span class="md-ellipsis">
+      The constraints shape everything
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#use-the-mvvm-reactive-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      Use the MVVM + reactive structure
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#consistent-navigation-is-the-biggest-polish-signal" class="md-nav__link">
+    <span class="md-ellipsis">
+      Consistent navigation is the biggest polish signal
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#forms-clear-outcomes-and-persistent-actions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Forms, clear outcomes and persistent actions
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#never-block-the-ui-thread" class="md-nav__link">
+    <span class="md-ellipsis">
+      Never block the UI thread
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#show-whats-happening" class="md-nav__link">
+    <span class="md-ellipsis">
+      Show what's happening
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#theme-support-light-and-dark" class="md-nav__link">
+    <span class="md-ellipsis">
+      Theme: support light and dark
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#build-screenshots-into-the-app" class="md-nav__link">
+    <span class="md-ellipsis">
+      Build screenshots into the app
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#errors-and-empty-states" class="md-nav__link">
+    <span class="md-ellipsis">
+      Errors and empty states
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#accessibility-and-discoverability" class="md-nav__link">
+    <span class="md-ellipsis">
+      Accessibility and discoverability
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#glyph-discipline" class="md-nav__link">
+    <span class="md-ellipsis">
+      Glyph discipline
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ui-checklist" class="md-nav__link">
+    <span class="md-ellipsis">
+      UI checklist
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#privacy-state-and-asynchronous-overlays" class="md-nav__link">
+    <span class="md-ellipsis">
+      Privacy state and asynchronous overlays
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#first-run-and-uncertain-live-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      First run and uncertain live data
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#persistence-and-redraws" class="md-nav__link">
+    <span class="md-ellipsis">
+      Persistence and redraws
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#keep-context-and-keyboard-help-readable" class="md-nav__link">
+    <span class="md-ellipsis">
+      Keep context and keyboard help readable
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#keep-a-complete-setup-in-one-place" class="md-nav__link">
+    <span class="md-ellipsis">
+      Keep a complete setup in one place
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#task-clarity-and-recovery" class="md-nav__link">
+    <span class="md-ellipsis">
+      Task clarity and recovery
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="05-keyboard.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Keyboard
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="06-building-and-packaging.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Build and package
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="07-radio-bring-up.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    LoRa bring-up
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="08-security-and-publishing.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Security and publishing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Project recipes
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Project recipes
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="projects/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Project selector
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="projects/local-utilities.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Local utilities
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="projects/messaging.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Messaging
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="projects/networking.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Networking
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="projects/audio-and-media.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Audio and media
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="projects/camera-and-qr.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Camera and QR
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="projects/gps-and-maps.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    GPS and maps
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="projects/hardware.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Hardware
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Reference
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Reference
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="components.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Components
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="library-principles.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Library principles
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="library-inventory.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Library inventory
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="official-input-evaluation.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Input evaluation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="official-ui-evaluation.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    UI foundation evaluation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="ui-preferences.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    UI preferences
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="store-readiness.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Store readiness
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="lesson-index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lesson index
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="case-studies/mesh.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Mesh case study
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#the-constraints-shape-everything" class="md-nav__link">
+    <span class="md-ellipsis">
+      The constraints shape everything
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#use-the-mvvm-reactive-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      Use the MVVM + reactive structure
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#consistent-navigation-is-the-biggest-polish-signal" class="md-nav__link">
+    <span class="md-ellipsis">
+      Consistent navigation is the biggest polish signal
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#forms-clear-outcomes-and-persistent-actions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Forms, clear outcomes and persistent actions
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#never-block-the-ui-thread" class="md-nav__link">
+    <span class="md-ellipsis">
+      Never block the UI thread
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#show-whats-happening" class="md-nav__link">
+    <span class="md-ellipsis">
+      Show what's happening
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#theme-support-light-and-dark" class="md-nav__link">
+    <span class="md-ellipsis">
+      Theme: support light and dark
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#build-screenshots-into-the-app" class="md-nav__link">
+    <span class="md-ellipsis">
+      Build screenshots into the app
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#errors-and-empty-states" class="md-nav__link">
+    <span class="md-ellipsis">
+      Errors and empty states
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#accessibility-and-discoverability" class="md-nav__link">
+    <span class="md-ellipsis">
+      Accessibility and discoverability
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#glyph-discipline" class="md-nav__link">
+    <span class="md-ellipsis">
+      Glyph discipline
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ui-checklist" class="md-nav__link">
+    <span class="md-ellipsis">
+      UI checklist
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#privacy-state-and-asynchronous-overlays" class="md-nav__link">
+    <span class="md-ellipsis">
+      Privacy state and asynchronous overlays
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#first-run-and-uncertain-live-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      First run and uncertain live data
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#persistence-and-redraws" class="md-nav__link">
+    <span class="md-ellipsis">
+      Persistence and redraws
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#keep-context-and-keyboard-help-readable" class="md-nav__link">
+    <span class="md-ellipsis">
+      Keep context and keyboard help readable
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#keep-a-complete-setup-in-one-place" class="md-nav__link">
+    <span class="md-ellipsis">
+      Keep a complete setup in one place
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#task-clarity-and-recovery" class="md-nav__link">
+    <span class="md-ellipsis">
+      Task clarity and recovery
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="4-ui-and-polish">4. UI and polish<a class="headerlink" href="#4-ui-and-polish" title="Permanent link">&para;</a></h1>
+<p>Make every screen predictable, readable and usable from the keyboard. Apply the
+patterns relevant to the chosen UI stack and app behavior.</p>
+<p>The <a href="official-ui-evaluation.html">official UI/shell evaluation</a> identifies the
+current Template and shared-runtime foundations. Adapt colors, menus and layouts
+while preserving the chosen shell's lifecycle, input and backend boundaries.
+The demo's page names, palette and bar dimensions are implementation choices;
+personal preferences remain separate from platform contracts.</p>
+<h2 id="the-constraints-shape-everything">The constraints shape everything<a class="headerlink" href="#the-constraints-shape-everything" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Fixed 320×170.</strong> Tiny and wide — design every screen for exactly this; nothing reflows. A few
+  legible rows beat a dense grid. Don't cram.</li>
+<li><strong>Keyboard only.</strong> No touch, no mouse. Navigation is keys. See <a href="05-keyboard.html">the keyboard</a>.</li>
+<li><strong>Tight, swapping RAM.</strong> Keep assets small; don't hold big buffers.</li>
+<li><strong>LVGL 9.5</strong> is the toolkit, drawing to the framebuffer. <strong>Design in the desktop simulator first</strong>
+  (see <a href="06-building-and-packaging.html">building and packaging</a>). Check fonts and bounds
+  at 320×170, then qualify device input, performance and hardware separately.</li>
+</ul>
+<h2 id="use-the-mvvm-reactive-structure">Use the MVVM + reactive structure<a class="headerlink" href="#use-the-mvvm-reactive-structure" title="Permanent link">&para;</a></h2>
+<p>For apps built from the official LVGL Template, use its MVVM structure to keep
+screens consistent and state predictable. Other stacks should follow their own
+state/view conventions (see <a href="03-architecture.html">architecture choices</a>):</p>
+<ul>
+<li>State lives in a model/viewmodel as <strong>reactive subjects</strong>; the view <strong>binds</strong> to them with the
+  <code>reactive::bind_*</code> helpers instead of being poked imperatively.</li>
+<li><code>BaseScreen</code> is the screen base; <code>BaseWidgets</code> the widget base. A <code>screen_manager</code> swaps the
+  visible screen when the current-page subject changes.</li>
+<li><strong>Add a screen:</strong> add a page enum, extend the model/viewmodel with a <code>show_&lt;name&gt;_page()</code>, create a
+  <code>BaseScreen</code> subclass under <code>view/screens/</code>, register it in <code>screen_manager</code>. One screen = one
+  file; the only central edit is one <code>switch</code> case.</li>
+<li><strong>Add a widget:</strong> subclass <code>BaseWidgets</code>, implement <code>build()</code>, bind with <code>reactive::bind_*</code>.</li>
+</ul>
+<h2 id="consistent-navigation-is-the-biggest-polish-signal">Consistent navigation is the biggest polish signal<a class="headerlink" href="#consistent-navigation-is-the-biggest-polish-signal" title="Permanent link">&para;</a></h2>
+<p>Whatever navigation model you pick, make it <strong>identical on every screen</strong> — same keys, same
+positions, same back behavior. That consistency is what separates "polished" from "slop." Two proven
+approaches:</p>
+<ul>
+<li><strong>A fixed function-key lane / bottom bar</strong> — a row of labelled chips mapped to fixed keys, where
+  each chip always shows what its key does, so the user never guesses. Reserve it for actions that
+  are otherwise hard to reach on a 46-key board — <em>not</em> for Enter/Esc, which are already easy.</li>
+<li><strong>A d-pad model</strong> — map the device's arrow cluster (see <a href="05-keyboard.html">the keyboard</a>) to
+  up/down/left/right selection, Enter to act, and <strong>Esc to go back everywhere</strong> (hold Esc to
+  quit/home).</li>
+</ul>
+<p>Reuse <em>one</em> well-made list screen for every list (menus, item lists), rather than a different layout
+per page.</p>
+<h2 id="forms-clear-outcomes-and-persistent-actions">Forms, clear outcomes and persistent actions<a class="headerlink" href="#forms-clear-outcomes-and-persistent-actions" title="Permanent link">&para;</a></h2>
+<p>A complete form can serve as its own review. Do not require another summary page
+by habit when it only repeats values the user has just checked. Keep the primary
+action, such as <strong>1: Save</strong>, in a fixed action lane outside the scrolling fields.
+Show routine navigation under Help and in the user guide; reserve scarce footer
+space for useful screen actions. Give the space back to content when no action
+is needed. Keep the action label consistent with the actual destination (for
+example, Save channel versus Save profile).</p>
+<p>After scanning/importing, explicitly show success and the decoded item's name
+before settings. A method label such as "QR/share link" and a count alone can
+look like a reset. Distinguish "loaded into an unsaved form" from "saved"; preserve
+local entries on validation errors and Back. Confirm the named saved result.</p>
+<p>Validation and service-side preparation can run behind the Save action without
+becoming a mandatory visible review step. Keep ownership, stale-state checks,
+request correlation and cancellation before the first write. Ignore repeated
+activation while busy; a held key must not skip a consequential confirmation or
+save twice. Numeric shortcuts must remain ordinary characters inside text fields.</p>
+<p>Reject invalid or unsupported actions with a concrete reason. For valid changes
+with material side effects, use a brief, specific explanation/consent when needed
+rather than repeating the whole form. A guide supplements clear UI; it does not
+replace privacy choices. Physical risks that software cannot determine reliably
+still need appropriate user instructions and narrowly scoped acknowledgment.</p>
+<h2 id="never-block-the-ui-thread">Never block the UI thread<a class="headerlink" href="#never-block-the-ui-thread" title="Permanent link">&para;</a></h2>
+<p>Long work — talking to a radio, a network call, shelling out to a tool — must <strong>not</strong> run on the
+LVGL thread. A frozen screen reads as broken. Do the work on a bounded worker or in a
+<strong>resource-owning service when needed</strong> (<a href="03-architecture.html">architecture</a>), and marshal results back to the UI
+thread using the toolkit's supported dispatch mechanism. Select the thread/process
+boundary for this application's actual needs.</p>
+<h2 id="show-whats-happening">Show what's happening<a class="headerlink" href="#show-whats-happening" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Show useful progress</strong> for long operations. A bounded, redacted log pane can
+  suit a diagnostic tool; a short status or progress value can suit a simple task.</li>
+<li><strong>Show relevant status</strong> (connection or unread count) when it helps the
+  task. Reuse the chosen foundation's supported status source and avoid redundant polling.
+  Do not add a battery icon to the header by default. My personal preference
+  keeps any useful battery percentage as text without a battery glyph; see
+  <a href="ui-preferences.html#locked-header-battery-presentation">the preference record</a>.</li>
+</ul>
+<p>When removing a status element, check its unchanged neighbors on the actual
+framebuffer, in both themes and after live updates. A desktop screenshot can
+miss partial-redraw problems. If hardware evidence shows a sibling being erased,
+invalidate the bounded status strip when needed rather than refreshing every
+screen or keeping a hidden decorative widget as a workaround.</p>
+<p>Keep routine startup and reconnect preference synchronization quiet. Apply the saved
+setting and return a correlated acknowledgment without a success toast; confirm
+deliberate user changes when useful. Do not skip synchronization or suppress all
+notices to hide one distracting message. Failures must remain visible. Test first
+connection, reconnect, explicit changes, actual enforcement and error replies
+separately; validate any optional quiet flag as a boolean.</p>
+<h2 id="theme-support-light-and-dark">Theme: support light and dark<a class="headerlink" href="#theme-support-light-and-dark" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Keep colors in <strong>one constants file</strong> — never hardcode a color per widget.</li>
+<li>Offer a <strong>light/dark toggle</strong> and make sure both are legible. At 320×170, contrast and font size
+  matter more than cleverness. Test both themes in the simulator.</li>
+<li>Use <strong>semantic color, not decorative</strong> — screens ask for <em>meanings</em> (<code>warning</code>, <code>good-signal</code>,
+  "the row you're on") and the theme maps them to pixels. Use a border
+  consistently to indicate selection, and keep its meaning and contrast clear.</li>
+</ul>
+<p>Style a text editor's background, entered text, placeholder and cursor for the
+selected theme; setting only the screen background is insufficient. A widget can
+inherit colors from a global theme initialized earlier. Check an empty editor,
+entered text, focus and theme changes, including opening and closing overlays.
+This is an integration check, not evidence that the official widget is defective.</p>
+<p>Treat meaningful secondary text differently from unavailable controls. A current
+setting value or delivery result must remain readable; a muted color must not
+make it look disabled. Check both foreground/background pairs in message bubbles
+and other colored surfaces. Pair freshness or status colors with text or shape,
+and retain approved component styling deliberately rather than changing it as a
+side effect of a global palette adjustment.</p>
+<h2 id="build-screenshots-into-the-app">Build screenshots into the app<a class="headerlink" href="#build-screenshots-into-the-app" title="Permanent link">&para;</a></h2>
+<p>Bind a key to dump the active screen to a PNG with a small confirmation toast. You need <strong>320×170
+PNG</strong> screenshots for a Store listing (and your README) anyway, so have the app produce them itself —
+it's the most authentic way to capture the real screens. (On the device, the framebuffer can also be
+read directly from <code>/dev/fb0</code> for the same effect.)</p>
+<h2 id="errors-and-empty-states">Errors and empty states<a class="headerlink" href="#errors-and-empty-states" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Show failures <strong>on screen, in plain words</strong>, not just in the log. A hardware app that can't reach
+  its device should say so and what to check ("camera busy; close the other camera app").</li>
+<li>Give empty states a line of guidance ("No notes yet — press Enter to create one"), not a blank panel.</li>
+</ul>
+<h2 id="accessibility-and-discoverability">Accessibility and discoverability<a class="headerlink" href="#accessibility-and-discoverability" title="Permanent link">&para;</a></h2>
+<p>Label important actions in plain words and provide a keyboard route to every
+control, including scrolling information dialogs and dismissing overlays. Keep
+focus visible. Pair color with text/shape so color alone does not identify a
+failure, selection or privacy state. Check contrast in both themes and offer
+readable text sizes within the actual glyph inventory. Do not hide the only hint
+behind a long name or rely on a mouse/touch action on the device.</p>
+<h2 id="glyph-discipline">Glyph discipline<a class="headerlink" href="#glyph-discipline" title="Permanent link">&para;</a></h2>
+<p>Decide the font/glyph inventory per screen and make sure every character you render actually exists
+in the font — a missing glyph renders as a tofu box and screams "unfinished." If you add icons
+(e.g. from a symbol font), confirm the sizes you use are compiled in.</p>
+<p><a id="the-anti-slop-checklist"></a></p>
+<h2 id="ui-checklist">UI checklist<a class="headerlink" href="#ui-checklist" title="Permanent link">&para;</a></h2>
+<ul>
+<li>[ ] Consistent navigation on every screen; Esc always goes back; every action key labeled.</li>
+<li>[ ] Reads cleanly at 320×170 — legible font, not crammed.</li>
+<li>[ ] Both light and dark themes tested in the simulator.</li>
+<li>[ ] UI never freezes — all slow work off the LVGL thread.</li>
+<li>[ ] Long operations show progress; errors shown on screen in plain words; empty states guided.</li>
+<li>[ ] Relevant status is visible; no unnecessary status bar or polling.</li>
+<li>[ ] A real icon (not the template default) and real 320×170 screenshots.</li>
+<li>[ ] No missing-glyph boxes anywhere.</li>
+<li>[ ] No placeholder/<code>TODO</code> text anywhere in the UI or metadata.</li>
+</ul>
+<h2 id="privacy-state-and-asynchronous-overlays">Privacy state and asynchronous overlays<a class="headerlink" href="#privacy-state-and-asynchronous-overlays" title="Permanent link">&para;</a></h2>
+<p>For asynchronous settings, show confirmed, Pending and Unknown states. Expire
+pending actions after a deadline. Read back actual state when the underlying API
+requires it; editing a cache is not confirmation. Use stable record/request IDs
+and stop accepting a dismissed view's late results. A timeout can leave an outcome
+unknown; it does not prove the backend rolled a write back.</p>
+<p>Remove observers and timers with their owning views. Never hold an LVGL pointer
+or a pointer into a reallocating vector across a worker callback or rebuild.
+Keep global Help/Esc ownership explicit so input cannot reach a hidden editor.
+Test navigation away, list reordering, repeated Return and disconnect while busy.</p>
+<h2 id="first-run-and-uncertain-live-data">First run and uncertain live data<a class="headerlink" href="#first-run-and-uncertain-live-data" title="Permanent link">&para;</a></h2>
+<p>Provide safe defaults, explain actual prerequisites, preserve existing data and
+make consequential actions deliberate. Ask only for settings relevant to the app.
+A local calculator may need no wizard. A hardware transmitter requires additional
+consent described in its project section. Show actionable failure reasons.</p>
+<p>Measurements need valid values, a meaningful timestamp and a freshness policy.
+Show stale data as last known; unknown is different from zero. Coalesce updates
+and refresh age labels. Device GPS and camera details belong in
+<a href="projects/gps-and-maps.html">GPS/maps</a> and <a href="projects/camera-and-qr.html">camera/QR</a>.</p>
+<h2 id="persistence-and-redraws">Persistence and redraws<a class="headerlink" href="#persistence-and-redraws" title="Permanent link">&para;</a></h2>
+<p>Debounce text saves by a pause in typing, flush at defined navigation/close
+boundaries and keep rejected edits recoverable. Do not serialize local saves
+behind unrelated slow hardware jobs. Quiet hours need local-time and midnight
+semantics only if the app actually offers notifications.</p>
+<p>Compare effective state before rebuilding object trees, while still handling
+request completion and genuine changes. Preserve selection by stable identity
+through reordering and define a consistent tie order. Prepare/index list data once
+instead of repeating searches for every visible row. Measure realistic workloads;
+a synthetic improvement is not a measured battery-life benefit.</p>
+<p>Update selection styles and changed field values in place when layout is stable.
+Avoid reconstructing every row on each arrow key or subscribing to several
+subjects that each cause an identical initial rebuild. Preserve stable targets,
+scrolling and observer ownership. If a selected record disappears, require a safe
+explicit selection rather than silently acting on its replacement. Use small
+shared visual helpers where they simplify actual callers; keep each screen's
+confirmation, editing and resource lifetime explicit. Review cache ownership when
+consolidating records: retaining large previews can extend their memory lifetime.
+Selection helpers should not allocate unused styles on every unselected row.</p>
+<p>Observe independent facts independently: a mode can change while connection
+state stays Online. Refresh age/freshness and time-based filters even when no new
+hardware event arrives. A presentation clock can update existing age labels and
+markers without rebuilding the whole screen; bind its callbacks to screen/object
+lifetime and test destruction as well as stale/future-time boundaries. Unknown
+state must remain unknown after disconnect. Poll only the device facts actually
+displayed. Measure operation counts separately from timing, using the same build
+and data before/after; qualify device performance separately from host results.</p>
+<h2 id="keep-context-and-keyboard-help-readable">Keep context and keyboard help readable<a class="headerlink" href="#keep-context-and-keyboard-help-readable" title="Permanent link">&para;</a></h2>
+<p>Keep the current task/record in a bounded header and reserve the footer for short
+keyboard hints or text entry. Truncate descriptive detail before information
+needed to understand the action's target. Check real font/pixel bounds with long
+names, selection, typing, scrolling and return navigation.</p>
+<p>An LVGL outline can be clipped outside a tightly fitted parent. Use an inside
+border or sufficient parent clearance. Keep border plus padding insets stable so
+selection does not move text or resize the row. Verify both light and dark themes.</p>
+<p>Group settings with nonselectable headings and give actions stable keys independent
+of display order. Navigate through selectable actions; give long overlays scrolling
+and an Escape path. Tests should find a setting by identity/label instead of a
+historic number of Down presses, especially for privacy or destructive operations.</p>
+<p>Detailed examples remain in <a href="case-studies/mesh.html#ui-and-asynchronous-operations">Mesh UI lessons</a>.
+Next: <a href="05-keyboard.html">the keyboard</a>.</p>
+<h2 id="keep-a-complete-setup-in-one-place">Keep a complete setup in one place<a class="headerlink" href="#keep-a-complete-setup-in-one-place" title="Permanent link">&para;</a></h2>
+<p>When a task spans several settings, provide one shared setup flow with a local
+draft across field editors and validation errors. Several entry points
+can open the same flow; remove obsolete independent paths rather than keeping
+duplicate implementations. Show which values belong to one item and which affect
+the whole device. Imported settings can be suggestions without silently replacing
+active configuration or device-specific calibration. Offer a separate saved
+profile when that is useful, with its effect on the active session explicit.</p>
+<p>Describe a saved setup's contract before applying it: what is saved, what stays
+unchanged, what is deliberately reset, and any prerequisite such as releasing a
+resource first. Do not imply that a profile restores every operating mode when
+it stores only configuration. A safe reset must still be predictable. Mesh's
+transmission/location defaults are a radio-specific example, not a rule that
+all applications must disable their hardware when switching profiles.</p>
+<p>Use the fixed heading/action arrangement described under
+<a href="#forms-clear-outcomes-and-persistent-actions">forms</a>, with selection updated in place. Test long errors,
+UTF-8 byte limits, masked secrets, deep selection, both themes, Escape, repeated
+Return, late replies and destroyed screens. Preserve an imported token when
+returning to edit an unrelated field; closing setup should cancel the whole draft.</p>
+<p>Separate local preparation, explicit Save, stored verification, live hardware
+readback and actual connectivity/delivery. Cancellation before Save changes
+nothing; once a write has started, explain that leaving cannot undo it. Report
+partial success and uncertain outcomes explicitly so users do not duplicate an
+operation. Mesh exercises this pattern in its unified channel setup; the pattern
+also applies to network, peripheral and other device configuration tools.</p>
+<h2 id="task-clarity-and-recovery">Task clarity and recovery<a class="headerlink" href="#task-clarity-and-recovery" title="Permanent link">&para;</a></h2>
+<p>For form actions and validation, use <a href="#forms-clear-outcomes-and-persistent-actions">forms and clear outcomes</a>;
+for setup scope and saved profiles, use <a href="#keep-a-complete-setup-in-one-place">complete setup</a>.
+The <a href="ui-preferences.html">personal preference record</a> separately specifies my
+direct two-choice rows and selection menus.</p>
+<p>Use Cancel-first confirmation for irreversible deletion when Undo is not
+available. Bind the action to a stable identity rather than a moving row.
+The prompt must name the scope: one item versus its history, draft or
+saved setup, and local copies versus copies elsewhere. Cancelling the prompt
+must not submit a destructive operation. Re-resolve the captured identity when
+confirming; an item that vanished must not be replaced by the next row. Test Cancel, Esc, repeated keys
+and new/reordered content while the prompt is open, and clear the pending action
+when the prompt closes.</p>
+<p>Communication outcomes and search limits belong in the
+<a href="projects/messaging.html">messaging recipe</a>; readable values and non-color cues are
+covered under <a href="#theme-support-light-and-dark">theme states</a>.</p>
+<p>Form section headings and explanatory rows are not actions. Skip them during
+keyboard navigation and wrapping; keep the selected field, its nearby section
+heading and the primary action understandable as the viewport moves. Use the
+selected toolkit's overflow-only scrollbar behavior and reserve space for its
+marker. Check both overflowing and fully visible lists.</p>
+<p>Validate complete tasks as well as isolated screens: create/import, edit, cancel,
+save, reopen, switch a saved setup and recover from a failed operation. Host
+renders, headless replay on the actual device and a physical operator walkthrough
+answer different questions. Replay with synthetic commands and installed fonts
+can check the UI without opening hardware; it does not prove physical key input,
+framebuffer ownership, RF delivery or outdoor positioning.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "..", "features": ["navigation.top", "search.highlight", "search.suggest", "content.code.copy"], "search": "../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+    
+  </body>
+</html>

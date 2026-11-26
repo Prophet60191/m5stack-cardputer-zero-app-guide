@@ -1,0 +1,1750 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="An independent guide to building native apps for the M5Stack Cardputer Zero Linux handheld.">
+      
+      
+      
+        <link rel="canonical" href="https://prophet60191.github.io/m5stack-cardputer-zero-app-guide/docs/case-studies/mesh.html">
+      
+      
+        <link rel="prev" href="../lesson-index.html">
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.23">
+    
+    
+      
+        <title>Mesh case study - Cardputer Zero App Guide</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.84d31ad4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="../../styles/reader.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#worked-example-mesh-and-the-lessons-it-contributed" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../index.html" title="Cardputer Zero App Guide" class="md-header__button md-logo" aria-label="Cardputer Zero App Guide" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m19 1-5 5v11l5-4.5zm2 4v13.5c-1.1-.35-2.3-.5-3.5-.5-1.7 0-4.15.65-5.5 1.5V6c-1.45-1.1-3.55-1.5-5.5-1.5S2.45 4.9 1 6v14.65c0 .25.25.5.5.5.1 0 .15-.05.25-.05C3.1 20.45 5.05 20 6.5 20c1.95 0 4.05.4 5.5 1.5 1.35-.85 3.8-1.5 5.5-1.5 1.65 0 3.35.3 4.75 1.05.1.05.15.05.25.05.25 0 .5-.25.5-.5V6c-.6-.45-1.25-.75-2-1M10 18.41C8.75 18.09 7.5 18 6.5 18c-1.06 0-2.32.19-3.5.5V7.13c.91-.4 2.14-.63 3.5-.63s2.59.23 3.5.63z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Cardputer Zero App Guide
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Mesh case study
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/Prophet60191/m5stack-cardputer-zero-app-guide" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    View source on GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../index.html" title="Cardputer Zero App Guide" class="md-nav__button md-logo" aria-label="Cardputer Zero App Guide" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m19 1-5 5v11l5-4.5zm2 4v13.5c-1.1-.35-2.3-.5-3.5-.5-1.7 0-4.15.65-5.5 1.5V6c-1.45-1.1-3.55-1.5-5.5-1.5S2.45 4.9 1 6v14.65c0 .25.25.5.5.5.1 0 .15-.05.25-.05C3.1 20.45 5.05 20 6.5 20c1.95 0 4.05.4 5.5 1.5 1.35-.85 3.8-1.5 5.5-1.5 1.65 0 3.35.3 4.75 1.05.1.05.15.05.25.05.25 0 .5-.25.5-.5V6c-.6-.45-1.25-.75-2-1M10 18.41C8.75 18.09 7.5 18 6.5 18c-1.06 0-2.32.19-3.5.5V7.13c.91-.4 2.14-.63 3.5-.63s2.59.23 3.5.63z"/></svg>
+
+    </a>
+    Cardputer Zero App Guide
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Prophet60191/m5stack-cardputer-zero-app-guide" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    View source on GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Contents
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Start here
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Start here
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../start-here.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Reading routes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../first-app.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    First app
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../first-reader-check.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    First reader check
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Chapters
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Chapters
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-platform.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Platform
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-app-anatomy.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    App anatomy
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-architecture.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Architecture choices
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-ui-and-polish.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    UI and polish
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-keyboard.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Keyboard
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06-building-and-packaging.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Build and package
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07-radio-bring-up.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    LoRa bring-up
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08-security-and-publishing.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Security and publishing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Project recipes
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Project recipes
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../projects/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Project selector
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../projects/local-utilities.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Local utilities
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../projects/messaging.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Messaging
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../projects/networking.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Networking
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../projects/audio-and-media.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Audio and media
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../projects/camera-and-qr.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Camera and QR
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../projects/gps-and-maps.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    GPS and maps
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../projects/hardware.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Hardware
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Reference
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Reference
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../components.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Components
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../library-principles.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Library principles
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../library-inventory.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Library inventory
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../official-input-evaluation.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Input evaluation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../official-ui-evaluation.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    UI foundation evaluation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ui-preferences.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    UI preferences
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../store-readiness.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Store readiness
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lesson-index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lesson index
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Mesh case study
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="mesh.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Mesh case study
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#current-dependency-distribution-0119" class="md-nav__link">
+    <span class="md-ellipsis">
+      Current dependency distribution (0.1.19)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#evidence-and-scope" class="md-nav__link">
+    <span class="md-ellipsis">
+      Evidence and scope
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#subsequent-modularity-and-input-maintenance" class="md-nav__link">
+    <span class="md-ellipsis">
+      Subsequent modularity and input maintenance
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#subsequent-gps-integration-qualification" class="md-nav__link">
+    <span class="md-ellipsis">
+      Subsequent GPS integration qualification
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#subsequent-everyday-use-refinement" class="md-nav__link">
+    <span class="md-ellipsis">
+      Subsequent everyday-use refinement
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#architecture-and-state" class="md-nav__link">
+    <span class="md-ellipsis">
+      Architecture and state
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Architecture and state">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#make-the-boundary-authoritative" class="md-nav__link">
+    <span class="md-ellipsis">
+      Make the boundary authoritative
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#preserve-identity-and-durable-intent-safely" class="md-nav__link">
+    <span class="md-ellipsis">
+      Preserve identity and durable intent safely
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ui-and-asynchronous-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      UI and asynchronous operations
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="UI and asynchronous operations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#privacy-state-and-asynchronous-overlays" class="md-nav__link">
+    <span class="md-ellipsis">
+      Privacy state and asynchronous overlays
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#first-run-and-uncertain-live-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      First run and uncertain live data
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#keep-context-and-keyboard-help-readable" class="md-nav__link">
+    <span class="md-ellipsis">
+      Keep context and keyboard help readable
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#radio-route-validation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Radio route validation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#licensing-choices-in-this-application" class="md-nav__link">
+    <span class="md-ellipsis">
+      Licensing choices in this application
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#current-dependency-distribution-0119" class="md-nav__link">
+    <span class="md-ellipsis">
+      Current dependency distribution (0.1.19)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#evidence-and-scope" class="md-nav__link">
+    <span class="md-ellipsis">
+      Evidence and scope
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#subsequent-modularity-and-input-maintenance" class="md-nav__link">
+    <span class="md-ellipsis">
+      Subsequent modularity and input maintenance
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#subsequent-gps-integration-qualification" class="md-nav__link">
+    <span class="md-ellipsis">
+      Subsequent GPS integration qualification
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#subsequent-everyday-use-refinement" class="md-nav__link">
+    <span class="md-ellipsis">
+      Subsequent everyday-use refinement
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#architecture-and-state" class="md-nav__link">
+    <span class="md-ellipsis">
+      Architecture and state
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Architecture and state">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#make-the-boundary-authoritative" class="md-nav__link">
+    <span class="md-ellipsis">
+      Make the boundary authoritative
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#preserve-identity-and-durable-intent-safely" class="md-nav__link">
+    <span class="md-ellipsis">
+      Preserve identity and durable intent safely
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ui-and-asynchronous-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      UI and asynchronous operations
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="UI and asynchronous operations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#privacy-state-and-asynchronous-overlays" class="md-nav__link">
+    <span class="md-ellipsis">
+      Privacy state and asynchronous overlays
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#first-run-and-uncertain-live-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      First run and uncertain live data
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#keep-context-and-keyboard-help-readable" class="md-nav__link">
+    <span class="md-ellipsis">
+      Keep context and keyboard help readable
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#radio-route-validation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Radio route validation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#licensing-choices-in-this-application" class="md-nav__link">
+    <span class="md-ellipsis">
+      Licensing choices in this application
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="worked-example-mesh-and-the-lessons-it-contributed">Worked example: Mesh and the lessons it contributed<a class="headerlink" href="#worked-example-mesh-and-the-lessons-it-contributed" title="Permanent link">&para;</a></h1>
+<p>Mesh is one application built with a native LVGL UI and a Python radio service.
+Its channels, acknowledgments, private-channel keys and persistence policy explain
+many of this guide's original examples. They are optional application concerns.
+A calculator or local notes app does not need the radio service or its firewall.</p>
+<h2 id="current-dependency-distribution-0119">Current dependency distribution (0.1.19)<a class="headerlink" href="#current-dependency-distribution-0119" title="Permanent link">&para;</a></h2>
+<p>The older source/evidence examples below retain their recorded versions. Mesh
+0.1.19 now bundles the GPS-corrected native radio and 15 locked Python wheels in
+one installer, with Debian supplying standard OS libraries. The existing user
+service prepares its private environment offline; a separate global daemon and
+manual user pip setup are no longer required. This changes distribution, not the
+UI/supervisor ownership boundary or the official components it reuses.</p>
+<p><a href="https://github.com/Prophet60191/m5stack-cardputer-zero-mesh-app/blob/39f7ed77c80746fbb4fac25af2d3529d07b723e6/docs/distribution-validation-20261123.md">Qualified package/device evidence</a>
+identifies exact source/bytes and separates minimal Debian tests from the
+owner-deferred fresh-image hardware test. The
+<a href="https://github.com/Prophet60191/m5stack-cardputer-zero-mesh-app/blob/main/docs/install.md">current install/backup/recovery runbook</a>
+and <a href="https://github.com/Prophet60191/m5stack-cardputer-zero-mesh-app/blob/main/docs/distribution.md">build/source instructions</a>
+are maintained operational guidance, not immutable historical evidence.</p>
+<h2 id="evidence-and-scope">Evidence and scope<a class="headerlink" href="#evidence-and-scope" title="Permanent link">&para;</a></h2>
+<p>The preserved sections below come from the <a href="https://github.com/Prophet60191/m5stack-cardputer-zero-app-guide/tree/a7ddc7ff73e71a32c71b68bbc87290af73424eea">previous guide revision</a>,
+reviewed 2026-11-16. Their detailed wording is retained to avoid losing the failures
+that motivated the general rules. Read them as Mesh-specific examples, alongside
+<a href="../03-architecture.html">architecture choices</a>, <a href="../projects/index.html">project sections</a>
+and the <a href="../lesson-index.html">lesson index</a>.</p>
+<p>Implementation and evidence are in the pinned <a href="https://github.com/Prophet60191/m5stack-cardputer-zero-mesh-app/tree/c51a45ee61813bf9685766f9f45c95e6778780a5">Mesh source</a>,
+<a href="https://github.com/Prophet60191/m5stack-cardputer-zero-mesh-app/blob/c51a45ee61813bf9685766f9f45c95e6778780a5/docs/review-remediation.md">remediation record</a>,
+<a href="https://github.com/Prophet60191/m5stack-cardputer-zero-mesh-app/blob/c51a45ee61813bf9685766f9f45c95e6778780a5/docs/keyboard.md">keyboard checks</a>
+and <a href="https://github.com/Prophet60191/m5stack-cardputer-zero-mesh-app/blob/c51a45ee61813bf9685766f9f45c95e6778780a5/docs/maintenance-pass.md">maintenance measurements</a>.
+The candidate has 98 backend tests plus native and package checks. Those results
+qualify that application/revision, not every future app or all official services.
+Outdoor GPS, live public-peer interoperability and physical IPv6 qualification
+remain separate gaps; simulated events do not constitute a physical all-key sweep.
+No new device qualification is claimed by reorganizing this guide.</p>
+<h2 id="subsequent-modularity-and-input-maintenance">Subsequent modularity and input maintenance<a class="headerlink" href="#subsequent-modularity-and-input-maintenance" title="Permanent link">&para;</a></h2>
+<p>Mesh 0.1.11 adds bounded input polling and source-owned hold cleanup. The
+<a href="https://github.com/Prophet60191/m5stack-cardputer-zero-mesh-app/blob/f1c2c77b9ccb1a26ff366539af7d51f371a3e8af/docs/architecture.md">architecture decision</a>
+explains its purpose, benefits, costs and official-platform compatibility. The
+<a href="https://github.com/Prophet60191/m5stack-cardputer-zero-app-guide/blob/11531dbdf785408e1c41ecc8ab059c6678c14ded/submissions/m5stack-2026-11-16/README.md">M5Stack review package</a> keeps this
+maintenance separate from the optional Template integration. The original lesson
+blocks below remain preserved at their stated source revision.</p>
+<h2 id="subsequent-gps-integration-qualification">Subsequent GPS integration qualification<a class="headerlink" href="#subsequent-gps-integration-qualification" title="Permanent link">&para;</a></h2>
+<p>The <a href="https://github.com/Prophet60191/m5stack-cardputer-zero-mesh-app/blob/cd82b8ce24a1cab1ef68369e744a508c4ac887ef/docs/internal-gps-validation.md">2026-11-23 GPS record</a>
+supersedes the earlier outdoor-GPS gap for that fitted receiver and exact versions.
+App 0.1.17 refreshes exported local-node snapshots without enabling location
+broadcasts. A separate pinned Meshtastic native-service patch extends its ATGM
+identification window from 500 to 1500ms after seven of eight measured replies
+arrived later than 500ms. The driver had suppressed normal output before probing.
+That is a measured third-party integration problem, not an official GPS-app defect.
+Its reserved nonce, 30s snapshot interval and two-minute freshness policy are
+Mesh-specific, not defaults for other GPS apps. The general <a href="../projects/gps-and-maps.html">GPS section</a>
+explains the transferable cache, ownership, privacy, timing and qualification lessons.</p>
+<h2 id="subsequent-everyday-use-refinement">Subsequent everyday-use refinement<a class="headerlink" href="#subsequent-everyday-use-refinement" title="Permanent link">&para;</a></h2>
+<p>Mesh 0.1.15's <a href="https://github.com/Prophet60191/m5stack-cardputer-zero-mesh-app/tree/5f0bc3ee80ff3b8bd1cfa6e496999dac6e8edc29">implementation</a>
+and <a href="https://github.com/Prophet60191/m5stack-cardputer-zero-mesh-app/blob/0b63be648324d47581963b8fe535ae5ba6060ce8/docs/usability-refinement.md">qualification record</a>
+provide later evidence for readable editor states, stable Cancel-first deletion,
+grouped forms, explicit saved-setup consequences and English case-insensitive
+search. The installed candidate passed its native/backend/package gates,
+ordinary-user synthetic device replay and the owner's specified physical checks.
+Those checks did not add powered-radio, public-peer or outdoor GPS qualification.</p>
+<p>The upgrade also demonstrated why files and running processes must be checked
+separately: the existing service still reported the old version until restarted
+through its normal lifecycle. A GUI version-query attempt opened a UI because
+that option was unsupported; the temporary instance was stopped. The general
+<a href="../06-building-and-packaging.html#automate-the-matching-package-build">build/install guidance</a>
+records safer verification and preservation checks. These results qualify the
+named Mesh revision, not a reusable library or another application's hardware.</p>
+<h2 id="architecture-and-state">Architecture and state<a class="headerlink" href="#architecture-and-state" title="Permanent link">&para;</a></h2>
+<h3 id="make-the-boundary-authoritative">Make the boundary authoritative<a class="headerlink" href="#make-the-boundary-authoritative" title="Permanent link">&para;</a></h3>
+<p>The UI may show a local message echo, but the supervisor must retain its actual
+status. Store ACK/NAK results before broadcasting; a reconnect snapshot must not
+turn Delivered back into Sending. Retries need a stable message ID plus a new
+attempt token so an old ACK cannot complete the new attempt. Apply retention to
+existing history immediately, broadcast removals, and bound total history even
+when a user chooses “All.” Reapply persisted client preferences on reconnect and
+define which client wins if multiple clients choose different policies.</p>
+<p>Every asynchronous result needs identity: a request ID plus the target channel,
+node or record ID. Indexing a refreshed vector is unsafe across callbacks. Capture
+stable IDs, resolve them again before acting, and cancel acceptance when a user
+dismisses the pending overlay. This applies especially to secret-bearing results
+such as share codes: a hardcoded group name can disclose another group's key.</p>
+<h3 id="preserve-identity-and-durable-intent-safely">Preserve identity and durable intent safely<a class="headerlink" href="#preserve-identity-and-durable-intent-safely" title="Permanent link">&para;</a></h3>
+<p>A slot or vector index is a location, not an identity. When configuration can
+replace its contents, bind conversations, drafts, selections, retries and commands
+to a stable identity and validate it at the owner before acting. For secret-bearing
+configurations, use a keyed local digest rather than exposing the secret or a
+brute-forceable plain hash. Moving the same logical record can preserve identity;
+changing its key/name should archive old context instead of silently rerouting it.</p>
+<p>Keep bounded durable history authoritative in the supervisor. Commit ACK/failure,
+retention and deletion changes before publishing snapshots. Persist drafts without
+turning them into a replay queue. An interrupted send should become Failed after
+restart, with an honest uncertainty reason. Distinguish acceptance by an API, a mesh
+acknowledgment, a recipient acknowledgment and a read receipt; never infer a later
+stage from an earlier one. Confirm the acknowledgment source before naming a recipient.</p>
+<p>If opting out of disk history retains an active RAM session, define what opting
+back in saves. Persist its existing drafts without requiring another keystroke;
+test an immediate restart after the preference change and notify every client.</p>
+<p>For related preference files, record and sync a complete validated transaction,
+then roll it forward idempotently after interruption. Applying a saved hardware
+profile must not restore transmission or privacy consent as a side effect.</p>
+<p>Exercise the real event library when testing callback registration. A child topic
+can inherit required arguments from its parent; changing one listener's optional
+parameters can make another subscription fail during startup. Register the same
+parent/child listeners as production and deliver representative events. Count
+remote RF reception from received packets, rather than local admin replies or
+cached node-update notifications.</p>
+<p>Audit greeting builders as part of the live control path. Send one bounded
+history snapshot, avoid redundant client requests, and perform slow dependency
+probes outside lifecycle locks. Cache informational version queries while forcing
+a fresh compatibility check before hardware starts. Fresh security verdicts need
+their own age policy. Capture shared interface references and guard every library
+dereference when constructing status, even if most callers already hold a lock.</p>
+<h2 id="ui-and-asynchronous-operations">UI and asynchronous operations<a class="headerlink" href="#ui-and-asynchronous-operations" title="Permanent link">&para;</a></h2>
+<h3 id="privacy-state-and-asynchronous-overlays">Privacy state and asynchronous overlays<a class="headerlink" href="#privacy-state-and-asynchronous-overlays" title="Permanent link">&para;</a></h3>
+<p>Render device settings as confirmed values, Pending, or Unknown. Do not optimistically
+flip a privacy boolean before the supervisor/device confirms it; an offline “Off”
+can mislead someone carrying a radio. Use request IDs and a deadline, and expire
+pending state if the response never arrives. Configuration cache writes are not
+readback. Make the target explicit when enabling behavior on one channel/group.</p>
+<p>An overlay awaiting a result must stop accepting that result after Esc, navigation
+or teardown. Match the response to both request and target. Use stable record IDs
+across list rebuilds, never pointers into a vector that can reallocate. Tie LVGL
+observers to an object's lifetime or explicitly remove them. Regression-test list
+reordering while details or an action menu is open.</p>
+<p>Apply deadlines to every waiting view, including generic service operations.
+Timeout or disconnect means the result may be unknown; do not claim a write was
+rolled back. Clear request acceptance on dismissal, echo valid IDs on validation
+errors, and ignore repeated Return while busy. Keep request correlation fields
+separate from the object being changed (for example, request <code>id</code> and target
+<code>message_id</code>).</p>
+<h3 id="first-run-and-uncertain-live-data">First run and uncertain live data<a class="headerlink" href="#first-run-and-uncertain-live-data" title="Permanent link">&para;</a></h3>
+<p>A complete first run needs a safe default, a reviewable configuration, dependency
+failure messages, and a separate deliberate step to enable hardware transmission.
+Never overwrite an existing profile to make the wizard succeed. Show receive-only
+separately from disconnected and transmitting states. Surface the actual stop
+reason in diagnostics instead of hiding every failure behind a generic Error.</p>
+<p>Treat GPS data as a measurement with a timestamp. Validate finite coordinates,
+bounds, clock plausibility and freshness at the owner, even if the UI displays a
+marker. Coalesce telemetry updates and refresh age labels; a cached location must
+not look like a new fix. Debounce draft persistence to avoid a disk transaction on
+every keystroke, flush on navigation, and keep rejected sends editable. Quiet hours
+need explicit local-time semantics and a window that works across midnight.</p>
+<p>Keep a conversation registry independent of messages. Draft-only, pinned and
+cleared conversations must remain reachable after rebuilding the list; deleting
+the conversation must remove that saved state too. Bind a DM draft to both peer
+and selected channel, so a channel change cannot move unsent text to another mesh.</p>
+<p>Distinguish enabling the GPS receiver from consenting to location broadcasts.
+A timestamp without valid coordinates is not a fix. Show stale/unknown locations
+as last known, and test an actual clear-sky fix separately from parser validation.</p>
+<p>Test the actual camera stack. A CSI sensor's <code>/dev/video0</code> may be a raw sensor/ISP
+node, not a webcam stream. On the stock image, use a fixed libcamera/rpicam capture
+command with bounded dimensions/time and decode in memory; do not save private
+camera frames merely to test a scanner. Missing decoder libraries and camera-busy
+failures should produce actionable UI errors, not a misleading "no QR found."
+Measure capture startup on the device before choosing the deadline; include
+startup, exposure and decoding within a bounded total budget.</p>
+<p>Give a camera operation a ready state with an explicit keyboard action such as
+<code>Return: scan</code>. Publish a visible busy state before dispatching asynchronous work,
+ignore repeated Return while busy, and show success or an actionable retry after
+the matching result. Correlate replies by request ID; dismissed or superseded
+results and unsolicited state updates must not replace a newer view. Clear cached
+results when starting a new request. On disconnect, explain that the result is
+unknown if the operation could already have changed state. If Escape only leaves
+the view, say so; do not imply that it cancels hardware work or rolls back an
+import. Keep simulator limitations in development docs instead of user prompts.</p>
+<p>When scanning can lead to configuration changes, separate capture, preview and
+commit. Keep the decoded secret on the backend, return a nonsecret preview, and
+require a Cancel-first confirmation. Bind its short-lived token to the requesting
+connection and the exact configuration shown. Changing configuration, Escape or
+teardown must invalidate the preview, including work still queued on the server.
+Give one bounded camera job a cancellation event and own its helper/child process
+group. Keep capture off the serialized radio worker; commit radio writes there
+only after confirmation. Announce committed results if their view has been left.</p>
+<p>Measure queue pressure with the actual debounce semantics. A 650 ms typing-pause
+debounce is different from a periodic write every 650 ms. Local draft/history
+commits should not wait behind camera/admin work: serialize local state with its
+own lock while preserving explicit persistence-barrier ordering. Test that local
+writes and radio status still progress while the slow operation is blocked.</p>
+<p>Compare effective state before rebuilding LVGL object trees. A draft echo can be
+identical to the local value; merge pending local edits first and still process
+request completion even when no redraw is needed. Genuine pin, deletion and
+history-preference changes must continue to notify observers. When a list is
+rebuilt, preserve its highlighted identity through reordering and define a stable
+tie order. Prepare typed rows with one indexed pass before rendering; search the
+history once instead of once per conversation.</p>
+<h3 id="keep-context-and-keyboard-help-readable">Keep context and keyboard help readable<a class="headerlink" href="#keep-context-and-keyboard-help-readable" title="Permanent link">&para;</a></h3>
+<p>On a 320x170 screen, keep the active channel/target in a fixed conversation
+header and reserve the footer for short keyboard hints or compose input. Bound
+long names and preserve the routing identity and privacy label before truncating
+the less critical text. Check actual pixel bounds with the real fonts, including
+long peer names, message selection, composing, scrolling and returning to the list.</p>
+<p>Render selection lines in both themes. An LVGL outline sits outside an object's
+bounds and can be clipped by a tightly fitted parent. Use an inside border or
+reserve clearance through the parent chain so the entire line stays visible.
+When adding a border, account for its width in the content inset; keep the sum of
+border and padding stable so selection does not move the text or resize the row.</p>
+<p>Give settings stable action keys independent of display order. Group related
+options with nonselectable headings; navigation should visit actual settings
+only. Tests should find the selected label rather than blindly pressing Down a
+historic number of times, especially before transmission or privacy actions.
+Long information overlays need keyboard scrolling as well as an Escape path.</p>
+<h2 id="radio-route-validation">Radio route validation<a class="headerlink" href="#radio-route-validation" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Validate every route to an RF action.</strong> A DM destination does not bypass
+  channel validation. Reject broadcast aliases disguised as destinations. Check
+  real key formats and public/private classification, not just a channel name.
+  Supporting public channels is compatible with a secure client: use clear labels,
+  explicit selection, and separate location opt-in. Enabling location on one
+  channel must not also enable another.
+  Preserve channel identity through pickers, details, intents and share replies.</li>
+</ul>
+<h2 id="licensing-choices-in-this-application">Licensing choices in this application<a class="headerlink" href="#licensing-choices-in-this-application" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Mind the copyleft.</strong> The Meshtastic stack (<code>meshtasticd</code>, the <code>meshtastic</code> Python library) is
+  <strong>GPL-3.0</strong>. If any of your <em>code</em> links a GPL library in-process, that code must be
+  GPL-compatible. A clean, real-world split:</li>
+<li>Your <strong>C++/LVGL UI stays MIT</strong> — it only talks to the other process over a socket (separate
+    program; preserve the distinct licenses and interfaces).</li>
+<li>The supervisor incorporates the GPL client library and is licensed <strong>GPL-3.0-or-later</strong>.</li>
+<li><strong>0.1.19 bundles the qualified daemon and client wheels</strong>, with original
+    notices and paired corresponding source. Earlier examples used separate
+    prerequisites. Neither arrangement is mandatory for other apps; the right
+    plan depends on supported images, maintenance and user installation needs.
+    See the <a href="../06-building-and-packaging.html#packaging-a-python-app">dependency plans</a>.</li>
+<li>Running a separate GPL <em>program</em> as a subprocess (e.g. launching <code>meshtasticd</code>) does <strong>not</strong>
+    by itself determine the other program's license; the nature of the integration
+    and applicable terms still matter. The example publishes both components as
+    open source with explicit licenses.</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.top", "search.highlight", "search.suggest", "content.code.copy"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+    
+  </body>
+</html>
