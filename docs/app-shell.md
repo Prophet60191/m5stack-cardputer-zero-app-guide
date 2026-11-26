@@ -40,8 +40,17 @@ A visual rebuild is for layout, labels and rendering, not for changing the
 running app's data model or input handling. Edits outside the layout file are
 built but only take effect after you close and rerun the preview. That also
 applies to all changes on Windows. There is no automatic restart. Close the
-window or press Ctrl+C to stop watching. The handheld app does not use Python
-or load preview modules.
+window or press Ctrl+C to stop watching. A second watcher for the same build
+is refused, so it cannot open a competing preview.
+
+If the preview closes or crashes, it stays closed until you deliberately
+start it again. Watch mode keeps a local checkpoint in the desktop build
+directory with your current screen, selection, scroll position and example
+form draft, including text still in the editor. Reopening restores it; use
+`--fresh` to discard that checkpoint and start at Home. A sudden interruption
+can lose input since the last checkpoint (normally within 250 ms).
+This is a developer convenience, not application storage. The handheld app
+does not use Python, load preview modules or keep simulator checkpoints.
 
 The FPS, CPU and frame-time overlay is **off by default**, so it does not cover
 the app. If you are profiling, run your desktop configure command with
