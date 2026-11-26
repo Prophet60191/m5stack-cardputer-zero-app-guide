@@ -104,9 +104,9 @@ the Template physically. Current personal-library direction is recorded in the
 | Area | Source and scope |
 |---|---|
 | Device input and display | Official pinned CardputerZero Template and LVGL; preserve the documented keyboard mapping and package/launcher layout. |
-| Home carousel | Adapted from the approved Mesh presentation and motion; NFC Tools is the visual source for the position dots. |
+| Home carousel | NFC Tools is the complete home-menu visual reference; its carousel is an author preference, not a requirement. |
 | Text-only battery | Reuse the official Template device status reader. The guide pattern changes presentation only: plain text aligned at the right, no glyph. |
-| Reusable code | The guide's [position indicator](../examples/ui-patterns/carousel-position/README.md) separates the visual cue from the app's selected index. |
+| Reusable code | The guide's [shared home menu](../examples/ui-patterns/carousel-position/README.md) separates presentation from app navigation and device status. |
 | Demo application | Tick & Bell's clock scheduler, date defaults, five original tones and test flows are independent example work, not APIs supplied by M5Stack or Apple. |
 
 The existing two-version device tutorial still uses Guide Counter; Tick & Bell
@@ -118,7 +118,7 @@ Store, and only its own behavior is qualified by its test records.
 |---|---|---|
 | Right-aligned battery percentage instead of Template's battery glyph plus percentage | Keep the exact percentage visible without spending two slots on the same status. Use the official reader, not guessed levels. | No invented value when the device does not report one. |
 | Vertical-only submenu selection rather than sharing carousel left/right shortcuts | The list is arranged vertically and horizontal movement has a different job on editable rows. Printed F/X can serve as a convenience outside editors. | No change to the official key map itself. |
-| Mesh carousel with NFC-style position dots instead of copying either app's full home screen | The wider active slot shows position even with wrapping, with a non-color cue. A small independent helper avoids importing an app's state and backend. | One implemented consumer so far; reuse is not a claim of cross-app or per-device testing. |
+| Independently implemented NFC Tools-style home page | The wider active slot shows position even with wrapping, with a non-color cue. A small independent helper avoids importing an app's state and backend. | Test each app's render and input separately; reuse is not a claim of on-device qualification. |
 | A small foreground UI backed by a per-user timer service | Closing the UI should not stop an awake device's timers and alarms. A single scheduler owns persistent state. | No power-off or OS-suspend wake guarantee. This is Tick & Bell-specific, not required for other apps. |
 
 The first-device and troubleshooting walkthroughs explain the learning gaps

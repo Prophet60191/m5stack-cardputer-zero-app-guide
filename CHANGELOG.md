@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-11-26 — Complete reusable NFC Tools-style home menu
+
+- Standardize the home header, typography, icon lanes, dots and keyboard footer; show real battery percentage at right.
+- Document the carousel explicitly as a personal preference and teaching example.
+
 ## 2026-11-26 — Tick & Bell and online publishing
 
 - Add Tick & Bell source links and current simulator screenshots.

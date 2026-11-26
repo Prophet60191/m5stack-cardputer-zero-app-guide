@@ -1,66 +1,64 @@
-# Reusable carousel position indicator
+# Reusable NFC Tools-style home menu
 
-Use this when a home carousel has multiple positions that wrap around. This
-is a progress cue, not a control. It does not own selection, navigate, or
-reset any app state. The selected slot is a wider accent pill so its state
-does not depend on color alone.
+A carousel is a matter of preference. I like this layout, so I use it in my
+apps and as a demonstration in this guide. It is not an official M5Stack
+requirement or a recommendation for every app. For a long list of destinations
+or a frequent scanning task, a simple vertical list may be faster to use.
 
-![Tick and Bell simulator with the second carousel position selected](../../../docs/images/tick-bell-carousel-position.png)
+![Tick & Bell simulator showing the shared header, icons, subtitle, dots and footer](../../../docs/images/tick-bell-carousel-position.png)
 
-Desktop simulator capture, not a hardware photo. The simulated 100% is the official Template’s desktop sample value.
+Desktop simulator capture, not a hardware photo. The simulated 100% is the
+Template's desktop sample battery value.
 
-- Keep one centered, stable slot per menu item. Inactive dots are 4×3 px,
-  the active pill is 8×3 px, and the pitch is 9 px.
-- Use NFC Tools’ placement on the 320×170 reference screen: start the menu name at y=82 and the dots at y=138. The blank space after the label is intentional; do not push the label down toward the dots when the app has no subtitle.
-  Keep it separate from the sliding/fading content. Do not add a footer just
-  to hold the dots or replace a submenu's separate overflow marker with them.
-- Update it from the same selected index that drives the icon and label.
-  Wraparound moves the active pill to the other end immediately. A theme
-  change recolors it without changing item identity or animating selection.
-- Hide it for zero or one item. This implementation is bounded at 24 slots;
-  use another presentation if the slots no longer fit in the available width.
+## The 320×170 visual standard
 
-## Reusable layout
+| Component | NFC Tools reference |
+| --- | --- |
+| Header | 23 px high; a 12 px app glyph at (8, 5) and 12 px app name at (28, 5). Show the device-reported battery as right-aligned plain text inside the right margin. Hide it when unavailable. |
+| Center menu | 216×105 group at (52, 32); 40 px centered symbol at screen y=33, 16 px title at y=82 and muted 10 px subtitle at y=108. |
+| Neighbors | 28 px symbols at 40% opacity in 37 px lanes at x=14 and x=270, starting at y=69. |
+| Dots | At y=138 with 9 px pitch; the selected 8×3 pill starts at its slot's fixed edge, and the other dots are 4×3. One slot per destination; no dots for zero or one item. |
+| Footer | Thin divider from x=8 to x=311 at y=146; muted 10 px keyboard hints at (8, 153). The printed keys must actually work. |
+| Motion | A 46 px directional slide and 180 ms fade on the center group. The side lanes, dots, header and footer stay fixed. Keep direction through wraparound; do not animate a theme change or initial paint. |
 
-Use [carousel_layout.h](carousel_layout.h) for NFC Tools’ 320×170 geometry.
-The center group is 216×105 at (52, 32), with a 40 px icon at y=33 and a
-centered title at y=82. The 28 px side icons use 37 px lanes at x=14 and
-x=270, y=69. The dots start at y=138. Select the corresponding LVGL
-symbol fonts and provide your own glyphs, labels and colors.
-
-The helper does not own navigation or the slide animation, and it does not
-require a subtitle. Tick & Bell is the first consumer. See its
-[case study](../../../docs/case-studies/tick-bell.md) for the visual result.
-
-## Why this is a separate pattern
-
-The official Template supplies a UI framework, not this particular visual position cue. The Mesh carousel already controls movement and animation; the dots answer a different question: which item is selected when left/right wraps. NFC Tools proved the visual idea with six fixed slots. The extracted header centers any supported item count so each app can reuse it without hard-coded coordinates, adopting the NFC UI, or adding another keyboard handler.
+App content remains app-specific: titles, descriptions, glyphs and colors can
+change without adjusting the standard's geometry or typography. This is a home
+page component, not a rule for submenus or the official launcher.
 
 ## Use the component
 
-The [MIT header](carousel_position.h) expects LVGL 9 and your app's palette.
-Create it after the carousel content so it draws on top of the background:
+[home_menu.h](home_menu.h) is a presentation-only MIT header for LVGL 9.
+It uses enabled Montserrat fonts at 10, 12, 16, 28 and 40 px. Create it on a
+dedicated full-screen parent with no padding. Do not put it on a screen that
+uses a different content origin.
 
 ```cpp
-auto position = cp0_ui::CarouselPosition::create(root, item_count, 138);
-position.update(selected_index, accent_rgb, muted_rgb);
+auto home = cp0_ui::HomeMenu::create(root, palette, item_count,
+    LV_SYMBOL_HOME, "MY APP", "Z / C  choose    Enter  open");
+home.set_item(index, previous_icon, current_icon, next_icon, title, subtitle);
+home.set_battery(device_percent);  // use -1 when not available
+home.animate(direction);
 ```
 
-Keep the handle only for as long as the same LVGL parent lives. Drop it before
-cleaning that screen, and recreate it if the menu count changes. The app still
-owns navigation and must supply a valid zero-based selected index. The slots
-never take keyboard focus.
+The app still owns navigation, focus, battery reads, theme selection and
+screen lifetime. Call `set_palette` for light/dark changes without resetting
+selection. LVGL owns the created widgets. Drop the handle before cleaning or
+deleting its parent. For more than 24 destinations, choose another
+presentation rather than squeezing in more dots.
 
-## Source and status
+[carousel_layout.h](carousel_layout.h) and [carousel_position.h](carousel_position.h)
+are the earlier geometry-only and indicator-only examples. They remain
+available for apps that intentionally do not want the complete menu.
 
-The design comes from NFC Tools' `App::home()` implementation at the locally
-reviewed working-tree snapshot (base `8e4c884`; source SHA-256
-`f2bada65bcadf2f82ce6772e38fbca1413aa25dc275b640196cb0846bde82e4a`).
-That source uses fixed coordinates for six entries. Tick & Bell now also matches NFC Tools’ vertical title and dot positions. The component preserves the visual proportions but calculates centered positions for the app’s menu count. NFC Tools remains the design reference, not a runtime dependency.
+## Where it came from
 
-Tick & Bell is the first integration of this shared header. Desktop event-path checks showed movement across all three slots, wrap from first to last, and theme recoloring without changing selection. The 0.1.3 simulator captures verified the revised spacing and wrap; physical input and display on a handheld remain separate checks. NFC Tools retains
-its own existing indicator. No migration of Mesh, NFC Tools, or other apps is
-implied. Verify home on a device in both themes, forward/back wrap, labels
-clear of the bar, and unchanged submenu navigation before adopting it elsewhere.
+- **Official foundation:** LVGL and the CardputerZero Template provide
+  rendering, the keyboard entry points and device-status conventions.
+- **Adapted design:** NFC Tools' rendered home page is the reference for
+  header, footer, typography, center layout, shaded neighbors and dots.
+- **Added here:** The standalone component separates that appearance from app
+  state. The shared header shows a real battery percentage, with no glyph.
 
-[UI preferences](../../../docs/ui-preferences.md) · [UI and polish](../../../docs/04-ui-and-polish.md)
+See [Tick & Bell](../../../docs/case-studies/tick-bell.md) for a worked example.
+Compare actual renders in both themes, including the same title or icon when
+possible. Check wraparound, footer shortcuts and unavailable battery separately.

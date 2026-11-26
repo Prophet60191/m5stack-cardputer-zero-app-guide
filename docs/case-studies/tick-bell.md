@@ -12,7 +12,7 @@ worked example to read alongside the guide, not an official M5Stack Store app.
 The centered icon and title identify the selected menu. Side icons show nearby
 choices and the wider dot marks position without relying on color. Left/Right
 changes the home selection; Up/Down moves through submenu rows.
-See the [shared carousel layout and position indicator](../../examples/ui-patterns/carousel-position/README.md).
+See the [shared home menu](../../examples/ui-patterns/carousel-position/README.md).
 
 ## Alarms and sounds
 
@@ -29,8 +29,8 @@ simulator battery value is not a device measurement.
 - **Official M5Stack foundation:** the pinned CardputerZero Template and LVGL
   supply rendering, device status and input routing.
 - **Adapted:** NFC Tools provides the center group, side icon lanes, icon sizes
-  and dot placement. Mesh informs the directional slide motion.
-- **Added here:** reusable headers separate the layout and position cue from
+  and dot placement, along with the header, subtitle and keyboard footer.
+- **Added here:** a reusable header separates the presentation from
   navigation, so apps bring their own glyphs and labels. A user-session
   scheduler keeps alarms active after the window closes; it does not wake a
   powered-off or suspended device.

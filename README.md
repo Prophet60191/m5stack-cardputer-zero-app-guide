@@ -86,7 +86,7 @@ The [UI preference record](docs/ui-preferences.md) tracks my design decisions:
 the exact Mesh home carousel and Mesh list-selection base are confirmed;
 submenu chevrons and overflow indicators are specified. Other components remain open.
 
-The [shared carousel layout and position indicator](examples/ui-patterns/carousel-position/README.md) define the geometry, icon sizes and position cue. See the [Tick & Bell case study](docs/case-studies/tick-bell.md) or [browse the app source](https://github.com/Prophet60191/m5stack-cardputer-zero-tick-bell).
+The [shared NFC Tools-style home menu](examples/ui-patterns/carousel-position/README.md) is my preferred layout and a demonstration, not a platform requirement. See the [Tick & Bell case study](docs/case-studies/tick-bell.md) or [browse the app source](https://github.com/Prophet60191/m5stack-cardputer-zero-tick-bell).
 
 My [library principles](docs/library-principles.md) record the preferences and
 design choices I want to reuse across my apps, including appearance,

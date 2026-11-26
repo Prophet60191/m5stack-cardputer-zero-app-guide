@@ -5,51 +5,19 @@ for my own apps; revisit any necessary app-specific exception explicitly.
 Preserve the [official shell/input/backend boundaries](official-ui-evaluation.md).
 This record does not implement a library or change existing apps.
 
-## Locked: home menu — exact Mesh carousel
+## Locked: NFC Tools home menu for my apps
 
-Agreed 2026-11-18. The owner wants the home carousel **exactly as designed in Mesh**,
-including its look and feel. Mesh's actual implementation is the authoritative
-reference; the illustrative comparison is not a pixel/font/motion specification.
+This 2026-11-26 decision replaces the earlier Mesh-only home layout. I like
+the NFC Tools carousel, so that is what I use and demonstrate. It is a
+personal preference, not a platform rule. Mesh remains the reference for the
+separate submenu-selection pattern below.
 
-Reference: `m5stack-cardputer-zero-mesh-app`, commit
-`5f21eebe83402119c5c3ad3a3aee3aef905fccd3`, principally
-`src/view/screens/menu_screen.cpp`. Supporting file hashes are in the
-[reference manifest](ui-preferences-evidence.json).
-
-- Large centered icon above its label; faint previous/next icons at the edges.
-- Current geometry: 40 px center icon font, 28 px neighbor icon font, 40% neighbor
-  opacity, 12 px edge offsets and 10 px icon/label gap. Label uses the existing
-  17 px regular standard-font path with the existing 18 px fallback.
-- Directional slide and simultaneous fade over 180 ms, with a 46 px slide and
-  the current ease-out slide path. Preserve correct direction through wraparound.
-- Left/right selection, wrapping and Enter activation; retain the existing
-  keyboard routing and selected-item state. Theme changes recolor without
-  triggering selection animation; initial display does not animate in.
-- Preserve the actual light/dark home appearance, including Mesh's current
-  primary/disabled colors and surface treatment. A global palette decision for
-  other components is still open; do not silently substitute the comparison's
-  palette for this exact reference.
-- Preserve the reference home geometry: 320×170, 30 px title region and content
-  below it. The position indicator in the next section is the agreed addition. The home implementation has no added bottom function-key lane;
-  do not import the illustrative preview's footer as an approved preference.
-
-App-specific destinations, labels and appropriate icon glyphs can represent the
-new app's own functions. That is content substitution, not permission to
-redesign the carousel. Preserve attribution and the selected official foundation's
-lifecycle/focus ownership when later implementing reuse.
-
-## Locked: home-carousel position indicator
-
-Agreed 2026-11-26. Keep the Mesh home carousel geometry and directional
-animation, and add the NFC Tools position bar below the home label. Center
-the row, use NFC Tools’ vertical spacing (menu title top y=82, dot row y=138 on 320×170), and use a wider accent pill for the current slot and small muted dots
-for the others, and update it with the carousel selection, including wrap.
-Do not animate or add a footer for the indicator. This is distinct from the
-right-edge overflow bar used on a submenu list. The [reusable LVGL component](../examples/ui-patterns/carousel-position/README.md)
-and its source notes live with the guide. The same reference uses a 40 px center icon at y=33 and 28 px side icons in lanes starting at x=14 and x=270, y=69. The center icon and title share a 216 px lane at x=52.
-
-Keep the top-bar battery percentage plain text and right-aligned when available.
-No battery glyph and no fabricated percentage if the device does not report one.
+Use the NFC Tools header, center icon and title/subtitle, shaded side icons,
+position dots, divider and key hints as one composition. The standard adds a
+plain right-aligned battery percentage when the device reports one. Keep
+apps' own menu choices, icons and accent colors. The complete
+[home-menu spec and reusable component](../examples/ui-patterns/carousel-position/README.md)
+list the positions, font sizes, and ownership boundaries.
 
 ## Locked: submenu-list selection and navigation cues
 
