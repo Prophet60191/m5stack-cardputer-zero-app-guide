@@ -65,12 +65,31 @@ Use F/X or Up/Down to move through either kind of list. Wrap at the ends,
 keep the selected row visible, and leave the header and footer stationary.
 These are the shell’s defaults, not Cardputer Zero requirements.
 
-The **Start** page has a sample label editor. Enter opens it; Enter keeps the
-label for the current run and Esc discards the draft. Bare C, Z, F, X, H and
-digits are text while editing, not shortcuts. Fn+H opens Help without changing
-the draft, and Esc returns to the editor. This is a sample of input ownership,
-not a prescribed edit form layout. See the [keyboard chapter](05-keyboard.md)
-for official Fn, Sym and position details. Do not invent a new keymap.
+### Form Save and Back
+
+The **Start** page is a five-field example with a fixed title and footer.
+Only the fields move. The form footer says **1 save form**; the field editor
+says **Enter keep field**. These are separate actions.
+
+1. Enter opens a field. While editing, digits and letters belong to the
+   field. Pressing **1** must never save the form from inside an editor.
+2. **Enter** keeps just that field in the form draft. **Esc** cancels just
+   that edit and leaves the rest of the draft unchanged. Fn+H can show Help
+   without losing the text or cursor.
+3. From the form, **1** saves the whole draft. The example only saves for
+   the current run. A real app validates and confirms its storage operation
+   succeeded before it marks a draft saved.
+4. **Esc** goes back without a prompt when there are no unsaved changes.
+   When the draft is different from the last saved state, ask before
+   discarding. Select **Keep editing** by default, and treat Esc on the
+   prompt as Keep editing. Discard needs an explicit selection and Enter.
+   A held key must not accept a prompt it just opened.
+
+The shared `src/shared/form_draft.h` keeps the saved values and form draft
+separate. A dedicated field editor uses a small local buffer so cancel does
+not touch either one. This sets the save/back contract, not the layout or
+validation rules for every possible form. See the [keyboard chapter](05-keyboard.md)
+for key mapping and context ownership.
 
 ## Make a package that can sit beside the sample
 
