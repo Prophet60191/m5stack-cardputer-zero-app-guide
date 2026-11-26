@@ -124,6 +124,18 @@ in the initial general package.
 The [shared home menu](../examples/ui-patterns/carousel-position/README.md)
 is the full NFC Tools-style composition. Adoption in Tick & Bell, NFC Tools,
 Mesh and Wireless Surveyor was checked in desktop renders or desktop UI tests.
-Only Tick & Bell was upgraded on a physical handheld in this round; a desktop
-test is not physical input or display verification. The app still owns its
-device status, key routing and menu destinations.
+The corresponding packages were installed on a Cardputer Zero and passed the
+installed-file integrity check:
+
+| App | Installed package version |
+| --- | --- |
+| [Tick & Bell](https://github.com/Prophet60191/m5stack-cardputer-zero-tick-bell) | 0.1.4-rev1 |
+| [Mesh](https://github.com/Prophet60191/m5stack-cardputer-zero-mesh-app) | 0.1.21-rev1 |
+| NFC Tools | 0.10.3 |
+| Wireless Surveyor | 0.2.1-1 |
+
+An installation check is not a physical keypad or display test. After reopening
+an app, check the header, all home destinations, both themes, wraparound and
+the keys named in the footer. A missing battery reading should leave the
+battery area blank. Each app still owns its device status, key routing and
+menu destinations.
