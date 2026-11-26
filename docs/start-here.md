@@ -4,6 +4,15 @@ You do not need to read the entire guide before building. Start with a small
 working screen, then add the facilities your idea actually needs. This route is
 for **CardputerZero running Debian**, not the ESP32 Cardputer or Cardputer ADV.
 
+## Choose a starting point
+
+- **Build your own app:** Use the [App Shell](app-shell.md) for a menu, lists,
+  a small form, and a detail page you can adapt.
+- **See a completed example:** [Tick & Bell](case-studies/tick-bell.md) shows
+  how the patterns serve a real timer and alarm.
+- **Try one small exercise:** Use the counter route below to learn the build
+  and input basics without adopting the shell.
+
 ## The short route
 
 1. **Define one useful task.** Write down what the user can do, what data survives

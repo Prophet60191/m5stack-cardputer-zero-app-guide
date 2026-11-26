@@ -3,14 +3,15 @@
 Decisions are recorded component by component. A locked preference is the default
 for my own apps; revisit any necessary app-specific exception explicitly.
 Preserve the [official shell/input/backend boundaries](official-ui-evaluation.md).
-This record does not implement a library or change existing apps.
+The [App Shell](app-shell.md) is the reusable reference for the patterns below.
+An app only conforms to the patterns it has actually adopted and tested.
 
 ## Locked: NFC Tools home menu for my apps
 
 This 2026-11-26 decision replaces the earlier Mesh-only home layout. I like
 the NFC Tools carousel, so that is what I use and demonstrate. It is a
-personal preference, not a platform rule. Mesh remains the reference for the
-separate submenu-selection pattern below.
+personal preference, not a platform rule. For submenu selection, use the
+Start form standard below.
 
 Use the NFC Tools header, center icon and title/subtitle, shaded side icons,
 position dots, divider and key hints as one composition. The standard adds a
@@ -21,13 +22,11 @@ list the positions, font sizes, and ownership boundaries.
 
 ## Locked: submenu-list selection and navigation cues
 
-Confirmed 2026-11-18: use Mesh's rounded selected row, subtle background fill
-and colored stripe on the left. Reference: Mesh commit `5f21eebe83402119c5c3ad3a3aee3aef905fccd3`,
-`src/view/widgets/list_selection.h`, `style_list_row()` / `select_list_row()`.
-The existing implementation uses a 6 px radius, palette button fill and 3 px
-left border in the primary color; changing selection clears the old row's
-selection styling and scrolls the newly selected row into view. Screens retain
-their own item identity and navigation state.
+The **App Shell Start form** is the current reference: a neutral fill, 6 px
+rounded corners and a 3 px full-height accent stripe at the left edge. Only
+the selected row has those marks. Keep the same treatment for explanation,
+value, form and confirmation rows; their content layouts can differ. The
+earlier Mesh implementation was the starting point for this decision.
 
 Additional rules supplied by the owner on 2026-11-18:
 
@@ -50,16 +49,9 @@ Additional rules supplied by the owner on 2026-11-18:
   `build/amber/settings.png` and `src/ui/app.cpp::App::list`. The example shows
   three of five rows, a thin right-side track and an accent-colored marker.
 
-The NFC source/render reference is recorded by hash in the manifest and comes
-from an uncommitted working tree, not its HEAD alone. Its current list renderer
-draws the bar for every nonempty list and draws chevrons on all displayed rows.
-Those existing conditions are not the owner's specified rules; reuse the visual
-reference while implementing the conditional behaviors above in any later work.
-No NFC change is made here. Typography and row content are not locked by these cues.
-
-The owner's wrap-around request is recorded as component behavior during this
-preference walkthrough. No reusable list implementation exists from this record,
-and this update does not claim it has been applied to an existing app.
+The earlier NFC Tools render served as the visual reference for the position
+bar. The shell’s implementation controls when it appears. This is a reusable
+pattern; do not infer conformance from an older app screenshot.
 
 ## Locked: On/Off setting rows
 
@@ -113,8 +105,9 @@ silently migrated by this documentation update.
 - Presentation of immediate-action rows beyond the recorded choice rules.
 - Body/supporting typography and spacing outside the locked home reference.
 - Overall palette policy and app-specific accent choices.
-- Status/title bars and footer actions outside this home reference.
-- Editors/forms, Help, confirmations, notifications and progress.
+- Additional patterns beyond the shell's basic fixed pages, form editor,
+  and single-action detail footer, only when a real app needs them.
+- App-specific Help, irreversible confirmations, notifications and progress.
 
 No implementation, extraction, new timing measurement, device test or global
 restyling is claimed by this decision record.
