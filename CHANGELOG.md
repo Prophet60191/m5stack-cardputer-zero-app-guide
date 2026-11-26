@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-11-26 — Diagnose missing device libraries
+
+- Add a hardware-verified check for an app that is installed but cannot load a required shared library.
+
 ## 2026-11-26 — Public App Shell
 
 - Link the public starter source from the guide homepage and App Shell chapter.
