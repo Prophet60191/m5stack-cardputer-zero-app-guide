@@ -1,0 +1,596 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 00a3bb0..1c75f9d 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -6,7 +6,12 @@
+ 
+ cmake_minimum_required(VERSION 3.31)
+ 
+-project(template_app VERSION 0.2.1 LANGUAGES C CXX)
++set(GUIDE_COUNTER_VERSION "0.1.0" CACHE STRING "Demo version: 0.1.0 or 0.2.0")
++if(NOT GUIDE_COUNTER_VERSION STREQUAL "0.1.0" AND NOT GUIDE_COUNTER_VERSION STREQUAL "0.2.0")
++    message(FATAL_ERROR "Choose demo version 0.1.0 or 0.2.0")
++endif()
++project(cp0-guide-counter-demo VERSION ${GUIDE_COUNTER_VERSION} LANGUAGES C CXX)
++add_compile_definitions(GUIDE_COUNTER_VERSION="${PROJECT_VERSION}")
+ 
+ set(CMAKE_CXX_STANDARD 17)
+ set(CMAKE_CXX_STANDARD_REQUIRED ON)
+@@ -20,7 +25,7 @@ set(CMAKE_POLICY_VERSION_MINIMUM 3.5)
+ set(USE_DESKTOP ON CACHE BOOL "Build the desktop emulator target with LVGL SDL support")
+ set(APP_NAME "${PROJECT_NAME}" CACHE STRING "Application name used for installed asset lookup")
+ set(APP_ASSETS_ROOT "" CACHE PATH "Optional runtime assets root. Expected subdirectories include fonts/")
+-set(APP_CONFIG_FILE "" CACHE FILEPATH "Application config file; defaults to the repository file on desktop and /etc/template-app.conf on device")
++set(APP_CONFIG_FILE "" CACHE FILEPATH "Application config file; defaults to the repository file on desktop and /etc/cp0-guide-counter-demo.conf on device")
+ set(APP_KEY_INPUT_DEVICE "" CACHE STRING "Optional Linux evdev keyboard/keypad device path, e.g. /dev/input/event0")
+ set(APP_FRAMEBUFFER_DEVICE "/dev/fb0" CACHE STRING "Linux framebuffer device path used by embedded builds")
+ set(APP_DRM_DEVICE "/dev/dri/card0" CACHE STRING "Linux DRM device path used when APP_USE_DRM=ON")
+@@ -33,9 +38,9 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON CACHE BOOL "Export compile_commands.json" F
+ 
+ if(NOT APP_CONFIG_FILE)
+     if(USE_DESKTOP)
+-        set(APP_CONFIG_FILE "${CMAKE_CURRENT_SOURCE_DIR}/config/template-app.conf")
++        set(APP_CONFIG_FILE "${CMAKE_CURRENT_SOURCE_DIR}/config/cp0-guide-counter-demo.conf")
+     else()
+-        set(APP_CONFIG_FILE "/etc/template-app.conf")
++        set(APP_CONFIG_FILE "/etc/cp0-guide-counter-demo.conf")
+     endif()
+ endif()
+ 
+diff --git a/app-builder.json b/app-builder.json
+index cb8f72c..b86f27a 100644
+--- a/app-builder.json
++++ b/app-builder.json
+@@ -1,30 +1,6 @@
+ {
+-  "app_name": "Template",
+-  "package_name": "template_app",
+-  "version": "0.2.1",
+-  "description": "Template Application for CardputerZero",
+-
+-  "store": {
+-    "summary": "TODO: one line about your app (placeholders are auto-rejected)",
+-    "description": "TODO: a longer description for the store detail page. Every TODO field in this store section must be replaced before publishing — the store validator rejects unedited template metadata.",
+-    "categories": ["TODO: pick 1-2 real categories from docs/APP_BUILDER_JSON.md"],
+-    "screenshots": [
+-      "screenshot/app-simulator-dark-darwin.png",
+-      "screenshot/app-simulator-light-darwin.png"
+-    ],
+-    "icon": "assets/images/template.png",
+-    "license": "TODO: an SPDX id, e.g. MIT",
+-    "source_repo": "https://github.com/CardputerZero/Template",
+-    "author": { "github": "TODO-your-github-login", "display_name": "TODO: Your Name" },
+-    "share_code": "TODO",
+-    "permissions": {
+-      "camera": false,
+-      "microphone": false,
+-      "imu": false,
+-      "network": false,
+-      "additional_hardware": false,
+-      "background_service": false,
+-      "external_display": false
+-    }
+-  }
++  "app_name": "Guide Counter",
++  "package_name": "cp0-guide-counter-demo",
++  "version": "0.1.0",
++  "description": "Local demo; not a Store submission."
+ }
+diff --git a/cmake/cm0-package.cmake b/cmake/cm0-package.cmake
+index 3345521..3ffafe9 100644
+--- a/cmake/cm0-package.cmake
++++ b/cmake/cm0-package.cmake
+@@ -6,14 +6,14 @@
+ 
+ include(GNUInstallDirs)
+ 
+-set(APP_DISPLAY_NAME "TemplateApp" CACHE STRING "Human-readable application name used by launchers and package filename")
++set(APP_DISPLAY_NAME "Guide Counter" CACHE STRING "Human-readable application name used by launchers and package filename")
+ set(APP_DEBIAN_REVISION "rev1" CACHE STRING "Debian package revision/vendor suffix")
+ set(APP_DEBIAN_ARCHITECTURE "arm64" CACHE STRING "Debian package architecture")
+ # Deliberately a placeholder: the store rejects packages whose Maintainer is
+ # still a template/M5Stack identity, so set your own name and email here.
+-set(APP_MAINTAINER "TODO Your Name <todo@example.invalid>" CACHE STRING "Debian package maintainer")
+-set(APP_PACKAGE_DESCRIPTION "CardputerZero LVGL template application" CACHE STRING "Debian package summary")
+-set(APP_INSTALL_SYSTEMD_SERVICE ON CACHE BOOL "Install a systemd service file for embedded deployments")
++set(APP_MAINTAINER "Guide Counter Demo <demo@example.invalid>" CACHE STRING "Debian package maintainer")
++set(APP_PACKAGE_DESCRIPTION "Local counter exercise for the CardputerZero guide" CACHE STRING "Debian package summary")
++set(APP_INSTALL_SYSTEMD_SERVICE OFF CACHE BOOL "Install a systemd service file for embedded deployments")
+ 
+ set(APP_GENERATED_DIR "${CMAKE_CURRENT_BINARY_DIR}/generated/package")
+ configure_file(
+@@ -34,7 +34,7 @@ install(TARGETS ${PROJECT_NAME}
+     RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+ )
+ 
+-install(FILES "${CMAKE_CURRENT_SOURCE_DIR}/config/template-app.conf"
++install(FILES "${CMAKE_CURRENT_SOURCE_DIR}/config/cp0-guide-counter-demo.conf"
+     DESTINATION "/etc"
+ )
+ 
+@@ -50,10 +50,9 @@ install(DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/assets/images/"
+     DESTINATION "${CMAKE_INSTALL_DATADIR}/${APP_NAME}/images"
+     PATTERN ".DS_Store" EXCLUDE
+ )
+-install(DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/assets/images/"
++install(FILES "${CMAKE_CURRENT_SOURCE_DIR}/assets/images/template.png"
+     DESTINATION "${CMAKE_INSTALL_DATADIR}/APPLaunch/share/images"
+-    FILES_MATCHING
+-    PATTERN "template*.png"
++    RENAME "cp0-guide-counter-demo.png"
+ )
+ 
+ install(FILES "${APP_GENERATED_DIR}/${PROJECT_NAME}.desktop"
+@@ -66,7 +65,7 @@ if(APP_INSTALL_SYSTEMD_SERVICE)
+     )
+ endif()
+ 
+-install(FILES "${CMAKE_CURRENT_SOURCE_DIR}/README.md"
++install(FILES "${CMAKE_CURRENT_SOURCE_DIR}/README.md" "${CMAKE_CURRENT_SOURCE_DIR}/LICENSE"
+     DESTINATION "${CMAKE_INSTALL_DOCDIR}"
+ )
+ install(FILES "${CMAKE_CURRENT_SOURCE_DIR}/assets/fonts/LICENSE.txt"
+@@ -82,11 +81,10 @@ set(CPACK_PACKAGE_VENDOR "${APP_MAINTAINER}")
+ set(CPACK_PACKAGE_CONTACT "${APP_MAINTAINER}")
+ set(CPACK_PACKAGE_DESCRIPTION_SUMMARY "${APP_PACKAGE_DESCRIPTION}")
+ set(CPACK_PACKAGE_VERSION "${PROJECT_VERSION}")
+-set(CPACK_PACKAGE_FILE_NAME "${APP_DISPLAY_NAME}_${PROJECT_VERSION}_${APP_DEBIAN_REVISION}_${APP_DEBIAN_ARCHITECTURE}")
++set(CPACK_PACKAGE_FILE_NAME "${PROJECT_NAME}_${PROJECT_VERSION}_${APP_DEBIAN_REVISION}_${APP_DEBIAN_ARCHITECTURE}")
+ set(CPACK_RESOURCE_FILE_LICENSE "${CMAKE_CURRENT_SOURCE_DIR}/assets/fonts/LICENSE.txt")
+ 
+-string(TOLOWER "${APP_DISPLAY_NAME}" APP_DEBIAN_PACKAGE_NAME)
+-string(REGEX REPLACE "[^a-z0-9+.-]" "-" APP_DEBIAN_PACKAGE_NAME "${APP_DEBIAN_PACKAGE_NAME}")
++set(APP_DEBIAN_PACKAGE_NAME "${PROJECT_NAME}")
+ set(CPACK_DEBIAN_PACKAGE_NAME "${APP_DEBIAN_PACKAGE_NAME}")
+ set(CPACK_DEBIAN_PACKAGE_VERSION "${PROJECT_VERSION}")
+ set(CPACK_DEBIAN_PACKAGE_RELEASE "${APP_DEBIAN_REVISION}")
+diff --git a/cmake/templates/app.desktop.in b/cmake/templates/app.desktop.in
+index bc5198b..495c202 100644
+--- a/cmake/templates/app.desktop.in
++++ b/cmake/templates/app.desktop.in
+@@ -3,7 +3,7 @@ Type=Application
+ Name=@APP_DISPLAY_NAME@
+ Comment=@APP_PACKAGE_DESCRIPTION@
+ Exec=/usr/bin/@PROJECT_NAME@
+-Icon=share/images/template.png
++Icon=share/images/cp0-guide-counter-demo.png
+ Terminal=false
+ Categories=Utility;
+ StartupNotify=false
+diff --git a/cmake/templates/conffiles.in b/cmake/templates/conffiles.in
+index a31df33..1b05a27 100644
+--- a/cmake/templates/conffiles.in
++++ b/cmake/templates/conffiles.in
+@@ -1 +1 @@
+-/etc/template-app.conf
++/etc/cp0-guide-counter-demo.conf
+diff --git a/config/template-app.conf b/config/cp0-guide-counter-demo.conf
+similarity index 100%
+rename from config/template-app.conf
+rename to config/cp0-guide-counter-demo.conf
+diff --git a/src/app/app.cpp b/src/app/app.cpp
+index e890910..6b82fbd 100644
+--- a/src/app/app.cpp
++++ b/src/app/app.cpp
+@@ -47,7 +47,7 @@
+ #endif
+ 
+ #ifndef APP_CONFIG_FILE
+-#define APP_CONFIG_FILE "template-app.conf"
++#define APP_CONFIG_FILE "cp0-guide-counter-demo.conf"
+ #endif
+ 
+ namespace app {
+@@ -72,13 +72,13 @@ std::string writable_config_path() {
+     if (const char* xdg_config_home = std::getenv("XDG_CONFIG_HOME")) {
+         const std::filesystem::path root(xdg_config_home);
+         if (!root.empty() && root.is_absolute()) {
+-            return (root / "template-app" / "template-app.conf").string();
++            return (root / "cp0-guide-counter-demo" / "cp0-guide-counter-demo.conf").string();
+         }
+     }
+     if (const char* home = std::getenv("HOME")) {
+         const std::filesystem::path root(home);
+         if (!root.empty() && root.is_absolute()) {
+-            return (root / ".config" / "template-app" / "template-app.conf").string();
++            return (root / ".config" / "cp0-guide-counter-demo" / "cp0-guide-counter-demo.conf").string();
+         }
+     }
+     return APP_CONFIG_FILE;
+diff --git a/src/app/asset_manager.cpp b/src/app/asset_manager.cpp
+index 3360d65..4e89497 100644
+--- a/src/app/asset_manager.cpp
++++ b/src/app/asset_manager.cpp
+@@ -16,7 +16,7 @@
+ #include <utility>
+ 
+ #ifndef APP_NAME
+-#define APP_NAME "template_app"
++#define APP_NAME "cp0-guide-counter-demo"
+ #endif
+ 
+ #ifndef APP_CMAKE_ASSETS_ROOT
+diff --git a/src/model/base_model.cpp b/src/model/base_model.cpp
+index 58f89f2..fdf46e5 100644
+--- a/src/model/base_model.cpp
++++ b/src/model/base_model.cpp
+@@ -9,11 +9,11 @@
+ namespace model {
+ 
+ const char* BaseModel::app_title() const {
+-    return "Template App";
++    return "Guide Counter";
+ }
+ 
+ const char* BaseModel::greeting() const {
+-    return "Hello World";
++    return "About | v" GUIDE_COUNTER_VERSION;
+ }
+ 
+ bool BaseModel::dark_mode() const {
+diff --git a/src/model/counter_store.h b/src/model/counter_store.h
+new file mode 100644
+index 0000000..94305ee
+--- /dev/null
++++ b/src/model/counter_store.h
+@@ -0,0 +1,77 @@
++/*
++ * SPDX-License-Identifier: MIT
++ */
++#pragma once
++
++#include <charconv>
++#include <cstdlib>
++#include <filesystem>
++#include <fstream>
++#include <string>
++
++namespace model {
++
++constexpr int kMaxCount = 9999;
++
++inline std::filesystem::path counter_state_path() {
++    if (const char* xdg = std::getenv("XDG_STATE_HOME")) {
++        const std::filesystem::path base(xdg);
++        if (base.is_absolute()) {
++            return base / "cp0-guide-counter-demo" / "count";
++        }
++    }
++    if (const char* home = std::getenv("HOME")) {
++        const std::filesystem::path base(home);
++        if (base.is_absolute()) {
++            return base / ".local/state/cp0-guide-counter-demo/count";
++        }
++    }
++    return {};
++}
++
++inline int load_count(const std::filesystem::path& path) {
++    std::ifstream input(path);
++    char text[8]{};
++    if (!input.getline(text, sizeof(text))) {
++        return 0;
++    }
++    const auto length = input.gcount() - (input.eof() ? 0 : 1);
++    if (length <= 0 || input.peek() != std::char_traits<char>::eof()) {
++        return 0;
++    }
++    int result = 0;
++    const auto parsed = std::from_chars(text, text + length, result);
++    return parsed.ec == std::errc{} && parsed.ptr == text + length &&
++           result >= 0 && result <= kMaxCount ? result : 0;
++}
++
++inline bool save_count(const std::filesystem::path& path, int count) {
++    if (path.empty() || count < 0 || count > kMaxCount) {
++        return false;
++    }
++    std::error_code error;
++    std::filesystem::create_directories(path.parent_path(), error);
++    if (error) {
++        return false;
++    }
++    // A same-directory rename keeps a complete old or new file across ordinary
++    // restarts. This demo is single-instance; it does not promise power-loss durability.
++    auto temp = path;
++    temp += ".tmp";
++    std::ofstream output(temp, std::ios::trunc);
++    if (!output) {
++        return false;
++    }
++    output << count << '\n';
++    output.close();
++    if (output) {
++        std::filesystem::rename(temp, path, error);
++        if (!error) {
++            return true;
++        }
++    }
++    std::filesystem::remove(temp, error);
++    return false;
++}
++
++} // namespace model
+diff --git a/src/view/screens/apple_screen.cpp b/src/view/screens/apple_screen.cpp
+index 2ef36c1..fece298 100644
+--- a/src/view/screens/apple_screen.cpp
++++ b/src/view/screens/apple_screen.cpp
+@@ -10,49 +10,6 @@
+ #include "bindings.h"
+ 
+ namespace screen {
+-namespace {
+-
+-struct AppleTextFontBinding {
+-    lv_font_t* regular;
+-    lv_font_t* bold;
+-};
+-
+-constexpr const char* kIconKbFn          = "\uE080";
+-constexpr const char* kIconKbH           = "\uE084";
+-constexpr const char* kIconKbJ           = "\uE08C";
+-constexpr const char* kIconKbPrintScreen = "\uE0B1";
+-constexpr const char* kIconKbHelp        = "\uEA28";
+-
+-void cleanup_font_binding(lv_event_t* event) {
+-    delete static_cast<AppleTextFontBinding*>(lv_event_get_user_data(event));
+-}
+-
+-void apple_text_font_observer(lv_observer_t* observer, lv_subject_t* subject) {
+-    auto* label = lv_observer_get_target_obj(observer);
+-    auto* fonts = static_cast<AppleTextFontBinding*>(lv_observer_get_user_data(observer));
+-    if (!label || !fonts) {
+-        return;
+-    }
+-
+-    auto* font = lv_subject_get_int(subject) ? fonts->bold : fonts->regular;
+-    lv_obj_set_style_text_font(label, font ? font : &lv_font_montserrat_20, 0);
+-}
+-
+-void info_visible_observer(lv_observer_t* observer, lv_subject_t* subject) {
+-    auto* label = lv_observer_get_target_obj(observer);
+-    if (!label) {
+-        return;
+-    }
+-
+-    if (lv_subject_get_int(subject)) {
+-        lv_obj_remove_flag(label, LV_OBJ_FLAG_HIDDEN);
+-    }
+-    else {
+-        lv_obj_add_flag(label, LV_OBJ_FLAG_HIDDEN);
+-    }
+-}
+-
+-} // namespace
+ 
+ AppleScreen::AppleScreen(viewmodel::BaseViewModel& view_model, app::AssetManager& assets)
+     : BaseScreen(view_model, assets) {
+@@ -65,111 +22,18 @@ void AppleScreen::build_content(lv_obj_t* content) {
+     lv_obj_set_size(group, LV_SIZE_CONTENT, LV_SIZE_CONTENT);
+     lv_obj_set_flex_flow(group, LV_FLEX_FLOW_COLUMN);
+     lv_obj_set_flex_align(group, LV_FLEX_ALIGN_CENTER, LV_FLEX_ALIGN_CENTER, LV_FLEX_ALIGN_CENTER);
+-    lv_obj_set_style_pad_row(group, 4, 0);
++    lv_obj_set_style_pad_row(group, 7, 0);
+     lv_obj_clear_flag(group, LV_OBJ_FLAG_SCROLLABLE);
+     lv_obj_center(group);
+ 
+-    auto* hello = lv_label_create(group);
+-    lv_label_bind_text(hello, view_model().greeting_subject(), nullptr);
+-    auto* fonts = new AppleTextFontBinding{
+-        assets().load_standard_font(20, app::StandardFontWeight::Regular),
+-        assets().load_standard_font(20),
+-    };
+-    auto* initial_font = lv_subject_get_int(view_model().bold_text_subject()) ? fonts->bold : fonts->regular;
+-    lv_obj_set_style_text_font(hello, initial_font ? initial_font : &lv_font_montserrat_20, 0);
+-    lv_obj_add_event_cb(hello, cleanup_font_binding, LV_EVENT_DELETE, fonts);
+-    lv_subject_add_observer_obj(view_model().bold_text_subject(), apple_text_font_observer, hello, fonts);
+-    reactive::bind_theme(hello, view_model().dark_mode_subject(), reactive::ThemeRole::Text);
+-
+-    auto* info = lv_label_create(group);
+-    lv_label_set_text_fmt(info, "LVGL v%d.%d.%d", LVGL_VERSION_MAJOR, LVGL_VERSION_MINOR, LVGL_VERSION_PATCH);
+-    auto* info_font = assets().load_standard_font(12, app::StandardFontWeight::Regular);
+-    lv_obj_set_style_text_font(info, info_font ? info_font : &lv_font_montserrat_12, 0);
+-    if (!lv_subject_get_int(view_model().info_visible_subject())) {
+-        lv_obj_add_flag(info, LV_OBJ_FLAG_HIDDEN);
+-    }
+-    lv_subject_add_observer_obj(view_model().info_visible_subject(), info_visible_observer, info, nullptr);
+-    reactive::bind_theme(info, view_model().dark_mode_subject(), reactive::ThemeRole::Text);
+-
+-    auto* hints = lv_obj_create(group);
+-    lv_obj_remove_style_all(hints);
+-    lv_obj_set_size(hints, 220, 50);
+-    lv_obj_set_flex_flow(hints, LV_FLEX_FLOW_COLUMN);
+-    lv_obj_set_flex_align(hints,
+-                          LV_FLEX_ALIGN_CENTER,
+-                          LV_FLEX_ALIGN_CENTER,
+-                          LV_FLEX_ALIGN_CENTER);
+-    lv_obj_set_style_pad_row(hints, 2, 0);
+-    lv_obj_add_flag(hints, LV_OBJ_FLAG_OVERFLOW_VISIBLE);
+-    lv_obj_clear_flag(hints, LV_OBJ_FLAG_SCROLLABLE);
+-
+-    auto* key_icon_font = assets().load_font("kenney_input_keyboard_and_mouse.ttf", 34);
+-    auto* extra_key_icon_font = assets().load_font("kenny_keyboard_extra.ttf", 34);
+-    auto* hint_font = assets().load_standard_font(11, app::StandardFontWeight::Regular);
+-    const auto add_hint = [&](const char* letter_icon,
+-                              const char* letter_fallback,
+-                              const char* action_icon,
+-                              const char* action_fallback,
+-                              const lv_font_t* action_font,
+-                              const char* description_text) {
+-        auto* item = lv_obj_create(hints);
+-        lv_obj_remove_style_all(item);
+-        lv_obj_set_size(item, 196, 24);
+-        lv_obj_set_flex_flow(item, LV_FLEX_FLOW_ROW);
+-        lv_obj_set_flex_align(item,
+-                              LV_FLEX_ALIGN_START,
+-                              LV_FLEX_ALIGN_CENTER,
+-                              LV_FLEX_ALIGN_CENTER);
+-        lv_obj_set_style_pad_column(item, 4, 0);
+-        lv_obj_add_flag(item, LV_OBJ_FLAG_OVERFLOW_VISIBLE);
+-        lv_obj_clear_flag(item, LV_OBJ_FLAG_SCROLLABLE);
+-
+-        const auto add_key = [&](const char* icon,
+-                                 const char* fallback,
+-                                 const lv_font_t* icon_font) {
+-            auto* key = lv_obj_create(item);
+-            lv_obj_remove_style_all(key);
+-            lv_obj_set_size(key, 26, 24);
+-            lv_obj_add_flag(key, LV_OBJ_FLAG_OVERFLOW_VISIBLE);
+-            lv_obj_clear_flag(key, LV_OBJ_FLAG_SCROLLABLE);
+-
+-            auto* icon_label = lv_label_create(key);
+-            lv_label_set_text(icon_label, icon_font ? icon : fallback);
+-            lv_obj_set_style_text_font(icon_label,
+-                                       icon_font ? icon_font : &lv_font_montserrat_12,
+-                                       0);
+-            lv_obj_align(icon_label, LV_ALIGN_CENTER, 0, icon_font ? -3 : 0);
+-            reactive::bind_theme(icon_label,
+-                                 view_model().dark_mode_subject(),
+-                                 reactive::ThemeRole::Text);
+-        };
+-
+-        const auto add_text = [&](const char* text) {
+-            auto* label = lv_label_create(item);
+-            lv_label_set_text(label, text);
+-            lv_obj_set_style_text_font(label,
+-                                       hint_font ? hint_font : &lv_font_montserrat_12,
+-                                       0);
+-            reactive::bind_theme(label,
+-                                 view_model().dark_mode_subject(),
+-                                 reactive::ThemeRole::Text);
+-        };
+-
+-        add_key(kIconKbFn, "FN", key_icon_font);
+-        add_text("+");
+-        add_key(letter_icon, letter_fallback, key_icon_font);
+-        add_text("=");
+-        add_key(action_icon, action_fallback, action_font);
+-        add_text(description_text);
+-    };
+-
+-    add_hint(kIconKbH, "H", kIconKbHelp, "?", extra_key_icon_font, "Help");
+-    add_hint(kIconKbJ,
+-             "J",
+-             kIconKbPrintScreen,
+-             "PRSC",
+-             key_icon_font,
+-             "Screenshot");
++    auto* about = lv_label_create(group);
++    lv_label_bind_text(about, view_model().greeting_subject(), nullptr);
++    lv_obj_set_style_text_font(about, &lv_font_montserrat_20, 0);
++    reactive::bind_theme(about, view_model().dark_mode_subject(), reactive::ThemeRole::Text);
++    auto* hint = lv_label_create(group);
++    lv_label_set_text(hint, "8: Counter    Hold Esc: Exit");
++    lv_obj_set_style_text_font(hint, &lv_font_montserrat_14, 0);
++    reactive::bind_theme(hint, view_model().dark_mode_subject(), reactive::ThemeRole::Text);
+ }
+ 
+ } // namespace screen
+diff --git a/src/view/screens/butter_screen.cpp b/src/view/screens/butter_screen.cpp
+index 5e0c516..64901ec 100644
+--- a/src/view/screens/butter_screen.cpp
++++ b/src/view/screens/butter_screen.cpp
+@@ -21,7 +21,12 @@ void ButterScreen::build_content(lv_obj_t* content) {
+     lv_label_bind_text(page_label, view_model().counter_subject(), "Counter: %d");
+     auto* standard_font = assets().load_standard_font(20);
+     lv_obj_set_style_text_font(page_label, standard_font ? standard_font : &lv_font_montserrat_20, 0);
+-    lv_obj_center(page_label);
++    lv_obj_align(page_label, LV_ALIGN_CENTER, 0, -11);
++    auto* status = lv_label_create(content);
++    lv_label_bind_text(status, view_model().save_status_subject(), nullptr);
++    lv_obj_set_style_text_font(status, &lv_font_montserrat_14, 0);
++    lv_obj_align(status, LV_ALIGN_CENTER, 0, 15);
++    reactive::bind_theme(status, view_model().dark_mode_subject(), reactive::ThemeRole::Text);
+     reactive::bind_theme(page_label, view_model().dark_mode_subject(), reactive::ThemeRole::Text);
+ }
+ 
+diff --git a/src/viewmodel/base_viewmodel.cpp b/src/viewmodel/base_viewmodel.cpp
+index a68a488..9601869 100644
+--- a/src/viewmodel/base_viewmodel.cpp
++++ b/src/viewmodel/base_viewmodel.cpp
+@@ -5,6 +5,8 @@
+  */
+ 
+ #include "base_viewmodel.h"
++#include "counter_store.h"
++#include <algorithm>
+ 
+ namespace viewmodel {
+ namespace {
+@@ -20,7 +22,8 @@ BaseViewModel::BaseViewModel()
+       greeting_subject_(model_.greeting()),
+       dark_mode_subject_(model_.dark_mode()),
+       current_page_subject_(page_to_int(model_.current_page())),
+-      counter_subject_(0),
++      counter_subject_(model::load_count(model::counter_state_path())),
++      save_status_subject_(""),
+       bold_text_subject_(false),
+       info_visible_subject_(false),
+       quit_requested_subject_(false) {}
+@@ -47,6 +50,10 @@ lv_subject_t* BaseViewModel::counter_subject() {
+     return counter_subject_.native();
+ }
+ 
++lv_subject_t* BaseViewModel::save_status_subject() {
++    return save_status_subject_.native();
++}
++
+ lv_subject_t* BaseViewModel::bold_text_subject() {
+     return bold_text_subject_.native();
+ }
+@@ -93,12 +100,24 @@ void BaseViewModel::toggle_page() {
+ }
+ 
+ void BaseViewModel::increment_counter() {
+-    counter_subject_.set(counter_subject_.value() + 1);
++    change_count(1);
+ }
+ 
+ void BaseViewModel::decrement_counter() {
+-    const auto next = counter_subject_.value() - 1;
+-    counter_subject_.set(next < 0 ? 0 : next);
++    change_count(-1);
++}
++
++void BaseViewModel::change_count(int delta) {
++    const auto next = std::clamp(counter_subject_.value() + delta, 0, model::kMaxCount);
++    if (next == counter_subject_.value()) {
++        return;
++    }
++    if (model::save_count(model::counter_state_path(), next)) {
++        counter_subject_.set(next);
++        save_status_subject_.set("Saved");
++    } else {
++        save_status_subject_.set("Not saved: check state folder");
++    }
+ }
+ 
+ void BaseViewModel::toggle_bold_text() {
+diff --git a/src/viewmodel/base_viewmodel.h b/src/viewmodel/base_viewmodel.h
+index 4ae5435..86cafea 100644
+--- a/src/viewmodel/base_viewmodel.h
++++ b/src/viewmodel/base_viewmodel.h
+@@ -26,6 +26,7 @@ public:
+     lv_subject_t* dark_mode_subject();
+     lv_subject_t* current_page_subject();
+     lv_subject_t* counter_subject();
++    lv_subject_t* save_status_subject();
+     lv_subject_t* bold_text_subject();
+     lv_subject_t* info_visible_subject();
+     lv_subject_t* quit_requested_subject();
+@@ -46,6 +47,7 @@ public:
+ 
+ private:
+     void publish_all();
++    void change_count(int delta);
+ 
+     model::BaseModel model_;
+     reactive::StringSubject<32> title_subject_;
+@@ -53,6 +55,7 @@ private:
+     reactive::BoolSubject dark_mode_subject_;
+     reactive::IntSubject current_page_subject_;
+     reactive::IntSubject counter_subject_;
++    reactive::StringSubject<48> save_status_subject_;
+     reactive::BoolSubject bold_text_subject_;
+     reactive::BoolSubject info_visible_subject_;
+     reactive::BoolSubject quit_requested_subject_;

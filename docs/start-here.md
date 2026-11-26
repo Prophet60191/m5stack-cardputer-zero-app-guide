@@ -17,7 +17,8 @@ for **CardputerZero running Debian**, not the ESP32 Cardputer or Cardputer ADV.
    the viewmodel to the screen before replacing any of the Template's structure.
 4. **Choose only relevant extras.** Use the table below. Read the linked recipe
    when adding that capability; the recipe is not a requirement for every app.
-5. **Prepare a real app for release.** Give it its own identity, handle errors,
+5. **Try it on a handheld (optional).** The [first-device walkthrough](first-device-app.md) gives a separate saved counter its own package identity, then checks physical controls, upgrade and rollback.
+6. **Prepare a real app for release.** Give it its own identity, handle errors,
    preserve attribution, and follow [build/install checks](06-building-and-packaging.md)
    and [security/publishing](08-security-and-publishing.md). A successful build
    is a starting point, not a release certificate.
@@ -50,6 +51,18 @@ Start by inspecting official guidance and code. Reuse what fits; adapt what your
 app needs. Record the reason for a departure before treating it as a reusable
 improvement. [The component comparison](components.md) and
 [library principles](library-principles.md) explain this distinction.
+
+## Follow the source as you build
+
+| Label | What it means |
+|---|---|
+| Official | M5Stack/CardputerZero source or instructions. Where a build is reproduced, follow the linked revision rather than assuming the latest code is the same. |
+| Adapted | A named upstream or project pattern reused with changes. The guide names the source and the difference. |
+| Guide contribution | A walkthrough, patch, test, component, or verification result maintained with this guide, not an official release or endorsement. |
+
+The walkthroughs label these handoffs at the steps where they happen. Keep the
+original notices with code and assets you reuse. A physical check in one app
+does not certify another app, device or image.
 
 ## Keep an honest progress record
 
