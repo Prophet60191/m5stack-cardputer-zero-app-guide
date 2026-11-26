@@ -19,7 +19,7 @@ of truth for how the pieces fit, what to customize, and what to verify.
    to About and right back to Start. Open each destination with Enter.
    Esc returns without losing the selected item. Open the help screen and
    return to the page you were on.
-2. Change one title and its description in `src/app/starter_ui.h`. Save with watch mode running
+2. Change one title and its description in `src/app/starter_ui_layout.h`. Save with watch mode running
    and check the longest text you plan to use in both themes. Keep home labels
    brief; explanations belong on the destination screen.
 3. Change the example content on the Start page, then add your useful first
@@ -29,11 +29,19 @@ of truth for how the pieces fit, what to customize, and what to verify.
 ## Preview changes as you work
 
 Run the README's simulator watch command after configuring a desktop build.
-It watches shell source, assets, configuration and CMake files. An unsuccessful
-build leaves the last working preview open; fix the error and save again.
-A successful build restarts the app automatically. It does not keep the current
-screen or unsaved form state. Close the preview or press Ctrl+C to stop watching.
-Python is only used by this desktop tool, not by the packaged Cardputer Zero app.
+On macOS and Linux, watch mode rebuilds changes to
+`src/app/starter_ui_layout.h` and applies them in the same window. The shell
+keeps the current page, selected row, scroll position, unsaved form values, and
+the active field's text and cursor. An unsuccessful build leaves the last working
+preview open; fix the error and save again.
+
+Keep application state, timers and global input callbacks in the host code.
+A visual rebuild is for layout, labels and rendering, not for changing the
+running app's data model or input handling. Edits outside the layout file are
+built but only take effect after you close and rerun the preview. That also
+applies to all changes on Windows. There is no automatic restart. Close the
+window or press Ctrl+C to stop watching. The handheld app does not use Python
+or load preview modules.
 
 The FPS, CPU and frame-time overlay is **off by default**, so it does not cover
 the app. If you are profiling, run your desktop configure command with
@@ -44,7 +52,8 @@ to restore the clean preview. This setting has no effect on the device build.
 
 | Where | What it controls |
 | --- | --- |
-| `src/app/starter_ui.h` | The example menu entries, destination content, data handed to the visual component, and the app's use of the official key router. |
+| `src/app/starter_ui_layout.h` | The visual layout, menu labels, and destination content; this file hot-reloads in the desktop preview. |
+| `src/app/starter_ui.h` | Navigation, form drafts, and the app's use of the official key router. |
 | `src/app/starter_navigation.h` | Which destination is open, wraparound and what Back and Help do. The small navigation test does not depend on hardware. |
 | `src/shared/home_menu.h` | The reviewed, vendored copy of the guide's [home-menu component](../examples/ui-patterns/carousel-position/README.md). The guide owns the pattern, including typography, battery and keyboard hints. |
 | `src/shared/page_shell.h` | Reusable theme tokens, font roles, fixed page header/footer, and a keyboard-scrolled list. Visual defaults are a starting point. |
@@ -82,7 +91,11 @@ These are the shell’s defaults, not Cardputer Zero requirements.
 ### Form Save and Back
 
 The **Start** page is a five-field example with a fixed title and footer.
-Only the fields move. The form footer says **1 save form**; the field editor
+Only the fields move. **Category** shows optional helper text beneath its label
+while keeping its value right-aligned. Add a short `ListItem::helper` string
+only when a field needs explanation; leave it empty for a one-line row.
+
+The form footer says **1 save form**; the field editor
 says **Enter keep field**. These are separate actions.
 
 1. Enter opens a field. While editing, digits and letters belong to the
