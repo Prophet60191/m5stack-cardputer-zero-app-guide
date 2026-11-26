@@ -83,8 +83,7 @@ not an accepted upstream release or a new general framework.
 ## Personal reusable library
 
 The [UI preference record](docs/ui-preferences.md) tracks my design decisions:
-the exact Mesh home carousel and Mesh list-selection base are confirmed;
-submenu chevrons and overflow indicators are specified. Other components remain open.
+the NFC Tools home menu and the separate Mesh list-selection base are confirmed. Submenu chevrons and overflow indicators are specified.
 
 The [shared NFC Tools-style home menu](examples/ui-patterns/carousel-position/README.md) is my preferred layout and a demonstration, not a platform requirement. See the [Tick & Bell case study](docs/case-studies/tick-bell.md) or [browse the app source](https://github.com/Prophet60191/m5stack-cardputer-zero-tick-bell).
 

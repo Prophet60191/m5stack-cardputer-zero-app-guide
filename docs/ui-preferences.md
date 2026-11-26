@@ -22,7 +22,7 @@ list the positions, font sizes, and ownership boundaries.
 ## Locked: submenu-list selection and navigation cues
 
 Confirmed 2026-11-18: use Mesh's rounded selected row, subtle background fill
-and colored stripe on the left. Reference: the same Mesh commit above,
+and colored stripe on the left. Reference: Mesh commit `5f21eebe83402119c5c3ad3a3aee3aef905fccd3`,
 `src/view/widgets/list_selection.h`, `style_list_row()` / `select_list_row()`.
 The existing implementation uses a 6 px radius, palette button fill and 3 px
 left border in the primary color; changing selection clears the old row's

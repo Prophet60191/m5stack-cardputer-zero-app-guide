@@ -119,6 +119,11 @@ in the initial general package.
 
 [Guide index](../README.md) · [Official component decisions](components.md)
 
-## Reusable carousel indicator
+## Reusable home menu
 
-The [carousel position component](../examples/ui-patterns/carousel-position/README.md) is independent of the app and its keyboard; Tick & Bell is its first integration. NFC Tools is the visual source, not a consumer of this extracted header yet. Other apps stay unchanged until migrated and verified.
+The [shared home menu](../examples/ui-patterns/carousel-position/README.md)
+is the full NFC Tools-style composition. Adoption in Tick & Bell, NFC Tools,
+Mesh and Wireless Surveyor was checked in desktop renders or desktop UI tests.
+Only Tick & Bell was upgraded on a physical handheld in this round; a desktop
+test is not physical input or display verification. The app still owns its
+device status, key routing and menu destinations.
