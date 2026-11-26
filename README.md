@@ -1,5 +1,7 @@
 <h1 align="center">Building Apps for the M5Stack Cardputer Zero</h1>
 
+**[Read the online guide](https://prophet60191.github.io/m5stack-cardputer-zero-app-guide/)**
+
 An independent guide for building many kinds of applications on the **CardputerZero
 Linux handheld**: utilities, notes, games, networking tools, media and peripheral
 apps. Start with official foundations, choose only the facilities your app needs,
