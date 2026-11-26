@@ -51,7 +51,19 @@ do and which choices are optional. Use a fixed header and footer with a clipped
 content region, shared light/dark colors, and one font role per job: 10 px
 secondary text, 12 px body and controls, and 16 px section titles. The
 **About** list demonstrates selection, wrapping and a position indicator that
-appears only on overflow. Compare actual app screens before locking a row style.
+appears only on overflow.
+
+- **Explanation rows (NFC Tools):** Put a title on the first line and a short,
+  muted explanation beneath it. Keep the unchanged NFC-style selected fill,
+  6 px corners, and left accent stripe. A chevron marks a row that opens a page.
+- **Settings rows (Mesh):** Put the setting name on the left and its current
+  value on the right, on one line. Keep values as text; a boolean can simply
+  read **On** or **Off**. Don’t add a chevron to an inline setting or a read-only
+  value. The shell’s **Settings** page demonstrates this.
+
+Use F/X or Up/Down to move through either kind of list. Wrap at the ends,
+keep the selected row visible, and leave the header and footer stationary.
+These are the shell’s defaults, not Cardputer Zero requirements.
 
 The **Start** page has a sample label editor. Enter opens it; Enter keeps the
 label for the current run and Esc discards the draft. Bare C, Z, F, X, H and
