@@ -87,7 +87,7 @@ to restore the clean preview. This setting has no effect on the device build.
 | `src/app/starter_navigation.h` | Which destination is open, wraparound and what Back and Help do. The small navigation test does not depend on hardware. |
 | `src/shared/home_menu.h` | The reviewed, vendored copy of the guide's [home-menu component](../examples/ui-patterns/carousel-position/README.md). The guide owns the pattern, including typography, battery and keyboard hints. |
 | `src/shared/page_shell.h` | Reusable theme tokens, font roles, fixed page header/footer, and a keyboard-scrolled list. Visual defaults are a starting point. |
-| `src/shared/detail_page.h` | Read-only detail with a fixed title and Back footer, wrapped text, and a scroll indicator only when needed. |
+| `src/shared/detail_page.h` | Detail page with a fixed title and footer, wrapped text, and a scroll indicator only when needed. |
 | `src/platform/linux_input.cpp` and `keyboard_decoder.*` | The Template’s evdev path with the reviewed extension for text and the official device keymap. Apps using the official shared runtime should not decode its keys again. |
 | `app-identity.cmake` | Visible name, unique Debian package/launcher ID, version and maintainer. Start with a fresh build directory after changing identity. |
 | `cmake/cm0-package.cmake` | Package and launcher layout. Learn what it installs before adding any startup behavior or permissions. |
@@ -127,7 +127,7 @@ Use F/X or Up/Down to move through either kind of list. Wrap at the ends,
 keep the selected row visible, and leave the header and footer stationary.
 These are the shell’s defaults, not Cardputer Zero requirements.
 
-### Read-only detail pages
+### Detail pages
 
 Open **About → Scrolling** to see the full pattern. Keep the title and Back
 footer fixed. Wrap the text inside the middle reading area, and show the
@@ -135,11 +135,19 @@ right-hand scroll indicator only when the text overflows. Up and Down (or
 F/X in the shell) move the body. Compare **About → Platform**, which is short
 and has no indicator.
 
-Make a read-only detail with `DetailPage::create` and route Up/Down to
+Make a detail with `DetailPage::create` and route Up/Down to
 `scroll_step`. The caller owns navigation: keep both the selected row and
 the first visible row before opening a detail. Esc should restore both
 when it returns to the list. The shell's watch-mode checkpoint also keeps
 your reading position if you close and reopen the simulator.
+
+For a detail with one ordinary action, put its key and label in the fixed
+footer alongside Back. In **About → Scrolling**, **1 Mark as read** becomes
+**Marked as read** after success. The page does not close or scroll.
+Use `set_footer_hint` to update just the footer, and keep action state in
+the app. Do not show success until the action completes. The example keeps
+its state for the run (and in watch-mode recovery); it is not an example of
+device storage. **About → Platform** remains read-only and shows only Back.
 
 ### Form Save and Back
 
