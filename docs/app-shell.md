@@ -19,12 +19,26 @@ of truth for how the pieces fit, what to customize, and what to verify.
    to About and right back to Start. Open each destination with Enter.
    Esc returns without losing the selected item. Open the help screen and
    return to the page you were on.
-2. Change one title and its description in `src/app/starter_ui.h`. Build again
+2. Change one title and its description in `src/app/starter_ui.h`. Save with watch mode running
    and check the longest text you plan to use in both themes. Keep home labels
    brief; explanations belong on the destination screen.
 3. Change the example content on the Start page, then add your useful first
    action. Keep selection/key routing and rendering separate. Don't introduce
    a service, Python or a device peripheral unless your app needs one.
+
+## Preview changes as you work
+
+Run the README's simulator watch command after configuring a desktop build.
+It watches shell source, assets, configuration and CMake files. An unsuccessful
+build leaves the last working preview open; fix the error and save again.
+A successful build restarts the app automatically. It does not keep the current
+screen or unsaved form state. Close the preview or press Ctrl+C to stop watching.
+Python is only used by this desktop tool, not by the packaged Cardputer Zero app.
+
+The FPS, CPU and frame-time overlay is **off by default**, so it does not cover
+the app. If you are profiling, run your desktop configure command with
+`-DSIMULATOR_PERF_OVERLAY=ON` and rebuild. Use `-DSIMULATOR_PERF_OVERLAY=OFF`
+to restore the clean preview. This setting has no effect on the device build.
 
 ## Know which files you own
 
