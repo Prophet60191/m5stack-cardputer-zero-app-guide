@@ -13,8 +13,10 @@ controls only when your own app needs them.
 
 The screenshot shows the simulator’s sample 100% battery value, not a hardware reading.
 
-Keep the shell repo's README next to you for commands. This page is the source
-of truth for how the pieces fit, what to customize, and what to verify.
+[Get the App Shell source on GitHub](https://github.com/Prophet60191/m5stack-cardputer-zero-app-shell)
+and use its README for the clone, simulator, build and install commands. This
+page is the source of truth for how the pieces fit, what to customize, and
+what to verify.
 
 ## Start without extra moving parts
 

@@ -42,6 +42,7 @@ New to this device? Use the [short reading route](docs/start-here.md). The
 guide explains the choices, [Tick & Bell](docs/case-studies/tick-bell.md)
 shows them in a working timer and alarm, and the [App Shell chapter](docs/app-shell.md)
 shows how to start your own app with a small set of reusable components.
+[Get the App Shell source on GitHub](https://github.com/Prophet60191/m5stack-cardputer-zero-app-shell).
 
 Want a smaller exercise before starting your own app? The
 [simulator counter](docs/first-app.md) runs without a Cardputer Zero. The

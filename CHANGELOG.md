@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-11-26 — Public App Shell
+
+- Link the public starter source from the guide homepage and App Shell chapter.
+
 ## 2026-11-26 — Worked upgrade and rollback
 
 - Add a Tick & Bell walkthrough for preserving a saved alarm, verifying the running scheduler, and rolling back.
