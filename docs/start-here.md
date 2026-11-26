@@ -47,7 +47,7 @@ is there when the next design question arises.
 | GPS, camera, NFC, LoRa or another peripheral | [Project selector](projects/README.md); use the specific peripheral recipe |
 | Playback or recording | [Audio/media](projects/audio-and-media.md) |
 | Slow work or more than one resource owner | [Architecture choices](03-architecture.md); a separate service is one option |
-| A Debian installer, upgrade or Store listing | [Packaging](06-building-and-packaging.md); [Store readiness](store-readiness.md) |
+| A Debian installer, upgrade or Store listing | [Packaging](06-building-and-packaging.md); [worked upgrade and rollback](upgrade-existing-app.md); [Store readiness](store-readiness.md) |
 
 ## Understand the labels
 

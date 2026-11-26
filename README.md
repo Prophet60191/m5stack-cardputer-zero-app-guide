@@ -46,7 +46,8 @@ shows how to start your own app with a small set of reusable components.
 Want a smaller exercise before starting your own app? The
 [simulator counter](docs/first-app.md) runs without a Cardputer Zero. The
 [optional device exercise](docs/first-device-app.md) covers installation,
-upgrading and rollback with a separate teaching counter.
+upgrading and rollback with a separate teaching counter. For an existing app
+with real state to preserve, follow the [Tick & Bell upgrade walkthrough](docs/upgrade-existing-app.md).
 
 If a build runs on your desktop but not on the device, start with
 [symptom-first troubleshooting](docs/device-app-troubleshooting.md).

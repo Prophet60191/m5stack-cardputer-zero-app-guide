@@ -47,6 +47,7 @@ nav:
       - Reusable App Shell: docs/app-shell.md
       - First app: docs/first-app.md
       - First device app: docs/first-device-app.md
+      - Upgrade an existing app: docs/upgrade-existing-app.md
       - Troubleshooting: docs/device-app-troubleshooting.md
       - First reader check: docs/first-reader-check.md
   - Chapters:

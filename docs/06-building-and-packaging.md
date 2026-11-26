@@ -191,6 +191,10 @@ Policy references, reviewed 2026-11-16: [official schema](https://github.com/Car
 [metadata validator](https://github.com/CardputerZero/packages/blob/3ed6a232372bdc769826d93aba03fb9b6bbd9589/.github/scripts/store_meta_policy.py).
 The [preflight lock](../tools/store-policy.lock.json) records exact revisions/hashes.
 
+For an update to an already-installed app, use the
+[worked Tick & Bell upgrade and rollback](upgrade-existing-app.md) to check
+that the running build and the user's saved data both match expectations.
+
 ## Package layout and installer acceptance
 
 Inspect the actual `.deb`. The current Store checks more than non-root services:

@@ -24,6 +24,12 @@ At a simulated 11:59 PM, a new alarm defaults to midnight and advances to
 the next date. These 320×170 desktop captures use synthetic data; the
 simulator battery value is not a device measurement.
 
+## Upgrade and rollback
+
+The [worked update](../upgrade-existing-app.md) shows how to stop and back up
+the scheduler, verify the installed and running binaries, and check that a
+saved alarm survives an upgrade and a rollback.
+
 ## Where the patterns came from
 
 - **Official M5Stack foundation:** the pinned CardputerZero Template and LVGL

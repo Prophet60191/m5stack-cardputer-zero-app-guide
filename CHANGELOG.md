@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-11-26 — Worked upgrade and rollback
+
+- Add a Tick & Bell walkthrough for preserving a saved alarm, verifying the running scheduler, and rolling back.
+- Rehearse both package transitions and backup recovery in disposable Debian arm64.
+
 ## 2026-11-26 — First-app showcase and shell scope
 
 - Connect the guide, working Tick & Bell example and reusable App Shell.
