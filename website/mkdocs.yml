@@ -44,6 +44,7 @@ nav:
   - Contents: index.md
   - Start here:
       - Reading routes: docs/start-here.md
+      - Reusable App Shell: docs/app-shell.md
       - First app: docs/first-app.md
       - First device app: docs/first-device-app.md
       - Troubleshooting: docs/device-app-troubleshooting.md

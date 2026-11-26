@@ -39,7 +39,8 @@ the desktop simulator.
 ## Start here
 
 New to this device? Use the [short reading route](docs/start-here.md) to see
-where to start. For a minimal hands-on exercise, the official Template's
+where to start. The [App Shell chapter](docs/app-shell.md) explains how to make
+the reusable starter your own. For a minimal hands-on exercise, the official Template's
 [simulator counter](docs/first-app.md) runs without a Cardputer Zero. The
 [optional device exercise](docs/first-device-app.md) covers installation,
 upgrading and rollback with a separate teaching counter. Neither exercise
