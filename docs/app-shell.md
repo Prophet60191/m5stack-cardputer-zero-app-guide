@@ -30,16 +30,19 @@ of truth for how the pieces fit, what to customize, and what to verify.
 
 Run the README's simulator watch command after configuring a desktop build.
 On macOS and Linux, watch mode rebuilds changes to
-`src/app/starter_ui_layout.h` and applies them in the same window. The shell
+`src/app/starter_ui_layout.h` and the selection-style values in
+`src/shared/row_focus_style.h` and applies them in the same window. The shell
 keeps the current page, selected row, scroll position, unsaved form values, and
 the active field's text and cursor. An unsuccessful build leaves the last working
 preview open; fix the error and save again.
 
 Keep application state, timers and global input callbacks in the host code.
 A visual rebuild is for layout, labels and rendering, not for changing the
-running app's data model or input handling. Edits outside the layout file are
-built but only take effect after you close and rerun the preview. That also
-applies to all changes on Windows. There is no automatic restart. Close the
+running app's data model or input handling. Edits outside the two previewable
+files are built but only take effect after you close and rerun the preview.
+The window title says **reopen to apply changes** when the old build is still
+running, or **build failed** if compilation did not succeed. On Windows, all
+changes need a reopen. There is no automatic restart. Close the
 window or press Ctrl+C to stop watching. A second watcher for the same build
 is refused, so it cannot open a competing preview.
 
