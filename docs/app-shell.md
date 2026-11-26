@@ -19,8 +19,8 @@ of truth for how the pieces fit, what to customize, and what to verify.
    to About and right back to Start. Open each destination with Enter.
    Esc returns without losing the selected item. Open the help screen and
    return to the page you were on.
-2. Change one title and its description in `src/app/starter_ui_layout.h`. Save with watch mode running
-   and check the longest text you plan to use in both themes. Keep home labels
+2. Change one title and its description in `src/app/starter_ui_layout.h`.
+   Save with watch mode running and check the longest text you plan to use in both themes. Keep home labels
    brief; explanations belong on the destination screen.
 3. Change the example content on the Start page, then add your useful first
    action. Keep selection/key routing and rendering separate. Don't introduce
@@ -51,6 +51,24 @@ form draft, including text still in the editor. Reopening restores it; use
 can lose input since the last checkpoint (normally within 250 ms).
 This is a developer convenience, not application storage. The handheld app
 does not use Python, load preview modules or keep simulator checkpoints.
+
+### Verify that the preview keeps your place
+
+1. In watch mode, open **Start → Category**, type sample text without pressing
+   Enter, and move the cursor into the middle of it.
+2. Save a temporary change to the editor title in `src/app/starter_ui_layout.h`.
+   On macOS or Linux, the title should update in the existing window while the
+   editor, unsaved text, and cursor stay put.
+3. Close the window and run the same watch command again, without `--fresh`.
+   The editor should reopen with the same unsaved text and cursor. Revert the
+   temporary title change when finished.
+
+Both checks passed on macOS Apple Silicon. On Windows, skip the in-place title
+check; restart watch mode to apply changes. Launching the executable directly
+does not restore a watch-mode session. Keep sample data nonsensitive: the preview
+checkpoint is a local text file, not protected application storage.
+
+### Optional performance overlay
 
 The FPS, CPU and frame-time overlay is **off by default**, so it does not cover
 the app. If you are profiling, run your desktop configure command with

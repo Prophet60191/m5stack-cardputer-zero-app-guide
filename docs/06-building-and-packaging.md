@@ -28,6 +28,11 @@ supervisor as the app requires (see [architecture](03-architecture.md)). A singl
 foreground process can use supported OS services without a new daemon. Use fake
 source adapters for the simulator and test the real source contract separately.
 
+If you start from the reusable App Shell, follow its
+[watch-mode workflow](app-shell.md#preview-changes-as-you-work) for in-place
+layout changes and recovery when reopening. Those tools are included in the
+shell; they are not part of the stock Template commands below.
+
 ### Desktop build (example: macOS Apple Silicon)
 
 ```bash

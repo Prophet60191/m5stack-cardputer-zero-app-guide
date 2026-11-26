@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-11-26 — App Shell simulator workflow
+
+- Document which edits update in place, which need a deliberate reopen, and how to start fresh.
+- Add the macOS-verified walkthrough for preserving an active field, unsaved text and cursor.
+
 ## 2026-11-26 — Complete reusable NFC Tools-style home menu
 
 - Standardize the home header, typography, icon lanes, dots and keyboard footer; show real battery percentage at right.
