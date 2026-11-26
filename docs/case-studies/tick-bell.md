@@ -28,7 +28,8 @@ simulator battery value is not a device measurement.
 
 The [worked update](../upgrade-existing-app.md) shows how to stop and back up
 the scheduler, verify the installed and running binaries, and check that a
-saved alarm survives an upgrade and a rollback.
+saved alarm survives an upgrade and a rollback. If the timer’s window itself
+won’t open, start with [the launcher and library checks](../device-app-troubleshooting.md#the-icon-is-there-but-the-app-closes-immediately) before changing scheduler settings.
 
 ## Where the patterns came from
 

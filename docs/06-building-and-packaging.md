@@ -81,7 +81,7 @@ The resulting package installs the layout from [how an app lives on the device](
 
 ### Install on the device
 
-For a worked first install, update, and rollback, use the [Guide Counter walkthrough](first-device-app.md). If it does not appear or open, see [device troubleshooting](device-app-troubleshooting.md).
+For a worked first install, update, and rollback, use the [Guide Counter walkthrough](first-device-app.md). If the icon is missing, check [the launcher entry](device-app-troubleshooting.md#no-app-icon-in-applaunch). If the icon is present but the app won’t open, [check its runtime libraries](device-app-troubleshooting.md#if-the-executable-is-there-check-what-linux-can-load).
 
 ```bash
 REMOTE_USER=<user> REMOTE_HOST=<device-ip> ./deploy.sh      # copies the .deb over SSH

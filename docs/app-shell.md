@@ -220,6 +220,7 @@ and this guide. That is a better readiness check than adding more components.
   Then test the physical keypad and display on the intended Cardputer Zero.
   A simulator run does not qualify those checks.
 
-If the simulator works but the installed app does not, start with
-[device app troubleshooting](device-app-troubleshooting.md). For a fuller
+If the installed app has a launcher icon but won’t open, [check whether Linux
+can load the app’s libraries](device-app-troubleshooting.md#if-the-executable-is-there-check-what-linux-can-load). If the icon is
+missing, use [the launcher entry checks](device-app-troubleshooting.md#no-app-icon-in-applaunch). For a fuller
 example with its own scheduler, see [Tick & Bell](case-studies/tick-bell.md).
