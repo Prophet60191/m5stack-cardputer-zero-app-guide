@@ -95,6 +95,13 @@ Only the fields move. **Category** shows optional helper text beneath its label
 while keeping its value right-aligned. Add a short `ListItem::helper` string
 only when a field needs explanation; leave it empty for a one-line row.
 
+To demonstrate validation, clear **Quantity**, press **Enter** to keep the blank
+field in your draft, then press **1** on the form. The save is blocked: the
+selection moves to Quantity and the row says **Enter a quantity**. Other edits
+stay in place. Enter a number to clear the error, then save the form again.
+Use `ListItem::error` for a short instruction on fixing an invalid value; it
+takes the place of helper text and does not open a dialog.
+
 The form footer says **1 save form**; the field editor
 says **Enter keep field**. These are separate actions.
 
