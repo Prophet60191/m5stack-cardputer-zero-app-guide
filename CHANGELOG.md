@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-11-26 — Tick & Bell and online publishing
+
+- Add Tick & Bell source links and current simulator screenshots.
+- Add reusable NFC-style home-menu geometry and icon sizes.
+- Rebuild the online guide from the repository on pushes to main.
+
 ## 2026-11-26 — Carousel position indicator
 
 - Add a reusable home-carousel position row based on NFC Tools, with the same vertical title and dot positions.

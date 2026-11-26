@@ -6,7 +6,7 @@ For home carousels, use the [position indicator component](../examples/ui-patter
 
 ![Tick & Bell simulator showing the spacing between the Alarms label and its carousel dots](images/tick-bell-carousel-position.png)
 
-*Tick & Bell in the desktop simulator. The wider center dot marks the selected menu.*
+*Tick & Bell in the desktop simulator. The wider center dot marks the selected menu.* See the [Tick & Bell case study](case-studies/tick-bell.md) for the alarm form and sound picker.
 
 Make every screen predictable, readable and usable from the keyboard. Apply the
 patterns relevant to the chosen UI stack and app behavior.

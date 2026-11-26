@@ -46,7 +46,7 @@ the row, use NFC Tools’ vertical spacing (menu title top y=82, dot row y=138 o
 for the others, and update it with the carousel selection, including wrap.
 Do not animate or add a footer for the indicator. This is distinct from the
 right-edge overflow bar used on a submenu list. The [reusable LVGL component](../examples/ui-patterns/carousel-position/README.md)
-and its source notes live with the guide.
+and its source notes live with the guide. The same reference uses a 40 px center icon at y=33 and 28 px side icons in lanes starting at x=14 and x=270, y=69. The center icon and title share a 216 px lane at x=52.
 
 Keep the top-bar battery percentage plain text and right-aligned when available.
 No battery glyph and no fabricated percentage if the device does not report one.

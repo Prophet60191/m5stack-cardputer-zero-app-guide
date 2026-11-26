@@ -1,0 +1,79 @@
+site_name: Cardputer Zero App Guide
+site_url: https://prophet60191.github.io/m5stack-cardputer-zero-app-guide/
+site_description: An independent guide to building native apps for the M5Stack Cardputer Zero Linux handheld.
+repo_url: https://github.com/Prophet60191/m5stack-cardputer-zero-app-guide
+repo_name: View source on GitHub
+docs_dir: stage
+site_dir: site
+validation:
+  links:
+    anchors: warn
+
+use_directory_urls: false
+theme:
+  name: material
+  font: false
+  icon:
+    logo: material/book-open-page-variant-outline
+  palette:
+    - scheme: default
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+    - scheme: slate
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
+  features:
+    - navigation.top
+    - search.highlight
+    - search.suggest
+    - content.code.copy
+plugins:
+  - search
+markdown_extensions:
+  - tables
+  - attr_list
+  - admonition
+  - pymdownx.superfences
+  - toc:
+      permalink: true
+extra_css:
+  - styles/reader.css
+nav:
+  - Contents: index.md
+  - Start here:
+      - Reading routes: docs/start-here.md
+      - First app: docs/first-app.md
+      - First device app: docs/first-device-app.md
+      - Troubleshooting: docs/device-app-troubleshooting.md
+      - First reader check: docs/first-reader-check.md
+  - Chapters:
+      - Platform: docs/01-platform.md
+      - App anatomy: docs/02-app-anatomy.md
+      - Architecture choices: docs/03-architecture.md
+      - UI and polish: docs/04-ui-and-polish.md
+      - Keyboard: docs/05-keyboard.md
+      - Build and package: docs/06-building-and-packaging.md
+      - LoRa bring-up: docs/07-radio-bring-up.md
+      - Security and publishing: docs/08-security-and-publishing.md
+  - Project recipes:
+      - Project selector: docs/projects/README.md
+      - Local utilities: docs/projects/local-utilities.md
+      - Messaging: docs/projects/messaging.md
+      - Networking: docs/projects/networking.md
+      - Audio and media: docs/projects/audio-and-media.md
+      - Camera and QR: docs/projects/camera-and-qr.md
+      - GPS and maps: docs/projects/gps-and-maps.md
+      - Hardware: docs/projects/hardware.md
+  - Reference:
+      - Components: docs/components.md
+      - Library principles: docs/library-principles.md
+      - Library inventory: docs/library-inventory.md
+      - Input evaluation: docs/official-input-evaluation.md
+      - UI foundation evaluation: docs/official-ui-evaluation.md
+      - UI preferences: docs/ui-preferences.md
+      - Store readiness: docs/store-readiness.md
+      - Lesson index: docs/lesson-index.md
+      - Mesh case study: docs/case-studies/mesh.md
+      - Tick & Bell: docs/case-studies/tick-bell.md

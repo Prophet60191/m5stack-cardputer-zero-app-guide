@@ -20,6 +20,18 @@ Desktop simulator capture, not a hardware photo. The simulated 100% is the offic
 - Hide it for zero or one item. This implementation is bounded at 24 slots;
   use another presentation if the slots no longer fit in the available width.
 
+## Reusable layout
+
+Use [carousel_layout.h](carousel_layout.h) for NFC Tools’ 320×170 geometry.
+The center group is 216×105 at (52, 32), with a 40 px icon at y=33 and a
+centered title at y=82. The 28 px side icons use 37 px lanes at x=14 and
+x=270, y=69. The dots start at y=138. Select the corresponding LVGL
+symbol fonts and provide your own glyphs, labels and colors.
+
+The helper does not own navigation or the slide animation, and it does not
+require a subtitle. Tick & Bell is the first consumer. See its
+[case study](../../../docs/case-studies/tick-bell.md) for the visual result.
+
 ## Why this is a separate pattern
 
 The official Template supplies a UI framework, not this particular visual position cue. The Mesh carousel already controls movement and animation; the dots answer a different question: which item is selected when left/right wraps. NFC Tools proved the visual idea with six fixed slots. The extracted header centers any supported item count so each app can reuse it without hard-coded coordinates, adopting the NFC UI, or adding another keyboard handler.
@@ -46,7 +58,7 @@ reviewed working-tree snapshot (base `8e4c884`; source SHA-256
 `f2bada65bcadf2f82ce6772e38fbca1413aa25dc275b640196cb0846bde82e4a`).
 That source uses fixed coordinates for six entries. Tick & Bell now also matches NFC Tools’ vertical title and dot positions. The component preserves the visual proportions but calculates centered positions for the app’s menu count. NFC Tools remains the design reference, not a runtime dependency.
 
-Tick & Bell is the first integration of this shared header. Desktop event-path checks showed movement across all three slots, wrap from first to last, and theme recoloring without changing selection. The 0.1.2 simulator captures verified the revised spacing and wrap; physical input and display on a handheld remain separate checks. NFC Tools retains
+Tick & Bell is the first integration of this shared header. Desktop event-path checks showed movement across all three slots, wrap from first to last, and theme recoloring without changing selection. The 0.1.3 simulator captures verified the revised spacing and wrap; physical input and display on a handheld remain separate checks. NFC Tools retains
 its own existing indicator. No migration of Mesh, NFC Tools, or other apps is
 implied. Verify home on a device in both themes, forward/back wrap, labels
 clear of the bar, and unchanged submenu navigation before adopting it elsewhere.
