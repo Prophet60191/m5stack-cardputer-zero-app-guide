@@ -23,23 +23,30 @@ guide. C++/LVGL with the official Template is the main native UI recipe. Other
 languages/toolkits can follow the same launcher, keyboard, privacy and package
 contracts with their own rendering/build implementations.
 
+## Featured example: Tick & Bell
+
+Tick & Bell is the guide's worked app example: a timer and alarm with the
+reusable NFC Tools-style home menu. The screenshot below shows that menu in
+the desktop simulator.
+
+![Tick & Bell home screen with the Alarms menu selected, shaded side icons, position dots, battery percentage and keyboard hints](docs/images/tick-bell-carousel-position.png)
+
+**[Read the Tick & Bell case study](docs/case-studies/tick-bell.md)** ·
+[Browse the app source](https://github.com/Prophet60191/m5stack-cardputer-zero-tick-bell)
+
 <a id="contents"></a>
 
 ## Start here
 
-New to this device? **[Build your first app](docs/first-app.md)** in the desktop
-simulator. You don't need a Cardputer Zero for this first build. Start with the
-[short route](docs/start-here.md) if you want to see what to read and what to skip.
+New to this device? Use the [short reading route](docs/start-here.md) to see
+where to start. For a minimal hands-on exercise, the official Template's
+[simulator counter](docs/first-app.md) runs without a Cardputer Zero. The
+[optional device exercise](docs/first-device-app.md) covers installation,
+upgrading and rollback with a separate teaching counter. Neither exercise
+is required to read the guide.
 
-![The official Template counter in the desktop simulator. Press 8 on the home screen to open it, C or Right to add one, Z or Left to subtract one, and Escape to go back.](docs/images/first-counter-quickstart.png)
-
-*Open the counter with **8**, try **C/Right** and **Z/Left**, then press
-**Esc** to go back. Once it works, change the greeting and add your own reset
-action. Simulator capture: [official Template, M5Stack CardputerZero Community
-(MIT)](https://github.com/CardputerZero/Template/blob/477fa6d217b683e3084c361a757f03dc8ca9f753/LICENSE);
-annotations added.*
-
-Ready to use a handheld? The optional [first device app](docs/first-device-app.md) walks through installing, updating and removing a two-page saved counter. If a build runs on your desktop but not on the device, start with [the symptom-first troubleshooting page](docs/device-app-troubleshooting.md).
+If a build runs on your desktop but not on the device, start with
+[symptom-first troubleshooting](docs/device-app-troubleshooting.md).
 
 Returning with a specific task? Use the [project selector](docs/projects/README.md).
 Use the chapters below as a reference. Library decisions and historical Mesh
