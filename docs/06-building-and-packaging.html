@@ -1663,7 +1663,7 @@ the catalog immediately before submission; a local check cannot reserve either.
 Replace template authors, summaries, Maintainer and source URLs before release.</p>
 <p>Policy references, reviewed 2026-11-16: <a href="https://github.com/CardputerZero/AppBuilder/blob/18996b694ae305306fc5d457d982cfba0b0e7cc5/docs/APP_BUILDER_JSON.md">official schema</a>,
 <a href="https://github.com/CardputerZero/packages/blob/3ed6a232372bdc769826d93aba03fb9b6bbd9589/.github/scripts/store_meta_policy.py">metadata validator</a>.
-The <a href="https://github.com/Prophet60191/m5stack-cardputer-zero-app-guide/blob/11531dbdf785408e1c41ecc8ab059c6678c14ded/tools/store-policy.lock.json">preflight lock</a> records exact revisions/hashes.</p>
+The <a href="https://github.com/Prophet60191/m5stack-cardputer-zero-app-guide/blob/828bff8fcd4e6770395b375e5db4e37b884cde83/tools/store-policy.lock.json">preflight lock</a> records exact revisions/hashes.</p>
 <h2 id="package-layout-and-installer-acceptance">Package layout and installer acceptance<a class="headerlink" href="#package-layout-and-installer-acceptance" title="Permanent link">&para;</a></h2>
 <p>Inspect the actual <code>.deb</code>. The current Store checks more than non-root services:</p>
 <table>
@@ -1756,7 +1756,7 @@ cmake/cpack or the Python recipe, then hand it the file):</p>
 to a release, commit listing assets/metadata and open a PR against
 <code>CardputerZero/packages</code>. On merge the Store promotes the accepted binary to its
 official release/index. Git contains metadata, not the <code>.deb</code>. Run the
-<a href="https://github.com/Prophet60191/m5stack-cardputer-zero-app-guide/blob/11531dbdf785408e1c41ecc8ab059c6678c14ded/tools/README.md">non-publishing preflight</a> first; it performs no authentication,
+<a href="https://github.com/Prophet60191/m5stack-cardputer-zero-app-guide/blob/828bff8fcd4e6770395b375e5db4e37b884cde83/tools/README.md">non-publishing preflight</a> first; it performs no authentication,
 network requests, install, upload or PR creation. The reviewed CLI has no
 <code>publish --dry-run</code> option.</p>
 <p><code>czdev</code> performs local checks, including a fetched metadata policy. If that fetch
