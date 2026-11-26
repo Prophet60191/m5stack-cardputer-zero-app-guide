@@ -3,6 +3,8 @@
 The [2026-11-18 UI/shell evaluation](official-ui-evaluation.md) recommends reusing
 the appropriate official page/runtime foundation and adapting its presentation.
 Custom palettes, menus and layouts do not require a replacement app-shell SDK.
+The [reusable App Shell](app-shell.md) applies this approach: it bundles a few
+presentation patterns and a desktop preview on the existing Template.
 Preserve ownership, input and backend authority; evaluate behavioral changes
 separately from appearance.
 
