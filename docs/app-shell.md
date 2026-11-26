@@ -33,6 +33,8 @@ of truth for how the pieces fit, what to customize, and what to verify.
 | `src/app/starter_ui.h` | The example menu entries, destination content, data handed to the visual component, and the app's use of the official key router. |
 | `src/app/starter_navigation.h` | Which destination is open, wraparound and what Back and Help do. The small navigation test does not depend on hardware. |
 | `src/shared/home_menu.h` | The reviewed, vendored copy of the guide's [home-menu component](../examples/ui-patterns/carousel-position/README.md). The guide owns the pattern, including typography, battery and keyboard hints. |
+| `src/shared/page_shell.h` | Reusable theme tokens, font roles, fixed page header/footer, and a keyboard-scrolled list. Visual defaults are a starting point. |
+| `src/platform/linux_input.cpp` and `keyboard_decoder.*` | The Template’s evdev path with the reviewed extension for text and the official device keymap. Apps using the official shared runtime should not decode its keys again. |
 | `app-identity.cmake` | Visible name, unique Debian package/launcher ID, version and maintainer. Start with a fresh build directory after changing identity. |
 | `cmake/cm0-package.cmake` | Package and launcher layout. Learn what it installs before adding any startup behavior or permissions. |
 
@@ -41,6 +43,22 @@ key mapping, screenshot handling and the theme preference flow. The shell
 uses that foundation and swaps in its own foreground UI. The app supplies a
 measured battery percentage to the shared home menu when one exists; the
 desktop value is simulated. Never invent a reading when the device is missing one.
+
+## Use the page and keyboard building blocks
+
+The shell repo is the buildable library. This guide documents what the pieces
+do and which choices are optional. Use a fixed header and footer with a clipped
+content region, shared light/dark colors, and one font role per job: 10 px
+secondary text, 12 px body and controls, and 16 px section titles. The
+**About** list demonstrates selection, wrapping and a position indicator that
+appears only on overflow. Compare actual app screens before locking a row style.
+
+The **Start** page has a sample label editor. Enter opens it; Enter keeps the
+label for the current run and Esc discards the draft. Bare C, Z, F, X, H and
+digits are text while editing, not shortcuts. Fn+H opens Help without changing
+the draft, and Esc returns to the editor. This is a sample of input ownership,
+not a prescribed edit form layout. See the [keyboard chapter](05-keyboard.md)
+for official Fn, Sym and position details. Do not invent a new keymap.
 
 ## Make a package that can sit beside the sample
 
