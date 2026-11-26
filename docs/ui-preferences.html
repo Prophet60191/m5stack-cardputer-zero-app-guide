@@ -362,6 +362,52 @@
   
   
     <li class="md-nav__item">
+      <a href="first-device-app.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    First device app
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="device-app-troubleshooting.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Troubleshooting
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="first-reader-check.html" class="md-nav__link">
         
   
@@ -1064,6 +1110,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#locked-home-carousel-position-indicator" class="md-nav__link">
+    <span class="md-ellipsis">
+      Locked: home-carousel position indicator
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#locked-submenu-list-selection-and-navigation-cues" class="md-nav__link">
     <span class="md-ellipsis">
       Locked: submenu-list selection and navigation cues
@@ -1229,6 +1284,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#locked-home-carousel-position-indicator" class="md-nav__link">
+    <span class="md-ellipsis">
+      Locked: home-carousel position indicator
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#locked-submenu-list-selection-and-navigation-cues" class="md-nav__link">
     <span class="md-ellipsis">
       Locked: submenu-list selection and navigation cues
@@ -1320,13 +1384,23 @@ reference; the illustrative comparison is not a pixel/font/motion specification.
   other components is still open; do not silently substitute the comparison's
   palette for this exact reference.</li>
 <li>Preserve the reference home geometry: 320×170, 30 px title region and content
-  below it. The home implementation has no added bottom function-key lane;
+  below it. The position indicator in the next section is the agreed addition. The home implementation has no added bottom function-key lane;
   do not import the illustrative preview's footer as an approved preference.</li>
 </ul>
 <p>App-specific destinations, labels and appropriate icon glyphs can represent the
 new app's own functions. That is content substitution, not permission to
 redesign the carousel. Preserve attribution and the selected official foundation's
 lifecycle/focus ownership when later implementing reuse.</p>
+<h2 id="locked-home-carousel-position-indicator">Locked: home-carousel position indicator<a class="headerlink" href="#locked-home-carousel-position-indicator" title="Permanent link">&para;</a></h2>
+<p>Agreed 2026-11-26. Keep the Mesh home carousel geometry and directional
+animation, and add the NFC Tools position bar below the home label. Center
+the row, use NFC Tools’ vertical spacing (menu title top y=82, dot row y=138 on 320×170), and use a wider accent pill for the current slot and small muted dots
+for the others, and update it with the carousel selection, including wrap.
+Do not animate or add a footer for the indicator. This is distinct from the
+right-edge overflow bar used on a submenu list. The <a href="https://github.com/Prophet60191/m5stack-cardputer-zero-app-guide/blob/48c9be7fee409e3b2d0042f0eae02733af76388c/examples/ui-patterns/carousel-position/README.md">reusable LVGL component</a>
+and its source notes live with the guide.</p>
+<p>Keep the top-bar battery percentage plain text and right-aligned when available.
+No battery glyph and no fabricated percentage if the device does not report one.</p>
 <h2 id="locked-submenu-list-selection-and-navigation-cues">Locked: submenu-list selection and navigation cues<a class="headerlink" href="#locked-submenu-list-selection-and-navigation-cues" title="Permanent link">&para;</a></h2>
 <p>Confirmed 2026-11-18: use Mesh's rounded selected row, subtle background fill
 and colored stripe on the left. Reference: the same Mesh commit above,
@@ -1343,6 +1417,7 @@ their own item identity and navigation state.</p>
   with a moving position marker, so the user can see that more content exists.
   Keep it available as navigation reveals items above/below; omit it when all
   content fits. Reserve space so it does not obscure labels or chevrons.</li>
+<li>Use Up and Down for vertical selection (Fn+F/Fn+X on Cardputer Zero; bare F/X may be contextual aliases outside editors). Left and Right move the home carousel or adjust a focused value, never select a vertical row.</li>
 <li>Use wrap-around list navigation: Down from the last selectable entry moves
   to the first; Up from the first moves to the last. Scroll the visible list
   to keep the new selection in view, including after wrapping. Moving selection

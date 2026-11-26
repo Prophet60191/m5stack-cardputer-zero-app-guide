@@ -362,6 +362,52 @@
   
   
     <li class="md-nav__item">
+      <a href="first-device-app.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    First device app
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="device-app-troubleshooting.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Troubleshooting
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="first-reader-check.html" class="md-nav__link">
         
   
@@ -1509,6 +1555,10 @@
 
 
 <h1 id="4-ui-and-polish">4. UI and polish<a class="headerlink" href="#4-ui-and-polish" title="Permanent link">&para;</a></h1>
+<p><strong>Official foundation:</strong> input routing and LVGL remain in the Template. <strong>Deliberate UI choices:</strong> horizontal movement belongs to the carousel or a value; vertical movement belongs to lists. The home dots show position without borrowing focus, and a text-only battery value keeps the status bar readable. These are design choices for my apps, not vendor compatibility rules.</p>
+<p>For home carousels, use the <a href="https://github.com/Prophet60191/m5stack-cardputer-zero-app-guide/blob/48c9be7fee409e3b2d0042f0eae02733af76388c/examples/ui-patterns/carousel-position/README.md">position indicator component</a> below the menu label. Tick &amp; Bell follows NFC Tools’ placement: the title starts at y=82 and the dots at y=138 on the 320×170 screen. Keep that breathing room even without a subtitle. Lists are vertical: use Up/Down for selection, not Left/Right. A numeric battery percentage can sit flush right in the top bar without a glyph.</p>
+<p><img alt="Tick &amp; Bell simulator showing the spacing between the Alarms label and its carousel dots" src="images/tick-bell-carousel-position.png" /></p>
+<p><em>Tick &amp; Bell in the desktop simulator. The wider center dot marks the selected menu.</em></p>
 <p>Make every screen predictable, readable and usable from the keyboard. Apply the
 patterns relevant to the chosen UI stack and app behavior.</p>
 <p>The <a href="official-ui-evaluation.html">official UI/shell evaluation</a> identifies the

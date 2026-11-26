@@ -362,6 +362,52 @@
   
   
     <li class="md-nav__item">
+      <a href="first-device-app.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    First device app
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="device-app-troubleshooting.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Troubleshooting
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="first-reader-check.html" class="md-nav__link">
         
   
@@ -1506,6 +1552,7 @@ cpack<span class="w"> </span>--preset<span class="w"> </span>cp0-cross-deb<span 
 </ul>
 <p>The resulting package installs the layout from <a href="02-app-anatomy.html">how an app lives on the device</a>.</p>
 <h3 id="install-on-the-device">Install on the device<a class="headerlink" href="#install-on-the-device" title="Permanent link">&para;</a></h3>
+<p>For a worked first install, update, and rollback, use the <a href="first-device-app.html">Guide Counter walkthrough</a>. If it does not appear or open, see <a href="device-app-troubleshooting.html">device troubleshooting</a>.</p>
 <div class="highlight"><pre><span></span><code><span class="nv">REMOTE_USER</span><span class="o">=</span>&lt;user&gt;<span class="w"> </span><span class="nv">REMOTE_HOST</span><span class="o">=</span>&lt;device-ip&gt;<span class="w"> </span>./deploy.sh<span class="w">      </span><span class="c1"># copies the .deb over SSH</span>
 <span class="c1"># then, on the device:</span>
 sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>--no-install-recommends<span class="w"> </span>./&lt;App&gt;_&lt;ver&gt;_rev&lt;n&gt;_arm64.deb
@@ -1663,7 +1710,7 @@ the catalog immediately before submission; a local check cannot reserve either.
 Replace template authors, summaries, Maintainer and source URLs before release.</p>
 <p>Policy references, reviewed 2026-11-16: <a href="https://github.com/CardputerZero/AppBuilder/blob/18996b694ae305306fc5d457d982cfba0b0e7cc5/docs/APP_BUILDER_JSON.md">official schema</a>,
 <a href="https://github.com/CardputerZero/packages/blob/3ed6a232372bdc769826d93aba03fb9b6bbd9589/.github/scripts/store_meta_policy.py">metadata validator</a>.
-The <a href="https://github.com/Prophet60191/m5stack-cardputer-zero-app-guide/blob/828bff8fcd4e6770395b375e5db4e37b884cde83/tools/store-policy.lock.json">preflight lock</a> records exact revisions/hashes.</p>
+The <a href="https://github.com/Prophet60191/m5stack-cardputer-zero-app-guide/blob/48c9be7fee409e3b2d0042f0eae02733af76388c/tools/store-policy.lock.json">preflight lock</a> records exact revisions/hashes.</p>
 <h2 id="package-layout-and-installer-acceptance">Package layout and installer acceptance<a class="headerlink" href="#package-layout-and-installer-acceptance" title="Permanent link">&para;</a></h2>
 <p>Inspect the actual <code>.deb</code>. The current Store checks more than non-root services:</p>
 <table>
@@ -1756,7 +1803,7 @@ cmake/cpack or the Python recipe, then hand it the file):</p>
 to a release, commit listing assets/metadata and open a PR against
 <code>CardputerZero/packages</code>. On merge the Store promotes the accepted binary to its
 official release/index. Git contains metadata, not the <code>.deb</code>. Run the
-<a href="https://github.com/Prophet60191/m5stack-cardputer-zero-app-guide/blob/828bff8fcd4e6770395b375e5db4e37b884cde83/tools/README.md">non-publishing preflight</a> first; it performs no authentication,
+<a href="https://github.com/Prophet60191/m5stack-cardputer-zero-app-guide/blob/48c9be7fee409e3b2d0042f0eae02733af76388c/tools/README.md">non-publishing preflight</a> first; it performs no authentication,
 network requests, install, upload or PR creation. The reviewed CLI has no
 <code>publish --dry-run</code> option.</p>
 <p><code>czdev</code> performs local checks, including a fetched metadata policy. If that fetch

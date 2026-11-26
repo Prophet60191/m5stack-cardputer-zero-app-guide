@@ -16,7 +16,7 @@
         <link rel="prev" href="start-here.html">
       
       
-        <link rel="next" href="first-reader-check.html">
+        <link rel="next" href="first-device-app.html">
       
       
       <link rel="icon" href="../assets/images/favicon.png">
@@ -466,6 +466,52 @@
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="first-device-app.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    First device app
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="device-app-troubleshooting.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Troubleshooting
+    
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -1351,6 +1397,7 @@ Check the actual CMake version: a distribution's default package may be older
 than 3.31. Install dependencies as a separate, deliberate setup step; the Store
 preflight never installs them for you.</p>
 <h2 id="2-get-reviewed-source">2. Get reviewed source<a class="headerlink" href="#2-get-reviewed-source" title="Permanent link">&para;</a></h2>
+<p><strong>Official foundation:</strong> CardputerZero Template and its pinned LVGL dependency.</p>
 <p>From a working directory of your choice, use new directory names:</p>
 <div class="highlight"><pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/CardputerZero/Template.git<span class="w"> </span>first-counter
 git<span class="w"> </span>-C<span class="w"> </span>first-counter<span class="w"> </span>checkout<span class="w"> </span>--detach<span class="w"> </span>477fa6d217b683e3084c361a757f03dc8ca9f753
@@ -1364,6 +1411,7 @@ repeatable; they are not a claim that newer upstream changes are unnecessary.
 Compare later revisions before adopting them. The LVGL revision is the v9.5.0
 source used for this example. Keep upstream MIT notices and asset licenses.</p>
 <h2 id="3-build-and-open-the-desktop-example">3. Build and open the desktop example<a class="headerlink" href="#3-build-and-open-the-desktop-example" title="Permanent link">&para;</a></h2>
+<p><strong>Official foundation:</strong> Template presets, simulator, built-in counter and normal keyboard routing. The particular walkthrough and evidence below are the guide contribution.</p>
 <p>For an Apple Silicon Mac:</p>
 <div class="highlight"><pre><span></span><code>cmake<span class="w"> </span>--preset<span class="w"> </span>darwin-arm64<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>-DFETCHCONTENT_SOURCE_DIR_LVGL<span class="o">=</span><span class="s2">&quot;</span><span class="nv">$PWD</span><span class="s2">/../first-counter-lvgl&quot;</span>
@@ -1392,6 +1440,7 @@ and <a href="https://github.com/CardputerZero/Template/blob/477fa6d217b683e3084c
 not a guessed keyboard map. Check the specific counter shortcuts: the first
 page's 4–8 actions are not its counter-page controls.</p>
 <h2 id="4-make-one-visible-change">4. Make one visible change<a class="headerlink" href="#4-make-one-visible-change" title="Permanent link">&para;</a></h2>
+<p><strong>Guide exercise:</strong> Change one greeting in the official Template; the model and viewmodel are upstream.</p>
 <p>Close the simulator. In <code>src/model/base_model.cpp</code>, change only the greeting
 returned by <code>BaseModel::greeting()</code> from <code>Hello World</code> to <code>My first counter</code>.
 Then rebuild and launch with the same commands from step 3. The first page should
@@ -1407,6 +1456,7 @@ work, define a maximum count, persistence/reset behavior and recovery from write
 failure. Its increment action is not bounded for indefinite use; do not confuse
 this short exercise with production acceptance testing.</p>
 <h2 id="5-add-a-reset-action">5. Add a reset action<a class="headerlink" href="#5-add-a-reset-action" title="Permanent link">&para;</a></h2>
+<p><strong>Guide contribution:</strong> Add one callback and input slot while keeping Template’s event path and display binding.</p>
 <p>Now change behavior, not just text: pressing <strong>6</strong> on the counter page should
 set the count to zero. On the home page, <strong>6</strong> should still switch themes. The
 official example already routes this key and binds the label to the count, so
@@ -1475,6 +1525,7 @@ that the new key maps to index 2 in the first switch and that index 2 in
 existing subject binding takes care of updating the label.</p>
 <p><a id="5-build-an-arm64-package-without-using-the-device"></a></p>
 <h2 id="6-build-an-arm64-package-without-using-the-device">6. Build an arm64 package without using the device<a class="headerlink" href="#6-build-an-arm64-package-without-using-the-device" title="Permanent link">&para;</a></h2>
+<p><strong>Adapted:</strong> Reuse the Template packaging implementation; the pinned native ARM64 container recipe and package inspection are guide work.</p>
 <p>Continue only if you need the device artifact now. Desktop build success does
 not produce an arm64 binary. Use a <strong>separate Debian 13 arm64 environment</strong>, such
 as an isolated container/VM; do not install build dependencies on your handheld
@@ -1504,7 +1555,7 @@ root <strong>inside that Debian arm64 environment</strong>, not a macOS sysroot 
 compiler setting. The package is written to the Template's <code>dist/</code> directory.
 The command disables the optional system service: this foreground demo needs none.
 These commands explicitly compile reviewed source; they are separate from the
-non-executing <a href="https://github.com/Prophet60191/m5stack-cardputer-zero-app-guide/blob/828bff8fcd4e6770395b375e5db4e37b884cde83/tools/README.md">Store preflight</a>.</p>
+non-executing <a href="https://github.com/Prophet60191/m5stack-cardputer-zero-app-guide/blob/48c9be7fee409e3b2d0042f0eae02733af76388c/tools/README.md">Store preflight</a>.</p>
 <p><a id="6-inspect-before-installing-or-publishing"></a></p>
 <h2 id="7-inspect-before-installing-or-publishing">7. Inspect before installing or publishing<a class="headerlink" href="#7-inspect-before-installing-or-publishing" title="Permanent link">&para;</a></h2>
 <p>Check that the package architecture is arm64, the desktop entry has
@@ -1519,8 +1570,7 @@ Debian identity and <code>app-builder.json</code> coherent unique names. Replace
 maintainer/store data, preserve licenses, check actual runtime dependencies, and
 follow <a href="02-app-anatomy.html">app anatomy</a> and <a href="store-readiness.html">Store readiness</a>.
 The demo's placeholder maintainer is intentionally not a real person's identity.</p>
-<p>Only then plan installation, launch/back behavior, physical keys and upgrade/data
-preservation checks using <a href="06-building-and-packaging.html">chapter 6</a>. A device check
+<p>For the next hands-on step, use the separately named <a href="first-device-app.html">first device app</a> instead of installing this Template artifact. The <a href="06-building-and-packaging.html">packaging chapter</a> covers the general release checks. A device check
 should verify the exact installed artifact; no flashing or radio changes are
 needed for a counter. Store acceptance is a later, separate step.</p>
 <h2 id="verification-and-limits">Verification and limits<a class="headerlink" href="#verification-and-limits" title="Permanent link">&para;</a></h2>
@@ -1539,6 +1589,7 @@ needed for a counter. Store acceptance is a later, separate step.</p>
   manual end-to-end walkthrough, physical keyboard check and
   <a href="first-reader-check.html">independent-reader exercise</a> remain unperformed here.</li>
 </ul>
+<p><strong>Why add this exercise?</strong> The official Template shows a counter and its normal controls. The guide adds one feature so a beginner can follow an input all the way to the model and display without writing a new app framework. The unchanged Home shortcut is part of the test because keys should not change meaning outside the current screen.</p>
 <p>The reset extension was checked separately in a temporary pinned Template copy
 on Apple Silicon. The Debug build succeeded. Synthetic desktop input exercised
 the simulator's normal event handler: opening the counter, going from 0 to 2,

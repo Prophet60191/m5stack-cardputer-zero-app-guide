@@ -395,6 +395,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#follow-the-source-as-you-build" class="md-nav__link">
+    <span class="md-ellipsis">
+      Follow the source as you build
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#keep-an-honest-progress-record" class="md-nav__link">
     <span class="md-ellipsis">
       Keep an honest progress record
@@ -425,6 +434,52 @@
   
   <span class="md-ellipsis">
     First app
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="first-device-app.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    First device app
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="device-app-troubleshooting.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Troubleshooting
     
   </span>
   
@@ -1229,6 +1284,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#follow-the-source-as-you-build" class="md-nav__link">
+    <span class="md-ellipsis">
+      Follow the source as you build
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#keep-an-honest-progress-record" class="md-nav__link">
     <span class="md-ellipsis">
       Keep an honest progress record
@@ -1273,6 +1337,7 @@ for <strong>CardputerZero running Debian</strong>, not the ESP32 Cardputer or Ca
    the viewmodel to the screen before replacing any of the Template's structure.</li>
 <li><strong>Choose only relevant extras.</strong> Use the table below. Read the linked recipe
    when adding that capability; the recipe is not a requirement for every app.</li>
+<li><strong>Try it on a handheld (optional).</strong> The <a href="first-device-app.html">first-device walkthrough</a> gives a separate saved counter its own package identity, then checks physical controls, upgrade and rollback.</li>
 <li><strong>Prepare a real app for release.</strong> Give it its own identity, handle errors,
    preserve attribution, and follow <a href="06-building-and-packaging.html">build/install checks</a>
    and <a href="08-security-and-publishing.html">security/publishing</a>. A successful build
@@ -1333,6 +1398,32 @@ record my chosen appearance and interaction; they are not official requirements.
 app needs. Record the reason for a departure before treating it as a reusable
 improvement. <a href="components.html">The component comparison</a> and
 <a href="library-principles.html">library principles</a> explain this distinction.</p>
+<h2 id="follow-the-source-as-you-build">Follow the source as you build<a class="headerlink" href="#follow-the-source-as-you-build" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Label</th>
+<th>What it means</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Official</td>
+<td>M5Stack/CardputerZero source or instructions. Where a build is reproduced, follow the linked revision rather than assuming the latest code is the same.</td>
+</tr>
+<tr>
+<td>Adapted</td>
+<td>A named upstream or project pattern reused with changes. The guide names the source and the difference.</td>
+</tr>
+<tr>
+<td>Guide contribution</td>
+<td>A walkthrough, patch, test, component, or verification result maintained with this guide, not an official release or endorsement.</td>
+</tr>
+</tbody>
+</table>
+<p>The walkthroughs label these handoffs at the steps where they happen. Keep the
+original notices with code and assets you reuse. A physical check in one app
+does not certify another app, device or image.</p>
 <h2 id="keep-an-honest-progress-record">Keep an honest progress record<a class="headerlink" href="#keep-an-honest-progress-record" title="Permanent link">&para;</a></h2>
 <p>Use separate milestones: source builds; desktop behavior checked; arm64 package
 built and inspected; installed app checked; physical input/peripherals checked;
