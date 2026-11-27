@@ -96,7 +96,7 @@ may remain. See docs/ui-preferences.md. This is personal presentation guidance,
 not a replacement for official status sources or a cross-app migration.
 
 
-## GPS supplement and current Store review — 2026-11-23
+## Historical GPS supplement and Store review — 2026-11-23
 
 The expanded docs/projects/gps-and-maps.md is the dedicated GPS recipe. Read
 its pinned official-source/evidence review before reuse: official GPS already
@@ -110,6 +110,8 @@ hashes are unchanged. Catalog MESH is occupied by meshtandem. Exact Mesh 0.1.18
 preflight is blocked by that code, not a new runtime defect. The app's dated
 submission report owns dependency/fresh-image/demo/source-release next steps.
 No app/device change, new library, authentication, upload, PR or submission.
+The later Mesh readiness record owns resolved code/dependency work; do not treat
+this earlier MESH collision as a current blocker or duplicate app status here.
 
 Current standalone system-key recipe: docs/keyboard-system-actions.md and
 contributions/template-system-keys. The decoder remains a focused adaptation;

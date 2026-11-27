@@ -510,3 +510,36 @@ matrix remain explicit qualification work; GitHub CI checks the exact pushed sou
   rebuilt and changed/reflowed pages inspected. The public GitHub cover link is
   preserved. The Mesh operational manual remains 42 pages plus a one-page
   reference; update its current Drive/Desktop and draft copies separately.
+
+
+## 2026-11-27 — Tick & Bell 0.1.6 case study
+
+- Replace the three alarm captures (midnight default, date selector, sound
+  picker) with six read from the handheld's screen: timers, typed duration,
+  timer finished, alarms, typed time and alarm ringing.
+- Describe the 0.1.6 flow: time-led lists, Space and Del on a list row, one
+  typed field for durations and times, a single When choice, Snooze first on a
+  ringing alarm, and the 12/24-hour setting.
+- Note in the upgrade walkthrough that 0.1.6 switches an alarm off from the
+  list, where earlier versions had an Enabled row.
+- Evidence limit: keys were injected through the keyboard's input device by a
+  script. No physical key presses or speaker output were checked. The reading
+  PDF and the published site are not rebuilt by this change.
+
+## 2026-11-27 — Repository documentation organization
+
+- Remove a duplicated beginner reading paragraph and add a concise map of chapter,
+  example, contribution, submission and generated-output ownership.
+- Label the earlier MESH collision review as historical; the app's readiness
+  record owns later resolution. Preserve existing Tick & Bell case-study edits,
+  screenshots and the current source/published-guide distinction.
+- Existing documentation/policy-pin checks pass (2 tests), as do local workspace
+  targets/headings. No app-source change, site/PDF regeneration, push or submission.
+
+## 2026-11-27 — Authorized source synchronization
+
+- Owner authorized committing completed work and updating the existing GitHub
+  repositories after other app sessions stopped. Private snapshots retain their
+  reviewed export boundary; no device operation or new binary release is implied.
+- Full guide/preflight suite passes all 23 tests in offline Debian using the
+  exact pinned catalog; the older local catalog was not changed.

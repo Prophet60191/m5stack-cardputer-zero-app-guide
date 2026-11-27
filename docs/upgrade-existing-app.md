@@ -44,7 +44,9 @@ For this example, expect only Tick & Bell to be upgraded. Stop if the plan
 removes something, downgrades a package, or pulls in an unexpected dependency.
 
 Open **Tick & Bell → Alarms**, create an alarm named **Example alarm** at
-**7:30 AM**, and save it with **Enabled** set to **Off**. A disabled alarm is
+**7:30 AM**, and save it with **Enabled** set to **Off**. From 0.1.6 the form
+has no Enabled row: save the alarm, then press Space on it in the list so its
+row reads **Off**. A disabled alarm is
 enough to test data preservation. Note the label, time and off state. If this is
 a device you rely on, wait until there are no active timers, ringing or snoozed
 alarms, or alarms due during the maintenance window. Closing the app does not

@@ -53,8 +53,6 @@ with real state to preserve, follow the [Tick & Bell upgrade walkthrough](docs/u
 If a build runs on your desktop but not on the device, start with
 [symptom-first troubleshooting](docs/device-app-troubleshooting.md).
 
-Ready to use a handheld? The optional [first device app](docs/first-device-app.md) walks through installing, updating and removing a two-page saved counter. If a build runs on your desktop but not on the device, start with [the symptom-first troubleshooting page](docs/device-app-troubleshooting.md).
-
 Returning with a specific task? Use the [project selector](docs/projects/README.md).
 Use the chapters below as a reference. Library decisions and historical Mesh
 lessons are separate resources further down this page.
@@ -175,3 +173,14 @@ upstream attribution and each component's actual terms when reusing code.
 
 Meshtastic is a trademark of Meshtastic LLC; M5Stack and Cardputer are trademarks
 of their owners. This is an independent community guide, not an official SDK.
+
+## Maintaining this repository
+
+The root README owns reader navigation. docs/ contains maintained chapters,
+recipes, preferences and dated case studies; examples/ contains teaching code;
+contributions/ contains focused upstream proposals; submissions/ contains pinned
+review reports. [AGENTS](AGENTS.md) governs changes and [CHANGELOG](CHANGELOG.md)
+records sessions. [Website maintenance](website/README.md) explains publication;
+[tool instructions](tools/README.md) describe offline Store preflight. Generated
+build/PDF/site output is not a second maintained copy of the guide. Local edits
+are not published until the appropriate source/release workflow completes.
