@@ -13,6 +13,7 @@ class DocumentationTests(unittest.TestCase):
     def test_local_markdown_links_and_anchors(self):
         for doc in [ROOT / "README.md", ROOT / "CHANGELOG.md", ROOT / "AGENTS.md",
                     *sorted((ROOT / "docs").rglob("*.md")),
+                    *sorted((ROOT / "examples").rglob("*.md")),
                     *sorted((ROOT / "contributions").rglob("*.md")),
                     *sorted((ROOT / "submissions").rglob("*.md")), ROOT / "tools/README.md"]:
             text = doc.read_text(encoding="utf-8")

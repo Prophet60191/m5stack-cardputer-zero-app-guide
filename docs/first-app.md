@@ -30,6 +30,8 @@ preflight never installs them for you.
 
 ## 2. Get reviewed source
 
+**Official foundation:** CardputerZero Template and its pinned LVGL dependency.
+
 From a working directory of your choice, use new directory names:
 
 ```bash
@@ -47,6 +49,8 @@ Compare later revisions before adopting them. The LVGL revision is the v9.5.0
 source used for this example. Keep upstream MIT notices and asset licenses.
 
 ## 3. Build and open the desktop example
+
+**Official foundation:** Template presets, simulator, built-in counter and normal keyboard routing. The particular walkthrough and evidence below are the guide contribution.
 
 For an Apple Silicon Mac:
 
@@ -83,6 +87,8 @@ page's 4–8 actions are not its counter-page controls.
 
 ## 4. Make one visible change
 
+**Guide exercise:** Change one greeting in the official Template; the model and viewmodel are upstream.
+
 Close the simulator. In `src/model/base_model.cpp`, change only the greeting
 returned by `BaseModel::greeting()` from `Hello World` to `My first counter`.
 Then rebuild and launch with the same commands from step 3. The first page should
@@ -101,6 +107,8 @@ failure. Its increment action is not bounded for indefinite use; do not confuse
 this short exercise with production acceptance testing.
 
 ## 5. Add a reset action
+
+**Guide contribution:** Add one callback and input slot while keeping Template’s event path and display binding.
 
 Now change behavior, not just text: pressing **6** on the counter page should
 set the count to zero. On the home page, **6** should still switch themes. The
@@ -173,6 +181,8 @@ existing subject binding takes care of updating the label.
 
 ## 6. Build an arm64 package without using the device
 
+**Adapted:** Reuse the Template packaging implementation; the pinned native ARM64 container recipe and package inspection are guide work.
+
 Continue only if you need the device artifact now. Desktop build success does
 not produce an arm64 binary. Use a **separate Debian 13 arm64 environment**, such
 as an isolated container/VM; do not install build dependencies on your handheld
@@ -226,8 +236,7 @@ maintainer/store data, preserve licenses, check actual runtime dependencies, and
 follow [app anatomy](02-app-anatomy.md) and [Store readiness](store-readiness.md).
 The demo's placeholder maintainer is intentionally not a real person's identity.
 
-Only then plan installation, launch/back behavior, physical keys and upgrade/data
-preservation checks using [chapter 6](06-building-and-packaging.md). A device check
+For the next hands-on step, use the separately named [first device app](first-device-app.md) instead of installing this Template artifact. The [packaging chapter](06-building-and-packaging.md) covers the general release checks. A device check
 should verify the exact installed artifact; no flashing or radio changes are
 needed for a counter. Store acceptance is a later, separate step.
 
@@ -247,6 +256,8 @@ Maintainer check on **2026-11-22**, using the pinned sources above:
 - A fresh dependency installation/container-image build, Linux desktop run,
   manual end-to-end walkthrough, physical keyboard check and
   [independent-reader exercise](first-reader-check.md) remain unperformed here.
+
+**Why add this exercise?** The official Template shows a counter and its normal controls. The guide adds one feature so a beginner can follow an input all the way to the model and display without writing a new app framework. The unchanged Home shortcut is part of the test because keys should not change meaning outside the current screen.
 
 The reset extension was checked separately in a temporary pinned Template copy
 on Apple Silicon. The Debug build succeeded. Synthetic desktop input exercised

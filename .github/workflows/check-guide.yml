@@ -15,6 +15,10 @@ jobs:
           ref: b6c559a0448aae7715c4b45678a0b89c9eceb12b
           path: build/store-packages
           persist-credentials: false
+      - name: Test standalone system-key adapter
+        run: |
+          c++ -std=c++17 -pthread contributions/template-system-keys/system_keys.cpp contributions/template-system-keys/upstream/*.cpp contributions/template-system-keys/tests.cpp -ldl -o /tmp/cp0-system-key-tests
+          /tmp/cp0-system-key-tests
       - name: Test documentation and non-publishing checks
         env:
           CZ_STORE_PACKAGES: ${{ github.workspace }}/build/store-packages

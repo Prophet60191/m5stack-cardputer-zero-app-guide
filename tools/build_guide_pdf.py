@@ -29,10 +29,10 @@ INK, ACCENT, MUTED = map(colors.HexColor, ['#192b40', '#8b2447', '#536174'])
 REPO = 'https://github.com/Prophet60191/m5stack-cardputer-zero-app-guide'
 WIDTH = 516
 GROUPS = [
-    ('Getting started', ['README.md', 'docs/start-here.md', 'docs/first-app.md', 'docs/first-reader-check.md']),
-    ('Common foundation', ['docs/'+x for x in ['01-platform.md','02-app-anatomy.md','03-architecture.md','04-ui-and-polish.md','05-keyboard.md','06-building-and-packaging.md','08-security-and-publishing.md']]),
+    ('Getting started', ['README.md', 'docs/start-here.md', 'docs/first-app.md', 'docs/first-device-app.md', 'docs/device-app-troubleshooting.md', 'examples/counter-demo/README.md', 'examples/counter-demo/verification.md', 'docs/first-reader-check.md']),
+    ('Common foundation', ['docs/'+x for x in ['01-platform.md','02-app-anatomy.md','03-architecture.md','04-ui-and-polish.md','05-keyboard.md','keyboard-system-actions.md','06-building-and-packaging.md','08-security-and-publishing.md']]),
     ('Project recipes', ['docs/projects/'+x for x in ['README.md','local-utilities.md','messaging.md','gps-and-maps.md','camera-and-qr.md','hardware.md','networking.md','audio-and-media.md']] + ['docs/07-radio-bring-up.md']),
-    ('Components and personal library', ['docs/'+x for x in ['components.md','library-principles.md','library-inventory.md','official-input-evaluation.md','official-ui-evaluation.md','ui-preferences.md']]),
+    ('Components and personal library', ['docs/'+x for x in ['components.md','library-principles.md','library-inventory.md','official-input-evaluation.md','official-ui-evaluation.md','ui-preferences.md']] + ['examples/ui-patterns/carousel-position/README.md']),
     ('Release references and preserved learning', ['docs/store-readiness.md','tools/README.md','docs/lesson-index.md','docs/case-studies/mesh.md','contributions/template-keyboard/README.md','contributions/template-keyboard/VALIDATION.md']),
 ]
 PATHS = [(ROOT/p).resolve() for _, paths in GROUPS for p in paths]

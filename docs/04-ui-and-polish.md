@@ -1,5 +1,13 @@
 # 4. UI and polish
 
+**Official foundation:** input routing and LVGL remain in the Template. **Deliberate UI choices:** horizontal movement belongs to the carousel or a value; vertical movement belongs to lists. The home dots show position without borrowing focus, and a text-only battery value keeps the status bar readable. These are design choices for my apps, not vendor compatibility rules.
+
+For home carousels, use the [position indicator component](../examples/ui-patterns/carousel-position/README.md) below the menu label. Tick & Bell follows NFC Tools’ placement: the title starts at y=82 and the dots at y=138 on the 320×170 screen. Keep that breathing room even without a subtitle. Lists are vertical: use Up/Down for selection, not Left/Right. A numeric battery percentage can sit flush right in the top bar without a glyph.
+
+![Tick & Bell simulator showing the spacing between the Alarms label and its carousel dots](images/tick-bell-carousel-position.png)
+
+*Tick & Bell in the desktop simulator. The wider center dot marks the selected menu.*
+
 Make every screen predictable, readable and usable from the keyboard. Apply the
 patterns relevant to the chosen UI stack and app behavior.
 

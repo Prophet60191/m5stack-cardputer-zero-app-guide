@@ -30,13 +30,26 @@ Reference: `m5stack-cardputer-zero-mesh-app`, commit
   other components is still open; do not silently substitute the comparison's
   palette for this exact reference.
 - Preserve the reference home geometry: 320×170, 30 px title region and content
-  below it. The home implementation has no added bottom function-key lane;
+  below it. The position indicator in the next section is the agreed addition. The home implementation has no added bottom function-key lane;
   do not import the illustrative preview's footer as an approved preference.
 
 App-specific destinations, labels and appropriate icon glyphs can represent the
 new app's own functions. That is content substitution, not permission to
 redesign the carousel. Preserve attribution and the selected official foundation's
 lifecycle/focus ownership when later implementing reuse.
+
+## Locked: home-carousel position indicator
+
+Agreed 2026-11-26. Keep the Mesh home carousel geometry and directional
+animation, and add the NFC Tools position bar below the home label. Center
+the row, use NFC Tools’ vertical spacing (menu title top y=82, dot row y=138 on 320×170), and use a wider accent pill for the current slot and small muted dots
+for the others, and update it with the carousel selection, including wrap.
+Do not animate or add a footer for the indicator. This is distinct from the
+right-edge overflow bar used on a submenu list. The [reusable LVGL component](../examples/ui-patterns/carousel-position/README.md)
+and its source notes live with the guide.
+
+Keep the top-bar battery percentage plain text and right-aligned when available.
+No battery glyph and no fabricated percentage if the device does not report one.
 
 ## Locked: submenu-list selection and navigation cues
 
@@ -56,6 +69,7 @@ Additional rules supplied by the owner on 2026-11-18:
   with a moving position marker, so the user can see that more content exists.
   Keep it available as navigation reveals items above/below; omit it when all
   content fits. Reserve space so it does not obscure labels or chevrons.
+- Use Up and Down for vertical selection (Fn+F/Fn+X on Cardputer Zero; bare F/X may be contextual aliases outside editors). Left and Right move the home carousel or adjust a focused value, never select a vertical row.
 - Use wrap-around list navigation: Down from the last selectable entry moves
   to the first; Up from the first moves to the last. Scroll the visible list
   to keep the new selection in view, including after wrapping. Moving selection

@@ -118,3 +118,7 @@ in the initial general package.
   [library principles](library-principles.md). No upstream submission is implied.
 
 [Guide index](../README.md) · [Official component decisions](components.md)
+
+## Reusable carousel indicator
+
+The [carousel position component](../examples/ui-patterns/carousel-position/README.md) is independent of the app and its keyboard; Tick & Bell is its first integration. NFC Tools is the visual source, not a consumer of this extracted header yet. Other apps stay unchanged until migrated and verified.

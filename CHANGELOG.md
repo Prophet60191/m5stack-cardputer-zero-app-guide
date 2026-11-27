@@ -1,5 +1,24 @@
 # Changelog
 
+## 2026-11-27 — System-key integration lesson
+
+- Reuse pinned official mixer/Pulse source for standalone Template system actions; retain the shared runtime path for apps already using it.
+- Add integration recipe, all-key audit boundaries and worker/repeat/focus tests. Scope is our four apps; Quartermaster is excluded.
+
+## 2026-11-26 — Carousel position indicator
+
+- Add a reusable home-carousel position row based on NFC Tools, with the same vertical title and dot positions.
+- Record Up/Down list selection and a right-aligned, text-only battery percentage.
+
+## 2026-11-26 — Guide Counter device exercise
+
+- Add an optional two-screen, separately named counter based on the official
+  Template, with a reproducible patch and two installable teaching versions.
+- Walk through device installation, first launch, persistent count, upgrade,
+  rollback and removal, and add symptom-first device troubleshooting.
+- Record desktop event-path and Debian arm64 package checks separately from
+  physical-device and independent-reader checks.
+
 ## 2026-11-26 — First counter walkthrough
 
 - Put an annotated desktop counter screenshot next to the README quickstart.

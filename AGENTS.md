@@ -1,7 +1,9 @@
 # Cardputer Zero app-development guide
 
 This repository contains the public guide and its non-publishing validation tool,
-not a device application. Read the
+not a production device application. The Guide Counter teaching patch in
+examples/counter-demo is a self-contained exception to keep the device exercise
+reproducible; it is not a shared library, product release, or Store submission. Read the
 README and CHANGELOG before editing. Keep claims tied to implementation and
 verification evidence; distinguish simulator, container and device checks.
 
@@ -109,3 +111,7 @@ hashes are unchanged. Catalog MESH is occupied by meshtandem. Exact Mesh 0.1.18
 preflight is blocked by that code, not a new runtime defect. The app's dated
 submission report owns dependency/fresh-image/demo/source-release next steps.
 No app/device change, new library, authentication, upload, PR or submission.
+
+Current standalone system-key recipe: docs/keyboard-system-actions.md and
+contributions/template-system-keys. The decoder remains a focused adaptation;
+shared-runtime apps reuse official global handling. Do not add duplicate handlers.

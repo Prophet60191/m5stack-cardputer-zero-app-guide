@@ -202,3 +202,10 @@ current owner's hold. Use the same cleanup contract for native and simulator
 adapters. Test two devices using the same key, owned deletion, loss/disconnect and
 simulated time passing after cleanup. Mesh's current component uses 128 raw read
 attempts per device poll; that is a scoped fairness bound, not a global timing guarantee.
+
+## System actions are an integration responsibility
+
+A correct symbol/Fn decoder is only one part of keyboard support. For standalone
+Template apps, connect recognized volume, mute and brightness actions to the
+normal-user OS backend and visible results. Shared-runtime apps should reuse
+the official global handlers. See [the current audit and integration recipe](keyboard-system-actions.md).

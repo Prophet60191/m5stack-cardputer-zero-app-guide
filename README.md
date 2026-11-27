@@ -37,6 +37,8 @@ action. Simulator capture: [official Template, M5Stack CardputerZero Community
 (MIT)](https://github.com/CardputerZero/Template/blob/477fa6d217b683e3084c361a757f03dc8ca9f753/LICENSE);
 annotations added.*
 
+Ready to use a handheld? The optional [first device app](docs/first-device-app.md) walks through installing, updating and removing a two-page saved counter. If a build runs on your desktop but not on the device, start with [the symptom-first troubleshooting page](docs/device-app-troubleshooting.md).
+
 Returning with a specific task? Use the [project selector](docs/projects/README.md).
 Use the chapters below as a reference. Library decisions and historical Mesh
 lessons are separate resources further down this page.
@@ -81,6 +83,8 @@ not an accepted upstream release or a new general framework.
 The [UI preference record](docs/ui-preferences.md) tracks my design decisions:
 the exact Mesh home carousel and Mesh list-selection base are confirmed;
 submenu chevrons and overflow indicators are specified. Other components remain open.
+
+The [carousel position indicator](examples/ui-patterns/carousel-position/README.md) is the first small LVGL component for the shared home-menu pattern.
 
 My [library principles](docs/library-principles.md) record the preferences and
 design choices I want to reuse across my apps, including appearance,

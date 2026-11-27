@@ -76,6 +76,8 @@ The resulting package installs the layout from [how an app lives on the device](
 
 ### Install on the device
 
+For a worked first install, update, and rollback, use the [Guide Counter walkthrough](first-device-app.md). If it does not appear or open, see [device troubleshooting](device-app-troubleshooting.md).
+
 ```bash
 REMOTE_USER=<user> REMOTE_HOST=<device-ip> ./deploy.sh      # copies the .deb over SSH
 # then, on the device:
