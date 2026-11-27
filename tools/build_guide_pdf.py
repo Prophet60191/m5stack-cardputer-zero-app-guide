@@ -125,11 +125,20 @@ class Renderer:
         while ts[i].type!='table_close':
             t=ts[i]
             if t.type=='tr_open': row=[]
-            elif t.type=='inline': row.append(Paragraph(self.inline(t.children,path) or ' ',self.cell))
+            elif t.type=='inline': row.append(t.children or [])
             elif t.type=='tr_close': rows.append(row)
             i+=1
         n=len(rows[0])
         fractions={2:[.32,.68],3:[.25,.29,.46],4:[.14,.29,.34,.23]}.get(n,[1/n]*n)
+        for row in rows:
+            for column, children in enumerate(row):
+                if len(children)==1 and children[0].type=='image':
+                    image_path=(path.parent/unquote(children[0].attrGet('src'))).resolve()
+                    if not image_path.is_relative_to(IMAGE_DIR) or image_path.suffix.lower()!='.png':
+                        raise ValueError('Illustrations must be local PNG assets under docs/images')
+                    row[column]=Image(str(image_path),width=WIDTH*fractions[column]-12,height=180,kind='proportional')
+                else:
+                    row[column]=Paragraph(self.inline(children,path) or ' ',self.cell)
         table=LongTable(rows,colWidths=[WIDTH*x for x in fractions],repeatRows=1,splitByRow=1,splitInRow=1,hAlign='LEFT',spaceAfter=11)
         table.setStyle(TableStyle([('BACKGROUND',(0,0),(-1,0),colors.HexColor('#e8edf3')),('ROWBACKGROUNDS',(0,1),(-1,-1),[colors.white,colors.HexColor('#f6f7f9')]),('VALIGN',(0,0),(-1,-1),'TOP'),('LEFTPADDING',(0,0),(-1,-1),6),('RIGHTPADDING',(0,0),(-1,-1),6),('TOPPADDING',(0,0),(-1,-1),6),('BOTTOMPADDING',(0,0),(-1,-1),6),('LINEBELOW',(0,0),(-1,0),.6,ACCENT)]))
         return table,i
