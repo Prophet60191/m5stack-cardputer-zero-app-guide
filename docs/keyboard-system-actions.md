@@ -2,7 +2,7 @@
 
 ## Scope and decision
 
-This work covers Mesh, Wireless Surveyor, NFC Tools and App Shell only.
+This work covers Mesh, Wireless Surveyor, NFC Tools, App Shell and Tick & Bell only.
 Quartermaster and other third-party applications are excluded and unchanged.
 These apps use standalone Template-derived LVGL input. Keep that architecture;
 do not decode events a second time in an app using the official shared runtime.
@@ -67,3 +67,19 @@ keyboard audit. Existing saved app data and settings must be preserved.
 
 See [the standalone adapter](../contributions/template-system-keys/README.md).
 Keep it out of shared-runtime apps that already provide global system actions.
+
+## Installed integration result
+
+Mesh 0.1.23, Surveyor 0.2.2, NFC Tools 0.10.4, App Shell 0.1.1 and Tick & Bell 0.1.5 passed
+normal-user installed-UI raw evdev volume/mute/brightness checks with actual
+OS readback and visible feedback. Exact original mixer/backlight settings were
+restored and existing saved files/database rows preserved. All three media
+methods reached a synthetic MPRIS player; absent and ambiguous players were
+reported without changing another app. Physical Fn/Sym presses are not claimed.
+Tick & Bell's older standalone decoder/editor path also needed adaptation;
+its dedicated editor and numeric-field tests preserve cursor/Help ownership.
+
+All five also passed ordinary-user on-device 32-symbol/reader/editor fixture
+replay. Tick & Bell retained its saved alarm state, configuration and scheduler
+PID. Its desktop and arm64 suites each pass 5/5. These source changes reuse
+official foundation work and do not modify device firmware or third-party apps.

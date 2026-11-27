@@ -56,6 +56,7 @@ nav:
       - Architecture choices: docs/03-architecture.md
       - UI and polish: docs/04-ui-and-polish.md
       - Keyboard: docs/05-keyboard.md
+      - System keys: docs/keyboard-system-actions.md
       - Build and package: docs/06-building-and-packaging.md
       - LoRa bring-up: docs/07-radio-bring-up.md
       - Security and publishing: docs/08-security-and-publishing.md
