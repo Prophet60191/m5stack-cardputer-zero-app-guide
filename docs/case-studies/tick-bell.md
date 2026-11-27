@@ -34,6 +34,13 @@ its form. A ringing alarm offers Snooze first, so a stray Enter cannot cancel
 a wake-up. Settings chooses a 12-hour or 24-hour clock for the header and
 every alarm time.
 
+Version 0.1.7 keeps these flows and makes the printed F/X/Z/C arrows work
+without Fn in duration, time, date and snooze fields. Those fields are numeric
+controls; only the label editor treats those keys as letters and requires Fn
+for cursor movement. The regression now drives every page through the real
+decoder with both the printed-arrow and Fn-layer codes. This caught a gap in
+the earlier scripted check, which had used only the Fn-layer arrows.
+
 These six captures were read from the handheld's own 320×170 screen while
 version 0.1.6 ran against its scheduler; the timer and alarm shown did ring.
 Keys were sent through the keyboard's input device by a script, not pressed

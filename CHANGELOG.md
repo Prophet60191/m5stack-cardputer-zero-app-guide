@@ -543,3 +543,7 @@ matrix remain explicit qualification work; GitHub CI checks the exact pushed sou
   reviewed export boundary; no device operation or new binary release is implied.
 - Full guide/preflight suite passes all 23 tests in offline Debian using the
   exact pinned catalog; the older local catalog was not changed.
+
+- Record Tick & Bell 0.1.7's printed-arrow correction and the regression's raw-code
+  coverage while retaining the screenshots' actual 0.1.6 provenance. No new
+  physical-key, sound or screenshot qualification is claimed.
