@@ -1,9 +1,43 @@
 # Changelog
 
-## 2026-11-27 — System-key integration lesson
+## 2026-11-27 — Standalone system keys
 
-- Reuse pinned official mixer/Pulse source for standalone Template system actions; retain the shared runtime path for apps already using it.
-- Add integration recipe, all-key audit boundaries and worker/repeat/focus tests. Scope is our four apps; Quartermaster is excluded.
+- Reuse pinned official mixer/Pulse sources for normal-user standalone system actions; shared-runtime apps retain their official handlers.
+- Add integration recipe, source-hash checks and repeat/worker/input tests. Quartermaster is excluded.
+
+## 2026-11-26 — Diagnose missing device libraries
+
+- Add a hardware-verified check for an app that is installed but cannot load a required shared library.
+
+## 2026-11-26 — Public App Shell
+
+- Link the public starter source from the guide homepage and App Shell chapter.
+
+## 2026-11-26 — Worked upgrade and rollback
+
+- Add a Tick & Bell walkthrough for preserving a saved alarm, verifying the running scheduler, and rolling back.
+- Rehearse both package transitions and backup recovery in disposable Debian arm64.
+
+## 2026-11-26 — First-app showcase and shell scope
+
+- Connect the guide, working Tick & Bell example and reusable App Shell.
+- Define a fresh-checkout path from a first screen edit to an installable package.
+
+## 2026-11-26 — App Shell simulator workflow
+
+- Document which edits update in place, which need a deliberate reopen, and how to start fresh.
+- Add the macOS-verified walkthrough for preserving an active field, unsaved text and cursor.
+
+## 2026-11-26 — Complete reusable NFC Tools-style home menu
+
+- Standardize the home header, typography, icon lanes, dots and keyboard footer; show real battery percentage at right.
+- Document the carousel explicitly as a personal preference and teaching example.
+
+## 2026-11-26 — Tick & Bell and online publishing
+
+- Add Tick & Bell source links and current simulator screenshots.
+- Add reusable NFC-style home-menu geometry and icon sizes.
+- Rebuild the online guide from the repository on pushes to main.
 
 ## 2026-11-26 — Carousel position indicator
 

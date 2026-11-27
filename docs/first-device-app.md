@@ -107,6 +107,9 @@ shows **3**. Add one, close, reopen, and check **4**. The version check and the
 saved-count check answer two different questions: whether you are running the
 new app, and whether it kept your data.
 
+For a worked upgrade of an app with a background writer, see
+[Update an existing app without losing its data](upgrade-existing-app.md).
+
 ## 4. Roll back the app, then remove it
 
 Exit the demo. Back up its current count separately using the step 3 command if you want to keep it.

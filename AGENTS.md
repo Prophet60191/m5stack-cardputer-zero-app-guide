@@ -29,12 +29,11 @@ needed. Defer a standalone keyboard library pending integration-profile work.
 Do not apply the raw decoder on top of already decoded shared-runtime events.
 For UI, read docs/official-ui-evaluation.md: reuse the selected official shell
 and adapt presentation. Preserve lifecycle, focus/input, resource ownership and
-backend authority. Discuss any preference that also changes behavior; no new
-shell framework, app migration or visual-default selection has been implemented.
-Read docs/ui-preferences.md before UI reuse: the owner has locked Mesh's exact
-home-carousel appearance and feel, pinned with supporting hashes. Comparison
-mockups are illustrative, not the reference. Other UI preferences remain open;
-recording a preference does not implement or authorize app-wide restyling.
+backend authority. Discuss any preference that also changes behavior. The full
+NFC Tools-style home menu is the reference for the author's apps, not an
+official platform rule. Read docs/ui-preferences.md before reusing it. Reuse
+its shared header rather than recopying coordinates; verify actual fonts,
+geometry, keyboard hints and battery behavior before marking an app migrated.
 Mesh submenu-list selection styling is confirmed, with a chevron on highlighted
 submenu entries and an NFC-style right-side position bar when content overflows.
 See the preference record for conditions and source/render evidence; do not copy

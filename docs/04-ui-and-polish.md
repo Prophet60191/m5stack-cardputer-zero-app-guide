@@ -2,11 +2,19 @@
 
 **Official foundation:** input routing and LVGL remain in the Template. **Deliberate UI choices:** horizontal movement belongs to the carousel or a value; vertical movement belongs to lists. The home dots show position without borrowing focus, and a text-only battery value keeps the status bar readable. These are design choices for my apps, not vendor compatibility rules.
 
-For home carousels, use the [position indicator component](../examples/ui-patterns/carousel-position/README.md) below the menu label. Tick & Bell follows NFC Tools’ placement: the title starts at y=82 and the dots at y=138 on the 320×170 screen. Keep that breathing room even without a subtitle. Lists are vertical: use Up/Down for selection, not Left/Right. A numeric battery percentage can sit flush right in the top bar without a glyph.
+A carousel is a matter of preference. I like the NFC Tools design, so I
+use it in my apps and demonstrate it here. M5Stack does not require it. Use a
+direct list or another menu when that suits the task better.
+
+The [shared home menu](../examples/ui-patterns/carousel-position/README.md)
+follows the full NFC Tools composition: a short header with a plain battery
+percentage, centered icon/title/subtitle, shaded neighboring icons, dots,
+and a footer with actual shortcuts. In lists, Up/Down selects rows;
+horizontal keys belong to the carousel or changing an editable value.
 
 ![Tick & Bell simulator showing the spacing between the Alarms label and its carousel dots](images/tick-bell-carousel-position.png)
 
-*Tick & Bell in the desktop simulator. The wider center dot marks the selected menu.*
+*Tick & Bell in the desktop simulator. The wider center dot marks the selected menu.* See the [Tick & Bell case study](case-studies/tick-bell.md) for the alarm form and sound picker.
 
 Make every screen predictable, readable and usable from the keyboard. Apply the
 patterns relevant to the chosen UI stack and app behavior.

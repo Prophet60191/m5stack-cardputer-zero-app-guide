@@ -4,6 +4,15 @@ You do not need to read the entire guide before building. Start with a small
 working screen, then add the facilities your idea actually needs. This route is
 for **CardputerZero running Debian**, not the ESP32 Cardputer or Cardputer ADV.
 
+## Choose a starting point
+
+- **Build your own app:** Use the [App Shell](app-shell.md) for a menu, lists,
+  a small form, and a detail page you can adapt.
+- **See a completed example:** [Tick & Bell](case-studies/tick-bell.md) shows
+  how the patterns serve a real timer and alarm.
+- **Try one small exercise:** Use the counter route below to learn the build
+  and input basics without adopting the shell.
+
 ## The short route
 
 1. **Define one useful task.** Write down what the user can do, what data survives
@@ -38,7 +47,8 @@ is there when the next design question arises.
 | GPS, camera, NFC, LoRa or another peripheral | [Project selector](projects/README.md); use the specific peripheral recipe |
 | Playback or recording | [Audio/media](projects/audio-and-media.md) |
 | Slow work or more than one resource owner | [Architecture choices](03-architecture.md); a separate service is one option |
-| A Debian installer, upgrade or Store listing | [Packaging](06-building-and-packaging.md); [Store readiness](store-readiness.md) |
+| An installed app with an icon that won’t open | [Check for a missing device library](device-app-troubleshooting.md#if-the-executable-is-there-check-what-linux-can-load) |
+| A Debian installer, upgrade or Store listing | [Packaging](06-building-and-packaging.md); [worked upgrade and rollback](upgrade-existing-app.md); [Store readiness](store-readiness.md) |
 
 ## Understand the labels
 

@@ -28,6 +28,11 @@ supervisor as the app requires (see [architecture](03-architecture.md)). A singl
 foreground process can use supported OS services without a new daemon. Use fake
 source adapters for the simulator and test the real source contract separately.
 
+If you start from the reusable App Shell, follow its
+[watch-mode workflow](app-shell.md#preview-changes-as-you-work) for in-place
+layout changes and recovery when reopening. Those tools are included in the
+shell; they are not part of the stock Template commands below.
+
 ### Desktop build (example: macOS Apple Silicon)
 
 ```bash
@@ -76,7 +81,7 @@ The resulting package installs the layout from [how an app lives on the device](
 
 ### Install on the device
 
-For a worked first install, update, and rollback, use the [Guide Counter walkthrough](first-device-app.md). If it does not appear or open, see [device troubleshooting](device-app-troubleshooting.md).
+For a worked first install, update, and rollback, use the [Guide Counter walkthrough](first-device-app.md). If the icon is missing, check [the launcher entry](device-app-troubleshooting.md#no-app-icon-in-applaunch). If the icon is present but the app won’t open, [check its runtime libraries](device-app-troubleshooting.md#if-the-executable-is-there-check-what-linux-can-load).
 
 ```bash
 REMOTE_USER=<user> REMOTE_HOST=<device-ip> ./deploy.sh      # copies the .deb over SSH
@@ -185,6 +190,10 @@ Replace template authors, summaries, Maintainer and source URLs before release.
 Policy references, reviewed 2026-11-16: [official schema](https://github.com/CardputerZero/AppBuilder/blob/18996b694ae305306fc5d457d982cfba0b0e7cc5/docs/APP_BUILDER_JSON.md),
 [metadata validator](https://github.com/CardputerZero/packages/blob/3ed6a232372bdc769826d93aba03fb9b6bbd9589/.github/scripts/store_meta_policy.py).
 The [preflight lock](../tools/store-policy.lock.json) records exact revisions/hashes.
+
+For an update to an already-installed app, use the
+[worked Tick & Bell upgrade and rollback](upgrade-existing-app.md) to check
+that the running build and the user's saved data both match expectations.
 
 ## Package layout and installer acceptance
 

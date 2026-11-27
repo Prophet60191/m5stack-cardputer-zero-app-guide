@@ -47,6 +47,44 @@ mismatch, not a broken sensor. [Camera v1.0.4](https://github.com/CardputerZero/
 documents its move to libcamera 0.8. That was a Camera fix, not a dependency of
 this counter. Don't symlink incompatible libraries to silence the message.
 
+### If the executable is there, check what Linux can load
+
+M5Stack’s [launcher documentation](https://github.com/CardputerZero/launcher/blob/d59f15918c473bc61de13b4960d69ce0e7514899/README.md) shows how to check the launcher service, and the [Developer Center](https://dev.cardputer.cc/) checks the package before upload. Neither check tells you whether **your app’s executable can find its shared libraries on this device image**.
+
+On the Zero, as your regular user, use the executable path from your app’s
+`Exec` line, without the arguments. This example uses the Guide Counter path.
+Use `ldd` only on an executable you built or trust; don't run it on a stranger's
+download.
+
+```sh
+app=/usr/bin/cp0-guide-counter-demo
+test -x "$app" && file "$app"
+# For a trusted, dynamically linked ARM aarch64 Linux executable:
+LC_ALL=C ldd "$app"
+```
+
+- **Missing path or not executable:** Check the package contents and the
+  `Exec` path. If it points to a script, check the script’s interpreter and
+  the native executable it calls instead.
+- **`libexample.so.1 => not found`:** The executable exists, but Linux cannot
+  resolve that library version. If it should come from the device image, check
+  which package supplies the compatible version and declare it in the app’s
+  dependencies. If it’s your own library, check that the package contains it
+  and that the executable can find it. Rebuild, then check the same executable
+  path again. Don't symlink a different version or change system library paths
+  to get past the error.
+- **All libraries resolve:** That rules out a missing startup library in this
+  check, not a display, input, or startup problem. Return to the launcher
+  journal and the first error from that launch.
+
+**Verified on a Cardputer Zero:** A disposable arm64 package left out its own
+test library. Its executable existed and had the right architecture, but
+`ldd` reported the library missing and the process exited before running the
+app. After rebuilding the package with the matching library, the same check
+resolved it and the executable exited successfully. Both packages were
+extracted to temporary folders, not installed. This verifies the dependency
+check on hardware, not a full APPLaunch or display test.
+
 ## It works on the desktop, but not on the device
 
 On a machine with Debian package tools, inspect the artifact without installing:

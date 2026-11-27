@@ -3,63 +3,30 @@
 Decisions are recorded component by component. A locked preference is the default
 for my own apps; revisit any necessary app-specific exception explicitly.
 Preserve the [official shell/input/backend boundaries](official-ui-evaluation.md).
-This record does not implement a library or change existing apps.
+The [App Shell](app-shell.md) is the reusable reference for the patterns below.
+An app only conforms to the patterns it has actually adopted and tested.
 
-## Locked: home menu — exact Mesh carousel
+## Locked: NFC Tools home menu for my apps
 
-Agreed 2026-11-18. The owner wants the home carousel **exactly as designed in Mesh**,
-including its look and feel. Mesh's actual implementation is the authoritative
-reference; the illustrative comparison is not a pixel/font/motion specification.
+This 2026-11-26 decision replaces the earlier Mesh-only home layout. I like
+the NFC Tools carousel, so that is what I use and demonstrate. It is a
+personal preference, not a platform rule. For submenu selection, use the
+Start form standard below.
 
-Reference: `m5stack-cardputer-zero-mesh-app`, commit
-`5f21eebe83402119c5c3ad3a3aee3aef905fccd3`, principally
-`src/view/screens/menu_screen.cpp`. Supporting file hashes are in the
-[reference manifest](ui-preferences-evidence.json).
-
-- Large centered icon above its label; faint previous/next icons at the edges.
-- Current geometry: 40 px center icon font, 28 px neighbor icon font, 40% neighbor
-  opacity, 12 px edge offsets and 10 px icon/label gap. Label uses the existing
-  17 px regular standard-font path with the existing 18 px fallback.
-- Directional slide and simultaneous fade over 180 ms, with a 46 px slide and
-  the current ease-out slide path. Preserve correct direction through wraparound.
-- Left/right selection, wrapping and Enter activation; retain the existing
-  keyboard routing and selected-item state. Theme changes recolor without
-  triggering selection animation; initial display does not animate in.
-- Preserve the actual light/dark home appearance, including Mesh's current
-  primary/disabled colors and surface treatment. A global palette decision for
-  other components is still open; do not silently substitute the comparison's
-  palette for this exact reference.
-- Preserve the reference home geometry: 320×170, 30 px title region and content
-  below it. The position indicator in the next section is the agreed addition. The home implementation has no added bottom function-key lane;
-  do not import the illustrative preview's footer as an approved preference.
-
-App-specific destinations, labels and appropriate icon glyphs can represent the
-new app's own functions. That is content substitution, not permission to
-redesign the carousel. Preserve attribution and the selected official foundation's
-lifecycle/focus ownership when later implementing reuse.
-
-## Locked: home-carousel position indicator
-
-Agreed 2026-11-26. Keep the Mesh home carousel geometry and directional
-animation, and add the NFC Tools position bar below the home label. Center
-the row, use NFC Tools’ vertical spacing (menu title top y=82, dot row y=138 on 320×170), and use a wider accent pill for the current slot and small muted dots
-for the others, and update it with the carousel selection, including wrap.
-Do not animate or add a footer for the indicator. This is distinct from the
-right-edge overflow bar used on a submenu list. The [reusable LVGL component](../examples/ui-patterns/carousel-position/README.md)
-and its source notes live with the guide.
-
-Keep the top-bar battery percentage plain text and right-aligned when available.
-No battery glyph and no fabricated percentage if the device does not report one.
+Use the NFC Tools header, center icon and title/subtitle, shaded side icons,
+position dots, divider and key hints as one composition. The standard adds a
+plain right-aligned battery percentage when the device reports one. Keep
+apps' own menu choices, icons and accent colors. The complete
+[home-menu spec and reusable component](../examples/ui-patterns/carousel-position/README.md)
+list the positions, font sizes, and ownership boundaries.
 
 ## Locked: submenu-list selection and navigation cues
 
-Confirmed 2026-11-18: use Mesh's rounded selected row, subtle background fill
-and colored stripe on the left. Reference: the same Mesh commit above,
-`src/view/widgets/list_selection.h`, `style_list_row()` / `select_list_row()`.
-The existing implementation uses a 6 px radius, palette button fill and 3 px
-left border in the primary color; changing selection clears the old row's
-selection styling and scrolls the newly selected row into view. Screens retain
-their own item identity and navigation state.
+The **App Shell Start form** is the current reference: a neutral fill, 6 px
+rounded corners and a 3 px full-height accent stripe at the left edge. Only
+the selected row has those marks. Keep the same treatment for explanation,
+value, form and confirmation rows; their content layouts can differ. The
+earlier Mesh implementation was the starting point for this decision.
 
 Additional rules supplied by the owner on 2026-11-18:
 
@@ -82,16 +49,9 @@ Additional rules supplied by the owner on 2026-11-18:
   `build/amber/settings.png` and `src/ui/app.cpp::App::list`. The example shows
   three of five rows, a thin right-side track and an accent-colored marker.
 
-The NFC source/render reference is recorded by hash in the manifest and comes
-from an uncommitted working tree, not its HEAD alone. Its current list renderer
-draws the bar for every nonempty list and draws chevrons on all displayed rows.
-Those existing conditions are not the owner's specified rules; reuse the visual
-reference while implementing the conditional behaviors above in any later work.
-No NFC change is made here. Typography and row content are not locked by these cues.
-
-The owner's wrap-around request is recorded as component behavior during this
-preference walkthrough. No reusable list implementation exists from this record,
-and this update does not claim it has been applied to an existing app.
+The earlier NFC Tools render served as the visual reference for the position
+bar. The shell’s implementation controls when it appears. This is a reusable
+pattern; do not infer conformance from an older app screenshot.
 
 ## Locked: On/Off setting rows
 
@@ -145,8 +105,9 @@ silently migrated by this documentation update.
 - Presentation of immediate-action rows beyond the recorded choice rules.
 - Body/supporting typography and spacing outside the locked home reference.
 - Overall palette policy and app-specific accent choices.
-- Status/title bars and footer actions outside this home reference.
-- Editors/forms, Help, confirmations, notifications and progress.
+- Additional patterns beyond the shell's basic fixed pages, form editor,
+  and single-action detail footer, only when a real app needs them.
+- App-specific Help, irreversible confirmations, notifications and progress.
 
 No implementation, extraction, new timing measurement, device test or global
 restyling is claimed by this decision record.
